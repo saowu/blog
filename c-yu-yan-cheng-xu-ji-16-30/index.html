@@ -1,0 +1,597 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C语言程序集（16-30） | saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585897498869">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="C语言程序集（16-30） | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162711560-1');
+</script>
+
+
+    <meta name="description" content="16.打印*的10*10矩阵
+
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 0; i &lt; 10; i++){
+        for (int j = 0; j &lt..." />
+    <meta name="keywords" content="C,日记" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://saowu.github.io">
+  <img class="avatar" src="https://saowu.github.io/images/avatar.png?v=1585897498869" alt="">
+  </a>
+  <h1 class="site-title">
+    saowu&#39;s Blog
+  </h1>
+  <p class="site-description">
+    A programmer who wants to be happy and muddle along
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/saowu" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/6635817704" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/43703339aec7960c1020ba061888a016" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              C语言程序集（16-30）
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-03
+              </span>
+              <span>
+                8 min read
+              </span>
+              
+                <a href="https://saowu.github.io/tag/bvmB0NIP7/" class="post-tag">
+                  # C
+                </a>
+              
+                <a href="https://saowu.github.io/tag/5lhY7x_08/" class="post-tag">
+                  # 日记
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://saowu.github.io/post-images/c-yu-yan-cheng-xu-ji-16-30.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="16打印的1010矩阵">16.打印<code>*</code>的10*10矩阵</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 0; i &lt; 10; i++){
+        for (int j = 0; j &lt; 10; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="17打印">17.打印:</h3>
+<pre><code>        *
+        **
+        ***
+        ****
+        *****
+
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= i; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="18打印">18.打印：</h3>
+<pre><code>        *****
+        ****
+        ***
+        **
+        *
+        
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        for (int j = 5; j &gt;= i; j--)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+
+
+</code></pre>
+<h3 id="19打印">19.打印：</h3>
+<pre><code>            *
+            ***
+            *****
+            *******
+            *********
+            
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="20打印">20.打印：</h3>
+<pre><code>            *
+           ***
+          *****
+         *******
+        *********
+        
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="21打印">21.打印：</h3>
+<pre><code>        *********
+         *******
+          *****
+           ***
+            *
+            
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 5; i &gt;= 1; i--) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="22打印">22.打印：</h3>
+<pre><code>        *********
+         *******
+          *****
+           ***
+            *
+           ***
+          *****
+         *******
+        *********
+        
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 5; i &gt;= 1; i--) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    for (int i = 2; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="23打印">23.打印：</h3>
+<pre><code>            *
+           ***
+          *****
+         *******
+        *********
+         *******
+          *****
+           ***
+            *
+            
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    for (int i = 4; i &gt;= 1; i--) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+
+    return 0;
+}
+
+</code></pre>
+<h3 id="24打印乘法口诀表">24.打印乘法口诀表</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 9; i++) {
+        for (int j = 1; j &lt;= i; j++)
+            printf(&quot;\t%d*%d=%d&quot;, i, j, i * j);
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+	1*1=1
+	2*1=2	2*2=4
+	3*1=3	3*2=6	3*3=9
+	4*1=4	4*2=8	4*3=12	4*4=16
+	5*1=5	5*2=10	5*3=15	5*4=20	5*5=25
+	6*1=6	6*2=12	6*3=18	6*4=24	6*5=30	6*6=36
+	7*1=7	7*2=14	7*3=21	7*4=28	7*5=35	7*6=42	7*7=49
+	8*1=8	8*2=16	8*3=24	8*4=32	8*5=40	8*6=48	8*7=56	8*8=64
+	9*1=9	9*2=18	9*3=27	9*4=36	9*5=45	9*6=54	9*7=63	9*8=72	9*9=81
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="25打印">25.打印:</h3>
+<pre><code>           1   2   3   4
+           5   6   7   8
+           9  10  11  12
+          13  14  15  16
+          
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 4; i++) {
+        for (int j = 1; j &lt;= 4; j++)
+            printf(&quot;%4d&quot;, (i - 1) * 4 + j);
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+
+</code></pre>
+<h3 id="26打印">26.打印：</h3>
+<pre><code>           1   5   9  13
+           2   6  10  14
+           3   7  11  15
+           4   8  12  16
+           
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 4; i++) {
+        for (int j = 1; j &lt;= 4; j++)
+            printf(&quot;%4d&quot;, (j - 1) * 4 + i);
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+
+</code></pre>
+<h3 id="27真题打印">27.(真题)打印：</h3>
+<pre><code>          16  15  14  13
+          12  11  10   9
+           8   7   6   5
+           4   3   2   1
+           
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 4; i &gt;= 1; i--) {
+        for (int j = 1; j &lt;= 4; j++)
+            printf(&quot;%4d&quot;, i * 4 - (j - 1));
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="28素数的判断">28.素数的判断</h3>
+<pre><code>1).
+    #include &lt;stdio.h&gt;
+    #include &lt;math.h&gt;
+    
+    int main() {
+        int i, x;
+        printf(&quot;input x :&quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        for (i = 2; i &lt;= sqrt(x); i++)
+            if (x % i == 0)
+                break;
+        if (i &gt; sqrt(x))
+            printf(&quot;%d is a prime number.\n&quot;, x);
+        else
+            printf(&quot;%d is not a prime number.\n&quot;, x);
+        return 0;
+    }
+2).
+    #include &lt;stdio.h&gt;
+    #include &lt;math.h&gt;
+    int main() {
+        int i, x, flag = 1;
+        printf(&quot;input x :&quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        for (i = 2; i &lt;= sqrt(x); i++)
+            if (x % i == 0) {
+                flag = 0;
+                break;
+            }
+        if (flag == 1)
+            printf(&quot;%d is a prime number.\n&quot;, x);
+        else
+            printf(&quot;%d is not a prime number.\n&quot;, x);
+        return 0;
+    }
+    
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input x :34
+34 is not a prime number.
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="29打印100~200之间的素数">29.打印100~200之间的素数</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int flag;
+    for (int x = 100; x &lt;= 200; x++) {
+    //for(int x = 101; x &lt;=199; x += 2){
+        flag = 1;
+        for (int i = 2; i &lt;= sqrt(x); i++)
+            if (x % i == 0) {
+                flag = 0;
+                break;
+            }
+        if (flag == 1)
+            printf(&quot;%d\t&quot;, x);
+    }
+
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+101	103	107	109	113	127	131	137	139	149	151	157	163	167	173	179	181	191	193	197	199	
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="30打印ascii码与字母">30.打印ASCII码与字母</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    for (int ch = 'a'; ch &lt;= 'z'; ch++) {
+        printf(&quot;%c=%d %c=%d &quot;, ch - 32, ch - 32, ch, ch);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+A=65 a=97 B=66 b=98 C=67 c=99 D=68 d=100 E=69 e=101 F=70 f=102 G=71 g=103 H=72 h=104 I=73 i=105 J=74 j=106 K=75 k=107 L=76 l=108 M=77 m=109 N=78 n=110 O=79 o=111 P=80 p=112 Q=81 q=113 R=82 r=114 S=83 s=115 T=84 t=116 U=85 u=117 V=86 v=118 W=87 w=119 X=88 x=120 Y=89 y=121 Z=90 z=122 
+Process finished with exit code 0
+
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#16%E6%89%93%E5%8D%B0%E7%9A%841010%E7%9F%A9%E9%98%B5">16.打印<code>*</code>的10*10矩阵</a></li>
+<li><a href="#17%E6%89%93%E5%8D%B0">17.打印:</a></li>
+<li><a href="#18%E6%89%93%E5%8D%B0">18.打印：</a></li>
+<li><a href="#19%E6%89%93%E5%8D%B0">19.打印：</a></li>
+<li><a href="#20%E6%89%93%E5%8D%B0">20.打印：</a></li>
+<li><a href="#21%E6%89%93%E5%8D%B0">21.打印：</a></li>
+<li><a href="#22%E6%89%93%E5%8D%B0">22.打印：</a></li>
+<li><a href="#23%E6%89%93%E5%8D%B0">23.打印：</a></li>
+<li><a href="#24%E6%89%93%E5%8D%B0%E4%B9%98%E6%B3%95%E5%8F%A3%E8%AF%80%E8%A1%A8">24.打印乘法口诀表</a></li>
+<li><a href="#25%E6%89%93%E5%8D%B0">25.打印:</a></li>
+<li><a href="#26%E6%89%93%E5%8D%B0">26.打印：</a></li>
+<li><a href="#27%E7%9C%9F%E9%A2%98%E6%89%93%E5%8D%B0">27.(真题)打印：</a></li>
+<li><a href="#28%E7%B4%A0%E6%95%B0%E7%9A%84%E5%88%A4%E6%96%AD">28.素数的判断</a></li>
+<li><a href="#29%E6%89%93%E5%8D%B0100~200%E4%B9%8B%E9%97%B4%E7%9A%84%E7%B4%A0%E6%95%B0">29.打印100~200之间的素数</a></li>
+<li><a href="#30%E6%89%93%E5%8D%B0ascii%E7%A0%81%E4%B8%8E%E5%AD%97%E6%AF%8D">30.打印ASCII码与字母</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://saowu.github.io/pip3-chang-yong-ming-ling/">
+              <h3 class="post-title">
+                pip3 常用命令
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'db1c9fa9ae878d9fa727',
+    clientSecret: '9bacb2d69b4a12e56ec355412cd4aa13a260e5ff',
+    repo: 'saowu.github.io',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  <p>Copyright 2020 saowu</p>
+<p>Any and all opinions listed here are my own and not representative of my employers; future, past and present.</p>
+  <a class="rss" href="https://saowu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

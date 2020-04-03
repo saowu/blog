@@ -1,0 +1,298 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>pip3 常用命令 | saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585897498869">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="pip3 常用命令 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162711560-1');
+</script>
+
+
+    <meta name="description" content="1、安装目录
+~/Library/Caches/pip
+
+2、查找需要安装的包
+pip3 search &lt;包名&gt;
+
+3、安装python包
+pip3 install 
+pip3 install &lt;包名&gt;==1.0.0..." />
+    <meta name="keywords" content="Python,日记" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://saowu.github.io">
+  <img class="avatar" src="https://saowu.github.io/images/avatar.png?v=1585897498869" alt="">
+  </a>
+  <h1 class="site-title">
+    saowu&#39;s Blog
+  </h1>
+  <p class="site-description">
+    A programmer who wants to be happy and muddle along
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/saowu" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/6635817704" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/43703339aec7960c1020ba061888a016" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              pip3 常用命令
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-03
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://saowu.github.io/tag/mVqrRKBAz/" class="post-tag">
+                  # Python
+                </a>
+              
+                <a href="https://saowu.github.io/tag/5lhY7x_08/" class="post-tag">
+                  # 日记
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://saowu.github.io/post-images/pip3-chang-yong-ming-ling.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="1-安装目录">1、安装目录</h3>
+<pre><code>~/Library/Caches/pip
+</code></pre>
+<h3 id="2-查找需要安装的包">2、查找需要安装的包</h3>
+<pre><code>pip3 search &lt;包名&gt;
+</code></pre>
+<h3 id="3-安装python包">3、安装python包</h3>
+<pre><code>pip3 install 
+pip3 install &lt;包名&gt;==1.0.0
+pip3 install -r requirements.txt 
+pip3 install -i &lt;源地址&gt; &lt;包名&gt;
+pip install -e &lt;local project path&gt; (这个命令相当于pip install develop）
+</code></pre>
+<h3 id="4-源地址">4、源地址</h3>
+<pre><code>阿里源：https://mirrors.aliyun.com/pypi/simple/ 
+科大源：https://pypi.mirrors.ustc.edu.cn/simple/ 
+清华源：https://pypi.tuna.tsinghua.edu.cn/simple 
+官方源：https://pypi.python.org/
+</code></pre>
+<h3 id="5-在配置文件中指定安装源">5、在配置文件中指定安装源</h3>
+<pre><code>#直接在配置文件中添加源，如果没有配置文件可以手动添加一个 
+/etc/pip.conf 
+[global] 
+timeout = 6000 
+index-url = http://pypi.douban.com/simple
+</code></pre>
+<h3 id="6-列出已经安装的包">6、列出已经安装的包</h3>
+<pre><code>pip3 list 
+</code></pre>
+<h3 id="7-列出过期的包">7、列出过期的包</h3>
+<pre><code>pip3 list -o
+</code></pre>
+<h3 id="8-升级包">8、升级包</h3>
+<pre><code>pip3 install &lt;包名&gt; -U
+pip3 install -i &lt;源地址&gt; &lt;包名&gt; -U
+</code></pre>
+<h3 id="9-安装的包所在目录">9、安装的包所在目录</h3>
+<pre><code>pip3 show -f &lt;包名&gt; 
+</code></pre>
+<h3 id="10-卸载安装">10、卸载安装</h3>
+<pre><code>pip3 uninstall &lt;包名&gt; 
+pip3 uninstall -r requirements.txt
+</code></pre>
+<h3 id="11-生成requirementstxt文件">11、生成requirements.txt文件</h3>
+<pre><code>pip freeze &gt; ./requirements.txt
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/22721986-a940ca2142a2b929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="requirements.txt" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">1、安装目录</a></li>
+<li><a href="#2-%E6%9F%A5%E6%89%BE%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85">2、查找需要安装的包</a></li>
+<li><a href="#3-%E5%AE%89%E8%A3%85python%E5%8C%85">3、安装python包</a></li>
+<li><a href="#4-%E6%BA%90%E5%9C%B0%E5%9D%80">4、源地址</a></li>
+<li><a href="#5-%E5%9C%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E6%8C%87%E5%AE%9A%E5%AE%89%E8%A3%85%E6%BA%90">5、在配置文件中指定安装源</a></li>
+<li><a href="#6-%E5%88%97%E5%87%BA%E5%B7%B2%E7%BB%8F%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85">6、列出已经安装的包</a></li>
+<li><a href="#7-%E5%88%97%E5%87%BA%E8%BF%87%E6%9C%9F%E7%9A%84%E5%8C%85">7、列出过期的包</a></li>
+<li><a href="#8-%E5%8D%87%E7%BA%A7%E5%8C%85">8、升级包</a></li>
+<li><a href="#9-%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95">9、安装的包所在目录</a></li>
+<li><a href="#10-%E5%8D%B8%E8%BD%BD%E5%AE%89%E8%A3%85">10、卸载安装</a></li>
+<li><a href="#11-%E7%94%9F%E6%88%90requirementstxt%E6%96%87%E4%BB%B6">11、生成requirements.txt文件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://saowu.github.io/homebrew-ji-ben-jiao-cheng/">
+              <h3 class="post-title">
+                Homebrew基本教程
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'db1c9fa9ae878d9fa727',
+    clientSecret: '9bacb2d69b4a12e56ec355412cd4aa13a260e5ff',
+    repo: 'saowu.github.io',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  <p>Copyright 2020 saowu</p>
+<p>Any and all opinions listed here are my own and not representative of my employers; future, past and present.</p>
+  <a class="rss" href="https://saowu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

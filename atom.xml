@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-03T06:49:54.164Z</updated>
+    <updated>2020-04-03T07:05:01.905Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io"/>
     <link rel="self" href="https://saowu.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[C语言程序集（76-80）]]></title>
-        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-76-80/</id>
-        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-76-80/">
+        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-76-80/</id>
+        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-76-80/">
         </link>
         <updated>2020-04-03T06:10:45.000Z</updated>
         <content type="html"><![CDATA[<h3 id="76整数数值交换">76.整数数值交换</h3>
@@ -129,8 +129,8 @@ int main()
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（61-75）]]></title>
-        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-61-75/</id>
-        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-61-75/">
+        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-61-75/</id>
+        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-61-75/">
         </link>
         <updated>2020-04-03T06:09:50.000Z</updated>
         <content type="html"><![CDATA[<h3 id="61二维数组的指针的运用">61.二维数组的指针的运用</h3>
@@ -566,8 +566,8 @@ main()
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（46-60）]]></title>
-        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-46-60/</id>
-        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-46-60/">
+        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-46-60/</id>
+        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-46-60/">
         </link>
         <updated>2020-04-03T06:08:20.000Z</updated>
         <content type="html"><![CDATA[<h3 id="46把数组元素依次向后移动一个位置">46.把数组元素依次向后移动一个位置</h3>
@@ -1081,8 +1081,8 @@ int main() {
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（31-45）]]></title>
-        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-31-45/</id>
-        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-31-45/">
+        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-31-45/</id>
+        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-31-45/">
         </link>
         <updated>2020-04-03T06:07:01.000Z</updated>
         <content type="html"><![CDATA[<h3 id="31计算1-23-45-99-100">31.计算1-2+3-4+5-...+99-100=?</h3>
@@ -1476,8 +1476,8 @@ Process finished with exit code 0
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（16-30）]]></title>
-        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-16-30/</id>
-        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-16-30/">
+        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-16-30/</id>
+        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-16-30/">
         </link>
         <updated>2020-04-03T06:06:08.000Z</updated>
         <content type="html"><![CDATA[<h3 id="16打印的1010矩阵">16.打印<code>*</code>的10*10矩阵</h3>
@@ -1829,8 +1829,8 @@ Process finished with exit code 0
     </entry>
     <entry>
         <title type="html"><![CDATA[pip3 常用命令]]></title>
-        <id>https://saowu.github.io/post/pip3-chang-yong-ming-ling/</id>
-        <link href="https://saowu.github.io/post/pip3-chang-yong-ming-ling/">
+        <id>https://saowu.github.io/pip3-chang-yong-ming-ling/</id>
+        <link href="https://saowu.github.io/pip3-chang-yong-ming-ling/">
         </link>
         <updated>2020-04-03T05:37:50.000Z</updated>
         <content type="html"><![CDATA[<h3 id="1-安装目录">1、安装目录</h3>
@@ -1884,8 +1884,8 @@ pip3 uninstall -r requirements.txt
     </entry>
     <entry>
         <title type="html"><![CDATA[Homebrew基本教程]]></title>
-        <id>https://saowu.github.io/post/homebrew-ji-ben-jiao-cheng/</id>
-        <link href="https://saowu.github.io/post/homebrew-ji-ben-jiao-cheng/">
+        <id>https://saowu.github.io/homebrew-ji-ben-jiao-cheng/</id>
+        <link href="https://saowu.github.io/homebrew-ji-ben-jiao-cheng/">
         </link>
         <updated>2020-04-03T04:51:14.000Z</updated>
         <content type="html"><![CDATA[<h3 id="一-安装需要-ruby">一、安装（需要 Ruby）：</h3>
@@ -1941,8 +1941,8 @@ brew update
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集(1-15)]]></title>
-        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji/</id>
-        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji/">
+        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji/</id>
+        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji/">
         </link>
         <updated>2020-04-03T04:41:43.000Z</updated>
         <content type="html"><![CDATA[<h3 id="1输入两个数按从小到大的顺序排列">1.输入两个数按从小到大的顺序排列</h3>

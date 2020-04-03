@@ -1,0 +1,641 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C语言程序集（31-45） | saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585897498869">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="C语言程序集（31-45） | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162711560-1');
+</script>
+
+
+    <meta name="description" content="31.计算1-2+3-4+5-...+99-100=?
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int sum = 0;
+    for (in..." />
+    <meta name="keywords" content="C,日记" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://saowu.github.io">
+  <img class="avatar" src="https://saowu.github.io/images/avatar.png?v=1585897498869" alt="">
+  </a>
+  <h1 class="site-title">
+    saowu&#39;s Blog
+  </h1>
+  <p class="site-description">
+    A programmer who wants to be happy and muddle along
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/saowu" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/6635817704" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/43703339aec7960c1020ba061888a016" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              C语言程序集（31-45）
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-03
+              </span>
+              <span>
+                9 min read
+              </span>
+              
+                <a href="https://saowu.github.io/tag/bvmB0NIP7/" class="post-tag">
+                  # C
+                </a>
+              
+                <a href="https://saowu.github.io/tag/5lhY7x_08/" class="post-tag">
+                  # 日记
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://saowu.github.io/post-images/c-yu-yan-cheng-xu-ji-31-45.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="31计算1-23-45-99-100">31.计算1-2+3-4+5-...+99-100=?</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int sum = 0;
+    for (int i = 1; i &lt;= 100; i++) {
+        sum += pow(-1, i - 1) * i;
+    }
+    printf(&quot;sum=%d&quot;, sum);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=-50
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="32计算1112131100">32.计算1/1+1/2+1/3+...1/100=?</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float sum = 0;
+    for (int i = 1; i &lt;= 100; i++) {
+        sum += pow(i,-1);
+    }
+    printf(&quot;sum=%f&quot;, sum);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=5.187378
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="33计算1112131nn106">33.计算1/1+1/2+1/3+...+1/n=?,n=10^6</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float sum = 0;
+    for (int i = 1; i &lt;= 1e6; i++) {
+        sum += pow(i, -1);
+    }
+    printf(&quot;sum=%f&quot;, sum);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=14.357358
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="34输入两个整数m和n求其最大公约数和最小公倍数">34.输入两个整数m和n，求其最大公约数和最小公倍数</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int m, n, r, p;
+    printf(&quot;input m,n: &quot;);
+    scanf(&quot;%d,%d&quot;, &amp;m, &amp;n);
+    p = m * n;
+    do {
+        r = m % n;
+        m = n;
+        n = r;
+    } while (r != 0);
+    printf(&quot;最大公约数:%d\n&quot;, m);
+    printf(&quot;最小公倍数:%d&quot;, p / m);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input m,n: 6,8
+最大公约数:2
+最小公倍数:24
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="35计算-222222222222222此时n5">35.计算 2+22+222+2222+22222=？(此时n=5)</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int n, s = 0, t = 0;
+    scanf(&quot;%d&quot;, &amp;n);
+    for (int i = 1; i &lt;= n; i++) {
+        t = t * 10 + 2;
+        s += t;
+    }
+    printf(&quot;%d\n&quot;, s);
+    return 0;
+} 
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+5
+24690
+
+Process finished with exit code 0
+
+
+
+</code></pre>
+<h3 id="36计算-21325385-求前20项">36.计算 2/1+3/2+5/3+8/5+... 求前20项</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    float m = 2, n = 1, t, s = 0;
+    for (int i = 1; i &lt;= 20; i++) {
+        s += m / n;
+        t = m;
+        m += n;
+        n = t;
+    }
+    printf(&quot;sum=%f\n&quot;, s);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=32.660263
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="37计算-12320">37.计算 1!+2!+3!+...+20!=?</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    float s = 0, f = 1;
+    for (int i = 1; i &lt;= 20; i++) {
+        f *= i;
+        s += f;
+    }
+    printf(&quot;sum=%f\n&quot;, s);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=2561327455189073920.000000
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="38计算">38.计算</h3>
+<pre><code class="language-math"> \sum_{k=1}^{100}{k}+\sum_{k=1}^{50}{k^2}+\sum_{k=1}^{10}\frac{1}{k}=?
+</code></pre>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int s1 = 0, s2 = 0;
+    float s3 = 0;
+    for (int i = 1; i &lt;= 100; i++)
+        s1 += i;
+    for (int i = 1; i &lt;= 50; i++)
+        s2 += i * i;
+    for (int i = 1; i &lt;= 10; i++)
+        s3 += 1.0 / i;
+    printf(&quot;%f&quot;, s1 + s2 + s3);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+47977.929688
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="39水仙花数一个3位数各位数字的立方和等于它本身如153打印全部水仙花数">39.水仙花数：一个3位数，各位数字的立方和等于它本身（如：153）,打印全部水仙花数</h3>
+<pre><code>1).
+    #include &lt;stdio.h&gt;
+    #include &lt;math.h&gt;
+    
+    int main() {
+        int x, y, z, s;
+        for (int m = 100; m &lt; 1000; m++) {
+            x = m / 100;
+            y = m / 10 % 10;
+            z = m % 10;
+            s = pow(x, 3) + pow(y, 3) + pow(z, 3);
+            if (m == s)
+                printf(&quot;%d is a water flower number.\n&quot;, m);
+        }
+        return 0;
+    }
+2).
+    #include &lt;stdio.h&gt;
+    #include &lt;math.h&gt;
+    
+    int main() {
+        int x, s;
+        for (int m = 1; m &lt;= 9; m++)
+            for (int i = 0; i &lt;= 9; i++)
+                for (int j = 0; j &lt;= 9; j++) {
+                    x = m * 100 + i * 10 + j;
+                    s = pow(m, 3) + pow(i, 3) + pow(j, 3);
+                    if (x == s)
+                        printf(&quot;%d is a water flower number.\n&quot;, x);
+                }
+        return 0;
+    }
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+153 is a water flower number.
+370 is a water flower number.
+371 is a water flower number.
+407 is a water flower number.
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="40如果一个数恰好等于它的因子之和这个数为完数例如6123找出1000以内的完数按照6-its-factors-are-1-2-3-格式打印">40.如果一个数恰好等于它的因子之和，这个数为“完数”（例如:6=1+2+3），找出1000以内的完数，按照:“6 its factors are 1 2 3” 格式打印</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+int main() {
+    int s;
+    for (int i = 1; i &lt;= 1000; i++) {
+        s = 0;
+        for (int j = 1; j &lt;= i / 2; j++)
+            if (i % j == 0)
+                s += j;
+        if (s == i) {
+            printf(&quot;%d it's factors are &quot;, i);
+            for (int j = 1; j &lt;= i / 2; j++) {
+                if (i % j == 0)
+                    printf(&quot;%d &quot;, j);
+            }
+            printf(&quot;\n&quot;);
+        }
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+6 its factors are 1 2 3 
+28 its factors are 1 2 4 7 14 
+496 its factors are 1 2 4 8 16 31 62 124 248 
+
+Process finished with exit code 0
+
+
+</code></pre>
+<h3 id="41一个球从100m的高度落下每次落地后反跳回原高度的一半再落下再反弹-求它第10次落地时共经过多少米第10次反弹多高">41.一个球从100m的高度落下，每次落地后反跳回原高度的一半，再落下，再反弹。求它第10次落地时，共经过多少米，第10次反弹多高</h3>
+<pre><code>
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float sum = 100, high = 50;
+    for (int i = 0; i &lt; 10; i++) {
+        sum += 2 * high;
+        high /= 2;
+    }
+    printf(&quot;sum=%.2f,high=%f\n&quot;, sum, high*2);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=299.90,high=0.024414
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="42谭浩强c语言课本p141猴子吃桃">42.（谭浩强c语言课本P141）猴子吃桃</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int x1, x2 = 1;
+    for (int day = 9; day &gt;= 1; day--) {
+        x1 = 2 * (x2 + 1);
+        x2 = x1;
+    }
+    printf(&quot;num=%d\n&quot;, x1);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+num=1534
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="43每个月兔子的总和依次为11235813这就是斐波那契数列">43.每个月兔子的总和依次为1，1，2，3，5，8，13...这就是斐波那契数列</h3>
+<pre><code>{
+    f1=1(n=1);
+    f2=1(n=2);
+    fn=f(n-1)+f(n-2)(n&gt;=3);
+}
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int f1 = 1, f2 = 1, f;
+    printf(&quot;%5d %5d&quot;, f1, f2);
+    for (int i = 3; i &lt;= 20; i++) {
+        f = f1 + f2;
+        printf(&quot;%5d &quot;, f);
+        if (i % 5 == 0)
+            printf(&quot;\n&quot;);
+        f1 = f2;
+        f2 = f;
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+    1     1    2     3     5 
+    8    13    21    34    55 
+   89   144   233   377   610 
+  987  1597  2584  4181  6765 
+
+Process finished with exit code 0
+
+
+</code></pre>
+<h3 id="44判断一个数是否为素数">44.判断一个数是否为素数</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int m, i;
+    scanf(&quot;%d&quot;, &amp;m);
+    for (i = 2; i &lt;= m / 2; i++)
+        if (m % i == 0)
+            break;
+    if (m/2 == i-1)
+        printf(&quot;Yes&quot;);
+    else
+        printf(&quot;No&quot;);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+5
+Yes
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="45成绩平均值">45.成绩平均值</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int sum = 0, s[10];
+    float ave;
+    for (int i = 0; i &lt;= 9; i++) {
+        scanf(&quot;%d&quot;, &amp;s[i]);
+        sum += s[i];
+    }
+    ave = sum / 10.0;
+    printf(&quot;ave=%f\n&quot;, ave);
+    for (int j = 0; j &lt; 10; j++) {
+        printf(&quot;%d&quot;, s[j]);
+    }
+    return 0;
+}
+
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+ave=4.500000
+1234567890
+Process finished with exit code 0
+
+
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#31%E8%AE%A1%E7%AE%971-23-45-99-100">31.计算1-2+3-4+5-...+99-100=?</a></li>
+<li><a href="#32%E8%AE%A1%E7%AE%971112131100">32.计算1/1+1/2+1/3+...1/100=?</a></li>
+<li><a href="#33%E8%AE%A1%E7%AE%971112131nn106">33.计算1/1+1/2+1/3+...+1/n=?,n=10^6</a></li>
+<li><a href="#34%E8%BE%93%E5%85%A5%E4%B8%A4%E4%B8%AA%E6%95%B4%E6%95%B0m%E5%92%8Cn%E6%B1%82%E5%85%B6%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0">34.输入两个整数m和n，求其最大公约数和最小公倍数</a></li>
+<li><a href="#35%E8%AE%A1%E7%AE%97-222222222222222%E6%AD%A4%E6%97%B6n5">35.计算 2+22+222+2222+22222=？(此时n=5)</a></li>
+<li><a href="#36%E8%AE%A1%E7%AE%97-21325385-%E6%B1%82%E5%89%8D20%E9%A1%B9">36.计算 2/1+3/2+5/3+8/5+... 求前20项</a></li>
+<li><a href="#37%E8%AE%A1%E7%AE%97-12320">37.计算 1!+2!+3!+...+20!=?</a></li>
+<li><a href="#38%E8%AE%A1%E7%AE%97">38.计算</a></li>
+<li><a href="#39%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0%E4%B8%80%E4%B8%AA3%E4%BD%8D%E6%95%B0%E5%90%84%E4%BD%8D%E6%95%B0%E5%AD%97%E7%9A%84%E7%AB%8B%E6%96%B9%E5%92%8C%E7%AD%89%E4%BA%8E%E5%AE%83%E6%9C%AC%E8%BA%AB%E5%A6%82153%E6%89%93%E5%8D%B0%E5%85%A8%E9%83%A8%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0">39.水仙花数：一个3位数，各位数字的立方和等于它本身（如：153）,打印全部水仙花数</a></li>
+<li><a href="#40%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E6%95%B0%E6%81%B0%E5%A5%BD%E7%AD%89%E4%BA%8E%E5%AE%83%E7%9A%84%E5%9B%A0%E5%AD%90%E4%B9%8B%E5%92%8C%E8%BF%99%E4%B8%AA%E6%95%B0%E4%B8%BA%E5%AE%8C%E6%95%B0%E4%BE%8B%E5%A6%826123%E6%89%BE%E5%87%BA1000%E4%BB%A5%E5%86%85%E7%9A%84%E5%AE%8C%E6%95%B0%E6%8C%89%E7%85%A76-its-factors-are-1-2-3-%E6%A0%BC%E5%BC%8F%E6%89%93%E5%8D%B0">40.如果一个数恰好等于它的因子之和，这个数为“完数”（例如:6=1+2+3），找出1000以内的完数，按照:“6 its factors are 1 2 3” 格式打印</a></li>
+<li><a href="#41%E4%B8%80%E4%B8%AA%E7%90%83%E4%BB%8E100m%E7%9A%84%E9%AB%98%E5%BA%A6%E8%90%BD%E4%B8%8B%E6%AF%8F%E6%AC%A1%E8%90%BD%E5%9C%B0%E5%90%8E%E5%8F%8D%E8%B7%B3%E5%9B%9E%E5%8E%9F%E9%AB%98%E5%BA%A6%E7%9A%84%E4%B8%80%E5%8D%8A%E5%86%8D%E8%90%BD%E4%B8%8B%E5%86%8D%E5%8F%8D%E5%BC%B9-%E6%B1%82%E5%AE%83%E7%AC%AC10%E6%AC%A1%E8%90%BD%E5%9C%B0%E6%97%B6%E5%85%B1%E7%BB%8F%E8%BF%87%E5%A4%9A%E5%B0%91%E7%B1%B3%E7%AC%AC10%E6%AC%A1%E5%8F%8D%E5%BC%B9%E5%A4%9A%E9%AB%98">41.一个球从100m的高度落下，每次落地后反跳回原高度的一半，再落下，再反弹。求它第10次落地时，共经过多少米，第10次反弹多高</a></li>
+<li><a href="#42%E8%B0%AD%E6%B5%A9%E5%BC%BAc%E8%AF%AD%E8%A8%80%E8%AF%BE%E6%9C%ACp141%E7%8C%B4%E5%AD%90%E5%90%83%E6%A1%83">42.（谭浩强c语言课本P141）猴子吃桃</a></li>
+<li><a href="#43%E6%AF%8F%E4%B8%AA%E6%9C%88%E5%85%94%E5%AD%90%E7%9A%84%E6%80%BB%E5%92%8C%E4%BE%9D%E6%AC%A1%E4%B8%BA11235813%E8%BF%99%E5%B0%B1%E6%98%AF%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97">43.每个月兔子的总和依次为1，1，2，3，5，8，13...这就是斐波那契数列</a></li>
+<li><a href="#44%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E6%98%AF%E5%90%A6%E4%B8%BA%E7%B4%A0%E6%95%B0">44.判断一个数是否为素数</a></li>
+<li><a href="#45%E6%88%90%E7%BB%A9%E5%B9%B3%E5%9D%87%E5%80%BC">45.成绩平均值</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-16-30/">
+              <h3 class="post-title">
+                C语言程序集（16-30）
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'db1c9fa9ae878d9fa727',
+    clientSecret: '9bacb2d69b4a12e56ec355412cd4aa13a260e5ff',
+    repo: 'saowu.github.io',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  <p>Copyright 2020 saowu</p>
+<p>Any and all opinions listed here are my own and not representative of my employers; future, past and present.</p>
+  <a class="rss" href="https://saowu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,661 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C语言程序集(1-15) | saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585897498869">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="C语言程序集(1-15) | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162711560-1');
+</script>
+
+
+    <meta name="description" content="1.输入两个数按从小到大的顺序排列
+#include &lt;stdio.h&gt;
+int main() {
+    int a, b, t;
+    printf(&quot;input a,b: &quot;);
+    scanf(..." />
+    <meta name="keywords" content="C,日记" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://saowu.github.io">
+  <img class="avatar" src="https://saowu.github.io/images/avatar.png?v=1585897498869" alt="">
+  </a>
+  <h1 class="site-title">
+    saowu&#39;s Blog
+  </h1>
+  <p class="site-description">
+    A programmer who wants to be happy and muddle along
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/saowu" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/6635817704" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/43703339aec7960c1020ba061888a016" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              C语言程序集(1-15)
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-03
+              </span>
+              <span>
+                9 min read
+              </span>
+              
+                <a href="https://saowu.github.io/tag/bvmB0NIP7/" class="post-tag">
+                  # C
+                </a>
+              
+                <a href="https://saowu.github.io/tag/5lhY7x_08/" class="post-tag">
+                  # 日记
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://saowu.github.io/post-images/c-yu-yan-cheng-xu-ji.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="1输入两个数按从小到大的顺序排列">1.输入两个数按从小到大的顺序排列</h3>
+<pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int a, b, t;
+    printf(&quot;input a,b: &quot;);
+    scanf(&quot;%d,%d&quot;, &amp;a, &amp;b);
+    if (a &gt; b) {
+        t = a;
+        a = b;
+        b = t;
+    }
+    printf(&quot;output: %d,%d&quot;, a, b);
+    return 0;
+}
+输出:
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input a,b: 2，1
+output: 1，2
+Process finished with exit code 0
+</code></pre>
+<h3 id="2输入3个整数把最大的输出">2.输入3个整数把最大的输出</h3>
+<pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int a, b, c, max;
+    printf(&quot;input a,b,c: &quot;);
+    scanf(&quot;%d,%d,%d&quot;, &amp;a, &amp;b, &amp;c);
+    max = a;
+    if (max &lt; b)
+        max = b;
+    if (max &lt; c)
+        max = c;
+    printf(&quot;max=%d&quot;, max);
+    return 0;
+}
+输出:
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input a,b,c: 1,2,3
+max=3
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="3输入3个整数按从小到大的顺序打印">3.输入3个整数按从小到大的顺序打印</h3>
+<pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int a, b, c, t;
+    printf(&quot;input a,b,c: &quot;);
+    scanf(&quot;%d,%d,%d&quot;, &amp;a, &amp;b, &amp;c);
+    if (a &gt; b) {
+        t = a;
+        a = b;
+        b = t;
+    }
+    if (a &gt; c) {
+        t = a;
+        a = c;
+        c = t;
+    }
+    if (b &gt; c) {
+        t = b;
+        b = c;
+        c = t;
+    }
+    printf(&quot;%d,%d,%d\n&quot;, a, b, c);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input a,b,c: 2,1,3
+1,2,3
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="4判断是否为闰年">4.判断是否为闰年</h3>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+
+    int year;
+    printf(&quot;input a year: &quot;);
+    scanf(&quot;%d&quot;, &amp;year);
+    if (year % 4 == 0 &amp;&amp; year % 100 != 0 || year % 400 == 0)
+        printf(&quot;%d is a leap year\n&quot;, year);
+    else
+        printf(&quot;%d is a not leap year\n&quot;, year);
+
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input a year: 2018
+2018 is a not leap year
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="5输入一个字符如果是大写字母则转换为小写否则不转换并输出最后得到的字符">5.输入一个字符，如果是大写字母，则转换为小写，否则不转换并输出最后得到的字符</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    char letter;
+    printf(&quot;input leeter: &quot;);
+    scanf(&quot;%c&quot;, &amp;letter);
+    if ('A' &lt;= letter &amp;&amp; letter &lt;= 'Z')
+        letter = letter + 32;
+    printf(&quot;letter: %c&quot;, letter);
+    
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input leeter:A
+letter: a
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="6编程求解">6.编程求解:</h3>
+<pre><code>                /-1 (x&lt;0)
+             y=|  0 (x=0)
+                \ 1 (x&gt;0)
+    
+1).    
+    #include &lt;stdio.h&gt;
+    int main() {
+        int x, y;
+        printf(&quot;input x: &quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        if (x &lt; 0)
+            y = -1;
+        else if (x == 0)
+            y = 0;
+        else
+            y = 1;
+        printf(&quot;y=%d&quot;, y);
+        return 0;
+    }
+
+2).
+    #include &lt;stdio.h&gt;
+    int main() {
+        int x, y;
+        printf(&quot;input x: &quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        y = -1;
+        if (x != 0)
+            if (x &gt; 0)
+                y = 1;
+            else
+                y = 0;
+        printf(&quot;y=%d&quot;, y);
+        return 0;
+    }
+
+3).
+    #include &lt;stdio.h&gt;
+    int main() {
+        int x, y;
+        printf(&quot;input x: &quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        if (x &gt;= 0)
+            if (x &gt; 0)
+                y = 1;
+            else
+                y = 0;
+        else
+            y = -1;
+        printf(&quot;y=%d&quot;, y);
+        return 0;
+    }
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input x: 12
+y=1
+Process finished with exit code 0
+
+    
+</code></pre>
+<h3 id="7按成绩分档次abcde">7.按成绩分档次（A,B,C,D,E）</h3>
+<pre><code>1).
+    #include &lt;stdio.h&gt;
+    int main() {
+        int score;
+        char grade;
+        printf(&quot;input score： &quot;);
+        scanf(&quot;%d&quot;, &amp;score);
+        if (score &gt;= 90)
+            grade = 'A';
+        else if (score &gt;= 80)
+            grade = 'B';
+        else if (score &gt;= 70)
+            grade = 'C';
+        else if (score &gt;= 60)
+            grade = 'D';
+        else
+            grade = 'E';
+        putchar(grade);
+        return 0;
+    }
+2).
+    #include &lt;stdio.h&gt;
+    int main() {
+        int score;
+        char grade;
+        printf(&quot;input score： &quot;);
+        scanf(&quot;%d&quot;, &amp;score);
+        switch (score / 10) {
+            case 10:
+            case 9:
+                grade = 'A';
+                break;
+            case 8:
+                grade = 'B';
+                break;
+            case 7:
+                grade = 'C';
+                break;
+            case 6:
+                grade = 'D';
+                break;
+            default:
+                grade = 'E';
+                break;
+        }
+        putchar(grade);
+        return 0;
+    }
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input score： 97
+A
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="8-编程计算123100">8. 编程计算1+2+3+...+100=？</h3>
+<pre><code>1).
+    #include &lt;stdio.h&gt;
+    int main() {
+        int sum = 0, i = 1;
+        while (i &lt;= 100) {
+            sum = sum + i;
+            i++;
+        }
+        printf(&quot;sum=%d\n&quot;, sum);
+        return 0;
+    }
+2).
+    #include &lt;stdio.h&gt;
+    int main() {
+        int sum = 0, i = 1;
+        do {
+            sum=sum+i;
+            i++;
+        } while (i &lt;= 100);
+        printf(&quot;sum=%d\n&quot;, sum);
+        return 0;
+    }
+3).
+    #include &lt;stdio.h&gt;
+    int main() {
+        int sum = 0;
+        for (int i = 1; i &lt;= 100; i++)
+            sum += i;
+        printf(&quot;sum=%d\n&quot;, sum);
+        return 0;
+    }
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=5050
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="9计算246100">9.计算2+4+6+...+100=?</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int sum = 0;
+    for (int i = 100; i &gt;= 1; i -= 2)
+        sum += i;
+    printf(&quot;sum=%d\n&quot;, sum);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=2550
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="10计算13599">10.计算1+3+5+...+99=?</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int sum = 0;
+    for (int i = 1; i &lt;= 100; i += 2)
+        sum += i;
+    printf(&quot;sum=%d\n&quot;, sum);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=2500
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="11计算12310">11.计算1<em>2</em>3*...*10=?</h3>
+<pre><code>1).
+    #include &lt;stdio.h&gt;
+    int main() {
+        int fact = 1, k = 1;
+        while (k &lt;= 10) {
+            fact = fact * k;
+            k++;
+        }
+        printf(&quot;fact=%d\n&quot;, fact);
+        return 0;
+    }
+2).
+    #include &lt;stdio.h&gt;
+    int main() {
+        int fact = 1;
+        for (int k = 1; k &lt;= 10; k++) {
+            fact *= k;
+        }
+        printf(&quot;fact=%d\n&quot;, fact);
+        return 0;
+    }
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+fact=3628800
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="121~100之间所有自然数平方和">12.1~100之间所有自然数平方和</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int sum = 0;
+    for (int i = 1; i &lt;= 100; i++)
+        sum = sum + i * i;
+    printf(&quot;sum=%d\n&quot;, sum);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=338350
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="131~100之间能被3整除的数之和">13.1~100之间能被3整除的数之和</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int sum = 0;
+    for (int i = 1; i &lt;= 100; i++)
+        if (i % 3 == 0)
+            sum += i;
+    printf(&quot;sum=%d\n&quot;, sum);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=1683
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="14从键盘上输入一串字符分别将字母和数字以及其他字符做统计并输出">14.从键盘上输入一串字符，分别将字母和数字以及其他字符做统计并输出</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int letter = 0, digit = 0, other = 0;
+    char ch;
+    while ((ch = getchar()) != '!') {
+        if (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z' || ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z')
+            letter++;
+        else if (ch &gt;= '0' &amp;&amp; ch &lt;= '9')
+            digit++;
+        else
+            other++;
+    }
+    printf(&quot;letter:%d\ndigit:%d\nother:%d\n&quot;, letter, digit, other);
+    return 0;
+}
+
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sdhjashjdhasjh3112312JDHSAJDKJSDJ!
+letter:26
+digit:7
+other:0
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="15从键盘上输入一串字符要求判断每一个字符大写字母转成小写字母小写字母转换成大写字母其他不变并输出">15.从键盘上输入一串字符，要求判断每一个字符，大写字母转成小写字母，小写字母转换成大写字母，其他不变并输出</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    char ch;
+    while ((ch = getchar()) != '!') {
+        if (ch &gt;= 97 &amp;&amp; ch &lt;= 122)
+            ch -= 32;
+        else if (ch &gt;= 65 &amp;&amp; ch &lt;= 90)
+            ch += 32;
+        putchar(ch);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sdjkasdjkasjjdkdJSDAKDJAKSJ2321312!
+SDJKASDJKASJJDKDjsdakdjaksj2321312
+Process finished with exit code 0
+
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1%E8%BE%93%E5%85%A5%E4%B8%A4%E4%B8%AA%E6%95%B0%E6%8C%89%E4%BB%8E%E5%B0%8F%E5%88%B0%E5%A4%A7%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%8E%92%E5%88%97">1.输入两个数按从小到大的顺序排列</a></li>
+<li><a href="#2%E8%BE%93%E5%85%A53%E4%B8%AA%E6%95%B4%E6%95%B0%E6%8A%8A%E6%9C%80%E5%A4%A7%E7%9A%84%E8%BE%93%E5%87%BA">2.输入3个整数把最大的输出</a></li>
+<li><a href="#3%E8%BE%93%E5%85%A53%E4%B8%AA%E6%95%B4%E6%95%B0%E6%8C%89%E4%BB%8E%E5%B0%8F%E5%88%B0%E5%A4%A7%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0">3.输入3个整数按从小到大的顺序打印</a></li>
+<li><a href="#4%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%B8%BA%E9%97%B0%E5%B9%B4">4.判断是否为闰年</a></li>
+<li><a href="#5%E8%BE%93%E5%85%A5%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%A6%82%E6%9E%9C%E6%98%AF%E5%A4%A7%E5%86%99%E5%AD%97%E6%AF%8D%E5%88%99%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B0%8F%E5%86%99%E5%90%A6%E5%88%99%E4%B8%8D%E8%BD%AC%E6%8D%A2%E5%B9%B6%E8%BE%93%E5%87%BA%E6%9C%80%E5%90%8E%E5%BE%97%E5%88%B0%E7%9A%84%E5%AD%97%E7%AC%A6">5.输入一个字符，如果是大写字母，则转换为小写，否则不转换并输出最后得到的字符</a></li>
+<li><a href="#6%E7%BC%96%E7%A8%8B%E6%B1%82%E8%A7%A3">6.编程求解:</a></li>
+<li><a href="#7%E6%8C%89%E6%88%90%E7%BB%A9%E5%88%86%E6%A1%A3%E6%AC%A1abcde">7.按成绩分档次（A,B,C,D,E）</a></li>
+<li><a href="#8-%E7%BC%96%E7%A8%8B%E8%AE%A1%E7%AE%97123100">8. 编程计算1+2+3+...+100=？</a></li>
+<li><a href="#9%E8%AE%A1%E7%AE%97246100">9.计算2+4+6+...+100=?</a></li>
+<li><a href="#10%E8%AE%A1%E7%AE%9713599">10.计算1+3+5+...+99=?</a></li>
+<li><a href="#11%E8%AE%A1%E7%AE%9712310">11.计算1<em>2</em>3*...*10=?</a></li>
+<li><a href="#121~100%E4%B9%8B%E9%97%B4%E6%89%80%E6%9C%89%E8%87%AA%E7%84%B6%E6%95%B0%E5%B9%B3%E6%96%B9%E5%92%8C">12.1~100之间所有自然数平方和</a></li>
+<li><a href="#131~100%E4%B9%8B%E9%97%B4%E8%83%BD%E8%A2%AB3%E6%95%B4%E9%99%A4%E7%9A%84%E6%95%B0%E4%B9%8B%E5%92%8C">13.1~100之间能被3整除的数之和</a></li>
+<li><a href="#14%E4%BB%8E%E9%94%AE%E7%9B%98%E4%B8%8A%E8%BE%93%E5%85%A5%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E5%88%86%E5%88%AB%E5%B0%86%E5%AD%97%E6%AF%8D%E5%92%8C%E6%95%B0%E5%AD%97%E4%BB%A5%E5%8F%8A%E5%85%B6%E4%BB%96%E5%AD%97%E7%AC%A6%E5%81%9A%E7%BB%9F%E8%AE%A1%E5%B9%B6%E8%BE%93%E5%87%BA">14.从键盘上输入一串字符，分别将字母和数字以及其他字符做统计并输出</a></li>
+<li><a href="#15%E4%BB%8E%E9%94%AE%E7%9B%98%E4%B8%8A%E8%BE%93%E5%85%A5%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E8%A6%81%E6%B1%82%E5%88%A4%E6%96%AD%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%A4%A7%E5%86%99%E5%AD%97%E6%AF%8D%E8%BD%AC%E6%88%90%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D%E8%BD%AC%E6%8D%A2%E6%88%90%E5%A4%A7%E5%86%99%E5%AD%97%E6%AF%8D%E5%85%B6%E4%BB%96%E4%B8%8D%E5%8F%98%E5%B9%B6%E8%BE%93%E5%87%BA">15.从键盘上输入一串字符，要求判断每一个字符，大写字母转成小写字母，小写字母转换成大写字母，其他不变并输出</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'db1c9fa9ae878d9fa727',
+    clientSecret: '9bacb2d69b4a12e56ec355412cd4aa13a260e5ff',
+    repo: 'saowu.github.io',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  <p>Copyright 2020 saowu</p>
+<p>Any and all opinions listed here are my own and not representative of my employers; future, past and present.</p>
+  <a class="rss" href="https://saowu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
