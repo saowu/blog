@@ -3,21 +3,16 @@
   <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gridea | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585914950009">
+<link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585925734631">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Gridea | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
+<link rel="stylesheet" href="https://saowu.github.io/media/live2d/css/live2d.css">
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-162711560-1');
-</script>
+
 
 
   <meta name="description" content="A programmer who wants to be happy and muddle along" />
@@ -27,7 +22,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://saowu.github.io">
-  <img class="avatar" src="https://saowu.github.io/images/avatar.png?v=1585914950009" alt="">
+  <img class="avatar" src="https://saowu.github.io/images/avatar.png?v=1585925734631" alt="">
   </a>
   <h1 class="site-title">
     saowu&#39;s Blog
@@ -65,23 +60,11 @@
   <div class="social-container">
     
       
-        <a href="https://github.com/saowu" target="_blank">
-          <i class="ri-github-line"></i>
-        </a>
-      
     
       
     
       
-        <a href="https://weibo.com/u/6635817704" target="_blank">
-          <i class="ri-weibo-line"></i>
-        </a>
-      
     
-      
-        <a href="https://www.zhihu.com/people/43703339aec7960c1020ba061888a016" target="_blank">
-          <i class="ri-zhihu-line"></i>
-        </a>
       
     
       
@@ -139,6 +122,41 @@
   </a>
 </div>
 
+<div id="landlord" style="left:5px;bottom:0px;">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
+    <div class="live_talk_input_body">
+        <div class="live_talk_input_name_body">
+            <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off" placeholder="你的名字" />
+        </div>
+        <div class="live_talk_input_text_body">
+            <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off" placeholder="要和我聊什么呀？"/>
+            <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
+        </div>
+    </div>
+    <input name="live_talk" id="live_talk" value="1" type="hidden" />
+    <div class="live_ico_box">
+        <div class="live_ico_item type_info" id="showInfoBtn"></div>
+        <div class="live_ico_item type_talk" id="showTalkBtn"></div>
+        <div class="live_ico_item type_music" id="musicButton"></div>
+        <div class="live_ico_item type_youdu" id="youduButton"></div>
+        <div class="live_ico_item type_quit" id="hideButton"></div>
+        <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
+        <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
+        <input name="live2dBGM" value="/media/saowu.mp3" type="hidden">
+        <input id="duType" value="douqilai,l2d_caihong" type="hidden">
+    </div>
+</div>
+<div id="open_live2d">召唤伊斯特瓦尔</div>
+<script>
+    var message_Path = '/media/live2d/';//资源目录，如果目录不对请更改
+    var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口路径
+</script>
+<!--<script src="/media/js/jquery-3.3.1.min.js"></script>-->
+<!--<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/media/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/media/live2d/js/message.js"></script>
       </div>
     </div>
   </body>
