@@ -2,21 +2,25 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Homebrew基本教程 | saowu&#39;s Blog</title>
+<title>pip3 常用命令 | saowu&#39;s Blog</title>
 <link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585892974526">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Homebrew基本教程 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="pip3 常用命令 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="一、安装（需要 Ruby）：
-  ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;
+    <meta name="description" content="1、安装目录
+~/Library/Caches/pip
 
-二、基本命令：
-brew ins..." />
-    <meta name="keywords" content="macOS,日记" />
+2、查找需要安装的包
+pip3 search &lt;包名&gt;
+
+3、安装python包
+pip3 install 
+pip3 install &lt;包名&gt;==1.0.0..." />
+    <meta name="keywords" content="Python,日记" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -90,18 +94,18 @@ brew ins..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Homebrew基本教程
+              pip3 常用命令
             </h2>
             <div class="post-info">
               <span>
                 2020-04-03
               </span>
               <span>
-                3 min read
+                2 min read
               </span>
               
-                <a href="https://saowu.github.io/tag/ZyLWNMQhx/" class="post-tag">
-                  # macOS
+                <a href="https://saowu.github.io/tag/mVqrRKBAz/" class="post-tag">
+                  # Python
                 </a>
               
                 <a href="https://saowu.github.io/tag/5lhY7x_08/" class="post-tag">
@@ -110,59 +114,57 @@ brew ins..." />
               
             </div>
             
-              <img class="post-feature-image" src="https://saowu.github.io/post-images/homebrew-ji-ben-jiao-cheng.jpeg" alt="">
+              <img class="post-feature-image" src="https://saowu.github.io/post-images/pip3-chang-yong-ming-ling.jpg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h3 id="一-安装需要-ruby">一、安装（需要 Ruby）：</h3>
-<pre><code>  ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;
+                <h3 id="1-安装目录">1、安装目录</h3>
+<pre><code>~/Library/Caches/pip
 </code></pre>
-<h3 id="二-基本命令">二、基本命令：</h3>
-<p><code>brew install *</code>   —安装软件<br>
-<code>brew uninstall *</code>   —安装软件<br>
-<code>brew list</code>   —列出已安装的软件<br>
-<code>brew update *</code>   —更新Homebrew<br>
-<code>brew upgrade</code>  —升级所有可以升级的软件们<br>
-<code>brew outdated</code> —这回列出所有安装的软件里可以升级的那些<br>
-<code>brew home *</code>—用浏览器打开<br>
-<code>brew info *</code>—显示软件内容信息<br>
-<code>brew deps *</code> — 显示包依赖<br>
-<code>brew cleanup</code> —清理不需要的版本极其安装包缓存<br>
-<code>brew server *</code>  —启动web服务器，可通过浏览器访问http://localhost:4567/ 来管理包<br>
-<code>brew -h</code>  —帮助<br>
-<code>brew search *</code>    —查询所有版本</p>
-<h3 id="三-目录">三、目录</h3>
-<p>1、通过brew install安装应用最先是放在<code>/usr/local/Cellar/</code>目录下。<br>
-2、有些应用会自动创建软链接放在<code>/usr/bin</code>或者<code>/usr/sbin</code>。<br>
-3、可以使用 <code>brew list 软件名</code> (比如 <code>brew list oclint</code>)确定安装位置。</p>
-<h3 id="四-换源">四、换源</h3>
-<h4 id="1-替换现有上游">1 、替换现有上游</h4>
-<pre><code># brew 程序本身
-git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
-
-# 以下针对 mac OS 系统上的 Homebrew
-git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
-git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
-git -C &quot;$(brew --repo homebrew/cask-fonts)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-fonts.git
-git -C &quot;$(brew --repo homebrew/cask-drivers)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-drivers.git
-
-# 更换后测试工作是否正常
-brew update
+<h3 id="2-查找需要安装的包">2、查找需要安装的包</h3>
+<pre><code>pip3 search &lt;包名&gt;
 </code></pre>
-<h4 id="2-复原">2、复原</h4>
-<pre><code># brew 程序本身
-git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git
-
-# 以下针对 mac OS 系统上的 Homebrew
-git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://github.com/Homebrew/homebrew-core.git
-git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask.git
-git -C &quot;$(brew --repo homebrew/cask-fonts)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask-fonts.git
-git -C &quot;$(brew --repo homebrew/cask-drivers)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask-drivers.git
-
-# 更换后测试工作是否正常
-brew update
+<h3 id="3-安装python包">3、安装python包</h3>
+<pre><code>pip3 install 
+pip3 install &lt;包名&gt;==1.0.0
+pip3 install -r requirements.txt 
+pip3 install -i &lt;源地址&gt; &lt;包名&gt;
+pip install -e &lt;local project path&gt; (这个命令相当于pip install develop）
 </code></pre>
-<p><a href="https://mirror.tuna.tsinghua.edu.cn/help/homebrew/">清华源参考链接</a></p>
+<h3 id="4-源地址">4、源地址</h3>
+<pre><code>阿里源：https://mirrors.aliyun.com/pypi/simple/ 
+科大源：https://pypi.mirrors.ustc.edu.cn/simple/ 
+清华源：https://pypi.tuna.tsinghua.edu.cn/simple 
+官方源：https://pypi.python.org/
+</code></pre>
+<h3 id="5-在配置文件中指定安装源">5、在配置文件中指定安装源</h3>
+<pre><code>#直接在配置文件中添加源，如果没有配置文件可以手动添加一个 
+/etc/pip.conf 
+[global] 
+timeout = 6000 
+index-url = http://pypi.douban.com/simple
+</code></pre>
+<h3 id="6-列出已经安装的包">6、列出已经安装的包</h3>
+<pre><code>pip3 list 
+</code></pre>
+<h3 id="7-列出过期的包">7、列出过期的包</h3>
+<pre><code>pip3 list -o
+</code></pre>
+<h3 id="8-升级包">8、升级包</h3>
+<pre><code>pip3 install &lt;包名&gt; -U
+pip3 install -i &lt;源地址&gt; &lt;包名&gt; -U
+</code></pre>
+<h3 id="9-安装的包所在目录">9、安装的包所在目录</h3>
+<pre><code>pip3 show -f &lt;包名&gt; 
+</code></pre>
+<h3 id="10-卸载安装">10、卸载安装</h3>
+<pre><code>pip3 uninstall &lt;包名&gt; 
+pip3 uninstall -r requirements.txt
+</code></pre>
+<h3 id="11-生成requirementstxt文件">11、生成requirements.txt文件</h3>
+<pre><code>pip freeze &gt; ./requirements.txt
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/22721986-a940ca2142a2b929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="requirements.txt" loading="lazy"></figure>
 
               </div>
               <div class="toc-container">
@@ -171,15 +173,17 @@ brew update
 <ul>
 <li>
 <ul>
-<li><a href="#%E4%B8%80-%E5%AE%89%E8%A3%85%E9%9C%80%E8%A6%81-ruby">一、安装（需要 Ruby）：</a></li>
-<li><a href="#%E4%BA%8C-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">二、基本命令：</a></li>
-<li><a href="#%E4%B8%89-%E7%9B%AE%E5%BD%95">三、目录</a></li>
-<li><a href="#%E5%9B%9B-%E6%8D%A2%E6%BA%90">四、换源</a>
-<ul>
-<li><a href="#1-%E6%9B%BF%E6%8D%A2%E7%8E%B0%E6%9C%89%E4%B8%8A%E6%B8%B8">1 、替换现有上游</a></li>
-<li><a href="#2-%E5%A4%8D%E5%8E%9F">2、复原</a></li>
-</ul>
-</li>
+<li><a href="#1-%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">1、安装目录</a></li>
+<li><a href="#2-%E6%9F%A5%E6%89%BE%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85">2、查找需要安装的包</a></li>
+<li><a href="#3-%E5%AE%89%E8%A3%85python%E5%8C%85">3、安装python包</a></li>
+<li><a href="#4-%E6%BA%90%E5%9C%B0%E5%9D%80">4、源地址</a></li>
+<li><a href="#5-%E5%9C%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E6%8C%87%E5%AE%9A%E5%AE%89%E8%A3%85%E6%BA%90">5、在配置文件中指定安装源</a></li>
+<li><a href="#6-%E5%88%97%E5%87%BA%E5%B7%B2%E7%BB%8F%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85">6、列出已经安装的包</a></li>
+<li><a href="#7-%E5%88%97%E5%87%BA%E8%BF%87%E6%9C%9F%E7%9A%84%E5%8C%85">7、列出过期的包</a></li>
+<li><a href="#8-%E5%8D%87%E7%BA%A7%E5%8C%85">8、升级包</a></li>
+<li><a href="#9-%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95">9、安装的包所在目录</a></li>
+<li><a href="#10-%E5%8D%B8%E8%BD%BD%E5%AE%89%E8%A3%85">10、卸载安装</a></li>
+<li><a href="#11-%E7%94%9F%E6%88%90requirementstxt%E6%96%87%E4%BB%B6">11、生成requirements.txt文件</a></li>
 </ul>
 </li>
 </ul>
@@ -194,9 +198,9 @@ brew update
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji/">
+            <a href="https://saowu.github.io/post/homebrew-ji-ben-jiao-cheng/">
               <h3 class="post-title">
-                C语言程序集
+                Homebrew基本教程
               </h3>
             </a>
           </div>

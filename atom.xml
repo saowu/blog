@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-03T05:33:18.428Z</updated>
+    <updated>2020-04-03T05:49:52.371Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io"/>
     <link rel="self" href="https://saowu.github.io/atom.xml"/>
@@ -10,6 +10,61 @@
     <logo>https://saowu.github.io/images/avatar.png</logo>
     <icon>https://saowu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[pip3 常用命令]]></title>
+        <id>https://saowu.github.io/post/pip3-chang-yong-ming-ling/</id>
+        <link href="https://saowu.github.io/post/pip3-chang-yong-ming-ling/">
+        </link>
+        <updated>2020-04-03T05:37:50.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="1-安装目录">1、安装目录</h3>
+<pre><code>~/Library/Caches/pip
+</code></pre>
+<h3 id="2-查找需要安装的包">2、查找需要安装的包</h3>
+<pre><code>pip3 search &lt;包名&gt;
+</code></pre>
+<h3 id="3-安装python包">3、安装python包</h3>
+<pre><code>pip3 install 
+pip3 install &lt;包名&gt;==1.0.0
+pip3 install -r requirements.txt 
+pip3 install -i &lt;源地址&gt; &lt;包名&gt;
+pip install -e &lt;local project path&gt; (这个命令相当于pip install develop）
+</code></pre>
+<h3 id="4-源地址">4、源地址</h3>
+<pre><code>阿里源：https://mirrors.aliyun.com/pypi/simple/ 
+科大源：https://pypi.mirrors.ustc.edu.cn/simple/ 
+清华源：https://pypi.tuna.tsinghua.edu.cn/simple 
+官方源：https://pypi.python.org/
+</code></pre>
+<h3 id="5-在配置文件中指定安装源">5、在配置文件中指定安装源</h3>
+<pre><code>#直接在配置文件中添加源，如果没有配置文件可以手动添加一个 
+/etc/pip.conf 
+[global] 
+timeout = 6000 
+index-url = http://pypi.douban.com/simple
+</code></pre>
+<h3 id="6-列出已经安装的包">6、列出已经安装的包</h3>
+<pre><code>pip3 list 
+</code></pre>
+<h3 id="7-列出过期的包">7、列出过期的包</h3>
+<pre><code>pip3 list -o
+</code></pre>
+<h3 id="8-升级包">8、升级包</h3>
+<pre><code>pip3 install &lt;包名&gt; -U
+pip3 install -i &lt;源地址&gt; &lt;包名&gt; -U
+</code></pre>
+<h3 id="9-安装的包所在目录">9、安装的包所在目录</h3>
+<pre><code>pip3 show -f &lt;包名&gt; 
+</code></pre>
+<h3 id="10-卸载安装">10、卸载安装</h3>
+<pre><code>pip3 uninstall &lt;包名&gt; 
+pip3 uninstall -r requirements.txt
+</code></pre>
+<h3 id="11-生成requirementstxt文件">11、生成requirements.txt文件</h3>
+<pre><code>pip freeze &gt; ./requirements.txt
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/22721986-a940ca2142a2b929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="requirements.txt" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Homebrew基本教程]]></title>
         <id>https://saowu.github.io/post/homebrew-ji-ben-jiao-cheng/</id>
@@ -38,7 +93,7 @@
 2、有些应用会自动创建软链接放在<code>/usr/bin</code>或者<code>/usr/sbin</code>。<br>
 3、可以使用 <code>brew list 软件名</code> (比如 <code>brew list oclint</code>)确定安装位置。</p>
 <h3 id="四-换源">四、换源</h3>
-<h5 id="1-替换现有上游">1 、替换现有上游</h5>
+<h4 id="1-替换现有上游">1 、替换现有上游</h4>
 <pre><code># brew 程序本身
 git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 
@@ -51,7 +106,7 @@ git -C &quot;$(brew --repo homebrew/cask-drivers)&quot; remote set-url origin ht
 # 更换后测试工作是否正常
 brew update
 </code></pre>
-<h5 id="2-复原">2、复原</h5>
+<h4 id="2-复原">2、复原</h4>
 <pre><code># brew 程序本身
 git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git
 
