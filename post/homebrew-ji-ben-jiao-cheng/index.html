@@ -1,0 +1,252 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Homebrew基本教程 | saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585890055199">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Homebrew基本教程 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一、安装（需要 Ruby）：
+  ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;
+
+二、基本命令：
+brew ins..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://saowu.github.io">
+  <img class="avatar" src="https://saowu.github.io/images/avatar.png?v=1585890055199" alt="">
+  </a>
+  <h1 class="site-title">
+    saowu&#39;s Blog
+  </h1>
+  <p class="site-description">
+    A programmer who wants to be happy and muddle along
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/saowu" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/6635817704" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/43703339aec7960c1020ba061888a016" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Homebrew基本教程
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-03
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://saowu.github.io/post-images/homebrew-ji-ben-jiao-cheng.jpeg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="一-安装需要-ruby">一、安装（需要 Ruby）：</h3>
+<pre><code>  ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;
+</code></pre>
+<h3 id="二-基本命令">二、基本命令：</h3>
+<p><code>brew install *</code>   —安装软件<br>
+<code>brew uninstall *</code>   —安装软件<br>
+<code>brew list</code>   —列出已安装的软件<br>
+<code>brew update *</code>   —更新Homebrew<br>
+<code>brew upgrade</code>  —升级所有可以升级的软件们<br>
+<code>brew outdated</code> —这回列出所有安装的软件里可以升级的那些<br>
+<code>brew home *</code>—用浏览器打开<br>
+<code>brew info *</code>—显示软件内容信息<br>
+<code>brew deps *</code> — 显示包依赖<br>
+<code>brew cleanup</code> —清理不需要的版本极其安装包缓存<br>
+<code>brew server *</code>  —启动web服务器，可通过浏览器访问http://localhost:4567/ 来管理包<br>
+<code>brew -h</code>  —帮助<br>
+<code>brew search *</code>    —查询所有版本</p>
+<h3 id="三-目录">三、目录</h3>
+<p>1、通过brew install安装应用最先是放在<code>/usr/local/Cellar/</code>目录下。<br>
+2、有些应用会自动创建软链接放在<code>/usr/bin</code>或者<code>/usr/sbin</code>。<br>
+3、可以使用 <code>brew list 软件名</code> (比如 <code>brew list oclint</code>)确定安装位置。</p>
+<h3 id="四-换源">四、换源</h3>
+<h5 id="1-替换现有上游">1 、替换现有上游</h5>
+<pre><code># brew 程序本身
+git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+
+# 以下针对 mac OS 系统上的 Homebrew
+git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
+git -C &quot;$(brew --repo homebrew/cask-fonts)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-fonts.git
+git -C &quot;$(brew --repo homebrew/cask-drivers)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-drivers.git
+
+# 更换后测试工作是否正常
+brew update
+</code></pre>
+<h5 id="2-复原">2、复原</h5>
+<pre><code># brew 程序本身
+git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git
+
+# 以下针对 mac OS 系统上的 Homebrew
+git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://github.com/Homebrew/homebrew-core.git
+git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask.git
+git -C &quot;$(brew --repo homebrew/cask-fonts)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask-fonts.git
+git -C &quot;$(brew --repo homebrew/cask-drivers)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask-drivers.git
+
+# 更换后测试工作是否正常
+brew update
+</code></pre>
+<p><a href="https://mirror.tuna.tsinghua.edu.cn/help/homebrew/">清华源参考链接</a></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E5%AE%89%E8%A3%85%E9%9C%80%E8%A6%81-ruby">一、安装（需要 Ruby）：</a></li>
+<li><a href="#%E4%BA%8C-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4">二、基本命令：</a></li>
+<li><a href="#%E4%B8%89-%E7%9B%AE%E5%BD%95">三、目录</a></li>
+<li><a href="#%E5%9B%9B-%E6%8D%A2%E6%BA%90">四、换源</a><br>
+*
+<ul>
+<li><a href="#1-%E6%9B%BF%E6%8D%A2%E7%8E%B0%E6%9C%89%E4%B8%8A%E6%B8%B8">1 、替换现有上游</a></li>
+<li><a href="#2-%E5%A4%8D%E5%8E%9F">2、复原</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji/">
+              <h3 class="post-title">
+                C语言程序集
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <p>Copyright 2019 saowu</p>
+<p>Any and all opinions listed here are my own and not representative of my employers; future, past and present.</p>
+  <a class="rss" href="https://saowu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
