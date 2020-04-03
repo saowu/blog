@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Homebrew基本教程 | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585895092257">
+<link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585895580727">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Homebrew基本教程 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
@@ -25,7 +25,7 @@ brew ins..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://saowu.github.io">
-  <img class="avatar" src="https://saowu.github.io/images/avatar.png?v=1585895092257" alt="">
+  <img class="avatar" src="https://saowu.github.io/images/avatar.png?v=1585895580727" alt="">
   </a>
   <h1 class="site-title">
     saowu&#39;s Blog
@@ -202,6 +202,32 @@ brew update
           </div>
         
 
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'db1c9fa9ae878d9fa727',
+    clientSecret: '9bacb2d69b4a12e56ec355412cd4aa13a260e5ff',
+    repo: 'saowu.github.io',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
         
 
         <div class="site-footer">
