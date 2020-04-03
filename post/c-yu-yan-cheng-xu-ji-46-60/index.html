@@ -1,0 +1,726 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C语言程序集（46-60） | saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585895092257">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="C语言程序集（46-60） | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="46.把数组元素依次向后移动一个位置
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[11];
+    for (int i = 0; i ..." />
+    <meta name="keywords" content="C,日记" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://saowu.github.io">
+  <img class="avatar" src="https://saowu.github.io/images/avatar.png?v=1585895092257" alt="">
+  </a>
+  <h1 class="site-title">
+    saowu&#39;s Blog
+  </h1>
+  <p class="site-description">
+    A programmer who wants to be happy and muddle along
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/saowu" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/6635817704" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/43703339aec7960c1020ba061888a016" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              C语言程序集（46-60）
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-03
+              </span>
+              <span>
+                11 min read
+              </span>
+              
+                <a href="https://saowu.github.io/tag/bvmB0NIP7/" class="post-tag">
+                  # C
+                </a>
+              
+                <a href="https://saowu.github.io/tag/5lhY7x_08/" class="post-tag">
+                  # 日记
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://saowu.github.io/post-images/c-yu-yan-cheng-xu-ji-46-60.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="46把数组元素依次向后移动一个位置">46.把数组元素依次向后移动一个位置</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[11];
+    for (int i = 0; i &lt;= 10; i++) {
+        a[i] = i;
+        printf(&quot;%d &quot;, a[i]);
+    }
+    printf(&quot;\n&quot;);
+    for (int i = 10; i &gt;= 0; i--) {
+        a[i] = a[i - 1];
+    }
+    for (int i = 0; i &lt;= 10; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+0 1 2 3 4 5 6 7 8 9 10 
+0 0 1 2 3 4 5 6 7 8 9 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="47输入一组数据找出最大值">47.输入一组数据，找出最大值</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[10], max;
+    for (int i = 0; i &lt; 10; i++) {
+        scanf(&quot;%d&quot;, &amp;a[i]);
+    }
+    max = a[0];
+    for (int i = 1; i &lt; 10; i++) {
+        if (max &lt; a[i])
+            max = a[i];
+    }
+    printf(&quot;max=%d&quot;, max);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+12
+3
+2
+4
+5
+6
+3453
+123
+1
+1
+max=3453
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="48输入一组数据颠倒之后再输出">48.输入一组数据，颠倒之后再输出</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[10], t;
+    for (int i = 0; i &lt; 10; i++) {
+        scanf(&quot;%d&quot;, &amp;a[i]);
+    }
+    printf(&quot;原始顺序：\n&quot;);
+    for (int i = 0; i &lt;= 9; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    for (int i = 0; i &lt; 9 / 2; i++) {
+        t = a[i];
+        a[i] = a[9 - i];
+        a[9 - i] = t;
+    }
+    printf(&quot;\n交换之后的顺序：\n&quot;);
+    for (int i = 0; i &lt;= 9; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+原始顺序：
+1 2 3 4 5 6 7 8 9 0 
+交换之后的顺序：
+0 9 8 7 5 6 4 3 2 1 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="49冒泡排序">49.冒泡排序</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[10] = {9, 7, 2, 5, 4, 1}, t;
+    for (int i = 0; i &lt; 5; i++) {
+        for (int j = 0; j &lt; 5 - i; j++) {
+            if (a[j] &gt; a[j + 1]) {
+                t = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = t;
+            }
+        }
+    }
+    for (int i = 0; i &lt; 6; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+1 2 4 5 7 9 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="50选择排序">50.选择排序</h3>
+<pre><code>
+#include &lt;stdio.h&gt; 
+#include &lt;math.h&gt;
+
+int main() {
+    int a[6] = {9, 7, 2, 5, 4, 1}, k, t;
+    for (int i = 0; i &lt; 5; i++) {
+        k = i;
+        for (int j = k + 1; j &lt; 6; j++) {
+            if (a[k] &gt; a[j]) {
+                k = j;
+            }
+        }
+        if (k != i) {
+            t = a[i];
+            a[i] = a[k];
+            a[k] = t;
+        }
+
+    }
+    for (int i = 0; i &lt; 6; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+int main() {
+    int a[6] = {9, 7, 2, 5, 4, 1}, k, t;
+    for (int i = 0; i &lt; 5; i++) {
+        k = 0;
+        for (int j =  1; j &lt; 6-i; j++) {
+            if (a[k] &lt; a[j]) {
+                k = j;
+            }
+        }
+        if (k != 5-i) {
+            t = a[5-i];
+            a[5-i] = a[k];
+            a[k] = t;
+        }
+        
+    }
+    for (int i = 0; i &lt; 6; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+1 2 4 5 7 9 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="51有一个已经排好序的数值要求输入一个数之后按原来排序的规律将他插入数组中">51.有一个已经排好序的数值，要求输入一个数之后，按原来排序的规律将他插入数组中</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[9] = {10, 20, 30, 40, 50, 60, 70, 80}, x, p = 8;
+    printf(&quot;输入要插入的数：&quot;);
+    scanf(&quot;%d&quot;, &amp;x);
+    for (int i = 0; i &lt; 8; i++) {
+        if (x &lt; a[i]) {
+            p = i;
+            break;
+        }
+    }
+    for (int i = 8; i &gt; p; i--) {
+        a[i] = a[i - 1];
+    }
+    a[p] = x;
+    for (int i = 0; i &lt; 9; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+输入:
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+输入要插入的数：78
+10 20 30 40 50 60 70 78 80 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="52在数组中删除一个数">52.在数组中删除一个数</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[8] = {10, 20, 30, 40, 50, 60, 70, 80}, x, j, i,flag=0;
+    printf(&quot;输入要删除的数：&quot;);
+    scanf(&quot;%d&quot;, &amp;x);
+    for (i = 0, j = 0; i &lt; 8; i++) {
+        if (a[i] != x) {
+            a[j] = a[i];
+            j++;
+        }else{
+            flag=1;
+        }
+    }
+    if(flag==1)
+        a[8-1]=0;
+    for (int k = 0; k &lt; 8; k++) {
+        printf(&quot;%d &quot;, a[k]);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+输入要删除的数：10
+20 30 40 50 60 70 80 0 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="53二维矩阵进行行列倒置">53.二维矩阵进行行列倒置</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[3][4],b[4][3];
+    for (int i = 0; i &lt;3 ; i++) {
+        for (int j = 0; j &lt;4 ; j++) {
+            scanf(&quot;%d&quot;,&amp;a[i][j]);
+        }
+    }
+    for (int i = 0; i &lt;3 ; i++) {
+        for (int j = 0; j &lt;4 ; j++) {
+           b[j][i]=a[i][j];
+        }
+    }
+    for (int i = 0; i &lt;3 ; i++) {
+        for (int j = 0; j &lt;4 ; j++) {
+            printf(&quot;%3d &quot;,a[i][j]);
+        }
+        printf(&quot;\n&quot;);
+    }
+    printf(&quot;\n&quot;);
+    for (int i = 0; i &lt;4 ; i++) {
+        for (int j = 0; j &lt;3 ; j++) {
+            printf(&quot;%3d &quot;,b[i][j]);
+        }
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+  1   2   3   4 
+  5   6   7   8 
+  9   0   1   2 
+
+  1   5   9 
+  2   6   0 
+  3   7   1 
+  4   8   2 
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="54找出矩阵最大值并输出行号和列号">54.找出矩阵最大值，并输出行号和列号</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[3][4] = {{5,  2, 0,  9},
+                   {3,  7, 12, 6},
+                   {19, 4, 1,  8}}, max, col, row;
+    for (int i = 0; i &lt; 3; i++) {
+        for (int j = 0; j &lt; 4; j++) {
+            if (a[i][j] &gt; max) {
+                max = a[i][j];
+                row = i;
+                col = j;
+            }
+        }
+    }
+    printf(&quot;max=%d\n&quot;, max);
+    printf(&quot;max=a[%d][%d]&quot;, row, col);
+
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+max=19
+max=a[2][0]
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="55折半查找">55.折半查找</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[6] = {-2, 3, 6, 8, 12, 15}, bottom, top, mid, x;
+    scanf(&quot;%d&quot;, &amp;x);
+    bottom = 0;
+    top = 5;
+    while (bottom &lt;= top) {
+        mid = (bottom + top) / 2;
+        if (a[mid] == x) {
+            printf(&quot;Find! a[%d]=%d\n&quot;, mid, x);
+            break;
+        } else if (x &gt; a[mid]) {
+            bottom = mid + 1;
+        } else {
+            top = mid - 1;
+        }
+    }
+    if (bottom &gt; top)
+        printf(&quot;No find!\n&quot;);
+
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+-2
+Find! a[0]=-2
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="56456789321">56.456789321</h3>
+<pre><code>
+#include&lt;stdio.h&gt;
+
+int main()
+{   int t;
+    int a[9]= {1,2,3,4,5,6,7,8,9};
+    for(int j=0; j&lt;4; j++) {
+        t=a[0];
+        for(int i=1; i&lt;9-j; i++) {
+            a[i-1]=a[i];
+        }
+        a[9-j-1]=t;
+    }
+    for(int i=0; i&lt;9; i++)
+        printf(&quot;%d&quot;,a[i]);
+    return 0;
+}
+
+#include&lt;stdio.h&gt;
+int main()
+{
+    int a[]= {1,2,3,4,5,6,7,8,9,0},i,j,t;
+    for(i=0; i&lt;3; i++) {
+        t=a[0];
+        for(j=0; j&lt;10-i-2; j++)
+            a[j]=a[j+1];
+        a[10-i-2]=t;
+    }
+    for(i=0; i&lt;10; i++)
+        printf(&quot;%d&quot;,a[i]);
+    return 0;
+}
+
+</code></pre>
+<h3 id="57进制转换">57.进制转换</h3>
+<pre><code>
+#include&lt;stdio.h&gt;
+
+int converse(int n)
+{
+    int i=0;
+    char a[20],b[]=&quot;0123456789ABCDEF&quot;;
+    while(n) {
+        a[i++]=b[n%16];
+        n=n/16;
+    }
+    for(--i; i&gt;=0; i--)
+        printf(&quot;%c&quot;,a[i]);
+}
+int main()
+{
+    converse(200);
+    return 0;
+}
+</code></pre>
+<h3 id="58打印杨辉三角">58.打印杨辉三角</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+const int length = 10;// 定义杨辉三角的大小
+int main()
+{
+    int nums[length][length];
+    int i, j;
+    /*计算杨辉三角*/ 
+    for(i=0; i&lt;length; i++)
+    {
+        nums[i][0] = 1;
+        nums[i][i] = 1;
+        for(j=1; j&lt;i; j++)
+            nums[i][j] = nums[i-1][j-1] + nums[i-1][j];
+    }
+
+    /*打印输出*/ 
+    for(i=0; i&lt;length; i++)
+    {
+        for(j=0; j&lt;length-i-1; j++)
+            printf(&quot;   &quot;);
+        for(j=0; j&lt;=i; j++)
+            printf(&quot;%-5d &quot;, nums[i][j]);
+        putchar('\n');
+    }
+}
+</code></pre>
+<h3 id="59字母加密解密">59.字母加密解密</h3>
+<pre><code>加密:
+#include&lt;stdio.h&gt;
+#include&lt;ctype.h&gt;
+int main()
+{   char ch;
+    while((ch=getchar())!='\n') {
+        if(isupper(ch))
+            ch=(ch-'A'+4)%26+'A';
+        if(islower(ch))
+            ch=(ch-'a'+4)%26+'a';
+        printf(&quot;%c&quot;,ch);
+    }
+    return 0;
+}
+解密:
+#include&lt;stdio.h&gt;
+#include&lt;ctype.h&gt;
+int main()
+{   char ch;
+    while((ch=getchar())!='\n') {
+        if(isupper(ch))
+            ch=(ch-'A'+22)%26+'A';
+        if(islower(ch))
+            ch=(ch-'a'+22)%26+'a';
+        printf(&quot;%c&quot;,ch);
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="60递归二分查找">60.递归二分查找</h3>
+<pre><code>#include&lt;stdio.h&gt;
+int find(int n[],int x,int low,int high) {
+    if(high&gt;=low) {
+        int mid = (low + high)/2;
+        if(x&gt;n[mid])
+            return find(n,x,mid+1,high);
+        else if(x&lt;n[mid])
+            return find(n,x,low,mid-1);
+        else
+            return 1;
+    } else {
+        return 0;
+    }
+}
+int main() {
+    int a[]= {1,2,4,5,8,9,10};
+    printf(&quot;%d&quot;,find(a,8,0,6));
+    return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#46%E6%8A%8A%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E4%BE%9D%E6%AC%A1%E5%90%91%E5%90%8E%E7%A7%BB%E5%8A%A8%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE">46.把数组元素依次向后移动一个位置</a></li>
+<li><a href="#47%E8%BE%93%E5%85%A5%E4%B8%80%E7%BB%84%E6%95%B0%E6%8D%AE%E6%89%BE%E5%87%BA%E6%9C%80%E5%A4%A7%E5%80%BC">47.输入一组数据，找出最大值</a></li>
+<li><a href="#48%E8%BE%93%E5%85%A5%E4%B8%80%E7%BB%84%E6%95%B0%E6%8D%AE%E9%A2%A0%E5%80%92%E4%B9%8B%E5%90%8E%E5%86%8D%E8%BE%93%E5%87%BA">48.输入一组数据，颠倒之后再输出</a></li>
+<li><a href="#49%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F">49.冒泡排序</a></li>
+<li><a href="#50%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F">50.选择排序</a></li>
+<li><a href="#51%E6%9C%89%E4%B8%80%E4%B8%AA%E5%B7%B2%E7%BB%8F%E6%8E%92%E5%A5%BD%E5%BA%8F%E7%9A%84%E6%95%B0%E5%80%BC%E8%A6%81%E6%B1%82%E8%BE%93%E5%85%A5%E4%B8%80%E4%B8%AA%E6%95%B0%E4%B9%8B%E5%90%8E%E6%8C%89%E5%8E%9F%E6%9D%A5%E6%8E%92%E5%BA%8F%E7%9A%84%E8%A7%84%E5%BE%8B%E5%B0%86%E4%BB%96%E6%8F%92%E5%85%A5%E6%95%B0%E7%BB%84%E4%B8%AD">51.有一个已经排好序的数值，要求输入一个数之后，按原来排序的规律将他插入数组中</a></li>
+<li><a href="#52%E5%9C%A8%E6%95%B0%E7%BB%84%E4%B8%AD%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E6%95%B0">52.在数组中删除一个数</a></li>
+<li><a href="#53%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5%E8%BF%9B%E8%A1%8C%E8%A1%8C%E5%88%97%E5%80%92%E7%BD%AE">53.二维矩阵进行行列倒置</a></li>
+<li><a href="#54%E6%89%BE%E5%87%BA%E7%9F%A9%E9%98%B5%E6%9C%80%E5%A4%A7%E5%80%BC%E5%B9%B6%E8%BE%93%E5%87%BA%E8%A1%8C%E5%8F%B7%E5%92%8C%E5%88%97%E5%8F%B7">54.找出矩阵最大值，并输出行号和列号</a></li>
+<li><a href="#55%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE">55.折半查找</a></li>
+<li><a href="#56456789321">56.456789321</a></li>
+<li><a href="#57%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2">57.进制转换</a></li>
+<li><a href="#58%E6%89%93%E5%8D%B0%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92">58.打印杨辉三角</a></li>
+<li><a href="#59%E5%AD%97%E6%AF%8D%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86">59.字母加密解密</a></li>
+<li><a href="#60%E9%80%92%E5%BD%92%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">60.递归二分查找</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-31-45/">
+              <h3 class="post-title">
+                C语言程序集（31-45）
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <p>Copyright 2020 saowu</p>
+<p>Any and all opinions listed here are my own and not representative of my employers; future, past and present.</p>
+  <a class="rss" href="https://saowu.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

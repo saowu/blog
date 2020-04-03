@@ -2,25 +2,24 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>pip3 常用命令 | saowu&#39;s Blog</title>
+<title>C语言程序集（76-80） | saowu&#39;s Blog</title>
 <link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585895092257">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="pip3 常用命令 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="C语言程序集（76-80） | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="1、安装目录
-~/Library/Caches/pip
-
-2、查找需要安装的包
-pip3 search &lt;包名&gt;
-
-3、安装python包
-pip3 install 
-pip3 install &lt;包名&gt;==1.0.0..." />
-    <meta name="keywords" content="Python,日记" />
+    <meta name="description" content="76.整数数值交换
+#include&lt;stdio.h&gt;
+int main()
+{   int a=1,b=2;
+    a-=b;
+    b+=a;
+    a=b-a;
+    printf(&quot;a=%d,b=%d&..." />
+    <meta name="keywords" content="C,日记" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -94,18 +93,18 @@ pip3 install &lt;包名&gt;==1.0.0..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              pip3 常用命令
+              C语言程序集（76-80）
             </h2>
             <div class="post-info">
               <span>
                 2020-04-03
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
-                <a href="https://saowu.github.io/tag/mVqrRKBAz/" class="post-tag">
-                  # Python
+                <a href="https://saowu.github.io/tag/bvmB0NIP7/" class="post-tag">
+                  # C
                 </a>
               
                 <a href="https://saowu.github.io/tag/5lhY7x_08/" class="post-tag">
@@ -114,57 +113,119 @@ pip3 install &lt;包名&gt;==1.0.0..." />
               
             </div>
             
-              <img class="post-feature-image" src="https://saowu.github.io/post-images/pip3-chang-yong-ming-ling.jpg" alt="">
+              <img class="post-feature-image" src="https://saowu.github.io/post-images/c-yu-yan-cheng-xu-ji-76-80.jpg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h3 id="1-安装目录">1、安装目录</h3>
-<pre><code>~/Library/Caches/pip
+                <h3 id="76整数数值交换">76.整数数值交换</h3>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{   int a=1,b=2;
+    a-=b;
+    b+=a;
+    a=b-a;
+    printf(&quot;a=%d,b=%d&quot;,a,b);
+    return 0;
+}
 </code></pre>
-<h3 id="2-查找需要安装的包">2、查找需要安装的包</h3>
-<pre><code>pip3 search &lt;包名&gt;
+<h3 id="77将9个学生的考试成绩进行分段统计">77.将9个学生的考试成绩进行分段统计...</h3>
+<pre><code>将9个学生的考试成绩进行分段统计，考试成绩放在a数组中，各分数段的人数存在b组中：成绩为60到69的人数
+存到b［0］中，成绩为70到79的人数存到b［1］，成绩为80到89的人数存到b［2］，成绩为90到99的人数存到b［3
+］，成绩为100的人数存到b［4］，成绩为60以下的人数存到b［5］中。请输出数组b中的数据。假设a数组中的整数
+数据为：93 85 77 68 59 43 94 75 98。 要求程序简练，采用的分支语录中分支语句中支数尽量少。
+
+#include&lt;stdio.h&gt;
+int main()
+{   int a[9]= {93,85,77,68,59,43,94,75,98},b[6]= {0},i;
+    for(i=0; i&lt;9; i++)
+        if(a[i]&lt;60)
+            b[5]++;
+        else
+            b[(a[i]-60)/10]++;
+    for(i=0; i&lt;6; i++)
+        printf(&quot;%d&quot;,b[i]);
+    return 0;
+}
 </code></pre>
-<h3 id="3-安装python包">3、安装python包</h3>
-<pre><code>pip3 install 
-pip3 install &lt;包名&gt;==1.0.0
-pip3 install -r requirements.txt 
-pip3 install -i &lt;源地址&gt; &lt;包名&gt;
-pip install -e &lt;local project path&gt; (这个命令相当于pip install develop）
+<h3 id="78利用指针设计一个函数求字符串长度">78.利用指针设计一个函数，求字符串长度</h3>
+<pre><code>int strlen(char *s) {
+    char *p=s;
+    while(*p)
+        p++;
+    return p-s;
+}
 </code></pre>
-<h3 id="4-源地址">4、源地址</h3>
-<pre><code>阿里源：https://mirrors.aliyun.com/pypi/simple/ 
-科大源：https://pypi.mirrors.ustc.edu.cn/simple/ 
-清华源：https://pypi.tuna.tsinghua.edu.cn/simple 
-官方源：https://pypi.python.org/
+<h3 id="79不规则数组去重">79.不规则数组去重</h3>
+<pre><code>(自己写的)
+#include&lt;stdio.h&gt;
+int main()
+{   int a[]= {1,2,2,2,4,5,5,8,9,9};
+    int i,j,n=10,z,m;
+    for(i=0; i&lt;n; i++) {
+        //更新数组长度，m必须每次全部平移后才能更新
+        m=n;
+        for(j=i+1,z=i+1; j&lt;m; j++)
+            if(a[i]!=a[j]) {
+                a[z++]=a[j];
+            } else {
+                //记录数组移除重复数量
+                n--;
+            }
+    }
+
+    for(int k=0; k&lt;n; k++)
+        printf(&quot;%d&quot;,a[k]);
+    return 0;
+}
+
+(老师写的)
+#include&lt;stdio.h&gt;
+int main()
+{   int a[]= {1,2,2,2,2,4,5,5,8,9,9};
+    int i,j,k,n=11;
+    for(i=0; i&lt;n; i++) {
+        for(j=i+1; j&lt;n;)
+            if(a[i]==a[j]) {
+                for(k=j+1; k&lt;n; k++)
+                    a[k-1]=a[k];
+                n--;
+            } else {
+                j++;
+            }
+    }
+
+    for(int t=0; t&lt;n; t++)
+        printf(&quot;%d&quot;,a[t]);
+    return 0;
+}
 </code></pre>
-<h3 id="5-在配置文件中指定安装源">5、在配置文件中指定安装源</h3>
-<pre><code>#直接在配置文件中添加源，如果没有配置文件可以手动添加一个 
-/etc/pip.conf 
-[global] 
-timeout = 6000 
-index-url = http://pypi.douban.com/simple
+<h3 id="80统计单词个数并记录最长单词长度p166">80.统计单词个数，并记录最长单词长度(p166)</h3>
+<pre><code>#include&lt;stdio.h&gt;
+
+int main()
+{
+    char string[81];
+    int i,num=0,len=0,max=0;
+    char c;
+    gets(string);
+    for(i=0; (c=string[i])!='\0'; i++)
+        if(c==' ') {
+            if(len&gt;max)
+                max=len;
+            len=0;
+        }
+        else if(len==0) {
+            len++;
+            num++;
+        }
+        else {
+            len++;
+        }
+
+    printf(&quot;There are %d words ,The longest word is %d&quot;,num,max);
+    return 0;
+}
 </code></pre>
-<h3 id="6-列出已经安装的包">6、列出已经安装的包</h3>
-<pre><code>pip3 list 
-</code></pre>
-<h3 id="7-列出过期的包">7、列出过期的包</h3>
-<pre><code>pip3 list -o
-</code></pre>
-<h3 id="8-升级包">8、升级包</h3>
-<pre><code>pip3 install &lt;包名&gt; -U
-pip3 install -i &lt;源地址&gt; &lt;包名&gt; -U
-</code></pre>
-<h3 id="9-安装的包所在目录">9、安装的包所在目录</h3>
-<pre><code>pip3 show -f &lt;包名&gt; 
-</code></pre>
-<h3 id="10-卸载安装">10、卸载安装</h3>
-<pre><code>pip3 uninstall &lt;包名&gt; 
-pip3 uninstall -r requirements.txt
-</code></pre>
-<h3 id="11-生成requirementstxt文件">11、生成requirements.txt文件</h3>
-<pre><code>pip freeze &gt; ./requirements.txt
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/22721986-a940ca2142a2b929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="requirements.txt" loading="lazy"></figure>
 
               </div>
               <div class="toc-container">
@@ -173,17 +234,11 @@ pip3 uninstall -r requirements.txt
 <ul>
 <li>
 <ul>
-<li><a href="#1-%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">1、安装目录</a></li>
-<li><a href="#2-%E6%9F%A5%E6%89%BE%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85">2、查找需要安装的包</a></li>
-<li><a href="#3-%E5%AE%89%E8%A3%85python%E5%8C%85">3、安装python包</a></li>
-<li><a href="#4-%E6%BA%90%E5%9C%B0%E5%9D%80">4、源地址</a></li>
-<li><a href="#5-%E5%9C%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E6%8C%87%E5%AE%9A%E5%AE%89%E8%A3%85%E6%BA%90">5、在配置文件中指定安装源</a></li>
-<li><a href="#6-%E5%88%97%E5%87%BA%E5%B7%B2%E7%BB%8F%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85">6、列出已经安装的包</a></li>
-<li><a href="#7-%E5%88%97%E5%87%BA%E8%BF%87%E6%9C%9F%E7%9A%84%E5%8C%85">7、列出过期的包</a></li>
-<li><a href="#8-%E5%8D%87%E7%BA%A7%E5%8C%85">8、升级包</a></li>
-<li><a href="#9-%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95">9、安装的包所在目录</a></li>
-<li><a href="#10-%E5%8D%B8%E8%BD%BD%E5%AE%89%E8%A3%85">10、卸载安装</a></li>
-<li><a href="#11-%E7%94%9F%E6%88%90requirementstxt%E6%96%87%E4%BB%B6">11、生成requirements.txt文件</a></li>
+<li><a href="#76%E6%95%B4%E6%95%B0%E6%95%B0%E5%80%BC%E4%BA%A4%E6%8D%A2">76.整数数值交换</a></li>
+<li><a href="#77%E5%B0%869%E4%B8%AA%E5%AD%A6%E7%94%9F%E7%9A%84%E8%80%83%E8%AF%95%E6%88%90%E7%BB%A9%E8%BF%9B%E8%A1%8C%E5%88%86%E6%AE%B5%E7%BB%9F%E8%AE%A1">77.将9个学生的考试成绩进行分段统计...</a></li>
+<li><a href="#78%E5%88%A9%E7%94%A8%E6%8C%87%E9%92%88%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E6%B1%82%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6">78.利用指针设计一个函数，求字符串长度</a></li>
+<li><a href="#79%E4%B8%8D%E8%A7%84%E5%88%99%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D">79.不规则数组去重</a></li>
+<li><a href="#80%E7%BB%9F%E8%AE%A1%E5%8D%95%E8%AF%8D%E4%B8%AA%E6%95%B0%E5%B9%B6%E8%AE%B0%E5%BD%95%E6%9C%80%E9%95%BF%E5%8D%95%E8%AF%8D%E9%95%BF%E5%BA%A6p166">80.统计单词个数，并记录最长单词长度(p166)</a></li>
 </ul>
 </li>
 </ul>
@@ -198,9 +253,9 @@ pip3 uninstall -r requirements.txt
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://saowu.github.io/post/homebrew-ji-ben-jiao-cheng/">
+            <a href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-61-75/">
               <h3 class="post-title">
-                Homebrew基本教程
+                C语言程序集（61-75）
               </h3>
             </a>
           </div>

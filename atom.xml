@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-03T05:49:52.371Z</updated>
+    <updated>2020-04-03T06:26:10.393Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io"/>
     <link rel="self" href="https://saowu.github.io/atom.xml"/>
@@ -10,6 +10,1823 @@
     <logo>https://saowu.github.io/images/avatar.png</logo>
     <icon>https://saowu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[C语言程序集（76-80）]]></title>
+        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-76-80/</id>
+        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-76-80/">
+        </link>
+        <updated>2020-04-03T06:10:45.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="76整数数值交换">76.整数数值交换</h3>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{   int a=1,b=2;
+    a-=b;
+    b+=a;
+    a=b-a;
+    printf(&quot;a=%d,b=%d&quot;,a,b);
+    return 0;
+}
+</code></pre>
+<h3 id="77将9个学生的考试成绩进行分段统计">77.将9个学生的考试成绩进行分段统计...</h3>
+<pre><code>将9个学生的考试成绩进行分段统计，考试成绩放在a数组中，各分数段的人数存在b组中：成绩为60到69的人数
+存到b［0］中，成绩为70到79的人数存到b［1］，成绩为80到89的人数存到b［2］，成绩为90到99的人数存到b［3
+］，成绩为100的人数存到b［4］，成绩为60以下的人数存到b［5］中。请输出数组b中的数据。假设a数组中的整数
+数据为：93 85 77 68 59 43 94 75 98。 要求程序简练，采用的分支语录中分支语句中支数尽量少。
+
+#include&lt;stdio.h&gt;
+int main()
+{   int a[9]= {93,85,77,68,59,43,94,75,98},b[6]= {0},i;
+    for(i=0; i&lt;9; i++)
+        if(a[i]&lt;60)
+            b[5]++;
+        else
+            b[(a[i]-60)/10]++;
+    for(i=0; i&lt;6; i++)
+        printf(&quot;%d&quot;,b[i]);
+    return 0;
+}
+</code></pre>
+<h3 id="78利用指针设计一个函数求字符串长度">78.利用指针设计一个函数，求字符串长度</h3>
+<pre><code>int strlen(char *s) {
+    char *p=s;
+    while(*p)
+        p++;
+    return p-s;
+}
+</code></pre>
+<h3 id="79不规则数组去重">79.不规则数组去重</h3>
+<pre><code>(自己写的)
+#include&lt;stdio.h&gt;
+int main()
+{   int a[]= {1,2,2,2,4,5,5,8,9,9};
+    int i,j,n=10,z,m;
+    for(i=0; i&lt;n; i++) {
+        //更新数组长度，m必须每次全部平移后才能更新
+        m=n;
+        for(j=i+1,z=i+1; j&lt;m; j++)
+            if(a[i]!=a[j]) {
+                a[z++]=a[j];
+            } else {
+                //记录数组移除重复数量
+                n--;
+            }
+    }
+
+    for(int k=0; k&lt;n; k++)
+        printf(&quot;%d&quot;,a[k]);
+    return 0;
+}
+
+(老师写的)
+#include&lt;stdio.h&gt;
+int main()
+{   int a[]= {1,2,2,2,2,4,5,5,8,9,9};
+    int i,j,k,n=11;
+    for(i=0; i&lt;n; i++) {
+        for(j=i+1; j&lt;n;)
+            if(a[i]==a[j]) {
+                for(k=j+1; k&lt;n; k++)
+                    a[k-1]=a[k];
+                n--;
+            } else {
+                j++;
+            }
+    }
+
+    for(int t=0; t&lt;n; t++)
+        printf(&quot;%d&quot;,a[t]);
+    return 0;
+}
+</code></pre>
+<h3 id="80统计单词个数并记录最长单词长度p166">80.统计单词个数，并记录最长单词长度(p166)</h3>
+<pre><code>#include&lt;stdio.h&gt;
+
+int main()
+{
+    char string[81];
+    int i,num=0,len=0,max=0;
+    char c;
+    gets(string);
+    for(i=0; (c=string[i])!='\0'; i++)
+        if(c==' ') {
+            if(len&gt;max)
+                max=len;
+            len=0;
+        }
+        else if(len==0) {
+            len++;
+            num++;
+        }
+        else {
+            len++;
+        }
+
+    printf(&quot;There are %d words ,The longest word is %d&quot;,num,max);
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言程序集（61-75）]]></title>
+        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-61-75/</id>
+        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-61-75/">
+        </link>
+        <updated>2020-04-03T06:09:50.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="61二维数组的指针的运用">61.二维数组的指针的运用</h3>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{   int m[4][3]= {{5,2,3},{4,5,6},{7,8,9},{10,11,12}};
+    int i,j,*a=m,**p=&amp;a,(*b)[3]=m;
+    
+    printf(&quot;%d\n&quot;,*(*(b+2)+0));
+    printf(&quot;%d&quot;,*(*p+6));
+    return 0;
+}
+</code></pre>
+<h3 id="62abcdefgabcdefg">62.&quot;<em><em><em><em>A</em>BC</em>DEF</em>G</em>****&quot;☞&quot;ABCDEFG*****&quot;</h3>
+<pre><code>
+#include &quot;stdio.h&quot;
+int main() {
+    char s[]=&quot;****A*BC*DEF*G*****&quot;,*t=s;
+    int i,j;
+    while(*t) {
+        t++;
+    }
+    t--;
+    while(*t=='*') {
+        t--;
+    }
+    for(i=0,j=0; &amp;s[i]!=t; i++) {
+        if(s[i]!='*')
+            s[j++]=s[i];
+    }
+    while(*t) {
+        s[j++]=*t++;
+    }
+    s[j]='\0';
+    puts(s);
+    return 0;
+}
+
+#include &quot;stdio.h&quot;
+int main() {
+    char s[]=&quot;****A*BC*DEF*G*****&quot;,*t=s;
+    int i,j;
+    while(*++t);
+    while(*--t=='*');
+    for(i=0,j=0; &amp;s[i]!=t; i++) {
+        if(s[i]!='*') s[j++]=s[i];
+    }
+    while(*t) {
+        s[j++]=*t++;
+    }
+    s[j]='\0';
+    puts(s);
+    return 0;
+}
+</code></pre>
+<h3 id="63库函数strcmp">63.库函数strcmp()</h3>
+<pre><code>
+#include&lt;string.h&gt;
+int strcmp ( char* src,char* dst)
+{
+    int ret = 0 ;
+    while( !(ret = *src - *dst) &amp;&amp; *dst)
+        ++src, ++dst;
+    if ( ret &lt; 0 )
+        ret = -1 ;
+    else if ( ret &gt; 0 )
+        ret = 1 ;
+    return( ret );
+}
+</code></pre>
+<h3 id="64int-p双重指针">64.int **p双重指针</h3>
+<pre><code>
+#include&lt;stdio.h&gt;
+int main()
+{
+    int p[3][4]= {15,2,3,4,5,6,7,8,9};
+    int *s=p;
+    int **a=&amp;s;
+    printf(&quot;%d\n&quot;,p);
+    printf(&quot;%d\n&quot;,s);
+    printf(&quot;%d&quot;,a);
+    return 0;
+}
+</code></pre>
+<h3 id="65折半插入排序自己实现">65.折半插入排序（自己实现）</h3>
+<pre><code>1)升序
+#include&lt;stdio.h&gt;
+int insertsort(int a[],int n) {
+    int bottom,mid,top,temp,i,j;
+    for(i=1; i&lt;n; i++) {
+        //bottom值为0,top值为被排序值前一位
+        bottom=0;
+        top=i-1;
+        while(bottom&lt;=top) {
+            mid=(bottom+top)/2;
+            if(a[i]&gt;a[mid])
+                bottom=mid+1;
+            else
+                top=mid-1;
+        } 
+        //当前mid为最接近被排序值的位，如果被排序值大于mid。则mid++
+        if(a[i]&gt;a[mid])
+            mid++;
+        //mid以后到i-1整体后移一位，被排序值与a[mid]交换
+        temp=a[i];
+        for(j=i-1; j&gt;=mid; j--)
+            a[j+1]=a[j];
+        a[mid]=temp;
+        //每次排序都打印（此处理解用）
+        printf(&quot;i=%d,mid=%d\n&quot;,i,mid);
+        for(int k=0; k&lt;n; k++)
+            printf(&quot;%d &quot;,a[k]);
+        printf(&quot;\n&quot;);
+    }
+}
+int main()
+{   int x[]= {23,7,823,586,2,1,6,11};
+    insertsort(x,sizeof(x)/4);
+    return 0;
+}
+
+2)降序
+#include&lt;stdio.h&gt;
+int insertsort(int a[],int n) {
+    int bottom,mid,top,temp,i,j;
+    for(i=1; i&lt;n; i++) {
+        //bottom值为0,top值为被排序值前一位
+        bottom=0;
+        top=i-1;
+        while(bottom&lt;=top) {
+            mid=(bottom+top)/2;
+            if(a[i]&gt;a[mid])
+                top=mid-1;
+            else
+                bottom=mid+1;
+            //当前mid为最接近被排序值的位，如果被排序值小于mid。则mid++
+            if(a[i]&lt;a[mid])
+                mid++;
+        }
+        //mid以后i-1全体后移一位，被排序值与a[mid]交换
+        temp=a[i];
+        for(j=i-1; j&gt;=mid; j--)
+            a[j+1]=a[j];
+        a[mid]=temp;
+        //每次排序都打印（此处理解用）
+        printf(&quot;i=%d,mid=%d\n&quot;,i,mid);
+        for(int k=0; k&lt;n; k++)
+            printf(&quot;%d &quot;,a[k]);
+        printf(&quot;\n&quot;);
+    }
+}
+int main() {
+    int x[]= {23,7,823,586,2,1,6,11};
+    insertsort(x,sizeof(x)/4);
+    return 0;
+}
+
+3)老师实现(哨兵位)
+#include&lt;stdio.h&gt;
+int insertsort(int a[],int n) {
+    int bottom,mid,top,i,j;
+    for(i=2; i&lt;=n; i++) {
+        //a[0]为空闲，作为哨兵是temp的作用,不参与排序
+        a[0]=a[i];
+        bottom=1;
+        top=i-1;
+        while(bottom&lt;=top) {
+            mid=(bottom+top)/2;
+            if(a[0]&gt;a[mid])
+                bottom=mid+1;
+            else
+                top=mid-1;
+        }
+        for(j=i-1; j&gt;=top+1; j--)
+            a[j+1]=a[j];
+        a[top+1]=a[0];
+        //每次排序都打印（从a[1]打印到a[n]）
+        printf(&quot;\n&quot;);
+        for(int k=1; k&lt;n+1; k++)
+            printf(&quot;%d &quot;,a[k]);
+        printf(&quot;\n&quot;);
+    }
+}
+int main() {
+    int x[]= {0,23,7,823,586,2,1,6,11};
+    insertsort(x,sizeof(x)/4);
+    return 0;
+}
+</code></pre>
+<h3 id="66求自然对数e111121n">66.求自然对数e=1+1/1!+1/2!+…+1/n!</h3>
+<pre><code>#include &lt;stdio.h&gt;
+int main()
+{
+    long n = 0, ns = 1;
+    double x=0.0, e = 1.0;
+    while(1) {
+        n++;
+        ns *= n;
+        x = 1.0 / ns;
+        if (x &lt; 1e-8)
+            break;
+        e += x;
+    }
+    printf(&quot;%9.10f\n&quot;, e);
+    return 0;
+}
+
+</code></pre>
+<h3 id="67顺序插入排序法">67.顺序插入排序法</h3>
+<pre><code>#include &quot;stdio.h&quot;
+int main() {
+    int c[]= {23,1,56,234,7,0,34},i,j,t;
+    for(i=1; i&lt;7; i++) {
+        t=c[i];
+        j=i-1;
+        while(j&gt;=0 &amp;&amp; t&gt;c[j]) {
+            c[j+1]=c[j];
+            j--;
+        }
+        c[j+1]=t;
+    }
+    for(i=0; i&lt;7; i++)
+        printf(&quot;%d &quot;,c[i]);
+    putchar('\n');
+}
+</code></pre>
+<h3 id="68一个球自由100m落下每次反弹一半问第10次落地经过多少m最后一次反弹多高">68.一个球自由100m落下，每次反弹一半，问第10次落地经过多少m，最后一次反弹多高</h3>
+<pre><code>
+#include&lt;stdio.h&gt;
+int fun(float m,int n) {
+    if(n==0) {
+        printf(&quot;m=%f\n&quot;,m);
+        return 0;
+    } else {
+        return fun(m/2,n-1)+m;
+    }
+}
+int main()
+{
+    int m,n,c;
+    scanf(&quot;%d,%d&quot;,&amp;m,&amp;n);
+    c=fun(m,n)+m;
+    printf(&quot;c=%d&quot;,c);
+    return 0;
+}
+</code></pre>
+<h3 id="69计算字符串长度">69.计算字符串长度</h3>
+<pre><code>#include&lt;stdio.h&gt;
+int len(char * s) {
+    char * p=s;
+    while(*p++);
+    return(p-s);
+}
+int main()
+{
+    int i=len(&quot;123456&quot;);
+    printf(&quot;%d&quot;,i);
+    return 0;
+}
+</code></pre>
+<h3 id="70-库函数strstr源码">70. 库函数strstr()源码</h3>
+<pre><code>#include&lt;stdio.h&gt;
+char *strstr (char *str1,char *str2) {
+    char *cp = str1;
+    char *s1, *s2;
+    if ( !*str2 )
+        return(str1);
+    while (*cp) {
+        s1 = cp;
+        s2 = str2;
+        while ( *s1 &amp;&amp; *s2 &amp;&amp; !(*s1-*s2) )
+            s1++, s2++;
+        if (!*s2)
+            return(cp);
+        cp++;
+    }
+    return(NULL);
+}
+int main()
+{
+    char *p=strstr(&quot;a12345633258&quot;,&quot;56&quot;);
+    printf(&quot;%s&quot;,p);
+    return 0;
+}
+</code></pre>
+<h3 id="71库函数strchr源码">71.库函数strchr()源码</h3>
+<pre><code>#include&lt;stdio.h&gt;
+char *strchr (char *string,int ch) {
+    while (*string &amp;&amp; *string != (char)ch)
+        string++;
+    if (*string == (char)ch)
+        return(string);
+    return(NULL);
+}
+int main()
+{
+    char *p=strchr(&quot;123&quot;,'3');
+    printf(&quot;%c&quot;,*p);
+    return 0;
+}
+</code></pre>
+<h3 id="72实型比较大小因为double和float精度不同所以直接判断有可能会判断失败">72.实型比较大小(因为double和float精度不同所以直接判断有可能会判断失败)</h3>
+<pre><code>
+#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+int main()
+{   double a=1.0000000000000001;
+    float b=1.0000000001;
+    if(fabs(a-b)&gt;1e-8)
+        printf(&quot;a&gt;b&quot;);
+    else
+        printf(&quot;a&lt;b&quot;);
+    return 0;
+}
+</code></pre>
+<h3 id="73读程序结果">73.读程序结果</h3>
+<pre><code>
+#include&lt;stdio.h&gt;
+int main()
+{   //四舍五入
+    double x =1.234;
+    printf(&quot;%.2f&quot;,x);
+    return 0;
+}
+</code></pre>
+<h3 id="74求π的近似值不同的方法近似度不同课本p131">74.求π的近似值,不同的方法近似度不同(课本p131)</h3>
+<pre><code>
+第①种  π/4=...
+
+#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+double pi(double eps)
+{
+    double t=1.0,s=0.0;
+    int n=1,i=0;
+
+    while(fabs(t)&gt;=eps) {
+        t=pow(-1,i)/(2*n-1);
+        s+=t;
+        i++;
+        n++;
+    }
+    return s*4;
+}
+int main()
+{
+    //eps为精度控制
+    double eps=1e-6;
+    printf(&quot;%.6f\n&quot;,pi(eps));
+    return 0;
+}
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+int main(){
+    float s=1;
+    float pi=0;
+    float i=1.0;
+    float n=1.0;
+    while(fabs(i)&gt;=1e-6){
+        pi+=i;
+        n=n+2;
+        s=-s; 
+        i=s/n;
+    }
+    pi=4*pi;
+    printf(&quot;pi的值为：%.6f\n&quot;,pi);
+    return 0;
+}
+
+第②类 π/2=1+1/3+1/3*2/5+1/3*2/5*3/7+1/3*2/5*3/7*4/9+...
+
+#include&lt;stdio.h&gt;
+double pi(double eps)
+{
+    double s=0.0,t=1.0;
+    int n;
+    for(n=1; t&gt;=eps; n++) {
+        s+=t;
+        t=n*t/(2*n+1);
+    }
+    return 2*s;
+}
+int main()
+{
+    //eps为精度控制
+    double eps=1e-6;
+    printf(&quot;%0.6f\n&quot;,pi(eps));
+    return 0;
+}
+
+第③种  π²/6=...  
+
+#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+double pi(double eps) {
+    double s=0.0,t=1.0,n;
+    for(n=1; t&gt;=eps; n++) {
+        t=1/(n*n);
+        s+=t;
+    }
+    return sqrt(6*s);
+}
+int main() {
+    //eps为精度控制
+    double eps=1e-6;
+    printf(&quot;%0.6f\n&quot;,pi(eps));
+    return 0;
+}
+
+</code></pre>
+<h3 id="75读程序结果">75.读程序结果</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#define PR(ar) printf(&quot;%d &quot;,ar);
+main()
+{
+    int j, a[] = { 1, 3, 5, 7, 9, 11, 15 }, *p = a + 5;
+    for (j = 3; j; j--)
+        switch (j)
+        {
+        case 1:
+        case 2:
+            //*号的优先级很低
+            PR(*p++);
+            break;
+        case 3:
+            PR(*(--p));
+        }
+    printf(&quot;\n&quot;);
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言程序集（46-60）]]></title>
+        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-46-60/</id>
+        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-46-60/">
+        </link>
+        <updated>2020-04-03T06:08:20.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="46把数组元素依次向后移动一个位置">46.把数组元素依次向后移动一个位置</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[11];
+    for (int i = 0; i &lt;= 10; i++) {
+        a[i] = i;
+        printf(&quot;%d &quot;, a[i]);
+    }
+    printf(&quot;\n&quot;);
+    for (int i = 10; i &gt;= 0; i--) {
+        a[i] = a[i - 1];
+    }
+    for (int i = 0; i &lt;= 10; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+0 1 2 3 4 5 6 7 8 9 10 
+0 0 1 2 3 4 5 6 7 8 9 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="47输入一组数据找出最大值">47.输入一组数据，找出最大值</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[10], max;
+    for (int i = 0; i &lt; 10; i++) {
+        scanf(&quot;%d&quot;, &amp;a[i]);
+    }
+    max = a[0];
+    for (int i = 1; i &lt; 10; i++) {
+        if (max &lt; a[i])
+            max = a[i];
+    }
+    printf(&quot;max=%d&quot;, max);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+12
+3
+2
+4
+5
+6
+3453
+123
+1
+1
+max=3453
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="48输入一组数据颠倒之后再输出">48.输入一组数据，颠倒之后再输出</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[10], t;
+    for (int i = 0; i &lt; 10; i++) {
+        scanf(&quot;%d&quot;, &amp;a[i]);
+    }
+    printf(&quot;原始顺序：\n&quot;);
+    for (int i = 0; i &lt;= 9; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    for (int i = 0; i &lt; 9 / 2; i++) {
+        t = a[i];
+        a[i] = a[9 - i];
+        a[9 - i] = t;
+    }
+    printf(&quot;\n交换之后的顺序：\n&quot;);
+    for (int i = 0; i &lt;= 9; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+原始顺序：
+1 2 3 4 5 6 7 8 9 0 
+交换之后的顺序：
+0 9 8 7 5 6 4 3 2 1 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="49冒泡排序">49.冒泡排序</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[10] = {9, 7, 2, 5, 4, 1}, t;
+    for (int i = 0; i &lt; 5; i++) {
+        for (int j = 0; j &lt; 5 - i; j++) {
+            if (a[j] &gt; a[j + 1]) {
+                t = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = t;
+            }
+        }
+    }
+    for (int i = 0; i &lt; 6; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+1 2 4 5 7 9 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="50选择排序">50.选择排序</h3>
+<pre><code>
+#include &lt;stdio.h&gt; 
+#include &lt;math.h&gt;
+
+int main() {
+    int a[6] = {9, 7, 2, 5, 4, 1}, k, t;
+    for (int i = 0; i &lt; 5; i++) {
+        k = i;
+        for (int j = k + 1; j &lt; 6; j++) {
+            if (a[k] &gt; a[j]) {
+                k = j;
+            }
+        }
+        if (k != i) {
+            t = a[i];
+            a[i] = a[k];
+            a[k] = t;
+        }
+
+    }
+    for (int i = 0; i &lt; 6; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+int main() {
+    int a[6] = {9, 7, 2, 5, 4, 1}, k, t;
+    for (int i = 0; i &lt; 5; i++) {
+        k = 0;
+        for (int j =  1; j &lt; 6-i; j++) {
+            if (a[k] &lt; a[j]) {
+                k = j;
+            }
+        }
+        if (k != 5-i) {
+            t = a[5-i];
+            a[5-i] = a[k];
+            a[k] = t;
+        }
+        
+    }
+    for (int i = 0; i &lt; 6; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+1 2 4 5 7 9 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="51有一个已经排好序的数值要求输入一个数之后按原来排序的规律将他插入数组中">51.有一个已经排好序的数值，要求输入一个数之后，按原来排序的规律将他插入数组中</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[9] = {10, 20, 30, 40, 50, 60, 70, 80}, x, p = 8;
+    printf(&quot;输入要插入的数：&quot;);
+    scanf(&quot;%d&quot;, &amp;x);
+    for (int i = 0; i &lt; 8; i++) {
+        if (x &lt; a[i]) {
+            p = i;
+            break;
+        }
+    }
+    for (int i = 8; i &gt; p; i--) {
+        a[i] = a[i - 1];
+    }
+    a[p] = x;
+    for (int i = 0; i &lt; 9; i++) {
+        printf(&quot;%d &quot;, a[i]);
+    }
+    return 0;
+}
+输入:
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+输入要插入的数：78
+10 20 30 40 50 60 70 78 80 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="52在数组中删除一个数">52.在数组中删除一个数</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[8] = {10, 20, 30, 40, 50, 60, 70, 80}, x, j, i,flag=0;
+    printf(&quot;输入要删除的数：&quot;);
+    scanf(&quot;%d&quot;, &amp;x);
+    for (i = 0, j = 0; i &lt; 8; i++) {
+        if (a[i] != x) {
+            a[j] = a[i];
+            j++;
+        }else{
+            flag=1;
+        }
+    }
+    if(flag==1)
+        a[8-1]=0;
+    for (int k = 0; k &lt; 8; k++) {
+        printf(&quot;%d &quot;, a[k]);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+输入要删除的数：10
+20 30 40 50 60 70 80 0 
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="53二维矩阵进行行列倒置">53.二维矩阵进行行列倒置</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[3][4],b[4][3];
+    for (int i = 0; i &lt;3 ; i++) {
+        for (int j = 0; j &lt;4 ; j++) {
+            scanf(&quot;%d&quot;,&amp;a[i][j]);
+        }
+    }
+    for (int i = 0; i &lt;3 ; i++) {
+        for (int j = 0; j &lt;4 ; j++) {
+           b[j][i]=a[i][j];
+        }
+    }
+    for (int i = 0; i &lt;3 ; i++) {
+        for (int j = 0; j &lt;4 ; j++) {
+            printf(&quot;%3d &quot;,a[i][j]);
+        }
+        printf(&quot;\n&quot;);
+    }
+    printf(&quot;\n&quot;);
+    for (int i = 0; i &lt;4 ; i++) {
+        for (int j = 0; j &lt;3 ; j++) {
+            printf(&quot;%3d &quot;,b[i][j]);
+        }
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+  1   2   3   4 
+  5   6   7   8 
+  9   0   1   2 
+
+  1   5   9 
+  2   6   0 
+  3   7   1 
+  4   8   2 
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="54找出矩阵最大值并输出行号和列号">54.找出矩阵最大值，并输出行号和列号</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[3][4] = {{5,  2, 0,  9},
+                   {3,  7, 12, 6},
+                   {19, 4, 1,  8}}, max, col, row;
+    for (int i = 0; i &lt; 3; i++) {
+        for (int j = 0; j &lt; 4; j++) {
+            if (a[i][j] &gt; max) {
+                max = a[i][j];
+                row = i;
+                col = j;
+            }
+        }
+    }
+    printf(&quot;max=%d\n&quot;, max);
+    printf(&quot;max=a[%d][%d]&quot;, row, col);
+
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+max=19
+max=a[2][0]
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="55折半查找">55.折半查找</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int a[6] = {-2, 3, 6, 8, 12, 15}, bottom, top, mid, x;
+    scanf(&quot;%d&quot;, &amp;x);
+    bottom = 0;
+    top = 5;
+    while (bottom &lt;= top) {
+        mid = (bottom + top) / 2;
+        if (a[mid] == x) {
+            printf(&quot;Find! a[%d]=%d\n&quot;, mid, x);
+            break;
+        } else if (x &gt; a[mid]) {
+            bottom = mid + 1;
+        } else {
+            top = mid - 1;
+        }
+    }
+    if (bottom &gt; top)
+        printf(&quot;No find!\n&quot;);
+
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+-2
+Find! a[0]=-2
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="56456789321">56.456789321</h3>
+<pre><code>
+#include&lt;stdio.h&gt;
+
+int main()
+{   int t;
+    int a[9]= {1,2,3,4,5,6,7,8,9};
+    for(int j=0; j&lt;4; j++) {
+        t=a[0];
+        for(int i=1; i&lt;9-j; i++) {
+            a[i-1]=a[i];
+        }
+        a[9-j-1]=t;
+    }
+    for(int i=0; i&lt;9; i++)
+        printf(&quot;%d&quot;,a[i]);
+    return 0;
+}
+
+#include&lt;stdio.h&gt;
+int main()
+{
+    int a[]= {1,2,3,4,5,6,7,8,9,0},i,j,t;
+    for(i=0; i&lt;3; i++) {
+        t=a[0];
+        for(j=0; j&lt;10-i-2; j++)
+            a[j]=a[j+1];
+        a[10-i-2]=t;
+    }
+    for(i=0; i&lt;10; i++)
+        printf(&quot;%d&quot;,a[i]);
+    return 0;
+}
+
+</code></pre>
+<h3 id="57进制转换">57.进制转换</h3>
+<pre><code>
+#include&lt;stdio.h&gt;
+
+int converse(int n)
+{
+    int i=0;
+    char a[20],b[]=&quot;0123456789ABCDEF&quot;;
+    while(n) {
+        a[i++]=b[n%16];
+        n=n/16;
+    }
+    for(--i; i&gt;=0; i--)
+        printf(&quot;%c&quot;,a[i]);
+}
+int main()
+{
+    converse(200);
+    return 0;
+}
+</code></pre>
+<h3 id="58打印杨辉三角">58.打印杨辉三角</h3>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+const int length = 10;// 定义杨辉三角的大小
+int main()
+{
+    int nums[length][length];
+    int i, j;
+    /*计算杨辉三角*/ 
+    for(i=0; i&lt;length; i++)
+    {
+        nums[i][0] = 1;
+        nums[i][i] = 1;
+        for(j=1; j&lt;i; j++)
+            nums[i][j] = nums[i-1][j-1] + nums[i-1][j];
+    }
+
+    /*打印输出*/ 
+    for(i=0; i&lt;length; i++)
+    {
+        for(j=0; j&lt;length-i-1; j++)
+            printf(&quot;   &quot;);
+        for(j=0; j&lt;=i; j++)
+            printf(&quot;%-5d &quot;, nums[i][j]);
+        putchar('\n');
+    }
+}
+</code></pre>
+<h3 id="59字母加密解密">59.字母加密解密</h3>
+<pre><code>加密:
+#include&lt;stdio.h&gt;
+#include&lt;ctype.h&gt;
+int main()
+{   char ch;
+    while((ch=getchar())!='\n') {
+        if(isupper(ch))
+            ch=(ch-'A'+4)%26+'A';
+        if(islower(ch))
+            ch=(ch-'a'+4)%26+'a';
+        printf(&quot;%c&quot;,ch);
+    }
+    return 0;
+}
+解密:
+#include&lt;stdio.h&gt;
+#include&lt;ctype.h&gt;
+int main()
+{   char ch;
+    while((ch=getchar())!='\n') {
+        if(isupper(ch))
+            ch=(ch-'A'+22)%26+'A';
+        if(islower(ch))
+            ch=(ch-'a'+22)%26+'a';
+        printf(&quot;%c&quot;,ch);
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="60递归二分查找">60.递归二分查找</h3>
+<pre><code>#include&lt;stdio.h&gt;
+int find(int n[],int x,int low,int high) {
+    if(high&gt;=low) {
+        int mid = (low + high)/2;
+        if(x&gt;n[mid])
+            return find(n,x,mid+1,high);
+        else if(x&lt;n[mid])
+            return find(n,x,low,mid-1);
+        else
+            return 1;
+    } else {
+        return 0;
+    }
+}
+int main() {
+    int a[]= {1,2,4,5,8,9,10};
+    printf(&quot;%d&quot;,find(a,8,0,6));
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言程序集（31-45）]]></title>
+        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-31-45/</id>
+        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-31-45/">
+        </link>
+        <updated>2020-04-03T06:07:01.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="31计算1-23-45-99-100">31.计算1-2+3-4+5-...+99-100=?</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int sum = 0;
+    for (int i = 1; i &lt;= 100; i++) {
+        sum += pow(-1, i - 1) * i;
+    }
+    printf(&quot;sum=%d&quot;, sum);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=-50
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="32计算1112131100">32.计算1/1+1/2+1/3+...1/100=?</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float sum = 0;
+    for (int i = 1; i &lt;= 100; i++) {
+        sum += pow(i,-1);
+    }
+    printf(&quot;sum=%f&quot;, sum);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=5.187378
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="33计算1112131nn106">33.计算1/1+1/2+1/3+...+1/n=?,n=10^6</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float sum = 0;
+    for (int i = 1; i &lt;= 1e6; i++) {
+        sum += pow(i, -1);
+    }
+    printf(&quot;sum=%f&quot;, sum);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=14.357358
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="34输入两个整数m和n求其最大公约数和最小公倍数">34.输入两个整数m和n，求其最大公约数和最小公倍数</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int m, n, r, p;
+    printf(&quot;input m,n: &quot;);
+    scanf(&quot;%d,%d&quot;, &amp;m, &amp;n);
+    p = m * n;
+    do {
+        r = m % n;
+        m = n;
+        n = r;
+    } while (r != 0);
+    printf(&quot;最大公约数:%d\n&quot;, m);
+    printf(&quot;最小公倍数:%d&quot;, p / m);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input m,n: 6,8
+最大公约数:2
+最小公倍数:24
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="35计算-222222222222222此时n5">35.计算 2+22+222+2222+22222=？(此时n=5)</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int n, s = 0, t = 0;
+    scanf(&quot;%d&quot;, &amp;n);
+    for (int i = 1; i &lt;= n; i++) {
+        t = t * 10 + 2;
+        s += t;
+    }
+    printf(&quot;%d\n&quot;, s);
+    return 0;
+} 
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+5
+24690
+
+Process finished with exit code 0
+
+
+
+</code></pre>
+<h3 id="36计算-21325385-求前20项">36.计算 2/1+3/2+5/3+8/5+... 求前20项</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    float m = 2, n = 1, t, s = 0;
+    for (int i = 1; i &lt;= 20; i++) {
+        s += m / n;
+        t = m;
+        m += n;
+        n = t;
+    }
+    printf(&quot;sum=%f\n&quot;, s);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=32.660263
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="37计算-12320">37.计算 1!+2!+3!+...+20!=?</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    float s = 0, f = 1;
+    for (int i = 1; i &lt;= 20; i++) {
+        f *= i;
+        s += f;
+    }
+    printf(&quot;sum=%f\n&quot;, s);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=2561327455189073920.000000
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="38计算">38.计算</h3>
+<pre><code class="language-math"> \sum_{k=1}^{100}{k}+\sum_{k=1}^{50}{k^2}+\sum_{k=1}^{10}\frac{1}{k}=?
+</code></pre>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int s1 = 0, s2 = 0;
+    float s3 = 0;
+    for (int i = 1; i &lt;= 100; i++)
+        s1 += i;
+    for (int i = 1; i &lt;= 50; i++)
+        s2 += i * i;
+    for (int i = 1; i &lt;= 10; i++)
+        s3 += 1.0 / i;
+    printf(&quot;%f&quot;, s1 + s2 + s3);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+47977.929688
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="39水仙花数一个3位数各位数字的立方和等于它本身如153打印全部水仙花数">39.水仙花数：一个3位数，各位数字的立方和等于它本身（如：153）,打印全部水仙花数</h3>
+<pre><code>1).
+    #include &lt;stdio.h&gt;
+    #include &lt;math.h&gt;
+    
+    int main() {
+        int x, y, z, s;
+        for (int m = 100; m &lt; 1000; m++) {
+            x = m / 100;
+            y = m / 10 % 10;
+            z = m % 10;
+            s = pow(x, 3) + pow(y, 3) + pow(z, 3);
+            if (m == s)
+                printf(&quot;%d is a water flower number.\n&quot;, m);
+        }
+        return 0;
+    }
+2).
+    #include &lt;stdio.h&gt;
+    #include &lt;math.h&gt;
+    
+    int main() {
+        int x, s;
+        for (int m = 1; m &lt;= 9; m++)
+            for (int i = 0; i &lt;= 9; i++)
+                for (int j = 0; j &lt;= 9; j++) {
+                    x = m * 100 + i * 10 + j;
+                    s = pow(m, 3) + pow(i, 3) + pow(j, 3);
+                    if (x == s)
+                        printf(&quot;%d is a water flower number.\n&quot;, x);
+                }
+        return 0;
+    }
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+153 is a water flower number.
+370 is a water flower number.
+371 is a water flower number.
+407 is a water flower number.
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="40如果一个数恰好等于它的因子之和这个数为完数例如6123找出1000以内的完数按照6-its-factors-are-1-2-3-格式打印">40.如果一个数恰好等于它的因子之和，这个数为“完数”（例如:6=1+2+3），找出1000以内的完数，按照:“6 its factors are 1 2 3” 格式打印</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+int main() {
+    int s;
+    for (int i = 1; i &lt;= 1000; i++) {
+        s = 0;
+        for (int j = 1; j &lt;= i / 2; j++)
+            if (i % j == 0)
+                s += j;
+        if (s == i) {
+            printf(&quot;%d it's factors are &quot;, i);
+            for (int j = 1; j &lt;= i / 2; j++) {
+                if (i % j == 0)
+                    printf(&quot;%d &quot;, j);
+            }
+            printf(&quot;\n&quot;);
+        }
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+6 its factors are 1 2 3 
+28 its factors are 1 2 4 7 14 
+496 its factors are 1 2 4 8 16 31 62 124 248 
+
+Process finished with exit code 0
+
+
+</code></pre>
+<h3 id="41一个球从100m的高度落下每次落地后反跳回原高度的一半再落下再反弹-求它第10次落地时共经过多少米第10次反弹多高">41.一个球从100m的高度落下，每次落地后反跳回原高度的一半，再落下，再反弹。求它第10次落地时，共经过多少米，第10次反弹多高</h3>
+<pre><code>
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    float sum = 100, high = 50;
+    for (int i = 0; i &lt; 10; i++) {
+        sum += 2 * high;
+        high /= 2;
+    }
+    printf(&quot;sum=%.2f,high=%f\n&quot;, sum, high*2);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+sum=299.90,high=0.024414
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="42谭浩强c语言课本p141猴子吃桃">42.（谭浩强c语言课本P141）猴子吃桃</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int x1, x2 = 1;
+    for (int day = 9; day &gt;= 1; day--) {
+        x1 = 2 * (x2 + 1);
+        x2 = x1;
+    }
+    printf(&quot;num=%d\n&quot;, x1);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+num=1534
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="43每个月兔子的总和依次为11235813这就是斐波那契数列">43.每个月兔子的总和依次为1，1，2，3，5，8，13...这就是斐波那契数列</h3>
+<pre><code>{
+    f1=1(n=1);
+    f2=1(n=2);
+    fn=f(n-1)+f(n-2)(n&gt;=3);
+}
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int f1 = 1, f2 = 1, f;
+    printf(&quot;%5d %5d&quot;, f1, f2);
+    for (int i = 3; i &lt;= 20; i++) {
+        f = f1 + f2;
+        printf(&quot;%5d &quot;, f);
+        if (i % 5 == 0)
+            printf(&quot;\n&quot;);
+        f1 = f2;
+        f2 = f;
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+    1     1    2     3     5 
+    8    13    21    34    55 
+   89   144   233   377   610 
+  987  1597  2584  4181  6765 
+
+Process finished with exit code 0
+
+
+</code></pre>
+<h3 id="44判断一个数是否为素数">44.判断一个数是否为素数</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int m, i;
+    scanf(&quot;%d&quot;, &amp;m);
+    for (i = 2; i &lt;= m / 2; i++)
+        if (m % i == 0)
+            break;
+    if (m/2 == i-1)
+        printf(&quot;Yes&quot;);
+    else
+        printf(&quot;No&quot;);
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+5
+Yes
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="45成绩平均值">45.成绩平均值</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int sum = 0, s[10];
+    float ave;
+    for (int i = 0; i &lt;= 9; i++) {
+        scanf(&quot;%d&quot;, &amp;s[i]);
+        sum += s[i];
+    }
+    ave = sum / 10.0;
+    printf(&quot;ave=%f\n&quot;, ave);
+    for (int j = 0; j &lt; 10; j++) {
+        printf(&quot;%d&quot;, s[j]);
+    }
+    return 0;
+}
+
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+ave=4.500000
+1234567890
+Process finished with exit code 0
+
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言程序集（16-30）]]></title>
+        <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-16-30/</id>
+        <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji-16-30/">
+        </link>
+        <updated>2020-04-03T06:06:08.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="16打印的1010矩阵">16.打印<code>*</code>的10*10矩阵</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 0; i &lt; 10; i++){
+        for (int j = 0; j &lt; 10; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="17打印">17.打印:</h3>
+<pre><code>        *
+        **
+        ***
+        ****
+        *****
+
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= i; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="18打印">18.打印：</h3>
+<pre><code>        *****
+        ****
+        ***
+        **
+        *
+        
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        for (int j = 5; j &gt;= i; j--)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+
+
+</code></pre>
+<h3 id="19打印">19.打印：</h3>
+<pre><code>            *
+            ***
+            *****
+            *******
+            *********
+            
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="20打印">20.打印：</h3>
+<pre><code>            *
+           ***
+          *****
+         *******
+        *********
+        
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="21打印">21.打印：</h3>
+<pre><code>        *********
+         *******
+          *****
+           ***
+            *
+            
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 5; i &gt;= 1; i--) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="22打印">22.打印：</h3>
+<pre><code>        *********
+         *******
+          *****
+           ***
+            *
+           ***
+          *****
+         *******
+        *********
+        
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 5; i &gt;= 1; i--) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    for (int i = 2; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="23打印">23.打印：</h3>
+<pre><code>            *
+           ***
+          *****
+         *******
+        *********
+         *******
+          *****
+           ***
+            *
+            
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+    for (int i = 4; i &gt;= 1; i--) {
+        for (int j = 1; j &lt;= 5 - i; j++)
+            putchar(' ');
+        for (int j = 1; j &lt;= 2 * i - 1; j++)
+            putchar('*');
+        putchar('\n');
+    }
+
+    return 0;
+}
+
+</code></pre>
+<h3 id="24打印乘法口诀表">24.打印乘法口诀表</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 9; i++) {
+        for (int j = 1; j &lt;= i; j++)
+            printf(&quot;\t%d*%d=%d&quot;, i, j, i * j);
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+	1*1=1
+	2*1=2	2*2=4
+	3*1=3	3*2=6	3*3=9
+	4*1=4	4*2=8	4*3=12	4*4=16
+	5*1=5	5*2=10	5*3=15	5*4=20	5*5=25
+	6*1=6	6*2=12	6*3=18	6*4=24	6*5=30	6*6=36
+	7*1=7	7*2=14	7*3=21	7*4=28	7*5=35	7*6=42	7*7=49
+	8*1=8	8*2=16	8*3=24	8*4=32	8*5=40	8*6=48	8*7=56	8*8=64
+	9*1=9	9*2=18	9*3=27	9*4=36	9*5=45	9*6=54	9*7=63	9*8=72	9*9=81
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="25打印">25.打印:</h3>
+<pre><code>           1   2   3   4
+           5   6   7   8
+           9  10  11  12
+          13  14  15  16
+          
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 4; i++) {
+        for (int j = 1; j &lt;= 4; j++)
+            printf(&quot;%4d&quot;, (i - 1) * 4 + j);
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+
+</code></pre>
+<h3 id="26打印">26.打印：</h3>
+<pre><code>           1   5   9  13
+           2   6  10  14
+           3   7  11  15
+           4   8  12  16
+           
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 1; i &lt;= 4; i++) {
+        for (int j = 1; j &lt;= 4; j++)
+            printf(&quot;%4d&quot;, (j - 1) * 4 + i);
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+
+</code></pre>
+<h3 id="27真题打印">27.(真题)打印：</h3>
+<pre><code>          16  15  14  13
+          12  11  10   9
+           8   7   6   5
+           4   3   2   1
+           
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 4; i &gt;= 1; i--) {
+        for (int j = 1; j &lt;= 4; j++)
+            printf(&quot;%4d&quot;, i * 4 - (j - 1));
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="28素数的判断">28.素数的判断</h3>
+<pre><code>1).
+    #include &lt;stdio.h&gt;
+    #include &lt;math.h&gt;
+    
+    int main() {
+        int i, x;
+        printf(&quot;input x :&quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        for (i = 2; i &lt;= sqrt(x); i++)
+            if (x % i == 0)
+                break;
+        if (i &gt; sqrt(x))
+            printf(&quot;%d is a prime number.\n&quot;, x);
+        else
+            printf(&quot;%d is not a prime number.\n&quot;, x);
+        return 0;
+    }
+2).
+    #include &lt;stdio.h&gt;
+    #include &lt;math.h&gt;
+    int main() {
+        int i, x, flag = 1;
+        printf(&quot;input x :&quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        for (i = 2; i &lt;= sqrt(x); i++)
+            if (x % i == 0) {
+                flag = 0;
+                break;
+            }
+        if (flag == 1)
+            printf(&quot;%d is a prime number.\n&quot;, x);
+        else
+            printf(&quot;%d is not a prime number.\n&quot;, x);
+        return 0;
+    }
+    
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+input x :34
+34 is not a prime number.
+
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="29打印100~200之间的素数">29.打印100~200之间的素数</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int flag;
+    for (int x = 100; x &lt;= 200; x++) {
+    //for(int x = 101; x &lt;=199; x += 2){
+        flag = 1;
+        for (int i = 2; i &lt;= sqrt(x); i++)
+            if (x % i == 0) {
+                flag = 0;
+                break;
+            }
+        if (flag == 1)
+            printf(&quot;%d\t&quot;, x);
+    }
+
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+101	103	107	109	113	127	131	137	139	149	151	157	163	167	173	179	181	191	193	197	199	
+Process finished with exit code 0
+
+</code></pre>
+<h3 id="30打印ascii码与字母">30.打印ASCII码与字母</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    for (int ch = 'a'; ch &lt;= 'z'; ch++) {
+        printf(&quot;%c=%d %c=%d &quot;, ch - 32, ch - 32, ch, ch);
+    }
+    return 0;
+}
+输出：
+/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
+A=65 a=97 B=66 b=98 C=67 c=99 D=68 d=100 E=69 e=101 F=70 f=102 G=71 g=103 H=72 h=104 I=73 i=105 J=74 j=106 K=75 k=107 L=76 l=108 M=77 m=109 N=78 n=110 O=79 o=111 P=80 p=112 Q=81 q=113 R=82 r=114 S=83 s=115 T=84 t=116 U=85 u=117 V=86 v=118 W=87 w=119 X=88 x=120 Y=89 y=121 Z=90 z=122 
+Process finished with exit code 0
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[pip3 常用命令]]></title>
         <id>https://saowu.github.io/post/pip3-chang-yong-ming-ling/</id>
@@ -123,15 +1940,13 @@ brew update
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[C语言程序集]]></title>
+        <title type="html"><![CDATA[C语言程序集(1-15)]]></title>
         <id>https://saowu.github.io/post/c-yu-yan-cheng-xu-ji/</id>
         <link href="https://saowu.github.io/post/c-yu-yan-cheng-xu-ji/">
         </link>
         <updated>2020-04-03T04:41:43.000Z</updated>
-        <content type="html"><![CDATA[<!-- more -->
-<p>总结归纳约<code>80</code>道基础C语言编程题</p>
-<pre><code>1.输入两个数按从小到大的顺序排列
-#include &lt;stdio.h&gt;
+        <content type="html"><![CDATA[<h3 id="1输入两个数按从小到大的顺序排列">1.输入两个数按从小到大的顺序排列</h3>
+<pre><code>#include &lt;stdio.h&gt;
 int main() {
     int a, b, t;
     printf(&quot;input a,b: &quot;);
@@ -150,8 +1965,8 @@ input a,b: 2，1
 output: 1，2
 Process finished with exit code 0
 </code></pre>
-<pre><code>2.输入3个整数把最大的输出
-#include &lt;stdio.h&gt;
+<h3 id="2输入3个整数把最大的输出">2.输入3个整数把最大的输出</h3>
+<pre><code>#include &lt;stdio.h&gt;
 int main() {
     int a, b, c, max;
     printf(&quot;input a,b,c: &quot;);
@@ -171,8 +1986,8 @@ max=3
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>3.输入3个整数按从小到大的顺序打印
-#include &lt;stdio.h&gt;
+<h3 id="3输入3个整数按从小到大的顺序打印">3.输入3个整数按从小到大的顺序打印</h3>
+<pre><code>#include &lt;stdio.h&gt;
 int main() {
     int a, b, c, t;
     printf(&quot;input a,b,c: &quot;);
@@ -203,8 +2018,8 @@ input a,b,c: 2,1,3
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>4.判断是否为闰年
-#include &lt;stdio.h&gt;
+<h3 id="4判断是否为闰年">4.判断是否为闰年</h3>
+<pre><code>#include &lt;stdio.h&gt;
 
 int main() {
 
@@ -226,8 +2041,8 @@ input a year: 2018
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>5.输入一个字符，如果是大写字母，则转换为小写，否则不转换并输出最后得到的字符
-
+<h3 id="5输入一个字符如果是大写字母则转换为小写否则不转换并输出最后得到的字符">5.输入一个字符，如果是大写字母，则转换为小写，否则不转换并输出最后得到的字符</h3>
+<pre><code>
 #include &lt;stdio.h&gt;
 int main() {
     char letter;
@@ -246,8 +2061,8 @@ letter: a
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>6.编程求解:
-                /-1 (x&lt;0)
+<h3 id="6编程求解">6.编程求解:</h3>
+<pre><code>                /-1 (x&lt;0)
              y=|  0 (x=0)
                 \ 1 (x&gt;0)
     
@@ -307,8 +2122,8 @@ Process finished with exit code 0
 
     
 </code></pre>
-<pre><code>7.按成绩分档次（A,B,C,D,E）
-1).
+<h3 id="7按成绩分档次abcde">7.按成绩分档次（A,B,C,D,E）</h3>
+<pre><code>1).
     #include &lt;stdio.h&gt;
     int main() {
         int score;
@@ -363,8 +2178,8 @@ A
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>8. 编程计算1+2+3+...+100=？
-1).
+<h3 id="8-编程计算123100">8. 编程计算1+2+3+...+100=？</h3>
+<pre><code>1).
     #include &lt;stdio.h&gt;
     int main() {
         int sum = 0, i = 1;
@@ -402,8 +2217,8 @@ sum=5050
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>9.计算2+4+6+...+100=?
-
+<h3 id="9计算246100">9.计算2+4+6+...+100=?</h3>
+<pre><code>
 #include &lt;stdio.h&gt;
 int main() {
     int sum = 0;
@@ -419,8 +2234,8 @@ sum=2550
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>10.计算1+3+5+...+99=?
-
+<h3 id="10计算13599">10.计算1+3+5+...+99=?</h3>
+<pre><code>
 #include &lt;stdio.h&gt;
 int main() {
     int sum = 0;
@@ -436,8 +2251,8 @@ sum=2500
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>11.计算1*2*3*...*10=?
-1).
+<h3 id="11计算12310">11.计算1<em>2</em>3*...*10=?</h3>
+<pre><code>1).
     #include &lt;stdio.h&gt;
     int main() {
         int fact = 1, k = 1;
@@ -465,8 +2280,8 @@ fact=3628800
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>12.1~100之间所有自然数平方和
-
+<h3 id="121~100之间所有自然数平方和">12.1~100之间所有自然数平方和</h3>
+<pre><code>
 #include &lt;stdio.h&gt;
 int main() {
     int sum = 0;
@@ -482,8 +2297,8 @@ sum=338350
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>13.1~100之间能被3整除的数之和
-
+<h3 id="131~100之间能被3整除的数之和">13.1~100之间能被3整除的数之和</h3>
+<pre><code>
 #include &lt;stdio.h&gt;
 int main() {
     int sum = 0;
@@ -500,8 +2315,8 @@ sum=1683
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>14.从键盘上输入一串字符，分别将字母和数字以及其他字符做统计并输出
-
+<h3 id="14从键盘上输入一串字符分别将字母和数字以及其他字符做统计并输出">14.从键盘上输入一串字符，分别将字母和数字以及其他字符做统计并输出</h3>
+<pre><code>
 #include &lt;stdio.h&gt;
 int main() {
     int letter = 0, digit = 0, other = 0;
@@ -527,8 +2342,8 @@ other:0
 Process finished with exit code 0
 
 </code></pre>
-<pre><code>15.从键盘上输入一串字符，要求判断每一个字符，大写字母转成小写字母，小写字母转换成大写字母，其他不变并输出
-
+<h3 id="15从键盘上输入一串字符要求判断每一个字符大写字母转成小写字母小写字母转换成大写字母其他不变并输出">15.从键盘上输入一串字符，要求判断每一个字符，大写字母转成小写字母，小写字母转换成大写字母，其他不变并输出</h3>
+<pre><code>
 #include &lt;stdio.h&gt;
 int main() {
     char ch;
@@ -547,1784 +2362,6 @@ sdjkasdjkasjjdkdJSDAKDJAKSJ2321312!
 SDJKASDJKASJJDKDjsdakdjaksj2321312
 Process finished with exit code 0
 
-</code></pre>
-<pre><code>16.打印‘*’的10*10矩阵
-
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 0; i &lt; 10; i++){
-        for (int j = 0; j &lt; 10; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-**********
-**********
-**********
-**********
-**********
-**********
-**********
-**********
-**********
-**********
-
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>17.打印:
-        *
-        **
-        ***
-        ****
-        *****
-
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 5; i++) {
-        for (int j = 1; j &lt;= i; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-</code></pre>
-<pre><code>18.打印：
-        *****
-        ****
-        ***
-        **
-        *
-        
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 5; i++) {
-        for (int j = 5; j &gt;= i; j--)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-
-
-</code></pre>
-<pre><code>19.打印：
-            *
-            ***
-            *****
-            *******
-            *********
-            
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 5; i++) {
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-</code></pre>
-<pre><code>20.打印：
-            *
-           ***
-          *****
-         *******
-        *********
-        
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 5; i++) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-</code></pre>
-<pre><code>21.打印：
-        *********
-         *******
-          *****
-           ***
-            *
-            
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 5; i &gt;= 1; i--) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-</code></pre>
-<pre><code>22.打印：
-        *********
-         *******
-          *****
-           ***
-            *
-           ***
-          *****
-         *******
-        *********
-        
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 5; i &gt;= 1; i--) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    for (int i = 2; i &lt;= 5; i++) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-</code></pre>
-<pre><code>23.打印：
-            *
-           ***
-          *****
-         *******
-        *********
-         *******
-          *****
-           ***
-            *
-            
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 5; i++) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    for (int i = 4; i &gt;= 1; i--) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-
-    return 0;
-}
-
-</code></pre>
-<pre><code>24.打印乘法口诀表
-
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 9; i++) {
-        for (int j = 1; j &lt;= i; j++)
-            printf(&quot;\t%d*%d=%d&quot;, i, j, i * j);
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-	1*1=1
-	2*1=2	2*2=4
-	3*1=3	3*2=6	3*3=9
-	4*1=4	4*2=8	4*3=12	4*4=16
-	5*1=5	5*2=10	5*3=15	5*4=20	5*5=25
-	6*1=6	6*2=12	6*3=18	6*4=24	6*5=30	6*6=36
-	7*1=7	7*2=14	7*3=21	7*4=28	7*5=35	7*6=42	7*7=49
-	8*1=8	8*2=16	8*3=24	8*4=32	8*5=40	8*6=48	8*7=56	8*8=64
-	9*1=9	9*2=18	9*3=27	9*4=36	9*5=45	9*6=54	9*7=63	9*8=72	9*9=81
-
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>25.打印:
-           1   2   3   4
-           5   6   7   8
-           9  10  11  12
-          13  14  15  16
-          
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 4; i++) {
-        for (int j = 1; j &lt;= 4; j++)
-            printf(&quot;%4d&quot;, (i - 1) * 4 + j);
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}
-
-</code></pre>
-<pre><code>26.打印：
-           1   5   9  13
-           2   6  10  14
-           3   7  11  15
-           4   8  12  16
-           
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 4; i++) {
-        for (int j = 1; j &lt;= 4; j++)
-            printf(&quot;%4d&quot;, (j - 1) * 4 + i);
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}
-
-</code></pre>
-<pre><code>27.(真题)打印：
-          16  15  14  13
-          12  11  10   9
-           8   7   6   5
-           4   3   2   1
-           
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 4; i &gt;= 1; i--) {
-        for (int j = 1; j &lt;= 4; j++)
-            printf(&quot;%4d&quot;, i * 4 - (j - 1));
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}
-</code></pre>
-<pre><code>28.素数的判断
-1).
-    #include &lt;stdio.h&gt;
-    #include &lt;math.h&gt;
-    
-    int main() {
-        int i, x;
-        printf(&quot;input x :&quot;);
-        scanf(&quot;%d&quot;, &amp;x);
-        for (i = 2; i &lt;= sqrt(x); i++)
-            if (x % i == 0)
-                break;
-        if (i &gt; sqrt(x))
-            printf(&quot;%d is a prime number.\n&quot;, x);
-        else
-            printf(&quot;%d is not a prime number.\n&quot;, x);
-        return 0;
-    }
-2).
-    #include &lt;stdio.h&gt;
-    #include &lt;math.h&gt;
-    int main() {
-        int i, x, flag = 1;
-        printf(&quot;input x :&quot;);
-        scanf(&quot;%d&quot;, &amp;x);
-        for (i = 2; i &lt;= sqrt(x); i++)
-            if (x % i == 0) {
-                flag = 0;
-                break;
-            }
-        if (flag == 1)
-            printf(&quot;%d is a prime number.\n&quot;, x);
-        else
-            printf(&quot;%d is not a prime number.\n&quot;, x);
-        return 0;
-    }
-    
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input x :34
-34 is not a prime number.
-
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>29.打印100~200之间的素数
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int flag;
-    for (int x = 100; x &lt;= 200; x++) {
-    //for(int x = 101; x &lt;=199; x += 2){
-        flag = 1;
-        for (int i = 2; i &lt;= sqrt(x); i++)
-            if (x % i == 0) {
-                flag = 0;
-                break;
-            }
-        if (flag == 1)
-            printf(&quot;%d\t&quot;, x);
-    }
-
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-101	103	107	109	113	127	131	137	139	149	151	157	163	167	173	179	181	191	193	197	199	
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>30.打印ASCII码与字母
-
-#include &lt;stdio.h&gt;
-
-int main() {
-    for (int ch = 'a'; ch &lt;= 'z'; ch++) {
-        printf(&quot;%c=%d %c=%d &quot;, ch - 32, ch - 32, ch, ch);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-A=65 a=97 B=66 b=98 C=67 c=99 D=68 d=100 E=69 e=101 F=70 f=102 G=71 g=103 H=72 h=104 I=73 i=105 J=74 j=106 K=75 k=107 L=76 l=108 M=77 m=109 N=78 n=110 O=79 o=111 P=80 p=112 Q=81 q=113 R=82 r=114 S=83 s=115 T=84 t=116 U=85 u=117 V=86 v=118 W=87 w=119 X=88 x=120 Y=89 y=121 Z=90 z=122 
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>31.计算1-2+3-4+5-...+99-100=?
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int sum = 0;
-    for (int i = 1; i &lt;= 100; i++) {
-        sum += pow(-1, i - 1) * i;
-    }
-    printf(&quot;sum=%d&quot;, sum);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=-50
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>32.计算1/1+1/2+1/3+...1/100=?
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    float sum = 0;
-    for (int i = 1; i &lt;= 100; i++) {
-        sum += pow(i,-1);
-    }
-    printf(&quot;sum=%f&quot;, sum);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=5.187378
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>33.计算1/1+1/2+1/3+...+1/n=?,n=10^6
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    float sum = 0;
-    for (int i = 1; i &lt;= 1e6; i++) {
-        sum += pow(i, -1);
-    }
-    printf(&quot;sum=%f&quot;, sum);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=14.357358
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>34.输入两个整数m和n，求其最大公约数和最小公倍数
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int m, n, r, p;
-    printf(&quot;input m,n: &quot;);
-    scanf(&quot;%d,%d&quot;, &amp;m, &amp;n);
-    p = m * n;
-    do {
-        r = m % n;
-        m = n;
-        n = r;
-    } while (r != 0);
-    printf(&quot;最大公约数:%d\n&quot;, m);
-    printf(&quot;最小公倍数:%d&quot;, p / m);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input m,n: 6,8
-最大公约数:2
-最小公倍数:24
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>35.计算 2+22+222+2222+22222=？(此时n=5)
-
-#include &lt;stdio.h&gt;
-
-int main() {
-    int n, s = 0, t = 0;
-    scanf(&quot;%d&quot;, &amp;n);
-    for (int i = 1; i &lt;= n; i++) {
-        t = t * 10 + 2;
-        s += t;
-    }
-    printf(&quot;%d\n&quot;, s);
-    return 0;
-} 
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-5
-24690
-
-Process finished with exit code 0
-
-
-
-</code></pre>
-<pre><code>36.计算 2/1+3/2+5/3+8/5+... 求前20项
-
-#include &lt;stdio.h&gt;
-
-int main() {
-    float m = 2, n = 1, t, s = 0;
-    for (int i = 1; i &lt;= 20; i++) {
-        s += m / n;
-        t = m;
-        m += n;
-        n = t;
-    }
-    printf(&quot;sum=%f\n&quot;, s);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=32.660263
-
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>37.计算 1!+2!+3!+...+20!=?
-
-#include &lt;stdio.h&gt;
-
-int main() {
-    float s = 0, f = 1;
-    for (int i = 1; i &lt;= 20; i++) {
-        f *= i;
-        s += f;
-    }
-    printf(&quot;sum=%f\n&quot;, s);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=2561327455189073920.000000
-
-Process finished with exit code 0
-
-</code></pre>
-<p>38.计算</p>
-<pre><code class="language-math"> \sum_{k=1}^{100}{k}+\sum_{k=1}^{50}{k^2}+\sum_{k=1}^{10}\frac{1}{k}=?
-</code></pre>
-<pre><code>#include &lt;stdio.h&gt;
-
-int main() {
-    int s1 = 0, s2 = 0;
-    float s3 = 0;
-    for (int i = 1; i &lt;= 100; i++)
-        s1 += i;
-    for (int i = 1; i &lt;= 50; i++)
-        s2 += i * i;
-    for (int i = 1; i &lt;= 10; i++)
-        s3 += 1.0 / i;
-    printf(&quot;%f&quot;, s1 + s2 + s3);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-47977.929688
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>39.水仙花数：一个3位数，各位数字的立方和等于它本身（如：153）,打印全部水仙花数
-1).
-    #include &lt;stdio.h&gt;
-    #include &lt;math.h&gt;
-    
-    int main() {
-        int x, y, z, s;
-        for (int m = 100; m &lt; 1000; m++) {
-            x = m / 100;
-            y = m / 10 % 10;
-            z = m % 10;
-            s = pow(x, 3) + pow(y, 3) + pow(z, 3);
-            if (m == s)
-                printf(&quot;%d is a water flower number.\n&quot;, m);
-        }
-        return 0;
-    }
-2).
-    #include &lt;stdio.h&gt;
-    #include &lt;math.h&gt;
-    
-    int main() {
-        int x, s;
-        for (int m = 1; m &lt;= 9; m++)
-            for (int i = 0; i &lt;= 9; i++)
-                for (int j = 0; j &lt;= 9; j++) {
-                    x = m * 100 + i * 10 + j;
-                    s = pow(m, 3) + pow(i, 3) + pow(j, 3);
-                    if (x == s)
-                        printf(&quot;%d is a water flower number.\n&quot;, x);
-                }
-        return 0;
-    }
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-153 is a water flower number.
-370 is a water flower number.
-371 is a water flower number.
-407 is a water flower number.
-
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>40.如果一个数恰好等于它的因子之和，这个数为“完数”（例如:6=1+2+3），找出1000以内的完数，按照:“6 its factors are 1 2 3” 格式打印
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-int main() {
-    int s;
-    for (int i = 1; i &lt;= 1000; i++) {
-        s = 0;
-        for (int j = 1; j &lt;= i / 2; j++)
-            if (i % j == 0)
-                s += j;
-        if (s == i) {
-            printf(&quot;%d it's factors are &quot;, i);
-            for (int j = 1; j &lt;= i / 2; j++) {
-                if (i % j == 0)
-                    printf(&quot;%d &quot;, j);
-            }
-            printf(&quot;\n&quot;);
-        }
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-6 its factors are 1 2 3 
-28 its factors are 1 2 4 7 14 
-496 its factors are 1 2 4 8 16 31 62 124 248 
-
-Process finished with exit code 0
-
-
-</code></pre>
-<pre><code>41.一个球从100m的高度落下，每次落地后反跳回原高度的一半，再落下，再反弹。求它第10次落地时，共经过多少米，第10次反弹多高
-
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    float sum = 100, high = 50;
-    for (int i = 0; i &lt; 10; i++) {
-        sum += 2 * high;
-        high /= 2;
-    }
-    printf(&quot;sum=%.2f,high=%f\n&quot;, sum, high*2);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=299.90,high=0.024414
-
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>42.（课本P141）猴子吃桃
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int x1, x2 = 1;
-    for (int day = 9; day &gt;= 1; day--) {
-        x1 = 2 * (x2 + 1);
-        x2 = x1;
-    }
-    printf(&quot;num=%d\n&quot;, x1);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-num=1534
-
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>43.每个月兔子的总和依次为1，1，2，3，5，8，13...这就是斐波那契数列
-{
-    f1=1(n=1);
-    f2=1(n=2);
-    fn=f(n-1)+f(n-2)(n&gt;=3);
-}
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int f1 = 1, f2 = 1, f;
-    printf(&quot;%5d %5d&quot;, f1, f2);
-    for (int i = 3; i &lt;= 20; i++) {
-        f = f1 + f2;
-        printf(&quot;%5d &quot;, f);
-        if (i % 5 == 0)
-            printf(&quot;\n&quot;);
-        f1 = f2;
-        f2 = f;
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-    1     1    2     3     5 
-    8    13    21    34    55 
-   89   144   233   377   610 
-  987  1597  2584  4181  6765 
-
-Process finished with exit code 0
-
-
-</code></pre>
-<pre><code>44.判断一个数是否为素数
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int m, i;
-    scanf(&quot;%d&quot;, &amp;m);
-    for (i = 2; i &lt;= m / 2; i++)
-        if (m % i == 0)
-            break;
-    if (m/2 == i-1)
-        printf(&quot;Yes&quot;);
-    else
-        printf(&quot;No&quot;);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-5
-Yes
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>45.成绩平均值
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int sum = 0, s[10];
-    float ave;
-    for (int i = 0; i &lt;= 9; i++) {
-        scanf(&quot;%d&quot;, &amp;s[i]);
-        sum += s[i];
-    }
-    ave = sum / 10.0;
-    printf(&quot;ave=%f\n&quot;, ave);
-    for (int j = 0; j &lt; 10; j++) {
-        printf(&quot;%d&quot;, s[j]);
-    }
-    return 0;
-}
-
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-1
-2
-3
-4
-5
-6
-7
-8
-9
-0
-ave=4.500000
-1234567890
-Process finished with exit code 0
-
-
-</code></pre>
-<pre><code>46.把数组元素依次向后移动一个位置
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int a[11];
-    for (int i = 0; i &lt;= 10; i++) {
-        a[i] = i;
-        printf(&quot;%d &quot;, a[i]);
-    }
-    printf(&quot;\n&quot;);
-    for (int i = 10; i &gt;= 0; i--) {
-        a[i] = a[i - 1];
-    }
-    for (int i = 0; i &lt;= 10; i++) {
-        printf(&quot;%d &quot;, a[i]);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-0 1 2 3 4 5 6 7 8 9 10 
-0 0 1 2 3 4 5 6 7 8 9 
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>47.输入一组数据，找出最大值
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int a[10], max;
-    for (int i = 0; i &lt; 10; i++) {
-        scanf(&quot;%d&quot;, &amp;a[i]);
-    }
-    max = a[0];
-    for (int i = 1; i &lt; 10; i++) {
-        if (max &lt; a[i])
-            max = a[i];
-    }
-    printf(&quot;max=%d&quot;, max);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-12
-3
-2
-4
-5
-6
-3453
-123
-1
-1
-max=3453
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>48.输入一组数据，颠倒之后再输出
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int a[10], t;
-    for (int i = 0; i &lt; 10; i++) {
-        scanf(&quot;%d&quot;, &amp;a[i]);
-    }
-    printf(&quot;原始顺序：\n&quot;);
-    for (int i = 0; i &lt;= 9; i++) {
-        printf(&quot;%d &quot;, a[i]);
-    }
-    for (int i = 0; i &lt; 9 / 2; i++) {
-        t = a[i];
-        a[i] = a[9 - i];
-        a[9 - i] = t;
-    }
-    printf(&quot;\n交换之后的顺序：\n&quot;);
-    for (int i = 0; i &lt;= 9; i++) {
-        printf(&quot;%d &quot;, a[i]);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-1
-2
-3
-4
-5
-6
-7
-8
-9
-0
-原始顺序：
-1 2 3 4 5 6 7 8 9 0 
-交换之后的顺序：
-0 9 8 7 5 6 4 3 2 1 
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>49.冒泡排序
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int a[10] = {9, 7, 2, 5, 4, 1}, t;
-    for (int i = 0; i &lt; 5; i++) {
-        for (int j = 0; j &lt; 5 - i; j++) {
-            if (a[j] &gt; a[j + 1]) {
-                t = a[j];
-                a[j] = a[j + 1];
-                a[j + 1] = t;
-            }
-        }
-    }
-    for (int i = 0; i &lt; 6; i++) {
-        printf(&quot;%d &quot;, a[i]);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-1 2 4 5 7 9 
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>50.选择排序
-
-#include &lt;stdio.h&gt; 
-#include &lt;math.h&gt;
-
-int main() {
-    int a[6] = {9, 7, 2, 5, 4, 1}, k, t;
-    for (int i = 0; i &lt; 5; i++) {
-        k = i;
-        for (int j = k + 1; j &lt; 6; j++) {
-            if (a[k] &gt; a[j]) {
-                k = j;
-            }
-        }
-        if (k != i) {
-            t = a[i];
-            a[i] = a[k];
-            a[k] = t;
-        }
-
-    }
-    for (int i = 0; i &lt; 6; i++) {
-        printf(&quot;%d &quot;, a[i]);
-    }
-    return 0;
-}
-
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-int main() {
-    int a[6] = {9, 7, 2, 5, 4, 1}, k, t;
-    for (int i = 0; i &lt; 5; i++) {
-        k = 0;
-        for (int j =  1; j &lt; 6-i; j++) {
-            if (a[k] &lt; a[j]) {
-                k = j;
-            }
-        }
-        if (k != 5-i) {
-            t = a[5-i];
-            a[5-i] = a[k];
-            a[k] = t;
-        }
-        
-    }
-    for (int i = 0; i &lt; 6; i++) {
-        printf(&quot;%d &quot;, a[i]);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-1 2 4 5 7 9 
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>51.有一个已经排好序的数值，要求输入一个数之后，按原来排序的规律将他插入数组中
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int a[9] = {10, 20, 30, 40, 50, 60, 70, 80}, x, p = 8;
-    printf(&quot;输入要插入的数：&quot;);
-    scanf(&quot;%d&quot;, &amp;x);
-    for (int i = 0; i &lt; 8; i++) {
-        if (x &lt; a[i]) {
-            p = i;
-            break;
-        }
-    }
-    for (int i = 8; i &gt; p; i--) {
-        a[i] = a[i - 1];
-    }
-    a[p] = x;
-    for (int i = 0; i &lt; 9; i++) {
-        printf(&quot;%d &quot;, a[i]);
-    }
-    return 0;
-}
-输入:
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-输入要插入的数：78
-10 20 30 40 50 60 70 78 80 
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>52.在数组中删除一个数
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int a[8] = {10, 20, 30, 40, 50, 60, 70, 80}, x, j, i,flag=0;
-    printf(&quot;输入要删除的数：&quot;);
-    scanf(&quot;%d&quot;, &amp;x);
-    for (i = 0, j = 0; i &lt; 8; i++) {
-        if (a[i] != x) {
-            a[j] = a[i];
-            j++;
-        }else{
-            flag=1;
-        }
-    }
-    if(flag==1)
-        a[8-1]=0;
-    for (int k = 0; k &lt; 8; k++) {
-        printf(&quot;%d &quot;, a[k]);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-输入要删除的数：10
-20 30 40 50 60 70 80 0 
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>53.二维矩阵进行行列倒置
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int a[3][4],b[4][3];
-    for (int i = 0; i &lt;3 ; i++) {
-        for (int j = 0; j &lt;4 ; j++) {
-            scanf(&quot;%d&quot;,&amp;a[i][j]);
-        }
-    }
-    for (int i = 0; i &lt;3 ; i++) {
-        for (int j = 0; j &lt;4 ; j++) {
-           b[j][i]=a[i][j];
-        }
-    }
-    for (int i = 0; i &lt;3 ; i++) {
-        for (int j = 0; j &lt;4 ; j++) {
-            printf(&quot;%3d &quot;,a[i][j]);
-        }
-        printf(&quot;\n&quot;);
-    }
-    printf(&quot;\n&quot;);
-    for (int i = 0; i &lt;4 ; i++) {
-        for (int j = 0; j &lt;3 ; j++) {
-            printf(&quot;%3d &quot;,b[i][j]);
-        }
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-1
-2
-3
-4
-5
-6
-7
-8
-9
-0
-1
-2
-  1   2   3   4 
-  5   6   7   8 
-  9   0   1   2 
-
-  1   5   9 
-  2   6   0 
-  3   7   1 
-  4   8   2 
-
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>54.找出矩阵最大值，并输出行号和列号
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int a[3][4] = {{5,  2, 0,  9},
-                   {3,  7, 12, 6},
-                   {19, 4, 1,  8}}, max, col, row;
-    for (int i = 0; i &lt; 3; i++) {
-        for (int j = 0; j &lt; 4; j++) {
-            if (a[i][j] &gt; max) {
-                max = a[i][j];
-                row = i;
-                col = j;
-            }
-        }
-    }
-    printf(&quot;max=%d\n&quot;, max);
-    printf(&quot;max=a[%d][%d]&quot;, row, col);
-
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-max=19
-max=a[2][0]
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>55.折半查找
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int a[6] = {-2, 3, 6, 8, 12, 15}, bottom, top, mid, x;
-    scanf(&quot;%d&quot;, &amp;x);
-    bottom = 0;
-    top = 5;
-    while (bottom &lt;= top) {
-        mid = (bottom + top) / 2;
-        if (a[mid] == x) {
-            printf(&quot;Find! a[%d]=%d\n&quot;, mid, x);
-            break;
-        } else if (x &gt; a[mid]) {
-            bottom = mid + 1;
-        } else {
-            top = mid - 1;
-        }
-    }
-    if (bottom &gt; top)
-        printf(&quot;No find!\n&quot;);
-
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
--2
-Find! a[0]=-2
-
-Process finished with exit code 0
-
-</code></pre>
-<pre><code>56.456789321
-
-#include&lt;stdio.h&gt;
-
-int main()
-{   int t;
-    int a[9]= {1,2,3,4,5,6,7,8,9};
-    for(int j=0; j&lt;4; j++) {
-        t=a[0];
-        for(int i=1; i&lt;9-j; i++) {
-            a[i-1]=a[i];
-        }
-        a[9-j-1]=t;
-    }
-    for(int i=0; i&lt;9; i++)
-        printf(&quot;%d&quot;,a[i]);
-    return 0;
-}
-
-#include&lt;stdio.h&gt;
-int main()
-{
-    int a[]= {1,2,3,4,5,6,7,8,9,0},i,j,t;
-    for(i=0; i&lt;3; i++) {
-        t=a[0];
-        for(j=0; j&lt;10-i-2; j++)
-            a[j]=a[j+1];
-        a[10-i-2]=t;
-    }
-    for(i=0; i&lt;10; i++)
-        printf(&quot;%d&quot;,a[i]);
-    return 0;
-}
-
-</code></pre>
-<pre><code>57.进制转换
-
-#include&lt;stdio.h&gt;
-
-int converse(int n)
-{
-    int i=0;
-    char a[20],b[]=&quot;0123456789ABCDEF&quot;;
-    while(n) {
-        a[i++]=b[n%16];
-        n=n/16;
-    }
-    for(--i; i&gt;=0; i--)
-        printf(&quot;%c&quot;,a[i]);
-}
-int main()
-{
-    converse(200);
-    return 0;
-}
-</code></pre>
-<pre><code>80.打印杨辉三角
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-const int length = 10;// 定义杨辉三角的大小
-int main()
-{
-    int nums[length][length];
-    int i, j;
-    /*计算杨辉三角*/ 
-    for(i=0; i&lt;length; i++)
-    {
-        nums[i][0] = 1;
-        nums[i][i] = 1;
-        for(j=1; j&lt;i; j++)
-            nums[i][j] = nums[i-1][j-1] + nums[i-1][j];
-    }
-
-    /*打印输出*/ 
-    for(i=0; i&lt;length; i++)
-    {
-        for(j=0; j&lt;length-i-1; j++)
-            printf(&quot;   &quot;);
-        for(j=0; j&lt;=i; j++)
-            printf(&quot;%-5d &quot;, nums[i][j]);
-        putchar('\n');
-    }
-}
-</code></pre>
-<pre><code>79.字母加密解密
-加密:
-#include&lt;stdio.h&gt;
-#include&lt;ctype.h&gt;
-int main()
-{   char ch;
-    while((ch=getchar())!='\n') {
-        if(isupper(ch))
-            ch=(ch-'A'+4)%26+'A';
-        if(islower(ch))
-            ch=(ch-'a'+4)%26+'a';
-        printf(&quot;%c&quot;,ch);
-    }
-    return 0;
-}
-解密:
-#include&lt;stdio.h&gt;
-#include&lt;ctype.h&gt;
-int main()
-{   char ch;
-    while((ch=getchar())!='\n') {
-        if(isupper(ch))
-            ch=(ch-'A'+22)%26+'A';
-        if(islower(ch))
-            ch=(ch-'a'+22)%26+'a';
-        printf(&quot;%c&quot;,ch);
-    }
-    return 0;
-}
-</code></pre>
-<pre><code>78.递归二分查找
-#include&lt;stdio.h&gt;
-int find(int n[],int x,int low,int high) {
-    if(high&gt;=low) {
-        int mid = (low + high)/2;
-        if(x&gt;n[mid])
-            return find(n,x,mid+1,high);
-        else if(x&lt;n[mid])
-            return find(n,x,low,mid-1);
-        else
-            return 1;
-    } else {
-        return 0;
-    }
-}
-int main() {
-    int a[]= {1,2,4,5,8,9,10};
-    printf(&quot;%d&quot;,find(a,8,0,6));
-    return 0;
-}
-</code></pre>
-<pre><code>77.二维数组的指针的运用
-#include&lt;stdio.h&gt;
-int main()
-{   int m[4][3]= {{5,2,3},{4,5,6},{7,8,9},{10,11,12}};
-    int i,j,*a=m,**p=&amp;a,(*b)[3]=m;
-    
-    printf(&quot;%d\n&quot;,*(*(b+2)+0));
-    printf(&quot;%d&quot;,*(*p+6));
-    return 0;
-}
-</code></pre>
-<pre><code>76.&quot;****A*BC*DEF*G*****&quot;☞&quot;ABCDEFG*****&quot;
-
-#include &quot;stdio.h&quot;
-int main() {
-    char s[]=&quot;****A*BC*DEF*G*****&quot;,*t=s;
-    int i,j;
-    while(*t) {
-        t++;
-    }
-    t--;
-    while(*t=='*') {
-        t--;
-    }
-    for(i=0,j=0; &amp;s[i]!=t; i++) {
-        if(s[i]!='*')
-            s[j++]=s[i];
-    }
-    while(*t) {
-        s[j++]=*t++;
-    }
-    s[j]='\0';
-    puts(s);
-    return 0;
-}
-
-#include &quot;stdio.h&quot;
-int main() {
-    char s[]=&quot;****A*BC*DEF*G*****&quot;,*t=s;
-    int i,j;
-    while(*++t);
-    while(*--t=='*');
-    for(i=0,j=0; &amp;s[i]!=t; i++) {
-        if(s[i]!='*') s[j++]=s[i];
-    }
-    while(*t) {
-        s[j++]=*t++;
-    }
-    s[j]='\0';
-    puts(s);
-    return 0;
-}
-</code></pre>
-<pre><code>75.库函数strcmp()
-
-#include&lt;string.h&gt;
-int strcmp ( char* src,char* dst)
-{
-    int ret = 0 ;
-    while( !(ret = *src - *dst) &amp;&amp; *dst)
-        ++src, ++dst;
-    if ( ret &lt; 0 )
-        ret = -1 ;
-    else if ( ret &gt; 0 )
-        ret = 1 ;
-    return( ret );
-}
-</code></pre>
-<pre><code>74.int **p双重指针
-
-#include&lt;stdio.h&gt;
-int main()
-{
-    int p[3][4]= {15,2,3,4,5,6,7,8,9};
-    int *s=p;
-    int **a=&amp;s;
-    printf(&quot;%d\n&quot;,p);
-    printf(&quot;%d\n&quot;,s);
-    printf(&quot;%d&quot;,a);
-    return 0;
-}
-</code></pre>
-<pre><code>73.折半插入排序（自己实现）
-1)升序
-#include&lt;stdio.h&gt;
-int insertsort(int a[],int n) {
-    int bottom,mid,top,temp,i,j;
-    for(i=1; i&lt;n; i++) {
-        //bottom值为0,top值为被排序值前一位
-        bottom=0;
-        top=i-1;
-        while(bottom&lt;=top) {
-            mid=(bottom+top)/2;
-            if(a[i]&gt;a[mid])
-                bottom=mid+1;
-            else
-                top=mid-1;
-        } 
-        //当前mid为最接近被排序值的位，如果被排序值大于mid。则mid++
-        if(a[i]&gt;a[mid])
-            mid++;
-        //mid以后到i-1整体后移一位，被排序值与a[mid]交换
-        temp=a[i];
-        for(j=i-1; j&gt;=mid; j--)
-            a[j+1]=a[j];
-        a[mid]=temp;
-        //每次排序都打印（此处理解用）
-        printf(&quot;i=%d,mid=%d\n&quot;,i,mid);
-        for(int k=0; k&lt;n; k++)
-            printf(&quot;%d &quot;,a[k]);
-        printf(&quot;\n&quot;);
-    }
-}
-int main()
-{   int x[]= {23,7,823,586,2,1,6,11};
-    insertsort(x,sizeof(x)/4);
-    return 0;
-}
-
-2)降序
-#include&lt;stdio.h&gt;
-int insertsort(int a[],int n) {
-    int bottom,mid,top,temp,i,j;
-    for(i=1; i&lt;n; i++) {
-        //bottom值为0,top值为被排序值前一位
-        bottom=0;
-        top=i-1;
-        while(bottom&lt;=top) {
-            mid=(bottom+top)/2;
-            if(a[i]&gt;a[mid])
-                top=mid-1;
-            else
-                bottom=mid+1;
-            //当前mid为最接近被排序值的位，如果被排序值小于mid。则mid++
-            if(a[i]&lt;a[mid])
-                mid++;
-        }
-        //mid以后i-1全体后移一位，被排序值与a[mid]交换
-        temp=a[i];
-        for(j=i-1; j&gt;=mid; j--)
-            a[j+1]=a[j];
-        a[mid]=temp;
-        //每次排序都打印（此处理解用）
-        printf(&quot;i=%d,mid=%d\n&quot;,i,mid);
-        for(int k=0; k&lt;n; k++)
-            printf(&quot;%d &quot;,a[k]);
-        printf(&quot;\n&quot;);
-    }
-}
-int main() {
-    int x[]= {23,7,823,586,2,1,6,11};
-    insertsort(x,sizeof(x)/4);
-    return 0;
-}
-
-3)老师实现(傻屌，不看也罢)
-#include&lt;stdio.h&gt;
-int insertsort(int a[],int n) {
-    int bottom,mid,top,i,j;
-    for(i=2; i&lt;=n; i++) {
-        //a[0]为空闲，作为哨兵是temp的作用,不参与排序
-        a[0]=a[i];
-        bottom=1;
-        top=i-1;
-        while(bottom&lt;=top) {
-            mid=(bottom+top)/2;
-            if(a[0]&gt;a[mid])
-                bottom=mid+1;
-            else
-                top=mid-1;
-        }
-        for(j=i-1; j&gt;=top+1; j--)
-            a[j+1]=a[j];
-        a[top+1]=a[0];
-        //每次排序都打印（从a[1]打印到a[n]）
-        printf(&quot;\n&quot;);
-        for(int k=1; k&lt;n+1; k++)
-            printf(&quot;%d &quot;,a[k]);
-        printf(&quot;\n&quot;);
-    }
-}
-int main() {
-    int x[]= {0,23,7,823,586,2,1,6,11};
-    insertsort(x,sizeof(x)/4);
-    return 0;
-}
-</code></pre>
-<pre><code>72.求自然对数e=1+1/1!+1/2!+…+1/n!
-#include &lt;stdio.h&gt;
-int main()
-{
-    long n = 0, ns = 1;
-    double x=0.0, e = 1.0;
-    while(1) {
-        n++;
-        ns *= n;
-        x = 1.0 / ns;
-        if (x &lt; 1e-8)
-            break;
-        e += x;
-    }
-    printf(&quot;%9.10f\n&quot;, e);
-    return 0;
-}
-
-</code></pre>
-<pre><code>71.顺序插入排序法
-#include &quot;stdio.h&quot;
-int main() {
-    int c[]= {23,1,56,234,7,0,34},i,j,t;
-    for(i=1; i&lt;7; i++) {
-        t=c[i];
-        j=i-1;
-        while(j&gt;=0 &amp;&amp; t&gt;c[j]) {
-            c[j+1]=c[j];
-            j--;
-        }
-        c[j+1]=t;
-    }
-    for(i=0; i&lt;7; i++)
-        printf(&quot;%d &quot;,c[i]);
-    putchar('\n');
-}
-</code></pre>
-<pre><code>70.一个球自由100m落下，每次反弹一半，问第10次落地经过多少m，最后一次反弹多高
-
-#include&lt;stdio.h&gt;
-int fun(float m,int n) {
-    if(n==0) {
-        printf(&quot;m=%f\n&quot;,m);
-        return 0;
-    } else {
-        return fun(m/2,n-1)+m;
-    }
-}
-int main()
-{
-    int m,n,c;
-    scanf(&quot;%d,%d&quot;,&amp;m,&amp;n);
-    c=fun(m,n)+m;
-    printf(&quot;c=%d&quot;,c);
-    return 0;
-}
-</code></pre>
-<pre><code>69.计算字符串长度
-#include&lt;stdio.h&gt;
-int len(char * s) {
-    char * p=s;
-    while(*p++);
-    return(p-s);
-}
-int main()
-{
-    int i=len(&quot;123456&quot;);
-    printf(&quot;%d&quot;,i);
-    return 0;
-}
-</code></pre>
-<pre><code>68. 库函数strstr()源码
-#include&lt;stdio.h&gt;
-char *strstr (char *str1,char *str2) {
-    char *cp = str1;
-    char *s1, *s2;
-    if ( !*str2 )
-        return(str1);
-    while (*cp) {
-        s1 = cp;
-        s2 = str2;
-        while ( *s1 &amp;&amp; *s2 &amp;&amp; !(*s1-*s2) )
-            s1++, s2++;
-        if (!*s2)
-            return(cp);
-        cp++;
-    }
-    return(NULL);
-}
-int main()
-{
-    char *p=strstr(&quot;a12345633258&quot;,&quot;56&quot;);
-    printf(&quot;%s&quot;,p);
-    return 0;
-}
-</code></pre>
-<pre><code>67.库函数strchr()源码
-#include&lt;stdio.h&gt;
-char *strchr (char *string,int ch) {
-    while (*string &amp;&amp; *string != (char)ch)
-        string++;
-    if (*string == (char)ch)
-        return(string);
-    return(NULL);
-}
-int main()
-{
-    char *p=strchr(&quot;123&quot;,'3');
-    printf(&quot;%c&quot;,*p);
-    return 0;
-}
-</code></pre>
-<pre><code>66.实型比较大小(因为double和float精度不同所以直接判断有可能会判断失败)
-
-#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
-int main()
-{   double a=1.0000000000000001;
-    float b=1.0000000001;
-    if(fabs(a-b)&gt;1e-8)
-        printf(&quot;a&gt;b&quot;);
-    else
-        printf(&quot;a&lt;b&quot;);
-    return 0;
-}
-</code></pre>
-<pre><code>65.读程序结果
-
-#include&lt;stdio.h&gt;
-int main()
-{   //四舍五入
-    double x =1.234;
-    printf(&quot;%.2f&quot;,x);
-    return 0;
-}
-</code></pre>
-<pre><code>64.求π的近似值,不同的方法近似度不同(课本p131)
-
-第①种  π/4=...
-
-#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
-double pi(double eps)
-{
-    double t=1.0,s=0.0;
-    int n=1,i=0;
-
-    while(fabs(t)&gt;=eps) {
-        t=pow(-1,i)/(2*n-1);
-        s+=t;
-        i++;
-        n++;
-    }
-    return s*4;
-}
-int main()
-{
-    //eps为精度控制
-    double eps=1e-6;
-    printf(&quot;%.6f\n&quot;,pi(eps));
-    return 0;
-}
-
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-int main(){
-    float s=1;
-    float pi=0;
-    float i=1.0;
-    float n=1.0;
-    while(fabs(i)&gt;=1e-6){
-        pi+=i;
-        n=n+2;
-        s=-s; 
-        i=s/n;
-    }
-    pi=4*pi;
-    printf(&quot;pi的值为：%.6f\n&quot;,pi);
-    return 0;
-}
-
-第②类 π/2=1+1/3+1/3*2/5+1/3*2/5*3/7+1/3*2/5*3/7*4/9+...
-
-#include&lt;stdio.h&gt;
-double pi(double eps)
-{
-    double s=0.0,t=1.0;
-    int n;
-    for(n=1; t&gt;=eps; n++) {
-        s+=t;
-        t=n*t/(2*n+1);
-    }
-    return 2*s;
-}
-int main()
-{
-    //eps为精度控制
-    double eps=1e-6;
-    printf(&quot;%0.6f\n&quot;,pi(eps));
-    return 0;
-}
-
-第③种  π²/6=...  
-
-#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
-double pi(double eps) {
-    double s=0.0,t=1.0,n;
-    for(n=1; t&gt;=eps; n++) {
-        t=1/(n*n);
-        s+=t;
-    }
-    return sqrt(6*s);
-}
-int main() {
-    //eps为精度控制
-    double eps=1e-6;
-    printf(&quot;%0.6f\n&quot;,pi(eps));
-    return 0;
-}
-
-</code></pre>
-<pre><code>63.读程序结果
-#include &lt;stdio.h&gt;
-#define PR(ar) printf(&quot;%d &quot;,ar);
-main()
-{
-    int j, a[] = { 1, 3, 5, 7, 9, 11, 15 }, *p = a + 5;
-    for (j = 3; j; j--)
-        switch (j)
-        {
-        case 1:
-        case 2:
-            //*号的优先级很低
-            PR(*p++);
-            break;
-        case 3:
-            PR(*(--p));
-        }
-    printf(&quot;\n&quot;);
-}
-</code></pre>
-<pre><code>
-
-62.整数数值交换
-#include&lt;stdio.h&gt;
-int main()
-{   int a=1,b=2;
-    a-=b;
-    b+=a;
-    a=b-a;
-    printf(&quot;a=%d,b=%d&quot;,a,b);
-    return 0;
-}
-</code></pre>
-<pre><code>61.将9个学生的考试成绩进行分段统计，考试成绩放在a数组中，各分数段的人数存在b组中：成绩为60到69的人数
-存到b［0］中，成绩为70到79的人数存到b［1］，成绩为80到89的人数存到b［2］，成绩为90到99的人数存到b［3
-］，成绩为100的人数存到b［4］，成绩为60以下的人数存到b［5］中。请输出数组b中的数据。假设a数组中的整数
-数据为：93 85 77 68 59 43 94 75 98。 要求程序简练，采用的分支语录中分支语句中支数尽量少。
-
-#include&lt;stdio.h&gt;
-int main()
-{   int a[9]= {93,85,77,68,59,43,94,75,98},b[6]= {0},i;
-    for(i=0; i&lt;9; i++)
-        if(a[i]&lt;60)
-            b[5]++;
-        else
-            b[(a[i]-60)/10]++;
-    for(i=0; i&lt;6; i++)
-        printf(&quot;%d&quot;,b[i]);
-    return 0;
-}
-</code></pre>
-<pre><code>60.利用指针设计一个函数，求字符串长度
-int strlen(char *s) {
-    char *p=s;
-    while(*p)
-        p++;
-    return p-s;
-}
-</code></pre>
-<pre><code>59.不规则数组去重
-(自己写的)
-#include&lt;stdio.h&gt;
-int main()
-{   int a[]= {1,2,2,2,4,5,5,8,9,9};
-    int i,j,n=10,z,m;
-    for(i=0; i&lt;n; i++) {
-        //更新数组长度，m必须每次全部平移后才能更新
-        m=n;
-        for(j=i+1,z=i+1; j&lt;m; j++)
-            if(a[i]!=a[j]) {
-                a[z++]=a[j];
-            } else {
-                //记录数组移除重复数量
-                n--;
-            }
-    }
-
-    for(int k=0; k&lt;n; k++)
-        printf(&quot;%d&quot;,a[k]);
-    return 0;
-}
-
-(老师写的)
-#include&lt;stdio.h&gt;
-int main()
-{   int a[]= {1,2,2,2,2,4,5,5,8,9,9};
-    int i,j,k,n=11;
-    for(i=0; i&lt;n; i++) {
-        for(j=i+1; j&lt;n;)
-            if(a[i]==a[j]) {
-                for(k=j+1; k&lt;n; k++)
-                    a[k-1]=a[k];
-                n--;
-            } else {
-                j++;
-            }
-    }
-
-    for(int t=0; t&lt;n; t++)
-        printf(&quot;%d&quot;,a[t]);
-    return 0;
-}
-</code></pre>
-<pre><code>58.p166  统计单词个数，并记录最长单词长度
-#include&lt;stdio.h&gt;
-
-int main()
-{
-    char string[81];
-    int i,num=0,len=0,max=0;
-    char c;
-    gets(string);
-    for(i=0; (c=string[i])!='\0'; i++)
-        if(c==' ') {
-            if(len&gt;max)
-                max=len;
-            len=0;
-        }
-        else if(len==0) {
-            len++;
-            num++;
-        }
-        else {
-            len++;
-        }
-
-    printf(&quot;There are %d words ,The longest word is %d&quot;,num,max);
-    return 0;
-}
 </code></pre>
 ]]></content>
     </entry>
