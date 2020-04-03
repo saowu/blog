@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-03T11:50:23.614Z</updated>
+    <updated>2020-04-03T11:56:25.293Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io"/>
     <link rel="self" href="https://saowu.github.io/atom.xml"/>
@@ -1879,7 +1879,7 @@ pip3 uninstall -r requirements.txt
 <h3 id="11-生成requirementstxt文件">11、生成requirements.txt文件</h3>
 <pre><code>pip freeze &gt; ./requirements.txt
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/22721986-a940ca2142a2b929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="requirements.txt" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/post-images/1585914935212.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
