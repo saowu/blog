@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-03T15:09:25.521Z</updated>
+    <updated>2020-04-04T01:00:19.283Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io"/>
     <link rel="self" href="https://saowu.github.io/atom.xml"/>
@@ -10,6 +10,39 @@
     <logo>https://saowu.github.io/images/avatar.png</logo>
     <icon>https://saowu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[ FigureBed图床系统]]></title>
+        <id>https://saowu.github.io/IVwOk1Phb/</id>
+        <link href="https://saowu.github.io/IVwOk1Phb/">
+        </link>
+        <updated>2020-04-03T12:06:39.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>Flask 个人图床</p>
+</blockquote>
+<p>👉<a href="http://118.89.237.69:8000">demo website</a><br>
+👉<a href="https://github.com/saowu/FigureBed">GitHub</a></p>
+<h4 id="功能支持">功能支持</h4>
+<pre><code>1.支持多文件上传（set max=5）
+2.支持导出上传记录（csv文件）
+3.支持返回多种链接格式 （link, markdown, html, bbcode，removal）
+4.可以通过removal链接自行删除图片文件
+5.使用mysql数据库
+6.支持拖动上传
+</code></pre>
+<h4 id="docker部署">Docker部署</h4>
+<pre><code>#构建flask+gunicorn+gevent(+nginx)
+$docker build -t saowu/figurebed:1.0 .
+$docker run  -p 8000:8888 -v /home/myDataVolume:/home/myDataVolume -d saowu/figurebed:1.0
+
+#构建nginx(cd /nginx)
+$docker build -t saowu/nginx:1.0 .
+$docker run --name nginx1 -p 80:80 -d saowu/nginx:1.0
+</code></pre>
+<h4 id="ui展示">UI展示</h4>
+<p><img src="https://saowu.github.io/post-images/1585915830120.png" alt="" loading="lazy"><br>
+<img src="https://saowu.github.io/post-images/1585915839679.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（76-80）]]></title>
         <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-76-80/</id>

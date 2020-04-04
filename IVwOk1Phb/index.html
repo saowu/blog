@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | saowu&#39;s Blog</title>
+<title> FigureBed图床系统 | saowu&#39;s Blog</title>
 <link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585962011596">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="关于 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title=" FigureBed图床系统 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 <link rel="stylesheet" href="https://saowu.github.io/media/live2d/css/live2d.css">
@@ -16,15 +16,14 @@
 
 
     <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
+Flask 个人图床
 
-🏠 关于本站
-
-☝这里列出的所有观点都是我自己的，并不代表我的雇主； 未来，过去和现在
-
-👨‍💻 博主是谁
-
-😏本博主是一个本博主母校的一名大三学生、准Java 程序员、准Python程序..." />
+👉demo website
+👉GitHub
+功能支持
+1.支持多文件上传（set max=5）
+2.支持导出上传记录（csv文件）
+3.支持返回多种链接格式 （link, markdown, html, bbc..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -87,11 +86,11 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+               FigureBed图床系统
             </h2>
             <div class="post-info">
               <span>
-                2019-01-25
+                2020-04-03
               </span>
               <span>
                 1 min read
@@ -99,48 +98,52 @@
               
             </div>
             
+              <img class="post-feature-image" src="https://saowu.github.io/post-images/IVwOk1Phb.jpg" alt="">
+            
             <div class="post-content-wrapper">
               <div class="post-content">
                 <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+<p>Flask 个人图床</p>
 </blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<ul>
-<li>☝这里列出的所有观点都是我自己的，并不代表我的雇主； 未来，过去和现在</li>
-</ul>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<ul>
-<li>😏本博主是一个本博主母校的一名<code>大三学生</code>、<code>准Java 程序员</code>、<code>准Python程序员</code>。</li>
-</ul>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<pre><code>-  Java,Python,SQL,JavaScript
--  Linux system administration and command line proficiency
--  Docker,Spring Boot, Git,Flask,DjangoAlgorithms and Data Structures
--  During the period of school, I have won the competition awards and many project internship experiences
+<p>👉<a href="http://118.89.237.69:8000">demo website</a><br>
+👉<a href="https://github.com/saowu/FigureBed">GitHub</a></p>
+<h4 id="功能支持">功能支持</h4>
+<pre><code>1.支持多文件上传（set max=5）
+2.支持导出上传记录（csv文件）
+3.支持返回多种链接格式 （link, markdown, html, bbcode，removal）
+4.可以通过removal链接自行删除图片文件
+5.使用mysql数据库
+6.支持拖动上传
 </code></pre>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<ul>
-<li>👋<a href="mailto:saowu.gan@qq.com">Email</a></li>
-</ul>
-<h2 id="友情链接">🔗 友情链接</h2>
-<ul>
-<li>💪<a href="https://www.blogzhy.top/">Zhy、Blog</a></li>
-<li>💪<a href="https://LiuMiaoo.github.io/">LiuMiaoo's Blog</a></li>
-<li>💪<a href="https://blog.itjoker.cn/">IT joker</a></li>
-<li>💪<a href="https://gridea.dev/">Gridea</a></li>
-</ul>
-<p><em>🤙🤙🤙欢迎小伙伴，评论区或邮箱联系我，交换友链。</em></p>
+<h4 id="docker部署">Docker部署</h4>
+<pre><code>#构建flask+gunicorn+gevent(+nginx)
+$docker build -t saowu/figurebed:1.0 .
+$docker run  -p 8000:8888 -v /home/myDataVolume:/home/myDataVolume -d saowu/figurebed:1.0
+
+#构建nginx(cd /nginx)
+$docker build -t saowu/nginx:1.0 .
+$docker run --name nginx1 -p 80:80 -d saowu/nginx:1.0
+</code></pre>
+<h4 id="ui展示">UI展示</h4>
+<p><img src="https://saowu.github.io/post-images/1585915830120.png" alt="" loading="lazy"><br>
+<img src="https://saowu.github.io/post-images/1585915839679.png" alt="" loading="lazy"></p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
-<li><a href="#%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5">🔗 友情链接</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%8A%9F%E8%83%BD%E6%94%AF%E6%8C%81">功能支持</a></li>
+<li><a href="#docker%E9%83%A8%E7%BD%B2">Docker部署</a></li>
+<li><a href="#ui%E5%B1%95%E7%A4%BA">UI展示</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -150,6 +153,15 @@
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-76-80/">
+              <h3 class="post-title">
+                C语言程序集（76-80）
+              </h3>
+            </a>
+          </div>
         
 
         
