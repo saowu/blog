@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-04T06:54:07.598Z</updated>
+    <updated>2020-04-04T08:51:46.794Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io"/>
     <link rel="self" href="https://saowu.github.io/atom.xml"/>
@@ -10,6 +10,61 @@
     <logo>https://saowu.github.io/images/avatar.png</logo>
     <icon>https://saowu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[What is docker ？]]></title>
+        <id>https://saowu.github.io/yadpkA34H/</id>
+        <link href="https://saowu.github.io/yadpkA34H/">
+        </link>
+        <updated>2020-04-04T06:57:19.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>据“咳咳咳”学统计，学会了Docker你可以少死去好几百万只手也数不过来的脑细胞。</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/post-images/1585984531665.png" alt="" loading="lazy"></figure>
+<h2 id="docker是什么">Docker是什么？</h2>
+<ul>
+<li>Docker 是一个开源的应用容器引擎，让开发者可以以统一的方式打包他们的应用以及依赖包到一个可移植的<code>容器</code>中，然后发布到任何安装了docker引擎的服务器上（包括流行的Linux机器、windows机器），也可以实现虚拟化。</li>
+</ul>
+<h2 id="docker-核心概念">Docker 核心概念</h2>
+<ul>
+<li>Docker 中有三个核心概念：<code>Image</code>、<code>Container</code>、<code>Repository</code>。</li>
+</ul>
+<h3 id="容器">容器</h3>
+<ul>
+<li>容器（Container）是打包代码及其所有依赖项的标准软件单元，因此应用程序可以从一个计算环境快速可靠地运行到另一个计算环境。容器的存在离不开镜像的支持，他是镜像运行时的一个载体（类似于实例和类的关系）。依托 Docker 的虚拟化技术，给容器创建了独立的端口、进程、文件等“空间”，Container 就是一个与宿机隔离 “容器”。容器可宿主机之间可以进行 port、volumes、network 等的通信。容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低</li>
+</ul>
+<h3 id="容器镜像">容器镜像</h3>
+<ul>
+<li>Docker容器镜像（Images）是一个轻量级的，独立的，可执行的软件包，其中包含运行应用程序所需的一切：代码，运行环境，系统工具，系统库和设置。容器镜像在运行时会成为容器，对于Docker容器，镜像会在Docker Engine上运行时成为容器。不论基础架构如何，容器化软件都可用于基于Linux和Windows的应用程序，始终运行相同。容器将软件与其环境隔离开来，并确保尽管开发和登台之间存在差异，但软件仍可以均匀运行。</li>
+</ul>
+<h3 id="容器仓库">容器仓库</h3>
+<ul>
+<li>Docker 的仓库和 git 的仓库比较相似，拥有仓库名、tag。在本地构建完镜像之后，即可通过仓库进行镜像的分发。常用的 Docker hub 有 https://hub.docker.com/ 、 https://cr.console.aliyun.com/ 等。</li>
+</ul>
+<h2 id="docker特点">Docker特点</h2>
+<ul>
+<li><strong>标准</strong>： Docker创建了容器的行业标准，因此它们可以在任何地方移植</li>
+<li><strong>轻量级</strong>：容器共享计算机的OS系统内核，因此不需要每个应用程序都具有OS，从而提高了服务器效率并降低了服务器和许可成本</li>
+<li><strong>安全</strong>：应用程序在容器中更安全，并且Docker提供了业界最强大的默认隔离功能</li>
+</ul>
+<h2 id="docker与虚拟机">Docker与虚拟机</h2>
+<h3 id="虚拟机组织结构">虚拟机组织结构</h3>
+<ul>
+<li>虚拟机（VM）是将一台服务器转变为多台服务器的物理硬件的抽象。虚拟机管理程序允许多个VM在单台计算机上运行。每个VM包含操作系统，应用程序，必要的二进制文件和库的完整副本-占用数十GB。VM也可能启动缓慢。<br>
+<img src="https://saowu.github.io/post-images/1585984071248.png" alt="" loading="lazy"></li>
+</ul>
+<h3 id="docker组织结构">Docker组织结构</h3>
+<ul>
+<li>容器是应用程序层的抽象，将代码和依赖项打包在一起。多个容器可以在同一台机器上运行，并与其他容器共享OS内核，每个容器在用户空间中作为隔离的进程运行。容器占用的空间少于VM（容器映像的大小通常为几十MB），可以处理更多的应用程序，并且需要的VM和操作系统更少。<br>
+<img src="https://saowu.github.io/post-images/1585984137288.png" alt="" loading="lazy"></li>
+</ul>
+<h2 id="docker用处">Docker用处</h2>
+<ul>
+<li><strong>提供一次性的环境</strong>。 比如，本地测试他人的软件、持续集成的时候提供单元测试和构建的环境。</li>
+<li><strong>提供弹性的云服务</strong>。 因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</li>
+<li><strong>组建微服务架构</strong>。 通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ FigureBed图床系统]]></title>
         <id>https://saowu.github.io/IVwOk1Phb/</id>

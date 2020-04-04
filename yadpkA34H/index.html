@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title> FigureBed图床系统 | saowu&#39;s Blog</title>
+<title>What is docker ？ | saowu&#39;s Blog</title>
 <link rel="shortcut icon" href="https://saowu.github.io/favicon.ico?v=1585990194006">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title=" FigureBed图床系统 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="What is docker ？ | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 <link rel="stylesheet" href="https://saowu.github.io/media/live2d/css/live2d.css">
@@ -16,15 +16,13 @@
 
 
     <meta name="description" content="
-Flask 个人图床
+据“咳咳咳”学统计，学会了Docker你可以少死去好几百万只手也数不过来的脑细胞。
 
-👉demo website
-👉GitHub
-功能支持
-1.支持多文件上传（set max=5）
-2.支持导出上传记录（csv文件）
-3.支持返回多种链接格式 （link, markdown, html, bbc..." />
-    <meta name="keywords" content="Repositories,Docker,Python,日记" />
+
+Docker是什么？
+
+Docker 是一个开源的应用容器引擎，让开发者可以以统一的方式打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何安..." />
+    <meta name="keywords" content="Docker,日记" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -86,26 +84,18 @@ Flask 个人图床
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-               FigureBed图床系统
+              What is docker ？
             </h2>
             <div class="post-info">
               <span>
-                2020-04-03
+                2020-04-04
               </span>
               <span>
-                1 min read
+                4 min read
               </span>
-              
-                <a href="https://saowu.github.io/tag/pPR9i6dAN/" class="post-tag">
-                  # Repositories
-                </a>
               
                 <a href="https://saowu.github.io/tag/p6tPptTlO/" class="post-tag">
                   # Docker
-                </a>
-              
-                <a href="https://saowu.github.io/tag/mVqrRKBAz/" class="post-tag">
-                  # Python
                 </a>
               
                 <a href="https://saowu.github.io/tag/5lhY7x_08/" class="post-tag">
@@ -114,52 +104,79 @@ Flask 个人图床
               
             </div>
             
-              <img class="post-feature-image" src="https://saowu.github.io/post-images/IVwOk1Phb.jpg" alt="">
+              <img class="post-feature-image" src="https://saowu.github.io/post-images/yadpkA34H.jpeg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
                 <blockquote>
-<p>Flask 个人图床</p>
+<p>据“咳咳咳”学统计，学会了Docker你可以少死去好几百万只手也数不过来的脑细胞。</p>
 </blockquote>
-<p>👉<a href="http://118.89.237.69:8000">demo website</a><br>
-👉<a href="https://github.com/saowu/FigureBed">GitHub</a></p>
-<h4 id="功能支持">功能支持</h4>
-<pre><code>1.支持多文件上传（set max=5）
-2.支持导出上传记录（csv文件）
-3.支持返回多种链接格式 （link, markdown, html, bbcode，removal）
-4.可以通过removal链接自行删除图片文件
-5.使用mysql数据库
-6.支持拖动上传
-</code></pre>
-<h4 id="docker部署">Docker部署</h4>
-<pre><code>#构建flask+gunicorn+gevent(+nginx)
-$docker build -t saowu/figurebed:1.0 .
-$docker run  -p 8000:8888 -v /home/myDataVolume:/home/myDataVolume -d saowu/figurebed:1.0
-
-#构建nginx(cd /nginx)
-$docker build -t saowu/nginx:1.0 .
-$docker run --name nginx1 -p 80:80 -d saowu/nginx:1.0
-</code></pre>
-<h4 id="ui展示">UI展示</h4>
-<p><img src="https://saowu.github.io/post-images/1585915830120.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/post-images/1585915839679.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/post-images/1585984531665.png" alt="" loading="lazy"></figure>
+<h2 id="docker是什么">Docker是什么？</h2>
+<ul>
+<li>Docker 是一个开源的应用容器引擎，让开发者可以以统一的方式打包他们的应用以及依赖包到一个可移植的<code>容器</code>中，然后发布到任何安装了docker引擎的服务器上（包括流行的Linux机器、windows机器），也可以实现虚拟化。</li>
+</ul>
+<h2 id="docker-核心概念">Docker 核心概念</h2>
+<ul>
+<li>Docker 中有三个核心概念：<code>Image</code>、<code>Container</code>、<code>Repository</code>。</li>
+</ul>
+<h3 id="容器">容器</h3>
+<ul>
+<li>容器（Container）是打包代码及其所有依赖项的标准软件单元，因此应用程序可以从一个计算环境快速可靠地运行到另一个计算环境。容器的存在离不开镜像的支持，他是镜像运行时的一个载体（类似于实例和类的关系）。依托 Docker 的虚拟化技术，给容器创建了独立的端口、进程、文件等“空间”，Container 就是一个与宿机隔离 “容器”。容器可宿主机之间可以进行 port、volumes、network 等的通信。容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低</li>
+</ul>
+<h3 id="容器镜像">容器镜像</h3>
+<ul>
+<li>Docker容器镜像（Images）是一个轻量级的，独立的，可执行的软件包，其中包含运行应用程序所需的一切：代码，运行环境，系统工具，系统库和设置。容器镜像在运行时会成为容器，对于Docker容器，镜像会在Docker Engine上运行时成为容器。不论基础架构如何，容器化软件都可用于基于Linux和Windows的应用程序，始终运行相同。容器将软件与其环境隔离开来，并确保尽管开发和登台之间存在差异，但软件仍可以均匀运行。</li>
+</ul>
+<h3 id="容器仓库">容器仓库</h3>
+<ul>
+<li>Docker 的仓库和 git 的仓库比较相似，拥有仓库名、tag。在本地构建完镜像之后，即可通过仓库进行镜像的分发。常用的 Docker hub 有 https://hub.docker.com/ 、 https://cr.console.aliyun.com/ 等。</li>
+</ul>
+<h2 id="docker特点">Docker特点</h2>
+<ul>
+<li><strong>标准</strong>： Docker创建了容器的行业标准，因此它们可以在任何地方移植</li>
+<li><strong>轻量级</strong>：容器共享计算机的OS系统内核，因此不需要每个应用程序都具有OS，从而提高了服务器效率并降低了服务器和许可成本</li>
+<li><strong>安全</strong>：应用程序在容器中更安全，并且Docker提供了业界最强大的默认隔离功能</li>
+</ul>
+<h2 id="docker与虚拟机">Docker与虚拟机</h2>
+<h3 id="虚拟机组织结构">虚拟机组织结构</h3>
+<ul>
+<li>虚拟机（VM）是将一台服务器转变为多台服务器的物理硬件的抽象。虚拟机管理程序允许多个VM在单台计算机上运行。每个VM包含操作系统，应用程序，必要的二进制文件和库的完整副本-占用数十GB。VM也可能启动缓慢。<br>
+<img src="https://saowu.github.io/post-images/1585984071248.png" alt="" loading="lazy"></li>
+</ul>
+<h3 id="docker组织结构">Docker组织结构</h3>
+<ul>
+<li>容器是应用程序层的抽象，将代码和依赖项打包在一起。多个容器可以在同一台机器上运行，并与其他容器共享OS内核，每个容器在用户空间中作为隔离的进程运行。容器占用的空间少于VM（容器映像的大小通常为几十MB），可以处理更多的应用程序，并且需要的VM和操作系统更少。<br>
+<img src="https://saowu.github.io/post-images/1585984137288.png" alt="" loading="lazy"></li>
+</ul>
+<h2 id="docker用处">Docker用处</h2>
+<ul>
+<li><strong>提供一次性的环境</strong>。 比如，本地测试他人的软件、持续集成的时候提供单元测试和构建的环境。</li>
+<li><strong>提供弹性的云服务</strong>。 因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</li>
+<li><strong>组建微服务架构</strong>。 通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</li>
+</ul>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li>
+<li><a href="#docker%E6%98%AF%E4%BB%80%E4%B9%88">Docker是什么？</a></li>
+<li><a href="#docker-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5">Docker 核心概念</a>
 <ul>
-<li>
-<ul>
-<li><a href="#%E5%8A%9F%E8%83%BD%E6%94%AF%E6%8C%81">功能支持</a></li>
-<li><a href="#docker%E9%83%A8%E7%BD%B2">Docker部署</a></li>
-<li><a href="#ui%E5%B1%95%E7%A4%BA">UI展示</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8">容器</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F">容器镜像</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8%E4%BB%93%E5%BA%93">容器仓库</a></li>
 </ul>
 </li>
+<li><a href="#docker%E7%89%B9%E7%82%B9">Docker特点</a></li>
+<li><a href="#docker%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA">Docker与虚拟机</a>
+<ul>
+<li><a href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84">虚拟机组织结构</a></li>
+<li><a href="#docker%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84">Docker组织结构</a></li>
 </ul>
 </li>
+<li><a href="#docker%E7%94%A8%E5%A4%84">Docker用处</a></li>
 </ul>
 </li>
 </ul>
@@ -172,9 +189,9 @@ $docker run --name nginx1 -p 80:80 -d saowu/nginx:1.0
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-76-80/">
+            <a href="https://saowu.github.io/IVwOk1Phb/">
               <h3 class="post-title">
-                C语言程序集（76-80）
+                 FigureBed图床系统
               </h3>
             </a>
           </div>
