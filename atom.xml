@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-05T02:21:55.941Z</updated>
+    <updated>2020-04-05T02:23:34.822Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io"/>
     <link rel="self" href="https://saowu.github.io/atom.xml"/>
@@ -128,42 +128,6 @@
 <li><strong>提供弹性的云服务</strong>。 因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</li>
 <li><strong>组建微服务架构</strong>。 通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[beego框架开发的博客系统]]></title>
-        <id>https://saowu.github.io/FHgE0FP4i/</id>
-        <link href="https://saowu.github.io/FHgE0FP4i/">
-        </link>
-        <updated>2020-04-03T12:37:05.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="heartblog">HeartBlog</h1>
-<p>👉<a href="https://github.com/saowu/HeartBlog">GitHub</a><code>building</code></p>
-<h3 id="采用技术">采用技术</h3>
-<ul>
-<li>前台页面：模板语法</li>
-<li>后台页面：layui</li>
-<li>数据库：mysql</li>
-<li>主框架：beego</li>
-</ul>
-<h3 id="介绍">介绍</h3>
-<p>HearBlog设计简洁，界面美观,部署简单，自动建表，<br>
-mysql数据库，可选内嵌Sqlite，后台功能稍不完整，正在开发中...</p>
-<h3 id="部署">部署</h3>
-<p>您需要安装 Go 1.1+ 以确保所有功能的正常使用。</p>
-<p>GOPATH下执行以下命令（详细参见beego官网）：</p>
-<pre><code>$ go get -u github.com/astaxie/beego  
-$ go get -u github.com/beego/bee
-$ go get -u github.com/go-sql-driver/mysql
-</code></pre>
-<h3 id="ui预览">UI预览</h3>
-<p><img src="https://saowu.github.io/post-images/1585917916132.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/post-images/1585917936650.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/post-images/1585918017694.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/post-images/1585917949318.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/post-images/1585917957851.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/post-images/1585917969852.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/post-images/1585917987270.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/post-images/1585918003894.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
@@ -3232,6 +3196,61 @@ A=65 a=97 B=66 b=98 C=67 c=99 D=68 d=100 E=69 e=101 F=70 f=102 G=71 g=103 H=72 h
 Process finished with exit code 0
 
 </code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[pip3 常用命令]]></title>
+        <id>https://saowu.github.io/pip3-chang-yong-ming-ling/</id>
+        <link href="https://saowu.github.io/pip3-chang-yong-ming-ling/">
+        </link>
+        <updated>2020-04-03T05:37:50.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="1-安装目录">1、安装目录</h3>
+<pre><code>~/Library/Caches/pip
+</code></pre>
+<h3 id="2-查找需要安装的包">2、查找需要安装的包</h3>
+<pre><code>pip3 search &lt;包名&gt;
+</code></pre>
+<h3 id="3-安装python包">3、安装python包</h3>
+<pre><code>pip3 install 
+pip3 install &lt;包名&gt;==1.0.0
+pip3 install -r requirements.txt 
+pip3 install -i &lt;源地址&gt; &lt;包名&gt;
+pip install -e &lt;local project path&gt; (这个命令相当于pip install develop）
+</code></pre>
+<h3 id="4-源地址">4、源地址</h3>
+<pre><code>阿里源：https://mirrors.aliyun.com/pypi/simple/ 
+科大源：https://pypi.mirrors.ustc.edu.cn/simple/ 
+清华源：https://pypi.tuna.tsinghua.edu.cn/simple 
+官方源：https://pypi.python.org/
+</code></pre>
+<h3 id="5-在配置文件中指定安装源">5、在配置文件中指定安装源</h3>
+<pre><code>#直接在配置文件中添加源，如果没有配置文件可以手动添加一个 
+/etc/pip.conf 
+[global] 
+timeout = 6000 
+index-url = http://pypi.douban.com/simple
+</code></pre>
+<h3 id="6-列出已经安装的包">6、列出已经安装的包</h3>
+<pre><code>pip3 list 
+</code></pre>
+<h3 id="7-列出过期的包">7、列出过期的包</h3>
+<pre><code>pip3 list -o
+</code></pre>
+<h3 id="8-升级包">8、升级包</h3>
+<pre><code>pip3 install &lt;包名&gt; -U
+pip3 install -i &lt;源地址&gt; &lt;包名&gt; -U
+</code></pre>
+<h3 id="9-安装的包所在目录">9、安装的包所在目录</h3>
+<pre><code>pip3 show -f &lt;包名&gt; 
+</code></pre>
+<h3 id="10-卸载安装">10、卸载安装</h3>
+<pre><code>pip3 uninstall &lt;包名&gt; 
+pip3 uninstall -r requirements.txt
+</code></pre>
+<h3 id="11-生成requirementstxt文件">11、生成requirements.txt文件</h3>
+<pre><code>pip freeze &gt; ./requirements.txt
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/post-images/1585914935212.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
