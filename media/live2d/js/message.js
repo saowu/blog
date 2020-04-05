@@ -1,4 +1,4 @@
-var home_Path = document.location.protocol +'//' + location.host;
+var home_Path = document.location.protocol +'//' + location.host+'/blog/';
 
 var userAgent = window.navigator.userAgent.toLowerCase();
 var norunAI = [ "android", "iphone", "ipod", "ipad", "windows phone", "mqqbrowser" ,"msie","trident/7.0"];
