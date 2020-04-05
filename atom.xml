@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-04T09:12:42.662Z</updated>
+    <updated>2020-04-05T01:58:17.743Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io"/>
     <link rel="self" href="https://saowu.github.io/atom.xml"/>
@@ -10,6 +10,71 @@
     <logo>https://saowu.github.io/images/avatar.png</logo>
     <icon>https://saowu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[让Google搜索到GitHub Pages]]></title>
+        <id>https://saowu.github.io/4tCVcic30/</id>
+        <link href="https://saowu.github.io/4tCVcic30/">
+        </link>
+        <updated>2020-04-04T12:55:35.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>免费的东西自然是越香越好啊</p>
+</blockquote>
+<h2 id="一-查看是否被收录">一、查看是否被收录</h2>
+<ul>
+<li>首先查看你的博客地址是否已经被Google收录，在Google的搜索栏中搜索：<code>site:https://xxxx.github.io</code>，其中https://xxxx.github.io为你的博客地址，如果结果是尝试使用Google Search Console，则意味着没有被收录。</li>
+</ul>
+<p><em>如果搜索出你想要的结果，那么不用继续往下看了。</em></p>
+<h2 id="二-搜索资源提交">二、搜索资源提交</h2>
+<ul>
+<li>
+<p>进入Google Web Master，点击： <a href="https://search.google.com/search-console?hl=zh-CN&amp;utm_source=wmx&amp;utm_medium=deprecation-pane&amp;utm_content=home&amp;resource_id=https://saowu.github.io/">Google Search Console</a>（若未登录谷歌账号，需要先登录谷歌账号）</p>
+</li>
+<li>
+<p>点击<code>网址前缀</code>添加（网域方式验证方式单一），提交你的博客网址，然后跳转到如下界面进行验证。<br>
+<img src="https://saowu.github.io/post-images/1586005315008.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>验证方式有一下几种，根据实际情况，按要求验证即可。</p>
+<ul>
+<li>将 HTML 文件上传至您的网站<br>
+<img src="https://saowu.github.io/post-images/1586005851160.png" alt="" loading="lazy"></li>
+<li>向您网站的首页添加元标记<br>
+<img src="https://saowu.github.io/post-images/1586006930652.png" alt="" loading="lazy"></li>
+<li>使用您的 Google 跟踪代码管理器帐号<br>
+<img src="https://saowu.github.io/post-images/1586005886077.png" alt="" loading="lazy"></li>
+<li>将 DNS 记录与 Google 关联<br>
+<img src="https://saowu.github.io/post-images/1586005899681.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h2 id="三-添加站点地图">三、添加站点地图</h2>
+<p>站点地图(Site Map)是用来注明网站结构的文件，我们希望搜索引擎的爬虫了解我们的网站结构,以便于高效爬取内容，快速建立索引。</p>
+<ul>
+<li>点击进入 <a href="https://www.xml-sitemaps.com/">XML-Sitemaps.com</a> 页面，输入博客地址，点击 start。<br>
+<img src="https://saowu.github.io/post-images/1586006006506.png" alt="" loading="lazy"></li>
+<li>等待搜索完成，点击 VIEW SITEMAP DETAILS。<br>
+<img src="https://saowu.github.io/post-images/1586006110505.png" alt="" loading="lazy"></li>
+<li>下载 SITEMAP 文件sitemap.xml并将其上传到网站的根目录。<br>
+<img src="https://saowu.github.io/post-images/1586006133718.png" alt="" loading="lazy"></li>
+<li>在 Google Search console 中添加你的 sitemap URL。
+<ul>
+<li>还是刚刚的Google Search Console网站，点击刚刚验证成功的你的网站进入控制台，在左边侧边栏“抓取”下找到“站点地图”,将https://xxxx.github.io/sitemap.xml提交并刷新，就可以看到博客的网站结构了。<br>
+<img src="https://saowu.github.io/post-images/1586006241464.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h2 id="四-手动提交google抓取可选">四、手动提交Google抓取（可选）</h2>
+<ul>
+<li>等待Google抓取所需时间比较长，可以利用Google网页检查工具手动提交网址。（不是必须，等待Gooogle自行抓取也是可以的）<br>
+<img src="https://saowu.github.io/post-images/1586006394550.png" alt="" loading="lazy"></li>
+<li>等待片刻后，网页检查结果就会出来了，接下来点击请求编入索引即可。<br>
+<img src="https://saowu.github.io/post-images/1586006475987.png" alt="" loading="lazy"></li>
+</ul>
+<h2 id="五-google收录成功">五、Google收录成功</h2>
+<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/post-images/1586006635125.png" alt="" loading="lazy"></figure>
+<p>更新自<a href="https://evanli.github.io/blog/2018/10/25/let-jekyll-github-pages-be-searched-by-google/">EvanLi的博客</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[What is docker ？]]></title>
         <id>https://saowu.github.io/yadpkA34H/</id>
@@ -2025,432 +2090,6 @@ git -C &quot;$(brew --repo homebrew/cask-drivers)&quot; remote set-url origin ht
 brew update
 </code></pre>
 <p><a href="https://mirror.tuna.tsinghua.edu.cn/help/homebrew/">清华源参考链接</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[C语言程序集(1-15)]]></title>
-        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji/</id>
-        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji/">
-        </link>
-        <updated>2020-04-03T04:41:43.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="1输入两个数按从小到大的顺序排列">1.输入两个数按从小到大的顺序排列</h3>
-<pre><code>#include &lt;stdio.h&gt;
-int main() {
-    int a, b, t;
-    printf(&quot;input a,b: &quot;);
-    scanf(&quot;%d,%d&quot;, &amp;a, &amp;b);
-    if (a &gt; b) {
-        t = a;
-        a = b;
-        b = t;
-    }
-    printf(&quot;output: %d,%d&quot;, a, b);
-    return 0;
-}
-输出:
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input a,b: 2，1
-output: 1，2
-Process finished with exit code 0
-</code></pre>
-<h3 id="2输入3个整数把最大的输出">2.输入3个整数把最大的输出</h3>
-<pre><code>#include &lt;stdio.h&gt;
-int main() {
-    int a, b, c, max;
-    printf(&quot;input a,b,c: &quot;);
-    scanf(&quot;%d,%d,%d&quot;, &amp;a, &amp;b, &amp;c);
-    max = a;
-    if (max &lt; b)
-        max = b;
-    if (max &lt; c)
-        max = c;
-    printf(&quot;max=%d&quot;, max);
-    return 0;
-}
-输出:
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input a,b,c: 1,2,3
-max=3
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="3输入3个整数按从小到大的顺序打印">3.输入3个整数按从小到大的顺序打印</h3>
-<pre><code>#include &lt;stdio.h&gt;
-int main() {
-    int a, b, c, t;
-    printf(&quot;input a,b,c: &quot;);
-    scanf(&quot;%d,%d,%d&quot;, &amp;a, &amp;b, &amp;c);
-    if (a &gt; b) {
-        t = a;
-        a = b;
-        b = t;
-    }
-    if (a &gt; c) {
-        t = a;
-        a = c;
-        c = t;
-    }
-    if (b &gt; c) {
-        t = b;
-        b = c;
-        c = t;
-    }
-    printf(&quot;%d,%d,%d\n&quot;, a, b, c);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input a,b,c: 2,1,3
-1,2,3
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="4判断是否为闰年">4.判断是否为闰年</h3>
-<pre><code>#include &lt;stdio.h&gt;
-
-int main() {
-
-    int year;
-    printf(&quot;input a year: &quot;);
-    scanf(&quot;%d&quot;, &amp;year);
-    if (year % 4 == 0 &amp;&amp; year % 100 != 0 || year % 400 == 0)
-        printf(&quot;%d is a leap year\n&quot;, year);
-    else
-        printf(&quot;%d is a not leap year\n&quot;, year);
-
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input a year: 2018
-2018 is a not leap year
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="5输入一个字符如果是大写字母则转换为小写否则不转换并输出最后得到的字符">5.输入一个字符，如果是大写字母，则转换为小写，否则不转换并输出最后得到的字符</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-int main() {
-    char letter;
-    printf(&quot;input leeter: &quot;);
-    scanf(&quot;%c&quot;, &amp;letter);
-    if ('A' &lt;= letter &amp;&amp; letter &lt;= 'Z')
-        letter = letter + 32;
-    printf(&quot;letter: %c&quot;, letter);
-    
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input leeter:A
-letter: a
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="6编程求解">6.编程求解:</h3>
-<pre><code>                /-1 (x&lt;0)
-             y=|  0 (x=0)
-                \ 1 (x&gt;0)
-    
-1).    
-    #include &lt;stdio.h&gt;
-    int main() {
-        int x, y;
-        printf(&quot;input x: &quot;);
-        scanf(&quot;%d&quot;, &amp;x);
-        if (x &lt; 0)
-            y = -1;
-        else if (x == 0)
-            y = 0;
-        else
-            y = 1;
-        printf(&quot;y=%d&quot;, y);
-        return 0;
-    }
-
-2).
-    #include &lt;stdio.h&gt;
-    int main() {
-        int x, y;
-        printf(&quot;input x: &quot;);
-        scanf(&quot;%d&quot;, &amp;x);
-        y = -1;
-        if (x != 0)
-            if (x &gt; 0)
-                y = 1;
-            else
-                y = 0;
-        printf(&quot;y=%d&quot;, y);
-        return 0;
-    }
-
-3).
-    #include &lt;stdio.h&gt;
-    int main() {
-        int x, y;
-        printf(&quot;input x: &quot;);
-        scanf(&quot;%d&quot;, &amp;x);
-        if (x &gt;= 0)
-            if (x &gt; 0)
-                y = 1;
-            else
-                y = 0;
-        else
-            y = -1;
-        printf(&quot;y=%d&quot;, y);
-        return 0;
-    }
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input x: 12
-y=1
-Process finished with exit code 0
-
-    
-</code></pre>
-<h3 id="7按成绩分档次abcde">7.按成绩分档次（A,B,C,D,E）</h3>
-<pre><code>1).
-    #include &lt;stdio.h&gt;
-    int main() {
-        int score;
-        char grade;
-        printf(&quot;input score： &quot;);
-        scanf(&quot;%d&quot;, &amp;score);
-        if (score &gt;= 90)
-            grade = 'A';
-        else if (score &gt;= 80)
-            grade = 'B';
-        else if (score &gt;= 70)
-            grade = 'C';
-        else if (score &gt;= 60)
-            grade = 'D';
-        else
-            grade = 'E';
-        putchar(grade);
-        return 0;
-    }
-2).
-    #include &lt;stdio.h&gt;
-    int main() {
-        int score;
-        char grade;
-        printf(&quot;input score： &quot;);
-        scanf(&quot;%d&quot;, &amp;score);
-        switch (score / 10) {
-            case 10:
-            case 9:
-                grade = 'A';
-                break;
-            case 8:
-                grade = 'B';
-                break;
-            case 7:
-                grade = 'C';
-                break;
-            case 6:
-                grade = 'D';
-                break;
-            default:
-                grade = 'E';
-                break;
-        }
-        putchar(grade);
-        return 0;
-    }
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input score： 97
-A
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="8-编程计算123100">8. 编程计算1+2+3+...+100=？</h3>
-<pre><code>1).
-    #include &lt;stdio.h&gt;
-    int main() {
-        int sum = 0, i = 1;
-        while (i &lt;= 100) {
-            sum = sum + i;
-            i++;
-        }
-        printf(&quot;sum=%d\n&quot;, sum);
-        return 0;
-    }
-2).
-    #include &lt;stdio.h&gt;
-    int main() {
-        int sum = 0, i = 1;
-        do {
-            sum=sum+i;
-            i++;
-        } while (i &lt;= 100);
-        printf(&quot;sum=%d\n&quot;, sum);
-        return 0;
-    }
-3).
-    #include &lt;stdio.h&gt;
-    int main() {
-        int sum = 0;
-        for (int i = 1; i &lt;= 100; i++)
-            sum += i;
-        printf(&quot;sum=%d\n&quot;, sum);
-        return 0;
-    }
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=5050
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="9计算246100">9.计算2+4+6+...+100=?</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-int main() {
-    int sum = 0;
-    for (int i = 100; i &gt;= 1; i -= 2)
-        sum += i;
-    printf(&quot;sum=%d\n&quot;, sum);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=2550
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="10计算13599">10.计算1+3+5+...+99=?</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-int main() {
-    int sum = 0;
-    for (int i = 1; i &lt;= 100; i += 2)
-        sum += i;
-    printf(&quot;sum=%d\n&quot;, sum);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=2500
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="11计算12310">11.计算1<em>2</em>3*...*10=?</h3>
-<pre><code>1).
-    #include &lt;stdio.h&gt;
-    int main() {
-        int fact = 1, k = 1;
-        while (k &lt;= 10) {
-            fact = fact * k;
-            k++;
-        }
-        printf(&quot;fact=%d\n&quot;, fact);
-        return 0;
-    }
-2).
-    #include &lt;stdio.h&gt;
-    int main() {
-        int fact = 1;
-        for (int k = 1; k &lt;= 10; k++) {
-            fact *= k;
-        }
-        printf(&quot;fact=%d\n&quot;, fact);
-        return 0;
-    }
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-fact=3628800
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="121~100之间所有自然数平方和">12.1~100之间所有自然数平方和</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-int main() {
-    int sum = 0;
-    for (int i = 1; i &lt;= 100; i++)
-        sum = sum + i * i;
-    printf(&quot;sum=%d\n&quot;, sum);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=338350
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="131~100之间能被3整除的数之和">13.1~100之间能被3整除的数之和</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-int main() {
-    int sum = 0;
-    for (int i = 1; i &lt;= 100; i++)
-        if (i % 3 == 0)
-            sum += i;
-    printf(&quot;sum=%d\n&quot;, sum);
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sum=1683
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="14从键盘上输入一串字符分别将字母和数字以及其他字符做统计并输出">14.从键盘上输入一串字符，分别将字母和数字以及其他字符做统计并输出</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-int main() {
-    int letter = 0, digit = 0, other = 0;
-    char ch;
-    while ((ch = getchar()) != '!') {
-        if (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z' || ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z')
-            letter++;
-        else if (ch &gt;= '0' &amp;&amp; ch &lt;= '9')
-            digit++;
-        else
-            other++;
-    }
-    printf(&quot;letter:%d\ndigit:%d\nother:%d\n&quot;, letter, digit, other);
-    return 0;
-}
-
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sdhjashjdhasjh3112312JDHSAJDKJSDJ!
-letter:26
-digit:7
-other:0
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="15从键盘上输入一串字符要求判断每一个字符大写字母转成小写字母小写字母转换成大写字母其他不变并输出">15.从键盘上输入一串字符，要求判断每一个字符，大写字母转成小写字母，小写字母转换成大写字母，其他不变并输出</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-int main() {
-    char ch;
-    while ((ch = getchar()) != '!') {
-        if (ch &gt;= 97 &amp;&amp; ch &lt;= 122)
-            ch -= 32;
-        else if (ch &gt;= 65 &amp;&amp; ch &lt;= 90)
-            ch += 32;
-        putchar(ch);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-sdjkasdjkasjjdkdJSDAKDJAKSJ2321312!
-SDJKASDJKASJJDKDjsdakdjaksj2321312
-Process finished with exit code 0
-
-</code></pre>
 ]]></content>
     </entry>
 </feed>
