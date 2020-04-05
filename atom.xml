@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://saowu.github.io</id>
+    <id>https://saowu.github.io/blog/</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-05T11:40:32.004Z</updated>
+    <updated>2020-04-05T11:45:29.632Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://saowu.github.io"/>
-    <link rel="self" href="https://saowu.github.io/atom.xml"/>
+    <link rel="alternate" href="https://saowu.github.io/blog/"/>
+    <link rel="self" href="https://saowu.github.io/blog/atom.xml"/>
     <subtitle>A programmer who wants to be happy and muddle along</subtitle>
-    <logo>https://saowu.github.io/images/avatar.png</logo>
-    <icon>https://saowu.github.io/favicon.ico</icon>
+    <logo>https://saowu.github.io/blog/images/avatar.png</logo>
+    <icon>https://saowu.github.io/blog/favicon.ico</icon>
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[让Google搜索到GitHub Pages]]></title>
-        <id>https://saowu.github.io/4tCVcic30/</id>
-        <link href="https://saowu.github.io/4tCVcic30/">
+        <id>https://saowu.github.io/blog/4tCVcic30/</id>
+        <link href="https://saowu.github.io/blog/4tCVcic30/">
         </link>
         <updated>2020-04-04T12:55:35.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -31,19 +31,19 @@
 </li>
 <li>
 <p>点击<code>网址前缀</code>添加（网域方式验证方式单一），提交你的博客网址，然后跳转到如下界面进行验证。<br>
-<img src="https://saowu.github.io/post-images/1586005315008.png" alt="" loading="lazy"></p>
+<img src="https://saowu.github.io/blog//post-images/1586005315008.png" alt="" loading="lazy"></p>
 </li>
 <li>
 <p>验证方式有一下几种，根据实际情况，按要求验证即可。</p>
 <ul>
 <li>将 HTML 文件上传至您的网站<br>
-<img src="https://saowu.github.io/post-images/1586005851160.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1586005851160.png" alt="" loading="lazy"></li>
 <li>向您网站的首页添加元标记<br>
-<img src="https://saowu.github.io/post-images/1586006930652.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1586006930652.png" alt="" loading="lazy"></li>
 <li>使用您的 Google 跟踪代码管理器帐号<br>
-<img src="https://saowu.github.io/post-images/1586005886077.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1586005886077.png" alt="" loading="lazy"></li>
 <li>将 DNS 记录与 Google 关联<br>
-<img src="https://saowu.github.io/post-images/1586005899681.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1586005899681.png" alt="" loading="lazy"></li>
 </ul>
 </li>
 </ul>
@@ -51,40 +51,40 @@
 <p>站点地图(Site Map)是用来注明网站结构的文件，我们希望搜索引擎的爬虫了解我们的网站结构,以便于高效爬取内容，快速建立索引。</p>
 <ul>
 <li>点击进入 <a href="https://www.xml-sitemaps.com/">XML-Sitemaps.com</a> 页面，输入博客地址，点击 start。<br>
-<img src="https://saowu.github.io/post-images/1586006006506.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1586006006506.png" alt="" loading="lazy"></li>
 <li>等待搜索完成，点击 VIEW SITEMAP DETAILS。<br>
-<img src="https://saowu.github.io/post-images/1586006110505.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1586006110505.png" alt="" loading="lazy"></li>
 <li>下载 SITEMAP 文件sitemap.xml并将其上传到网站的根目录。<br>
-<img src="https://saowu.github.io/post-images/1586006133718.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1586006133718.png" alt="" loading="lazy"></li>
 <li>在 Google Search console 中添加你的 sitemap URL。
 <ul>
 <li>还是刚刚的Google Search Console网站，点击刚刚验证成功的你的网站进入控制台，在左边侧边栏“抓取”下找到“站点地图”,将https://xxxx.github.io/sitemap.xml提交并刷新，就可以看到博客的网站结构了。<br>
-<img src="https://saowu.github.io/post-images/1586006241464.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1586006241464.png" alt="" loading="lazy"></li>
 </ul>
 </li>
 </ul>
 <h2 id="四-手动提交google抓取可选">四、手动提交Google抓取（可选）</h2>
 <ul>
 <li>等待Google抓取所需时间比较长，可以利用Google网页检查工具手动提交网址。（不是必须，等待Gooogle自行抓取也是可以的）<br>
-<img src="https://saowu.github.io/post-images/1586006394550.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1586006394550.png" alt="" loading="lazy"></li>
 <li>等待片刻后，网页检查结果就会出来了，接下来点击请求编入索引即可。<br>
-<img src="https://saowu.github.io/post-images/1586006475987.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1586006475987.png" alt="" loading="lazy"></li>
 </ul>
 <h2 id="五-google收录成功">五、Google收录成功</h2>
-<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/post-images/1586006635125.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog//post-images/1586006635125.png" alt="" loading="lazy"></figure>
 <p>更新自<a href="https://evanli.github.io/blog/2018/10/25/let-jekyll-github-pages-be-searched-by-google/">EvanLi的博客</a></p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[What is docker ？]]></title>
-        <id>https://saowu.github.io/yadpkA34H/</id>
-        <link href="https://saowu.github.io/yadpkA34H/">
+        <id>https://saowu.github.io/blog/yadpkA34H/</id>
+        <link href="https://saowu.github.io/blog/yadpkA34H/">
         </link>
         <updated>2020-04-04T06:57:19.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
 <p>据“咳咳咳”学统计，学会了Docker你可以少死去好几百万只手也数不过来的脑细胞。</p>
 </blockquote>
-<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/post-images/1585984531665.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog//post-images/1585984531665.png" alt="" loading="lazy"></figure>
 <h2 id="docker是什么">Docker是什么？</h2>
 <ul>
 <li>Docker 是一个开源的应用容器引擎，让开发者可以以统一的方式打包他们的应用以及依赖包到一个可移植的<code>容器</code>中，然后发布到任何安装了docker引擎的服务器上（包括流行的Linux机器、windows机器），也可以实现虚拟化。</li>
@@ -115,12 +115,12 @@
 <h3 id="虚拟机组织结构">虚拟机组织结构</h3>
 <ul>
 <li>虚拟机（VM）是将一台服务器转变为多台服务器的物理硬件的抽象。虚拟机管理程序允许多个VM在单台计算机上运行。每个VM包含操作系统，应用程序，必要的二进制文件和库的完整副本-占用数十GB。VM也可能启动缓慢。<br>
-<img src="https://saowu.github.io/post-images/1585984071248.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1585984071248.png" alt="" loading="lazy"></li>
 </ul>
 <h3 id="docker组织结构">Docker组织结构</h3>
 <ul>
 <li>容器是应用程序层的抽象，将代码和依赖项打包在一起。多个容器可以在同一台机器上运行，并与其他容器共享OS内核，每个容器在用户空间中作为隔离的进程运行。容器占用的空间少于VM（容器映像的大小通常为几十MB），可以处理更多的应用程序，并且需要的VM和操作系统更少。<br>
-<img src="https://saowu.github.io/post-images/1585984137288.png" alt="" loading="lazy"></li>
+<img src="https://saowu.github.io/blog//post-images/1585984137288.png" alt="" loading="lazy"></li>
 </ul>
 <h2 id="docker用处">Docker用处</h2>
 <ul>
@@ -132,8 +132,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[《大话设计模式》学习笔记]]></title>
-        <id>https://saowu.github.io/V2m1nsMuh/</id>
-        <link href="https://saowu.github.io/V2m1nsMuh/">
+        <id>https://saowu.github.io/blog/V2m1nsMuh/</id>
+        <link href="https://saowu.github.io/blog/V2m1nsMuh/">
         </link>
         <updated>2020-04-03T12:33:37.000Z</updated>
         <content type="html"><![CDATA[<h1 id="designpatterns">DesignPatterns</h1>
@@ -1350,8 +1350,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[ FigureBed图床系统]]></title>
-        <id>https://saowu.github.io/IVwOk1Phb/</id>
-        <link href="https://saowu.github.io/IVwOk1Phb/">
+        <id>https://saowu.github.io/blog/IVwOk1Phb/</id>
+        <link href="https://saowu.github.io/blog/IVwOk1Phb/">
         </link>
         <updated>2020-04-03T12:06:39.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -1377,14 +1377,14 @@ $docker build -t saowu/nginx:1.0 .
 $docker run --name nginx1 -p 80:80 -d saowu/nginx:1.0
 </code></pre>
 <h4 id="ui展示">UI展示</h4>
-<p><img src="https://saowu.github.io/post-images/1585915830120.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/post-images/1585915839679.png" alt="" loading="lazy"></p>
+<p><img src="https://saowu.github.io/blog//post-images/1585915830120.png" alt="" loading="lazy"><br>
+<img src="https://saowu.github.io/blog//post-images/1585915839679.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（76-80）]]></title>
-        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-76-80/</id>
-        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-76-80/">
+        <id>https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-76-80/</id>
+        <link href="https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-76-80/">
         </link>
         <updated>2020-04-03T06:10:45.000Z</updated>
         <content type="html"><![CDATA[<h3 id="76整数数值交换">76.整数数值交换</h3>
@@ -1500,8 +1500,8 @@ int main()
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（61-75）]]></title>
-        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-61-75/</id>
-        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-61-75/">
+        <id>https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-61-75/</id>
+        <link href="https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-61-75/">
         </link>
         <updated>2020-04-03T06:09:50.000Z</updated>
         <content type="html"><![CDATA[<h3 id="61二维数组的指针的运用">61.二维数组的指针的运用</h3>
@@ -1937,8 +1937,8 @@ main()
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（46-60）]]></title>
-        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-46-60/</id>
-        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-46-60/">
+        <id>https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-46-60/</id>
+        <link href="https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-46-60/">
         </link>
         <updated>2020-04-03T06:08:20.000Z</updated>
         <content type="html"><![CDATA[<h3 id="46把数组元素依次向后移动一个位置">46.把数组元素依次向后移动一个位置</h3>
@@ -2452,8 +2452,8 @@ int main() {
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（31-45）]]></title>
-        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-31-45/</id>
-        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-31-45/">
+        <id>https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-31-45/</id>
+        <link href="https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-31-45/">
         </link>
         <updated>2020-04-03T06:07:01.000Z</updated>
         <content type="html"><![CDATA[<h3 id="31计算1-23-45-99-100">31.计算1-2+3-4+5-...+99-100=?</h3>
@@ -2847,8 +2847,8 @@ Process finished with exit code 0
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（16-30）]]></title>
-        <id>https://saowu.github.io/c-yu-yan-cheng-xu-ji-16-30/</id>
-        <link href="https://saowu.github.io/c-yu-yan-cheng-xu-ji-16-30/">
+        <id>https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-16-30/</id>
+        <link href="https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-16-30/">
         </link>
         <updated>2020-04-03T06:06:08.000Z</updated>
         <content type="html"><![CDATA[<h3 id="16打印的1010矩阵">16.打印<code>*</code>的10*10矩阵</h3>
@@ -3200,8 +3200,8 @@ Process finished with exit code 0
     </entry>
     <entry>
         <title type="html"><![CDATA[pip3 常用命令]]></title>
-        <id>https://saowu.github.io/pip3-chang-yong-ming-ling/</id>
-        <link href="https://saowu.github.io/pip3-chang-yong-ming-ling/">
+        <id>https://saowu.github.io/blog/pip3-chang-yong-ming-ling/</id>
+        <link href="https://saowu.github.io/blog/pip3-chang-yong-ming-ling/">
         </link>
         <updated>2020-04-03T05:37:50.000Z</updated>
         <content type="html"><![CDATA[<h3 id="1-安装目录">1、安装目录</h3>
@@ -3250,7 +3250,7 @@ pip3 uninstall -r requirements.txt
 <h3 id="11-生成requirementstxt文件">11、生成requirements.txt文件</h3>
 <pre><code>pip freeze &gt; ./requirements.txt
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/post-images/1585914935212.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog//post-images/1585914935212.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
