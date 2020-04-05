@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io/blog/</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-05T12:04:07.349Z</updated>
+    <updated>2020-04-05T12:07:54.624Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io/blog/"/>
     <link rel="self" href="https://saowu.github.io/blog/atom.xml"/>
@@ -73,6 +73,56 @@
 <h2 id="五-google收录成功">五、Google收录成功</h2>
 <figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog//post-images/1586006635125.png" alt="" loading="lazy"></figure>
 <p>更新自<a href="https://evanli.github.io/blog/2018/10/25/let-jekyll-github-pages-be-searched-by-google/">EvanLi的博客</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker安装MySQL]]></title>
+        <id>https://saowu.github.io/blog/xjJ08KIvI/</id>
+        <link href="https://saowu.github.io/blog/xjJ08KIvI/">
+        </link>
+        <updated>2020-04-04T08:04:10.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>操作容器的快乐，一般人都能体会到，没错你就是一般人。</p>
+</blockquote>
+<h2 id="检索mysql容器">检索mysql容器</h2>
+<pre><code>docker search mysql
+</code></pre>
+<h2 id="拉取msql容器镜像">拉取Msql容器镜像</h2>
+<pre><code>docker pull mysql:latest
+</code></pre>
+<h2 id="查看全部容器镜像">查看全部容器镜像</h2>
+<pre><code>docker images
+</code></pre>
+<h2 id="运行镜像生成容器">运行镜像生成容器</h2>
+<ul>
+<li>-p &lt;宿主机port：容器port&gt;</li>
+<li>-d &lt;镜像名：版本&gt;</li>
+<li>--name &lt;容器别名&gt;</li>
+</ul>
+<pre><code>docker run --name mysql1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
+</code></pre>
+<h2 id="查看全部容器">查看全部容器</h2>
+<pre><code>docker ps -a
+</code></pre>
+<h2 id="进入容器">进入容器</h2>
+<ul>
+<li>-i :即使没有附加也保持STDIN 打开</li>
+<li>-t :分配一个伪终端 <code>/bin/bash</code></li>
+</ul>
+<pre><code>docker exec -i -t mysql1 /bin/bash
+</code></pre>
+<h2 id="登陆mysql">登陆mysql</h2>
+<pre><code>mysql -u root -p
+</code></pre>
+<h2 id="修改为root-可以通过任何客户端连接">修改为root 可以通过任何客户端连接</h2>
+<pre><code>use mysql
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+</code></pre>
+<h2 id="修改数据库中文乱码">修改数据库中文乱码</h2>
+<pre><code>show variables like 'character%';
+</code></pre>
+<h2 id="远程链接success">远程链接Success!</h2>
+<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog//post-images/1585989623761.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
@@ -3196,61 +3246,6 @@ A=65 a=97 B=66 b=98 C=67 c=99 D=68 d=100 E=69 e=101 F=70 f=102 G=71 g=103 H=72 h
 Process finished with exit code 0
 
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[pip3 常用命令]]></title>
-        <id>https://saowu.github.io/blog/pip3-chang-yong-ming-ling/</id>
-        <link href="https://saowu.github.io/blog/pip3-chang-yong-ming-ling/">
-        </link>
-        <updated>2020-04-03T05:37:50.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="1-安装目录">1、安装目录</h3>
-<pre><code>~/Library/Caches/pip
-</code></pre>
-<h3 id="2-查找需要安装的包">2、查找需要安装的包</h3>
-<pre><code>pip3 search &lt;包名&gt;
-</code></pre>
-<h3 id="3-安装python包">3、安装python包</h3>
-<pre><code>pip3 install 
-pip3 install &lt;包名&gt;==1.0.0
-pip3 install -r requirements.txt 
-pip3 install -i &lt;源地址&gt; &lt;包名&gt;
-pip install -e &lt;local project path&gt; (这个命令相当于pip install develop）
-</code></pre>
-<h3 id="4-源地址">4、源地址</h3>
-<pre><code>阿里源：https://mirrors.aliyun.com/pypi/simple/ 
-科大源：https://pypi.mirrors.ustc.edu.cn/simple/ 
-清华源：https://pypi.tuna.tsinghua.edu.cn/simple 
-官方源：https://pypi.python.org/
-</code></pre>
-<h3 id="5-在配置文件中指定安装源">5、在配置文件中指定安装源</h3>
-<pre><code>#直接在配置文件中添加源，如果没有配置文件可以手动添加一个 
-/etc/pip.conf 
-[global] 
-timeout = 6000 
-index-url = http://pypi.douban.com/simple
-</code></pre>
-<h3 id="6-列出已经安装的包">6、列出已经安装的包</h3>
-<pre><code>pip3 list 
-</code></pre>
-<h3 id="7-列出过期的包">7、列出过期的包</h3>
-<pre><code>pip3 list -o
-</code></pre>
-<h3 id="8-升级包">8、升级包</h3>
-<pre><code>pip3 install &lt;包名&gt; -U
-pip3 install -i &lt;源地址&gt; &lt;包名&gt; -U
-</code></pre>
-<h3 id="9-安装的包所在目录">9、安装的包所在目录</h3>
-<pre><code>pip3 show -f &lt;包名&gt; 
-</code></pre>
-<h3 id="10-卸载安装">10、卸载安装</h3>
-<pre><code>pip3 uninstall &lt;包名&gt; 
-pip3 uninstall -r requirements.txt
-</code></pre>
-<h3 id="11-生成requirementstxt文件">11、生成requirements.txt文件</h3>
-<pre><code>pip freeze &gt; ./requirements.txt
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog//post-images/1585914935212.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
