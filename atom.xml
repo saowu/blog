@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io/blog/</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-05T12:10:34.865Z</updated>
+    <updated>2020-04-05T12:25:20.489Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io/blog/"/>
     <link rel="self" href="https://saowu.github.io/blog/atom.xml"/>
@@ -84,16 +84,16 @@
         <content type="html"><![CDATA[<blockquote>
 <p>操作容器的快乐，一般人都能体会到，没错你就是一般人。</p>
 </blockquote>
-<h2 id="检索mysql容器">检索mysql容器</h2>
+<h2 id="一-检索mysql容器">一、检索mysql容器</h2>
 <pre><code>docker search mysql
 </code></pre>
-<h2 id="拉取msql容器镜像">拉取Msql容器镜像</h2>
+<h2 id="二-拉取msql容器镜像">二、拉取Msql容器镜像</h2>
 <pre><code>docker pull mysql:latest
 </code></pre>
-<h2 id="查看全部容器镜像">查看全部容器镜像</h2>
+<h2 id="三-查看全部容器镜像">三、查看全部容器镜像</h2>
 <pre><code>docker images
 </code></pre>
-<h2 id="运行镜像生成容器">运行镜像生成容器</h2>
+<h2 id="四-运行镜像生成容器">四、运行镜像生成容器</h2>
 <ul>
 <li>-p &lt;宿主机port：容器port&gt;</li>
 <li>-d &lt;镜像名：版本&gt;</li>
@@ -101,27 +101,27 @@
 </ul>
 <pre><code>docker run --name mysql1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
 </code></pre>
-<h2 id="查看全部容器">查看全部容器</h2>
+<h2 id="五-查看全部容器">五、查看全部容器</h2>
 <pre><code>docker ps -a
 </code></pre>
-<h2 id="进入容器">进入容器</h2>
+<h2 id="六-进入容器">六、进入容器</h2>
 <ul>
 <li>-i :即使没有附加也保持STDIN 打开</li>
 <li>-t :分配一个伪终端 <code>/bin/bash</code></li>
 </ul>
 <pre><code>docker exec -i -t mysql1 /bin/bash
 </code></pre>
-<h2 id="登陆mysql">登陆mysql</h2>
+<h2 id="七-登陆mysql">七、登陆mysql</h2>
 <pre><code>mysql -u root -p
 </code></pre>
-<h2 id="修改为root-可以通过任何客户端连接">修改为root 可以通过任何客户端连接</h2>
+<h2 id="八-修改为root-可以通过任何客户端连接">八、修改为root 可以通过任何客户端连接</h2>
 <pre><code>use mysql
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 </code></pre>
-<h2 id="修改数据库中文乱码">修改数据库中文乱码</h2>
+<h2 id="九-修改数据库中文乱码">九、修改数据库中文乱码</h2>
 <pre><code>show variables like 'character%';
 </code></pre>
-<h2 id="远程链接success">远程链接Success!</h2>
+<h2 id="十-远程链接success">十、远程链接Success!</h2>
 <figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog//post-images/1585989623761.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
