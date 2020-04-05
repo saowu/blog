@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-05T02:00:37.724Z</updated>
+    <updated>2020-04-05T02:19:18.173Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io"/>
     <link rel="self" href="https://saowu.github.io/atom.xml"/>
@@ -128,6 +128,1224 @@
 <li><strong>提供弹性的云服务</strong>。 因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</li>
 <li><strong>组建微服务架构</strong>。 通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</li>
 </ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[《大话设计模式》学习笔记]]></title>
+        <id>https://saowu.github.io/V2m1nsMuh/</id>
+        <link href="https://saowu.github.io/V2m1nsMuh/">
+        </link>
+        <updated>2020-04-03T12:33:37.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="designpatterns">DesignPatterns</h1>
+<blockquote>
+<p>Java实现的设计模式案例</p>
+</blockquote>
+<p>👉<a href="https://github.com/saowu/DesignPatterns">GitHub</a></p>
+<p>本项目是学习《大话设计模式》一书的学习笔记，欢迎指正(部分来自其他，如侵必删)。</p>
+<h2 id="一-设计原则">一、设计原则</h2>
+<pre><code>1.单一职责原则（SPR）：就一个类而言，应该仅有一个引起它变化的原因。
+    如果一个类的职责过多，就等于把这些职责耦合在一起，一个职责的变化可能会削弱或者抑制这个类完成其他职责的能力。这种耦合会导致脆弱的设计，当变化发生时，设计会遭到意想
+    不到的破坏。软件设计真正要做的内容，就是发现职责并把那些职责相互分离。如果你能够想到多于一个动机去改变一个类，那么这个类就具有多于一个职责。
+
+2.开放-封闭原则（OCP）：是说软件实体（类、模块、函数等）应该可以扩展，但是不可以修改。
+    面对需求，对程序的改动是通过增加新代码，而不是更改现有代码。该原则是面向对象的核心。遵循这个原则可以带来巨大好处，也就是可维护、可扩展、可复用、灵活性好。开发人员
+    应该仅对程序中频繁变化的那部分做出抽象，然而，对于应用程序中每个部分都刻意的抽象也不是个好主意。拒绝不成熟抽象和抽象本身同样重要。
+    
+3.依赖倒转原则（DIP）：抽象不依赖细节，细节应该依赖抽象。
+    A.高层模块不应该依赖低层模块。两个都应该依赖抽象。
+    B.抽象不应该依赖细节。细节应该依赖抽象。
+    依赖倒转其实可以说是面向对象设计的标志，用哪种语言来编写程序不重要，如果编写时考虑的都是如何针对抽象编程而不是针对细节编程，即程序中所有的依赖关系都是终止于抽象类
+    或者接口，那就是面向对象设计，反之就是过程化设计了。
+    
+4.里氏代换原则（LSP）:子类型必须能够替换掉它们的父类型。
+    一个软件实体如果使用一个父类的话，那么一定适用于其子类，而且它察觉不出父类对象和子类对象的区别。也就是说，软件里面，把父类替换成它的子类，程序的行为没有变化。
+ 
+5.接口隔离原则(ISP)：使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它不需要的接口。
+    根据接口隔离原则，当一个接口太大时，我们需要将它分割成一些更细小的接口，使用该接口的客户端仅需知道与之相关的方法即可。每一个接口应该承担一种相对独立的角色，不干不
+    该干的事，该干的事都要干。这里的“接口”往往有两种不同的含义：一种是指一个类型所具有的方法特征的集合，仅仅是一种逻辑上的抽象；另外一种是指某种语言具体的“接口”定义，
+    有严格的定义和结构，比如Java语言中的interface。
+     
+6.迪米特法则(LoD)：一个软件实体应当尽可能少地与其他实体发生相互作用。
+    迪米特法则要求我们在设计系统时，应该尽量减少对象之间的交互，如果两个对象之间不必彼此直接通信，那么这两个对象就不应当发生任何直接的相互作用，如果其中的一个对象需要调
+    用另一个对象的某一个方法的话，可以通过第三者转发这个调用。简言之，就是通过引入一个合理的第三者来降低现有对象之间的耦合度。
+
+7.合成/聚合复用原则(CARP)：尽量使用合成/聚合，尽量不要用类继承。
+</code></pre>
+<h2 id="二-设计模式">二、设计模式</h2>
+<h4 id="1-简单工厂模式-计算器">1. 简单工厂模式-----计算器</h4>
+<pre><code>package simple_factory_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operation</td>
+<td>运算类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>OperationAdd</td>
+<td>加法类</td>
+<td>class</td>
+<td>extends Operation</td>
+</tr>
+<tr>
+<td>OperationSub</td>
+<td>减法类</td>
+<td>class</td>
+<td>extends Operation</td>
+</tr>
+<tr>
+<td>OperationMul</td>
+<td>乘法类</td>
+<td>class</td>
+<td>extends Operation</td>
+</tr>
+<tr>
+<td>OperationDiv</td>
+<td>除法类</td>
+<td>class</td>
+<td>extends Operation</td>
+</tr>
+<tr>
+<td>OperationDiv</td>
+<td>除法类</td>
+<td>class</td>
+<td>extends Operation</td>
+</tr>
+<tr>
+<td>OperationFactory</td>
+<td>运算工厂类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>SimpleFactoryMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>简单工厂模式：专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。简单工厂模式属于创建型模式又叫做静态工厂方法模式，它属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。</p>
+<h4 id="2-策略模式-商场促销">2. 策略模式-----商场促销</h4>
+<pre><code>package strategy_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BaseCharge</td>
+<td>收费算法类</td>
+<td>abstract class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>DiscountCharge</td>
+<td>打折收费类</td>
+<td>class</td>
+<td>extends BaseCharge</td>
+</tr>
+<tr>
+<td>NormalCharge</td>
+<td>正常收费（无折扣）</td>
+<td>class</td>
+<td>extends BaseCharge</td>
+</tr>
+<tr>
+<td>ReturnCharge</td>
+<td>返利收费</td>
+<td>class</td>
+<td>extends BaseCharge</td>
+</tr>
+<tr>
+<td>TypeEnum</td>
+<td>收费折扣类型</td>
+<td>enum</td>
+<td>---</td>
+</tr>
+<tr>
+<td>ChargeContext</td>
+<td>策略算法上下文引用</td>
+<td>class</td>
+<td>----</td>
+</tr>
+<tr>
+<td>StrategyMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>策略模式：它定义了算法家族，分别分装起来，让他们之间可以相互替换，此模式让算法的变化，不会影响到使用算法的客户。</p>
+<h4 id="3装饰模式-穿衣系统">3.装饰模式-----穿衣系统</h4>
+<pre><code>package decorator_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Component</td>
+<td>公共抽象类</td>
+<td>abstract class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Decorator</td>
+<td>装饰类</td>
+<td>class</td>
+<td>extends Component</td>
+</tr>
+<tr>
+<td>Persion</td>
+<td>人物类</td>
+<td>class</td>
+<td>extends Component</td>
+</tr>
+<tr>
+<td>BigTrouser</td>
+<td>工裤类</td>
+<td>class</td>
+<td>extends Decorator</td>
+</tr>
+<tr>
+<td>Sneaker</td>
+<td>鞋子类</td>
+<td>class</td>
+<td>extends Decorator</td>
+</tr>
+<tr>
+<td>TShirts</td>
+<td>T恤类</td>
+<td>class</td>
+<td>extends Decorator</td>
+</tr>
+<tr>
+<td>DecoratorMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>装饰模式：动态的给一个对象添加一些额外的职责，就增加功能来说，装饰模式比生成子类更加灵活。</p>
+<h4 id="4代理模式-送礼物">4.代理模式-----送礼物</h4>
+<pre><code>package proxy_mode
+</code></pre>
+<p>代理模式：为其他对象提供一种代理以控制对这个对象的访问。</p>
+<h5 id="a静态代理方式">a.静态代理方式</h5>
+<pre><code>package proxy_mode.static_proxy_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IGiveGift</td>
+<td>送礼物接口</td>
+<td>interface</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Suitors</td>
+<td>追求者</td>
+<td>class</td>
+<td>implements IGiveGift</td>
+</tr>
+<tr>
+<td>Proxy</td>
+<td>代理类</td>
+<td>class</td>
+<td>implements IGiveGift</td>
+</tr>
+<tr>
+<td>StaticProxyMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<h5 id="bjdk动态代理方式">b.jdk动态代理方式</h5>
+<pre><code>package proxy_mode.dynamic_proxy_mode.jdk_dynamic_proxy
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IGiveGift</td>
+<td>送礼物接口</td>
+<td>interface</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Suitors</td>
+<td>追求者</td>
+<td>class</td>
+<td>implements IGiveGift</td>
+</tr>
+<tr>
+<td>JdkProxy</td>
+<td>代理类</td>
+<td>class</td>
+<td>implements InvocationHandler</td>
+</tr>
+<tr>
+<td>JdkDynamicProxy</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<h5 id="ccglib动态代理方式">c.cglib动态代理方式</h5>
+<pre><code>package proxy_mode.dynamic_proxy_mode.cglib_dynamic_proxy
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Suitors</td>
+<td>追求者</td>
+<td>class</td>
+<td>implements IGiveGift</td>
+</tr>
+<tr>
+<td>CglibProxy</td>
+<td>代理类</td>
+<td>class</td>
+<td>implements MethodInterceptor</td>
+</tr>
+<tr>
+<td>CglibDynamicProxy</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>需要导入<a href="https://mvnrepository.com/artifact/cglib/cglib/3.2.8">cglib-2.2.8.jar</a></p>
+<h4 id="5-工厂模式-计算器">5. 工厂模式-----计算器</h4>
+<pre><code>package factory_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operation</td>
+<td>运算类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>OperationAdd</td>
+<td>加法类</td>
+<td>class</td>
+<td>extends Operation</td>
+</tr>
+<tr>
+<td>OperationSub</td>
+<td>减法类</td>
+<td>class</td>
+<td>extends Operation</td>
+</tr>
+<tr>
+<td>OperationMul</td>
+<td>乘法类</td>
+<td>class</td>
+<td>extends Operation</td>
+</tr>
+<tr>
+<td>OperationDiv</td>
+<td>除法类</td>
+<td>class</td>
+<td>extends Operation</td>
+</tr>
+<tr>
+<td>IFactory</td>
+<td>运算工厂接口</td>
+<td>interface</td>
+<td>---</td>
+</tr>
+<tr>
+<td>AddFactory</td>
+<td>加法工厂类</td>
+<td>class</td>
+<td>implements IFactory</td>
+</tr>
+<tr>
+<td>SubFactory</td>
+<td>减法工厂类</td>
+<td>class</td>
+<td>implements IFactory</td>
+</tr>
+<tr>
+<td>MulFactory</td>
+<td>乘法工厂类</td>
+<td>class</td>
+<td>implements IFactory</td>
+</tr>
+<tr>
+<td>DivFactory</td>
+<td>除法工厂类</td>
+<td>class</td>
+<td>implements IFactory</td>
+</tr>
+<tr>
+<td>FactoryMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>工厂模式：定义一个用于创建对象的接口，让子类决定实例化哪个类。工厂方法使一个类的实例化延迟到其子类。</p>
+<p>相比简单工厂模式，工厂模式遵循开放-封闭原则，但增加了开发量。</p>
+<h4 id="6-原型模式-印简历">6. 原型模式-----印简历</h4>
+<h5 id="a浅拷贝">a.浅拷贝</h5>
+<pre><code>package prototype_mode.shallow_copy_model
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resume</td>
+<td>简历类</td>
+<td>class</td>
+<td>implements Cloneable</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>地址类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>PrototypeMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<h5 id="b深拷贝-1">b.深拷贝-1</h5>
+<pre><code>package prototype_mode.deep_copy_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resume_1</td>
+<td>简历类</td>
+<td>class</td>
+<td>implements Cloneable</td>
+</tr>
+<tr>
+<td>Address_1</td>
+<td>地址类</td>
+<td>class</td>
+<td>implements Cloneable</td>
+</tr>
+<tr>
+<td>PrototypeMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<h5 id="c深拷贝-2">c.深拷贝-2</h5>
+<pre><code>package prototype_mode.deep_copy_mode2
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resume_2</td>
+<td>简历类</td>
+<td>class</td>
+<td>implements Cloneable</td>
+</tr>
+<tr>
+<td>Address_2</td>
+<td>地址类</td>
+<td>class</td>
+<td>implements Serializable</td>
+</tr>
+<tr>
+<td>PrototypeMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>浅拷贝</strong>：对值类型的成员变量进行值的复制,对引用类型的成员变量仅仅复制引用,不复制引用的对象。</li>
+<li><strong>深拷贝</strong>：对值类型的成员变量进行值的复制,对引用类型的成员变量也进行引用对象的复制。</li>
+</ul>
+<p>原型模式：用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。</p>
+<h4 id="7-模板方法模式-抄试题">7. 模板方法模式-----抄试题</h4>
+<pre><code>package template_method_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BaseTestPaper</td>
+<td>黑板试卷类</td>
+<td>abstract class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>TestPaperA</td>
+<td>手抄试卷A类</td>
+<td>class</td>
+<td>extends BaseTestPaper</td>
+</tr>
+<tr>
+<td>TestPaperA</td>
+<td>手抄试卷B类</td>
+<td>class</td>
+<td>extends BaseTestPaper</td>
+</tr>
+<tr>
+<td>TemplateMethodMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>模板方法模式：定义一个操作中的算法骨架，而将一些步骤延迟到子类中。模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</p>
+<p>模板方法模式实现了很好的代码复用性。</p>
+<h4 id="8-外观模式-炒股票">8. 外观模式-----炒股票</h4>
+<pre><code>package facade_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stock</td>
+<td>股票类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Realty</td>
+<td>房地产类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>NationalDebt</td>
+<td>国债类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Fund</td>
+<td>基金类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>FacadeMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>外观模式：为子系统中的一组接口提供一个一致的界面，此模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。</p>
+<p>完美体现了依赖倒转原则和迪米特法则的思想。</p>
+<h4 id="9-建造者模式-产品生产线">9. 建造者模式-----产品生产线</h4>
+<pre><code>package builder_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BaseBuilder</td>
+<td>建造者抽象类</td>
+<td>abstract class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>ConcreteBuilder1</td>
+<td>具体建造者类1</td>
+<td>class</td>
+<td>extends BaseBuilder</td>
+</tr>
+<tr>
+<td>ConcreteBuilder2</td>
+<td>具体建造者类2</td>
+<td>class</td>
+<td>extends BaseBuilder</td>
+</tr>
+<tr>
+<td>Product</td>
+<td>产品类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Director</td>
+<td>指挥者类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>BuilderMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>建造者模式：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+<h4 id="10-观察者模式-员工偷懒">10. 观察者模式-----员工偷懒</h4>
+<pre><code>package observer_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BaseObserver</td>
+<td>抽象观察者</td>
+<td>abstract class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>BaseSubject</td>
+<td>抽象通知者</td>
+<td>abstract class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Boss</td>
+<td>老板类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Employee</td>
+<td>员工类</td>
+<td>class</td>
+<td>extends BaseObserver</td>
+</tr>
+<tr>
+<td>Reception</td>
+<td>前台类</td>
+<td>class</td>
+<td>extends BaseSubject</td>
+</tr>
+<tr>
+<td>ObserverMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>观察者模式：该模式定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自动更新自己。</p>
+<h4 id="11-抽象工厂模式反射-切换db源">11. 抽象工厂模式+反射-----切换DB源</h4>
+<pre><code>package abstract_factory_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IUser</td>
+<td>操作用户接口</td>
+<td>interface</td>
+<td>---</td>
+</tr>
+<tr>
+<td>IDepartment</td>
+<td>操作部门接口</td>
+<td>interface</td>
+<td>---</td>
+</tr>
+<tr>
+<td>User</td>
+<td>用户实体</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Department</td>
+<td>部门实体</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>MySqlUser</td>
+<td>mysql数据源-User</td>
+<td>class</td>
+<td>implements IUser</td>
+</tr>
+<tr>
+<td>MySqlDepartment</td>
+<td>mysql数据源-Department</td>
+<td>class</td>
+<td>implements IUser</td>
+</tr>
+<tr>
+<td>SqlServerUser</td>
+<td>sqlserver数据源-User</td>
+<td>class</td>
+<td>implements IDepartment</td>
+</tr>
+<tr>
+<td>SqlServerDepartment</td>
+<td>sqlserver数据源-Department</td>
+<td>class</td>
+<td>implements IDepartment</td>
+</tr>
+<tr>
+<td>DBEnum</td>
+<td>反射-全限定名</td>
+<td>enum</td>
+<td>---</td>
+</tr>
+<tr>
+<td>DataSourceFactory</td>
+<td>数据源切换工厂</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>AbstractFactoryMode</td>
+<td>启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>注意:<a href="https://blog.csdn.net/jerry11112/article/details/80618420">简单工厂、抽象工厂和抽象工厂模式的区别</a>。</p>
+<h4 id="12-状态模式-工作状态">12. 状态模式-----工作状态</h4>
+<pre><code>package state_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>State</td>
+<td>状态抽象类</td>
+<td>abstract</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Work</td>
+<td>工作类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>ForenoonStare</td>
+<td>上午工作状态类</td>
+<td>class</td>
+<td>extends State</td>
+</tr>
+<tr>
+<td>NoonState</td>
+<td>中午工作状态类</td>
+<td>class</td>
+<td>extends State</td>
+</tr>
+<tr>
+<td>AfternoonState</td>
+<td>下午工作状态类</td>
+<td>class</td>
+<td>extends State</td>
+</tr>
+<tr>
+<td>EveningState</td>
+<td>晚间工作状态</td>
+<td>class</td>
+<td>extends State</td>
+</tr>
+<tr>
+<td>SleepingState</td>
+<td>睡眠状态类</td>
+<td>class</td>
+<td>extends State</td>
+</tr>
+<tr>
+<td>RestState</td>
+<td>下班休息状态类</td>
+<td>class</td>
+<td>extends State</td>
+</tr>
+<tr>
+<td>StateMode</td>
+<td>状态模式启动类</td>
+<td>class</td>
+<td>extends State</td>
+</tr>
+</tbody>
+</table>
+<p>状态模式：当一个对象的内在状态改变时允许改变其行为，这个对象看起来像是改变了其类。</p>
+<h4 id="13-适配器模式">13. 适配器模式</h4>
+<pre><code>package adapter_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target</td>
+<td>客户期待的接口</td>
+<td>interface</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Adaptee</td>
+<td>需要适配的类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Adapter</td>
+<td>适配器类</td>
+<td>class</td>
+<td>implements Target</td>
+</tr>
+<tr>
+<td>AdapterMain</td>
+<td>适配器启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>适配器模式：将一个类的接口转换成客户希望的另一个接口。该模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。</p>
+<h4 id="14-备忘录模式">14. 备忘录模式</h4>
+<pre><code>package memento_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Originator</td>
+<td>发起人类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Memento</td>
+<td>备忘录类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Caretaker</td>
+<td>管理者类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>MementoMode</td>
+<td>备忘录模式启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>备忘录模式：在不破坏封装性的前提下，捕获一个对象的内部状态。这样以后就可以将该对象恢复到原先保存的状态。</p>
+<h4 id="15-组合模式">15. 组合模式</h4>
+<pre><code>package composite_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Component</td>
+<td>对象默认接口</td>
+<td>abstract</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Composite</td>
+<td>枝结点</td>
+<td>class</td>
+<td>extends Component</td>
+</tr>
+<tr>
+<td>Leaf</td>
+<td>叶子结点</td>
+<td>class</td>
+<td>extends Component</td>
+</tr>
+<tr>
+<td>CompositeMode</td>
+<td>组合模式启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>组合模式：将对象组成树形结构以表示‘部分-整体’的层次结构。组合模式使得用户对单个对象和组合对象的使用具有一致性。</p>
+<h4 id="16-迭代器模式">16. 迭代器模式</h4>
+<pre><code>package iterator_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Iterator</td>
+<td>迭代器抽象类</td>
+<td>abstract</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Aggregate</td>
+<td>聚集抽象类</td>
+<td>abstract</td>
+<td>---</td>
+</tr>
+<tr>
+<td>ConcreteIterator</td>
+<td>正序迭代器类</td>
+<td>class</td>
+<td>extends Iterator</td>
+</tr>
+<tr>
+<td>ConcreteIteratorDesc</td>
+<td>逆序迭代器类</td>
+<td>class</td>
+<td>extends Iterator</td>
+</tr>
+<tr>
+<td>ConcreteAggregate</td>
+<td>具体聚集类</td>
+<td>class</td>
+<td>extends Aggregate</td>
+</tr>
+<tr>
+<td>IteratorMode</td>
+<td>迭代器模式启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>迭代器模式：提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露该对象的内部表示。</p>
+<h4 id="17-单例模式">17. 单例模式</h4>
+<pre><code>package singleton_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Singleton1</td>
+<td>懒汉式（线程不安全）</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Singleton2</td>
+<td>懒汉式（线程安全，同步方法，不推荐使用）</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Singleton3</td>
+<td>饿汉式（线程安全）</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Singleton4</td>
+<td>静态内部类加载（线程安全）</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Singleton5</td>
+<td>枚举（线程安全）</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Singleton6</td>
+<td>懒汉式双重校验锁法（通常线程安全，不可保证完全安全）</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Singleton7</td>
+<td>懒汉式双重检查终极版（面试手写推荐）</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Singleton8</td>
+<td>使用 ThreadLocal 实现（线程安全）</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Singleton9</td>
+<td>使用CAS 锁实现（线程安全）</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>单例模式：保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+<pre><code>特点:
+    1.一个类只允许产生一个实例化对象。
+    2.单例类构造方法私有化，不允许外部创建对象。
+    3.单例类向外提供静态方法，调用方法返回内部创建的实例化对象。
+</code></pre>
+<p><a href="https://mp.weixin.qq.com/s/-MShVr8txQ6nced-EhxAIg">资料来源</a></p>
+<h4 id="18-桥接模式">18. 桥接模式</h4>
+<pre><code>package bridge_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementor</td>
+<td>实现</td>
+<td>abstract</td>
+<td>---</td>
+</tr>
+<tr>
+<td>ConcreteImplementorA</td>
+<td>具体实现A</td>
+<td>class</td>
+<td>extends Implementor</td>
+</tr>
+<tr>
+<td>ConcreteImplementorB</td>
+<td>具体实现B</td>
+<td>class</td>
+<td>extends Implementor</td>
+</tr>
+<tr>
+<td>Abstraction</td>
+<td>抽象</td>
+<td>abstract</td>
+<td>---</td>
+</tr>
+<tr>
+<td>RefinedAbstraction</td>
+<td>被提炼的抽象</td>
+<td>class</td>
+<td>extends Abstraction</td>
+</tr>
+<tr>
+<td>BridgeMode</td>
+<td>桥接模式启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立的变化。</p>
+<h4 id="19-命令模式">19. 命令模式</h4>
+<pre><code>package command_mode
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>释义</th>
+<th>类型</th>
+<th>依赖关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Command</td>
+<td>命令接口</td>
+<td>abstract</td>
+<td>---</td>
+</tr>
+<tr>
+<td>ConcreteCommand</td>
+<td>命令实现类</td>
+<td>class</td>
+<td>extends Command</td>
+</tr>
+<tr>
+<td>Receiver</td>
+<td>请求者</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Invoker</td>
+<td>要求执行者</td>
+<td>class</td>
+<td>---</td>
+</tr>
+<tr>
+<td>CommandMode</td>
+<td>命令模式启动类</td>
+<td>class</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>命令模式：将一个请求封装成一个对象，从而使您可以用不同的请求对客户进行参数化。</p>
 ]]></content>
     </entry>
     <entry>
@@ -2033,63 +3251,6 @@ pip3 uninstall -r requirements.txt
 <pre><code>pip freeze &gt; ./requirements.txt
 </code></pre>
 <figure data-type="image" tabindex="1"><img src="https://saowu.github.io/post-images/1585914935212.png" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Homebrew基本教程]]></title>
-        <id>https://saowu.github.io/homebrew-ji-ben-jiao-cheng/</id>
-        <link href="https://saowu.github.io/homebrew-ji-ben-jiao-cheng/">
-        </link>
-        <updated>2020-04-03T04:51:14.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="一-安装需要-ruby">一、安装（需要 Ruby）：</h3>
-<pre><code>  ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;
-</code></pre>
-<h3 id="二-基本命令">二、基本命令：</h3>
-<p><code>brew install *</code>   —安装软件<br>
-<code>brew uninstall *</code>   —安装软件<br>
-<code>brew list</code>   —列出已安装的软件<br>
-<code>brew update *</code>   —更新Homebrew<br>
-<code>brew upgrade</code>  —升级所有可以升级的软件们<br>
-<code>brew outdated</code> —这回列出所有安装的软件里可以升级的那些<br>
-<code>brew home *</code>—用浏览器打开<br>
-<code>brew info *</code>—显示软件内容信息<br>
-<code>brew deps *</code> — 显示包依赖<br>
-<code>brew cleanup</code> —清理不需要的版本极其安装包缓存<br>
-<code>brew server *</code>  —启动web服务器，可通过浏览器访问http://localhost:4567/ 来管理包<br>
-<code>brew -h</code>  —帮助<br>
-<code>brew search *</code>    —查询所有版本</p>
-<h3 id="三-目录">三、目录</h3>
-<p>1、通过brew install安装应用最先是放在<code>/usr/local/Cellar/</code>目录下。<br>
-2、有些应用会自动创建软链接放在<code>/usr/bin</code>或者<code>/usr/sbin</code>。<br>
-3、可以使用 <code>brew list 软件名</code> (比如 <code>brew list oclint</code>)确定安装位置。</p>
-<h3 id="四-换源">四、换源</h3>
-<h4 id="1-替换现有上游">1 、替换现有上游</h4>
-<pre><code># brew 程序本身
-git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
-
-# 以下针对 mac OS 系统上的 Homebrew
-git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
-git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
-git -C &quot;$(brew --repo homebrew/cask-fonts)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-fonts.git
-git -C &quot;$(brew --repo homebrew/cask-drivers)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-drivers.git
-
-# 更换后测试工作是否正常
-brew update
-</code></pre>
-<h4 id="2-复原">2、复原</h4>
-<pre><code># brew 程序本身
-git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git
-
-# 以下针对 mac OS 系统上的 Homebrew
-git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://github.com/Homebrew/homebrew-core.git
-git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask.git
-git -C &quot;$(brew --repo homebrew/cask-fonts)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask-fonts.git
-git -C &quot;$(brew --repo homebrew/cask-drivers)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask-drivers.git
-
-# 更换后测试工作是否正常
-brew update
-</code></pre>
-<p><a href="https://mirror.tuna.tsinghua.edu.cn/help/homebrew/">清华源参考链接</a></p>
 ]]></content>
     </entry>
 </feed>
