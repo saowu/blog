@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io/blog</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-06T11:55:19.800Z</updated>
+    <updated>2020-04-06T12:02:40.387Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io/blog"/>
     <link rel="self" href="https://saowu.github.io/blog/atom.xml"/>
@@ -120,6 +120,8 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 </code></pre>
 <h2 id="九-修改数据库中文乱码">九、修改数据库中文乱码</h2>
 <pre><code>show variables like 'character%';
+set character_set_database = 'utf8';
+set character_set_server = 'utf8';
 </code></pre>
 <h2 id="十-远程链接success">十、远程链接Success!</h2>
 <figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog/post-images/1585989623761.png" alt="" loading="lazy"></figure>

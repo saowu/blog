@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Docker安装MySQL | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.github.io/blog/favicon.ico?v=1586174115577">
+<link rel="shortcut icon" href="https://saowu.github.io/blog/favicon.ico?v=1586174555980">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.github.io/blog/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Docker安装MySQL | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/blog/atom.xml">
@@ -44,7 +44,7 @@ docker ..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://saowu.github.io/blog">
-  <img class="avatar" src="https://saowu.github.io/blog/images/avatar.png?v=1586174115577" alt="">
+  <img class="avatar" src="https://saowu.github.io/blog/images/avatar.png?v=1586174555980" alt="">
   </a>
   <h1 class="site-title">
     saowu&#39;s Blog
@@ -172,6 +172,8 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 </code></pre>
 <h2 id="九-修改数据库中文乱码">九、修改数据库中文乱码</h2>
 <pre><code>show variables like 'character%';
+set character_set_database = 'utf8';
+set character_set_server = 'utf8';
 </code></pre>
 <h2 id="十-远程链接success">十、远程链接Success!</h2>
 <figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog/post-images/1585989623761.png" alt="" loading="lazy"></figure>
