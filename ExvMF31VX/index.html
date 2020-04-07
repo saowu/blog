@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>pip3 常用命令 | saowu&#39;s Blog</title>
+<title>Java 贪吃蛇 | saowu&#39;s Blog</title>
 <link rel="shortcut icon" href="https://saowu.github.io/blog/favicon.ico?v=1586221489128">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.github.io/blog/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="pip3 常用命令 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/blog/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Java 贪吃蛇 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/blog/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 <link rel="stylesheet" href="https://saowu.github.io/blog/media/live2d/css/live2d.css">
@@ -24,16 +24,23 @@
 </script>
 
 
-    <meta name="description" content="1、安装目录
-~/Library/Caches/pip
+    <meta name="description" content="
+java编写的贪吃蛇（火影风）
 
-2、查找需要安装的包
-pip3 search &lt;包名&gt;
 
-3、安装python包
-pip3 install 
-pip3 install &lt;包名&gt;==1.0.0..." />
-    <meta name="keywords" content="Python,日记" />
+👉Github
+版本配置
+
+jdk8+
+mysql 5.7
+
+UI展示
+
+
+
+
+..." />
+    <meta name="keywords" content="Repositories,Java,日记" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -107,18 +114,22 @@ pip3 install &lt;包名&gt;==1.0.0..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              pip3 常用命令
+              Java 贪吃蛇
             </h2>
             <div class="post-info">
               <span>
                 2020-04-03
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
               
-                <a href="https://saowu.github.io/blog/mVqrRKBAz/" class="post-tag">
-                  # Python
+                <a href="https://saowu.github.io/blog/pPR9i6dAN/" class="post-tag">
+                  # Repositories
+                </a>
+              
+                <a href="https://saowu.github.io/blog/FWHSehn5o/" class="post-tag">
+                  # Java
                 </a>
               
                 <a href="https://saowu.github.io/blog/5lhY7x_08/" class="post-tag">
@@ -127,57 +138,25 @@ pip3 install &lt;包名&gt;==1.0.0..." />
               
             </div>
             
-              <img class="post-feature-image" src="https://saowu.github.io/blog/post-images/pip3-chang-yong-ming-ling.jpg" alt="">
+              <img class="post-feature-image" src="https://saowu.github.io/blog/post-images/ExvMF31VX.jpg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h3 id="1-安装目录">1、安装目录</h3>
-<pre><code>~/Library/Caches/pip
-</code></pre>
-<h3 id="2-查找需要安装的包">2、查找需要安装的包</h3>
-<pre><code>pip3 search &lt;包名&gt;
-</code></pre>
-<h3 id="3-安装python包">3、安装python包</h3>
-<pre><code>pip3 install 
-pip3 install &lt;包名&gt;==1.0.0
-pip3 install -r requirements.txt 
-pip3 install -i &lt;源地址&gt; &lt;包名&gt;
-pip install -e &lt;local project path&gt; (这个命令相当于pip install develop）
-</code></pre>
-<h3 id="4-源地址">4、源地址</h3>
-<pre><code>阿里源：https://mirrors.aliyun.com/pypi/simple/ 
-科大源：https://pypi.mirrors.ustc.edu.cn/simple/ 
-清华源：https://pypi.tuna.tsinghua.edu.cn/simple 
-官方源：https://pypi.python.org/
-</code></pre>
-<h3 id="5-在配置文件中指定安装源">5、在配置文件中指定安装源</h3>
-<pre><code>#直接在配置文件中添加源，如果没有配置文件可以手动添加一个 
-/etc/pip.conf 
-[global] 
-timeout = 6000 
-index-url = http://pypi.douban.com/simple
-</code></pre>
-<h3 id="6-列出已经安装的包">6、列出已经安装的包</h3>
-<pre><code>pip3 list 
-</code></pre>
-<h3 id="7-列出过期的包">7、列出过期的包</h3>
-<pre><code>pip3 list -o
-</code></pre>
-<h3 id="8-升级包">8、升级包</h3>
-<pre><code>pip3 install &lt;包名&gt; -U
-pip3 install -i &lt;源地址&gt; &lt;包名&gt; -U
-</code></pre>
-<h3 id="9-安装的包所在目录">9、安装的包所在目录</h3>
-<pre><code>pip3 show -f &lt;包名&gt; 
-</code></pre>
-<h3 id="10-卸载安装">10、卸载安装</h3>
-<pre><code>pip3 uninstall &lt;包名&gt; 
-pip3 uninstall -r requirements.txt
-</code></pre>
-<h3 id="11-生成requirementstxt文件">11、生成requirements.txt文件</h3>
-<pre><code>pip freeze &gt; ./requirements.txt
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog/post-images/1585914935212.png" alt="" loading="lazy"></figure>
+                <blockquote>
+<p>java编写的贪吃蛇（火影风）</p>
+</blockquote>
+<!-- more -->
+<p>👉<a href="https://github.com/saowu/SnakeGame">Github</a></p>
+<h4 id="版本配置">版本配置</h4>
+<ul>
+<li>jdk8+</li>
+<li>mysql 5.7</li>
+</ul>
+<h4 id="ui展示">UI展示</h4>
+<p><img src="https://saowu.github.io/blog/post-images/1585916237725.png" alt="" loading="lazy"><br>
+<img src="https://saowu.github.io/blog/post-images/1585916245690.png" alt="" loading="lazy"><br>
+<img src="https://saowu.github.io/blog/post-images/1585916251778.png" alt="" loading="lazy"><br>
+<img src="https://saowu.github.io/blog/post-images/1585916260139.png" alt="" loading="lazy"></p>
 
               </div>
               <div class="toc-container">
@@ -186,17 +165,12 @@ pip3 uninstall -r requirements.txt
 <ul>
 <li>
 <ul>
-<li><a href="#1-%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95">1、安装目录</a></li>
-<li><a href="#2-%E6%9F%A5%E6%89%BE%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85">2、查找需要安装的包</a></li>
-<li><a href="#3-%E5%AE%89%E8%A3%85python%E5%8C%85">3、安装python包</a></li>
-<li><a href="#4-%E6%BA%90%E5%9C%B0%E5%9D%80">4、源地址</a></li>
-<li><a href="#5-%E5%9C%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E6%8C%87%E5%AE%9A%E5%AE%89%E8%A3%85%E6%BA%90">5、在配置文件中指定安装源</a></li>
-<li><a href="#6-%E5%88%97%E5%87%BA%E5%B7%B2%E7%BB%8F%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85">6、列出已经安装的包</a></li>
-<li><a href="#7-%E5%88%97%E5%87%BA%E8%BF%87%E6%9C%9F%E7%9A%84%E5%8C%85">7、列出过期的包</a></li>
-<li><a href="#8-%E5%8D%87%E7%BA%A7%E5%8C%85">8、升级包</a></li>
-<li><a href="#9-%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95">9、安装的包所在目录</a></li>
-<li><a href="#10-%E5%8D%B8%E8%BD%BD%E5%AE%89%E8%A3%85">10、卸载安装</a></li>
-<li><a href="#11-%E7%94%9F%E6%88%90requirementstxt%E6%96%87%E4%BB%B6">11、生成requirements.txt文件</a></li>
+<li>
+<ul>
+<li><a href="#%E7%89%88%E6%9C%AC%E9%85%8D%E7%BD%AE">版本配置</a></li>
+<li><a href="#ui%E5%B1%95%E7%A4%BA">UI展示</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -211,9 +185,9 @@ pip3 uninstall -r requirements.txt
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://saowu.github.io/blog/homebrew-ji-ben-jiao-cheng/">
+            <a href="https://saowu.github.io/blog/IVwOk1Phb/">
               <h3 class="post-title">
-                Homebrew基本教程
+                 FigureBed图床系统
               </h3>
             </a>
           </div>
