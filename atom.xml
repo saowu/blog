@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io/blog</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-07T01:04:59.658Z</updated>
+    <updated>2020-04-07T01:16:37.413Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io/blog"/>
     <link rel="self" href="https://saowu.github.io/blog/atom.xml"/>
@@ -230,7 +230,7 @@ set character_set_server = 'utf8';
 <li>图片信息来自于<a href="http://www.holiland.com/">好利来</a>,</li>
 <li>个别页面参考<a href="https://jd.com/">京东</a>布局</li>
 </ul>
-<h4 id="功能模块">功能模块</h4>
+<h2 id="功能模块">功能模块</h2>
 <pre><code>1.index.html:首页
 2.cakes.html:系列详情
 4.details.html:产品详情
@@ -238,7 +238,7 @@ set character_set_server = 'utf8';
 5.orders.html:订单中心
 6.order_details.html:订单详情
 </code></pre>
-<h4 id="ui展示">UI展示</h4>
+<h2 id="ui展示">UI展示</h2>
 <p><img src="https://saowu.github.io/blog/post-images/1585918297393.png" alt="" loading="lazy"><br>
 <img src="https://saowu.github.io/blog/post-images/1585918305938.png" alt="" loading="lazy"><br>
 <img src="https://saowu.github.io/blog/post-images/1585918314818.png" alt="" loading="lazy"><br>
@@ -1471,18 +1471,18 @@ set character_set_server = 'utf8';
         <link href="https://saowu.github.io/blog/ugWz7JSYQ/">
         </link>
         <updated>2020-04-03T12:20:46.000Z</updated>
-        <summary type="html"><![CDATA[<h1 id="votingsystem">VotingSystem</h1>
+        <summary type="html"><![CDATA[<h2 id="votingsystem">VotingSystem</h2>
 <blockquote>
 <p>Bootstrap+Django+sqlite3 编写的简单问卷调查系统</p>
 </blockquote>
 ]]></summary>
-        <content type="html"><![CDATA[<h1 id="votingsystem">VotingSystem</h1>
+        <content type="html"><![CDATA[<h2 id="votingsystem">VotingSystem</h2>
 <blockquote>
 <p>Bootstrap+Django+sqlite3 编写的简单问卷调查系统</p>
 </blockquote>
 <!-- more -->
 <p>👉<a href="https://github.com/saowu/VotingSystem">GitHub</a></p>
-<h4 id="版本配置">版本配置</h4>
+<h3 id="版本配置">版本配置</h3>
 <pre><code>Package    Version
 ---------- -------
 asgiref    3.2.3  
@@ -1492,12 +1492,12 @@ pytz       2019.3
 setuptools 40.8.0 
 sqlparse   0.3.0 
 </code></pre>
-<h4 id="默认管理账户">默认管理账户</h4>
+<h3 id="默认管理账户">默认管理账户</h3>
 <ul>
 <li><code>admin</code>:saowu</li>
 <li><code>password</code>:admin12345</li>
 </ul>
-<h4 id="ui展示">UI展示</h4>
+<h3 id="ui展示">UI展示</h3>
 <p><img src="https://saowu.github.io/blog/post-images/1585916720977.png" alt="" loading="lazy"><br>
 <img src="https://saowu.github.io/blog/post-images/1585916727536.png" alt="" loading="lazy"><br>
 <img src="https://saowu.github.io/blog/post-images/1585916736036.png" alt="" loading="lazy"></p>
@@ -1509,21 +1509,23 @@ sqlparse   0.3.0
         <link href="https://saowu.github.io/blog/ExvMF31VX/">
         </link>
         <updated>2020-04-03T12:15:15.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
+        <summary type="html"><![CDATA[<h2 id="snakegame">SnakeGame</h2>
+<blockquote>
 <p>java编写的贪吃蛇（火影风）</p>
 </blockquote>
 ]]></summary>
-        <content type="html"><![CDATA[<blockquote>
+        <content type="html"><![CDATA[<h2 id="snakegame">SnakeGame</h2>
+<blockquote>
 <p>java编写的贪吃蛇（火影风）</p>
 </blockquote>
 <!-- more -->
 <p>👉<a href="https://github.com/saowu/SnakeGame">Github</a></p>
-<h4 id="版本配置">版本配置</h4>
+<h3 id="版本配置">版本配置</h3>
 <ul>
 <li>jdk8+</li>
 <li>mysql 5.7</li>
 </ul>
-<h4 id="ui展示">UI展示</h4>
+<h3 id="ui展示">UI展示</h3>
 <p><img src="https://saowu.github.io/blog/post-images/1585916237725.png" alt="" loading="lazy"><br>
 <img src="https://saowu.github.io/blog/post-images/1585916245690.png" alt="" loading="lazy"><br>
 <img src="https://saowu.github.io/blog/post-images/1585916251778.png" alt="" loading="lazy"><br>
