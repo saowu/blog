@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.github.io/blog</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-06T12:02:40.387Z</updated>
+    <updated>2020-04-07T01:01:16.367Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.github.io/blog"/>
     <link rel="self" href="https://saowu.github.io/blog/atom.xml"/>
@@ -125,6 +125,39 @@ set character_set_server = 'utf8';
 </code></pre>
 <h2 id="十-远程链接success">十、远程链接Success!</h2>
 <figure data-type="image" tabindex="1"><img src="https://saowu.github.io/blog/post-images/1585989623761.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker for Mac安装设置]]></title>
+        <id>https://saowu.github.io/blog/u7TQyhZuR/</id>
+        <link href="https://saowu.github.io/blog/u7TQyhZuR/">
+        </link>
+        <updated>2020-04-04T07:29:05.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>2019年后的Desktop版和以前的UI不太一样，接下来教你设置新版Docker Desktop for Mac镜像加速。</p>
+</blockquote>
+<h3 id="一-下载并安装">一、下载并安装</h3>
+<p>👉<a href="https://download.docker.com/mac/stable/Docker.dmg">Download for Mac</a></p>
+<h3 id="二-设置镜像加速">二、设置镜像加速</h3>
+<ul>
+<li>这里用的是<a href="https://www.aliyun.com/">阿里云</a>的<code>容器镜像服务</code>,如果没有账号需要先注册一下。<br>
+<img src="https://saowu.github.io/blog/post-images/1585986280355.jpeg" alt="" loading="lazy"><br>
+<img src="https://saowu.github.io/blog/post-images/1585986397453.png" alt="" loading="lazy"></li>
+</ul>
+<h3 id="三-启动并配置docekr">三、启动并配置Docekr</h3>
+<ul>
+<li>右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Docker Engine 标签下的 Registry mirrors 列表中将https://******.mirror.aliyuncs.com加到registry-mirrors&quot;的数组里，点击 Apply &amp; Restart按钮，等待Docker重启并应用配置的镜像加速器。</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;experimental&quot;: false,
+  &quot;debug&quot;: true,
+  &quot;registry-mirrors&quot;: [
+    &quot;https://******.mirror.aliyuncs.com&quot;
+  ]
+}
+</code></pre>
+<p><img src="https://saowu.github.io/blog/post-images/1585986703232.png" alt="" loading="lazy"><br>
+<img src="https://saowu.github.io/blog/post-images/1585986710051.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
@@ -2893,359 +2926,6 @@ ave=4.500000
 1234567890
 Process finished with exit code 0
 
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[C语言程序集（16-30）]]></title>
-        <id>https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-16-30/</id>
-        <link href="https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-16-30/">
-        </link>
-        <updated>2020-04-03T06:06:08.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="16打印的1010矩阵">16.打印<code>*</code>的10*10矩阵</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 0; i &lt; 10; i++){
-        for (int j = 0; j &lt; 10; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-**********
-**********
-**********
-**********
-**********
-**********
-**********
-**********
-**********
-**********
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="17打印">17.打印:</h3>
-<pre><code>        *
-        **
-        ***
-        ****
-        *****
-
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 5; i++) {
-        for (int j = 1; j &lt;= i; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-</code></pre>
-<h3 id="18打印">18.打印：</h3>
-<pre><code>        *****
-        ****
-        ***
-        **
-        *
-        
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 5; i++) {
-        for (int j = 5; j &gt;= i; j--)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-
-
-</code></pre>
-<h3 id="19打印">19.打印：</h3>
-<pre><code>            *
-            ***
-            *****
-            *******
-            *********
-            
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 5; i++) {
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-</code></pre>
-<h3 id="20打印">20.打印：</h3>
-<pre><code>            *
-           ***
-          *****
-         *******
-        *********
-        
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 5; i++) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-</code></pre>
-<h3 id="21打印">21.打印：</h3>
-<pre><code>        *********
-         *******
-          *****
-           ***
-            *
-            
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 5; i &gt;= 1; i--) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-</code></pre>
-<h3 id="22打印">22.打印：</h3>
-<pre><code>        *********
-         *******
-          *****
-           ***
-            *
-           ***
-          *****
-         *******
-        *********
-        
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 5; i &gt;= 1; i--) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    for (int i = 2; i &lt;= 5; i++) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    return 0;
-}
-</code></pre>
-<h3 id="23打印">23.打印：</h3>
-<pre><code>            *
-           ***
-          *****
-         *******
-        *********
-         *******
-          *****
-           ***
-            *
-            
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 5; i++) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-    for (int i = 4; i &gt;= 1; i--) {
-        for (int j = 1; j &lt;= 5 - i; j++)
-            putchar(' ');
-        for (int j = 1; j &lt;= 2 * i - 1; j++)
-            putchar('*');
-        putchar('\n');
-    }
-
-    return 0;
-}
-
-</code></pre>
-<h3 id="24打印乘法口诀表">24.打印乘法口诀表</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 9; i++) {
-        for (int j = 1; j &lt;= i; j++)
-            printf(&quot;\t%d*%d=%d&quot;, i, j, i * j);
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-	1*1=1
-	2*1=2	2*2=4
-	3*1=3	3*2=6	3*3=9
-	4*1=4	4*2=8	4*3=12	4*4=16
-	5*1=5	5*2=10	5*3=15	5*4=20	5*5=25
-	6*1=6	6*2=12	6*3=18	6*4=24	6*5=30	6*6=36
-	7*1=7	7*2=14	7*3=21	7*4=28	7*5=35	7*6=42	7*7=49
-	8*1=8	8*2=16	8*3=24	8*4=32	8*5=40	8*6=48	8*7=56	8*8=64
-	9*1=9	9*2=18	9*3=27	9*4=36	9*5=45	9*6=54	9*7=63	9*8=72	9*9=81
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="25打印">25.打印:</h3>
-<pre><code>           1   2   3   4
-           5   6   7   8
-           9  10  11  12
-          13  14  15  16
-          
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 4; i++) {
-        for (int j = 1; j &lt;= 4; j++)
-            printf(&quot;%4d&quot;, (i - 1) * 4 + j);
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}
-
-</code></pre>
-<h3 id="26打印">26.打印：</h3>
-<pre><code>           1   5   9  13
-           2   6  10  14
-           3   7  11  15
-           4   8  12  16
-           
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 1; i &lt;= 4; i++) {
-        for (int j = 1; j &lt;= 4; j++)
-            printf(&quot;%4d&quot;, (j - 1) * 4 + i);
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}
-
-</code></pre>
-<h3 id="27真题打印">27.(真题)打印：</h3>
-<pre><code>          16  15  14  13
-          12  11  10   9
-           8   7   6   5
-           4   3   2   1
-           
-#include &lt;stdio.h&gt;
-int main() {
-    for (int i = 4; i &gt;= 1; i--) {
-        for (int j = 1; j &lt;= 4; j++)
-            printf(&quot;%4d&quot;, i * 4 - (j - 1));
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}
-</code></pre>
-<h3 id="28素数的判断">28.素数的判断</h3>
-<pre><code>1).
-    #include &lt;stdio.h&gt;
-    #include &lt;math.h&gt;
-    
-    int main() {
-        int i, x;
-        printf(&quot;input x :&quot;);
-        scanf(&quot;%d&quot;, &amp;x);
-        for (i = 2; i &lt;= sqrt(x); i++)
-            if (x % i == 0)
-                break;
-        if (i &gt; sqrt(x))
-            printf(&quot;%d is a prime number.\n&quot;, x);
-        else
-            printf(&quot;%d is not a prime number.\n&quot;, x);
-        return 0;
-    }
-2).
-    #include &lt;stdio.h&gt;
-    #include &lt;math.h&gt;
-    int main() {
-        int i, x, flag = 1;
-        printf(&quot;input x :&quot;);
-        scanf(&quot;%d&quot;, &amp;x);
-        for (i = 2; i &lt;= sqrt(x); i++)
-            if (x % i == 0) {
-                flag = 0;
-                break;
-            }
-        if (flag == 1)
-            printf(&quot;%d is a prime number.\n&quot;, x);
-        else
-            printf(&quot;%d is not a prime number.\n&quot;, x);
-        return 0;
-    }
-    
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input x :34
-34 is not a prime number.
-
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="29打印100~200之间的素数">29.打印100~200之间的素数</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-
-int main() {
-    int flag;
-    for (int x = 100; x &lt;= 200; x++) {
-    //for(int x = 101; x &lt;=199; x += 2){
-        flag = 1;
-        for (int i = 2; i &lt;= sqrt(x); i++)
-            if (x % i == 0) {
-                flag = 0;
-                break;
-            }
-        if (flag == 1)
-            printf(&quot;%d\t&quot;, x);
-    }
-
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-101	103	107	109	113	127	131	137	139	149	151	157	163	167	173	179	181	191	193	197	199	
-Process finished with exit code 0
-
-</code></pre>
-<h3 id="30打印ascii码与字母">30.打印ASCII码与字母</h3>
-<pre><code>
-#include &lt;stdio.h&gt;
-
-int main() {
-    for (int ch = 'a'; ch &lt;= 'z'; ch++) {
-        printf(&quot;%c=%d %c=%d &quot;, ch - 32, ch - 32, ch, ch);
-    }
-    return 0;
-}
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-A=65 a=97 B=66 b=98 C=67 c=99 D=68 d=100 E=69 e=101 F=70 f=102 G=71 g=103 H=72 h=104 I=73 i=105 J=74 j=106 K=75 k=107 L=76 l=108 M=77 m=109 N=78 n=110 O=79 o=111 P=80 p=112 Q=81 q=113 R=82 r=114 S=83 s=115 T=84 t=116 U=85 u=117 V=86 v=118 W=87 w=119 X=88 x=120 Y=89 y=121 Z=90 z=122 
-Process finished with exit code 0
 
 </code></pre>
 ]]></content>

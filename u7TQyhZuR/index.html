@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>beego框架开发的博客系统 | saowu&#39;s Blog</title>
+<title>Docker for Mac安装设置 | saowu&#39;s Blog</title>
 <link rel="shortcut icon" href="https://saowu.github.io/blog/favicon.ico?v=1586221190333">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.github.io/blog/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="beego框架开发的博客系统 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/blog/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Docker for Mac安装设置 | saowu&#39;s Blog - Atom Feed" href="https://saowu.github.io/blog/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 <link rel="stylesheet" href="https://saowu.github.io/blog/media/live2d/css/live2d.css">
@@ -24,19 +24,15 @@
 </script>
 
 
-    <meta name="description" content="HeartBlog
-👉GitHubbuilding
-采用技术
+    <meta name="description" content="
+2019年后的Desktop版和以前的UI不太一样，接下来教你设置新版Docker Desktop for Mac镜像加速。
 
-前台页面：模板语法
-后台页面：layui
-数据库：mysql
-主框架：beego
+一、下载并安装
+👉Download for Mac
+二、设置镜像加速
 
-介绍
-HearBlog设计简洁，界面美观(早期审美),部署简单，自动建表，
-mysql数据..." />
-    <meta name="keywords" content="Go,Repositories,日记" />
+这里用的是阿里云的容器镜像服务,如果..." />
+    <meta name="keywords" content="Docker,macOS" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -110,74 +106,66 @@ mysql数据..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              beego框架开发的博客系统
+              Docker for Mac安装设置
             </h2>
             <div class="post-info">
               <span>
-                2020-03-03
+                2020-04-04
               </span>
               <span>
                 1 min read
               </span>
               
-                <a href="https://saowu.github.io/blog/0dBY5YRoJ/" class="post-tag">
-                  # Go
+                <a href="https://saowu.github.io/blog/p6tPptTlO/" class="post-tag">
+                  # Docker
                 </a>
               
-                <a href="https://saowu.github.io/blog/pPR9i6dAN/" class="post-tag">
-                  # Repositories
-                </a>
-              
-                <a href="https://saowu.github.io/blog/5lhY7x_08/" class="post-tag">
-                  # 日记
+                <a href="https://saowu.github.io/blog/ZyLWNMQhx/" class="post-tag">
+                  # macOS
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://saowu.github.io/blog/post-images/FHgE0FP4i.jpg" alt="">
+              <img class="post-feature-image" src="https://saowu.github.io/blog/post-images/u7TQyhZuR.jpg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="heartblog">HeartBlog</h2>
-<p>👉<a href="https://github.com/saowu/HeartBlog">GitHub</a><code>building</code></p>
-<h3 id="采用技术">采用技术</h3>
+                <blockquote>
+<p>2019年后的Desktop版和以前的UI不太一样，接下来教你设置新版Docker Desktop for Mac镜像加速。</p>
+</blockquote>
+<h3 id="一-下载并安装">一、下载并安装</h3>
+<p>👉<a href="https://download.docker.com/mac/stable/Docker.dmg">Download for Mac</a></p>
+<h3 id="二-设置镜像加速">二、设置镜像加速</h3>
 <ul>
-<li>前台页面：模板语法</li>
-<li>后台页面：layui</li>
-<li>数据库：mysql</li>
-<li>主框架：beego</li>
+<li>这里用的是<a href="https://www.aliyun.com/">阿里云</a>的<code>容器镜像服务</code>,如果没有账号需要先注册一下。<br>
+<img src="https://saowu.github.io/blog/post-images/1585986280355.jpeg" alt="" loading="lazy"><br>
+<img src="https://saowu.github.io/blog/post-images/1585986397453.png" alt="" loading="lazy"></li>
 </ul>
-<h3 id="介绍">介绍</h3>
-<p>HearBlog设计简洁，界面美观(早期审美),部署简单，自动建表，<br>
-mysql数据库，可选内嵌Sqlite，后台功能稍不完整，正在开发中...</p>
-<h3 id="部署">部署</h3>
-<p>您需要安装 Go 1.1+ 以确保所有功能的正常使用。</p>
-<p>GOPATH下执行以下命令（详细参见beego官网）：</p>
-<pre><code>$ go get -u github.com/astaxie/beego  
-$ go get -u github.com/beego/bee
-$ go get -u github.com/go-sql-driver/mysql
+<h3 id="三-启动并配置docekr">三、启动并配置Docekr</h3>
+<ul>
+<li>右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Docker Engine 标签下的 Registry mirrors 列表中将https://******.mirror.aliyuncs.com加到registry-mirrors&quot;的数组里，点击 Apply &amp; Restart按钮，等待Docker重启并应用配置的镜像加速器。</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;experimental&quot;: false,
+  &quot;debug&quot;: true,
+  &quot;registry-mirrors&quot;: [
+    &quot;https://******.mirror.aliyuncs.com&quot;
+  ]
+}
 </code></pre>
-<h3 id="ui预览">UI预览</h3>
-<p><img src="https://saowu.github.io/blog/post-images/1585917916132.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/blog/post-images/1585917936650.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/blog/post-images/1585918017694.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/blog/post-images/1585917949318.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/blog/post-images/1585917957851.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/blog/post-images/1585917969852.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/blog/post-images/1585917987270.png" alt="" loading="lazy"><br>
-<img src="https://saowu.github.io/blog/post-images/1585918003894.png" alt="" loading="lazy"></p>
+<p><img src="https://saowu.github.io/blog/post-images/1585986703232.png" alt="" loading="lazy"><br>
+<img src="https://saowu.github.io/blog/post-images/1585986710051.png" alt="" loading="lazy"></p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#heartblog">HeartBlog</a>
+<li>
 <ul>
-<li><a href="#%E9%87%87%E7%94%A8%E6%8A%80%E6%9C%AF">采用技术</a></li>
-<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
-<li><a href="#%E9%83%A8%E7%BD%B2">部署</a></li>
-<li><a href="#ui%E9%A2%84%E8%A7%88">UI预览</a></li>
+<li><a href="#%E4%B8%80-%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85">一、下载并安装</a></li>
+<li><a href="#%E4%BA%8C-%E8%AE%BE%E7%BD%AE%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F">二、设置镜像加速</a></li>
+<li><a href="#%E4%B8%89-%E5%90%AF%E5%8A%A8%E5%B9%B6%E9%85%8D%E7%BD%AEdocekr">三、启动并配置Docekr</a></li>
 </ul>
 </li>
 </ul>
@@ -189,6 +177,15 @@ $ go get -u github.com/go-sql-driver/mysql
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://saowu.github.io/blog/yadpkA34H/">
+              <h3 class="post-title">
+                What is docker ？
+              </h3>
+            </a>
+          </div>
         
 
         
