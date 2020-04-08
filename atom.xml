@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://saowu.github.io/blog</id>
+    <id>https://saowu.top/blog</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-08T09:19:51.060Z</updated>
+    <updated>2020-04-08T09:22:30.552Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://saowu.github.io/blog"/>
-    <link rel="self" href="https://saowu.github.io/blog/atom.xml"/>
+    <link rel="alternate" href="https://saowu.top/blog"/>
+    <link rel="self" href="https://saowu.top/blog/atom.xml"/>
     <subtitle>A programmer who wants to be happy and muddle along</subtitle>
-    <logo>https://saowu.github.io/blog/images/avatar.png</logo>
-    <icon>https://saowu.github.io/blog/favicon.ico</icon>
+    <logo>https://saowu.top/blog/images/avatar.png</logo>
+    <icon>https://saowu.top/blog/favicon.ico</icon>
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[让Google搜索到GitHub Pages]]></title>
-        <id>https://saowu.github.io/blog/4tCVcic30/</id>
-        <link href="https://saowu.github.io/blog/4tCVcic30/">
+        <id>https://saowu.top/blog/4tCVcic30/</id>
+        <link href="https://saowu.top/blog/4tCVcic30/">
         </link>
         <updated>2020-04-04T12:55:35.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Docker安装MySQL]]></title>
-        <id>https://saowu.github.io/blog/xjJ08KIvI/</id>
-        <link href="https://saowu.github.io/blog/xjJ08KIvI/">
+        <id>https://saowu.top/blog/xjJ08KIvI/</id>
+        <link href="https://saowu.top/blog/xjJ08KIvI/">
         </link>
         <updated>2020-04-04T08:04:10.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Docker for Mac安装设置]]></title>
-        <id>https://saowu.github.io/blog/u7TQyhZuR/</id>
-        <link href="https://saowu.github.io/blog/u7TQyhZuR/">
+        <id>https://saowu.top/blog/u7TQyhZuR/</id>
+        <link href="https://saowu.top/blog/u7TQyhZuR/">
         </link>
         <updated>2020-04-04T07:29:05.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[What is docker ？]]></title>
-        <id>https://saowu.github.io/blog/yadpkA34H/</id>
-        <link href="https://saowu.github.io/blog/yadpkA34H/">
+        <id>https://saowu.top/blog/yadpkA34H/</id>
+        <link href="https://saowu.top/blog/yadpkA34H/">
         </link>
         <updated>2020-04-04T06:57:19.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Bootstrap搭建的蛋糕商店前端模板]]></title>
-        <id>https://saowu.github.io/blog/-L4pb1J0a/</id>
-        <link href="https://saowu.github.io/blog/-L4pb1J0a/">
+        <id>https://saowu.top/blog/-L4pb1J0a/</id>
+        <link href="https://saowu.top/blog/-L4pb1J0a/">
         </link>
         <updated>2020-04-03T12:48:43.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[《大话设计模式》学习笔记]]></title>
-        <id>https://saowu.github.io/blog/V2m1nsMuh/</id>
-        <link href="https://saowu.github.io/blog/V2m1nsMuh/">
+        <id>https://saowu.top/blog/V2m1nsMuh/</id>
+        <link href="https://saowu.top/blog/V2m1nsMuh/">
         </link>
         <updated>2020-04-03T12:33:37.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[简单问卷调查系统]]></title>
-        <id>https://saowu.github.io/blog/ugWz7JSYQ/</id>
-        <link href="https://saowu.github.io/blog/ugWz7JSYQ/">
+        <id>https://saowu.top/blog/ugWz7JSYQ/</id>
+        <link href="https://saowu.top/blog/ugWz7JSYQ/">
         </link>
         <updated>2020-04-03T12:20:46.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Java 贪吃蛇]]></title>
-        <id>https://saowu.github.io/blog/ExvMF31VX/</id>
-        <link href="https://saowu.github.io/blog/ExvMF31VX/">
+        <id>https://saowu.top/blog/ExvMF31VX/</id>
+        <link href="https://saowu.top/blog/ExvMF31VX/">
         </link>
         <updated>2020-04-03T12:15:15.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[ FigureBed图床系统]]></title>
-        <id>https://saowu.github.io/blog/IVwOk1Phb/</id>
-        <link href="https://saowu.github.io/blog/IVwOk1Phb/">
+        <id>https://saowu.top/blog/IVwOk1Phb/</id>
+        <link href="https://saowu.top/blog/IVwOk1Phb/">
         </link>
         <updated>2020-04-03T12:06:39.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[C语言程序集（76-80）]]></title>
-        <id>https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-76-80/</id>
-        <link href="https://saowu.github.io/blog/c-yu-yan-cheng-xu-ji-76-80/">
+        <id>https://saowu.top/blog/c-yu-yan-cheng-xu-ji-76-80/</id>
+        <link href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-76-80/">
         </link>
         <updated>2020-04-03T06:10:45.000Z</updated>
     </entry>
