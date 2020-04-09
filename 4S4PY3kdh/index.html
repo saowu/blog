@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title> FigureBed图床系统 | saowu&#39;s Blog</title>
+<title>JVM 相关记录 | saowu&#39;s Blog</title>
 <link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1586394045457">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title=" FigureBed图床系统 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="JVM 相关记录 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 <link rel="stylesheet" href="https://saowu.top/blog/media/live2d/css/live2d.css">
@@ -24,16 +24,14 @@
 </script>
 
 
-    <meta name="description" content="
-Flask 个人图床
+    <meta name="description" content="一、Java反编译
 
-👉demo website
-👉GitHub
-功能支持
-1.支持多文件上传（set max=5）
-2.支持导出上传记录（csv文件）
-3.支持返回多种链接格式 （link, markdown, html, bbc..." />
-    <meta name="keywords" content="Repositories,Docker,Python,日记" />
+概述： javap是 Java class文件分解器，可以反编译，也可以查看java编译器生成的字节码，从而对代码内部的执行逻辑进行分析。
+语法：
+
+把java文件编译为class文件
+例如：javac Test.ja..." />
+    <meta name="keywords" content="Java" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -107,80 +105,170 @@ Flask 个人图床
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-               FigureBed图床系统
+              JVM 相关记录
             </h2>
             <div class="post-info">
               <span>
-                2020-04-03
+                2020-04-06
               </span>
               <span>
-                1 min read
+                4 min read
               </span>
               
-                <a href="https://saowu.top/blog/pPR9i6dAN/" class="post-tag">
-                  # Repositories
-                </a>
-              
-                <a href="https://saowu.top/blog/p6tPptTlO/" class="post-tag">
-                  # Docker
-                </a>
-              
-                <a href="https://saowu.top/blog/mVqrRKBAz/" class="post-tag">
-                  # Python
-                </a>
-              
-                <a href="https://saowu.top/blog/5lhY7x_08/" class="post-tag">
-                  # 日记
+                <a href="https://saowu.top/blog/FWHSehn5o/" class="post-tag">
+                  # Java
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://saowu.top/blog/post-images/IVwOk1Phb.jpg" alt="">
+              <img class="post-feature-image" src="https://saowu.top/blog/post-images/4S4PY3kdh.jpg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <blockquote>
-<p>Flask 个人图床</p>
-</blockquote>
-<p>👉<a href="http://118.89.237.69:8000">demo website</a><br>
-👉<a href="https://github.com/saowu/FigureBed">GitHub</a></p>
-<h4 id="功能支持">功能支持</h4>
-<pre><code>1.支持多文件上传（set max=5）
-2.支持导出上传记录（csv文件）
-3.支持返回多种链接格式 （link, markdown, html, bbcode，removal）
-4.可以通过removal链接自行删除图片文件
-5.使用mysql数据库
-6.支持拖动上传
+                <h2 id="一-java反编译">一、Java反编译</h2>
+<ul>
+<li>概述： javap是 Java class文件分解器，可以反编译，也可以查看java编译器生成的字节码，从而对代码内部的执行逻辑进行分析。</li>
+<li>语法：
+<ul>
+<li>把java文件编译为class文件<br>
+例如：<code>javac Test.java</code></li>
+<li>执行javap操作：javap  Test（不加 .class后缀）<br>
+例如：<code>javap -c Test</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="二-jvm进程状态工具">二、JVM进程状态工具</h2>
+<ul>
+<li>概述： 列出目标系统上已检测的HotSpot Java虚拟机进程信息。可直接在装有java运行环境的Windows 或者 Linux机器上使用命令行执行jps命令。</li>
+<li>语法：<code>jps [ options ] [ hostid ]</code>
+<ul>
+<li>option可选参数:
+<ul>
+<li><code>-q</code> ：输出JVM进程ID。</li>
+<li><code>-m</code>：输出JVM启动时传递给main()函数的参数，嵌入式的JVM可能参数为null。</li>
+<li><code>-v</code>：输出JVM进程启动时传递的参数。</li>
+<li><code>-V</code>：输出JVM进程号和启动类型（jar 或者 主类名称，是默认的选项）。</li>
+</ul>
+</li>
+<li>hostid: 主机ID，可以查看其它机器的进程信息。</li>
+</ul>
+</li>
+<li>例如：<code>jps -m</code></li>
+</ul>
+<pre><code>36376 KotlinCompileDaemon
+36571 Launcher
+36572 Test
+36574 Jstat
+36639 Jps
 </code></pre>
-<h4 id="docker部署">Docker部署</h4>
-<pre><code>#构建flask+gunicorn+gevent(+nginx)
-$docker build -t saowu/figurebed:1.0 .
-$docker run  -p 8000:8888 -v /home/myDataVolume:/home/myDataVolume -d saowu/figurebed:1.0
-
-#构建nginx(cd /nginx)
-$docker build -t saowu/nginx:1.0 .
-$docker run --name nginx1 -p 80:80 -d saowu/nginx:1.0
+<h2 id="三-java虚拟机gc统计">三、Java虚拟机GC统计</h2>
+<ul>
+<li>概述：jstat利用JVM内建的指令对Java应用程序的资源和性能进行实时的命令行的监控，包括了对Heap size和垃圾回收状况的监控。</li>
+<li>例如：<code>jstat -gcutil [vmid] [检查次数]</code>：统计gc信息
+<ul>
+<li>vmid：虚拟机进程号</li>
+</ul>
+</li>
+</ul>
+<pre><code> S0     S1     E      O      M     CCS    YGC     YGCT    FGC    FGCT    CGC    CGCT     GCT   
+0.00 100.00   0.00   6.07  94.65  86.00      1    0.010     0    0.000     0    0.000    0.010
+0.00 100.00   0.00   6.07  94.65  86.00      1    0.010     0    0.000     0    0.000    0.010
+0.00 100.00   0.00   6.07  94.65  86.00      1    0.010     0    0.000     0    0.000    0.010
 </code></pre>
-<h4 id="ui展示">UI展示</h4>
-<p><img src="https://saowu.top/blog/post-images/1585915830120.png" alt="" loading="lazy"><br>
-<img src="https://saowu.top/blog/post-images/1585915839679.png" alt="" loading="lazy"></p>
+<pre><code>S0：幸存1区当前使用比例
+S1：幸存2区当前使用比例
+E：伊甸园区使用比例
+O：老年代使用比例
+M：元数据区使用比例
+CCS：压缩使用比例
+YGC：年轻代垃圾回收次数
+YGCT：年轻代垃圾回收消耗时间
+FGC：老年代垃圾回收次数
+FGCT：老年代垃圾回收消耗时间
+CGC：并发垃圾回收次数（并发 GC Stop-The-World 的次数）
+CGCT：并发垃圾回收消耗时间（并发 GC Stop-The-World 的时间）
+GCT：垃圾回收消耗总时间
+</code></pre>
+<h2 id="四-gc日志查看">四、GC日志查看</h2>
+<ul>
+<li>设置jvm的参数
+<ul>
+<li>-XX:+PrintGC 输出GC日志</li>
+<li>-XX:+PrintGCDetails 输出GC的详细日志</li>
+<li>-XX:+PrintGCTimeStamps 输出GC的时间戳（以基准时间的形式）</li>
+<li>-XX:+PrintGCDateStamps 输出GC的时间戳（以日期的形式，如 2013-05-04T21:53:59.234+0800）</li>
+<li>-XX:+PrintHeapAtGC 在进行GC的前后打印出堆的信息</li>
+<li>-Xloggc:../logs/gc.log 日志文件的输出路径</li>
+</ul>
+</li>
+</ul>
+<h2 id="五-设置java垃圾回收器">五、设置Java垃圾回收器</h2>
+<table>
+<thead>
+<tr>
+<th>GC</th>
+<th>垃圾回收器</th>
+<th>jvm参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serial</td>
+<td>串行垃圾回收器</td>
+<td>-XX:+UseSerialGC</td>
+</tr>
+<tr>
+<td>ParNew</td>
+<td>Serial收集器的多线程版本</td>
+<td>-XX:+UseParNewGC</td>
+</tr>
+<tr>
+<td>Parallel</td>
+<td>Parallel垃圾回收器</td>
+<td>-XX:+UseParallelGC</td>
+</tr>
+<tr>
+<td>CMS</td>
+<td>CMS垃圾回收器</td>
+<td>-XX:+UseConcMarkSweepGC</td>
+</tr>
+<tr>
+<td>G1</td>
+<td>G1垃圾回收器</td>
+<td>–XX:+UseG1GC</td>
+</tr>
+<tr>
+<td>ZGC</td>
+<td>ZGC垃圾回收器</td>
+<td>-XX:+UseZGC</td>
+</tr>
+</tbody>
+</table>
+<h2 id="六-查看当前使用的垃圾回收器">六、查看当前使用的垃圾回收器</h2>
+<ul>
+<li>例如：<code>java -XX:+PrintCommandLineFlags -version</code></li>
+</ul>
+<pre><code>wuyanbodeMacBook-Air:~ wuyanbo$ java -XX:+PrintCommandLineFlags -version
+-XX:G1ConcRefinementThreads=4 -XX:GCDrainStackTargetSize=64 -XX:InitialHeapSize=134217728 -XX:MaxHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseG1GC
+java version &quot;11.0.4&quot; 2019-07-16 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.4+10-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.4+10-LTS, mixed mode)
+</code></pre>
+<h2 id="七-jvm内存模型java8">七、JVM内存模型（java8+）</h2>
+<figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1586178611304.jpg" alt="" loading="lazy"></figure>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E5%8A%9F%E8%83%BD%E6%94%AF%E6%8C%81">功能支持</a></li>
-<li><a href="#docker%E9%83%A8%E7%BD%B2">Docker部署</a></li>
-<li><a href="#ui%E5%B1%95%E7%A4%BA">UI展示</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#%E4%B8%80-java%E5%8F%8D%E7%BC%96%E8%AF%91">一、Java反编译</a></li>
+<li><a href="#%E4%BA%8C-jvm%E8%BF%9B%E7%A8%8B%E7%8A%B6%E6%80%81%E5%B7%A5%E5%85%B7">二、JVM进程状态工具</a></li>
+<li><a href="#%E4%B8%89-java%E8%99%9A%E6%8B%9F%E6%9C%BAgc%E7%BB%9F%E8%AE%A1">三、Java虚拟机GC统计</a></li>
+<li><a href="#%E5%9B%9B-gc%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B">四、GC日志查看</a></li>
+<li><a href="#%E4%BA%94-%E8%AE%BE%E7%BD%AEjava%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8">五、设置Java垃圾回收器</a></li>
+<li><a href="#%E5%85%AD-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E4%BD%BF%E7%94%A8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8">六、查看当前使用的垃圾回收器</a></li>
+<li><a href="#%E4%B8%83-jvm%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8Bjava8">七、JVM内存模型（java8+）</a></li>
 </ul>
 </li>
 </ul>
@@ -193,9 +281,9 @@ $docker run --name nginx1 -p 80:80 -d saowu/nginx:1.0
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-76-80/">
+            <a href="https://saowu.top/blog/4tCVcic30/">
               <h3 class="post-title">
-                C语言程序集（76-80）
+                让Google搜索到GitHub Pages
               </h3>
             </a>
           </div>
