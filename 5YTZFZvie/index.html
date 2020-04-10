@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>用python写一个新冠疫情爬虫 | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1586491636480">
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1586492095715">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="用python写一个新冠疫情爬虫 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
@@ -42,7 +42,7 @@ https://ncov.ht..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://saowu.top/blog">
-  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1586491636480" alt="">
+  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1586492095715" alt="">
   </a>
   <h1 class="site-title">
     saowu&#39;s Blog
@@ -147,6 +147,23 @@ requests==2.23.0
 pandas==1.0.2
 </code></pre>
 <h2 id="三-获取全国省市区信息">三、获取全国省市区信息</h2>
+<h3 id="全国省市信息json数据格式">全国省市信息json数据格式</h3>
+<pre><code class="language-json">{
+    &quot;position&quot;:{
+        &quot;云南省&quot;:{
+            &quot;玉溪市&quot;:{
+                &quot;全部&quot;:&quot;&quot;,
+                &quot;红塔区&quot;:&quot;&quot;
+            },
+            &quot;德宏傣族景颇族自治州&quot;:{
+                &quot;全部&quot;:&quot;&quot;,
+                &quot;瑞丽市&quot;:&quot;&quot;
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="获取并解析json">获取并解析json</h3>
 <pre><code class="language-python"># 加header伪装成浏览器
 user_agent = &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) &quot; \
              &quot;Chrome/80.0.3987.100 Safari/537.36 &quot;
@@ -284,7 +301,12 @@ def get_city_info():
 <ul>
 <li><a href="#%E4%B8%80-%E5%87%86%E5%A4%87%E5%A5%BDapi">一、准备好api</a></li>
 <li><a href="#%E4%BA%8C-%E6%89%80%E9%9C%80python%E5%8C%85">二、所需python包</a></li>
-<li><a href="#%E4%B8%89-%E8%8E%B7%E5%8F%96%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8C%BA%E4%BF%A1%E6%81%AF">三、获取全国省市区信息</a></li>
+<li><a href="#%E4%B8%89-%E8%8E%B7%E5%8F%96%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8C%BA%E4%BF%A1%E6%81%AF">三、获取全国省市区信息</a>
+<ul>
+<li><a href="#%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E4%BF%A1%E6%81%AFjson%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F">全国省市信息json数据格式</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%B9%B6%E8%A7%A3%E6%9E%90json">获取并解析json</a></li>
+</ul>
+</li>
 <li><a href="#%E5%9B%9B-%E8%8E%B7%E5%8F%96%E7%96%AB%E6%83%85%E4%BF%A1%E6%81%AF">四、获取疫情信息</a></li>
 <li><a href="#%E4%BA%94-%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%96%AB%E6%83%85%E4%BF%A1%E6%81%AF">五、格式化疫情信息</a>
 <ul>
