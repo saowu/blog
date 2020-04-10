@@ -1,0 +1,430 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>用python写一个新冠疫情爬虫 | saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1586491393061">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="用python写一个新冠疫情爬虫 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+<link rel="stylesheet" href="https://saowu.top/blog/media/live2d/css/live2d.css">
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162711560-1');
+</script>
+
+
+    <meta name="description" content="
+每一颗渺小的种子都能创造伟大的力量！
+
+完整代码：github
+一、准备好api
+#全国省市区信息api
+https://ncov.html5.qq.com/api/getPosition
+#全国疫情api
+https://ncov.ht..." />
+    <meta name="keywords" content="爬虫,Python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://saowu.top/blog">
+  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1586491393061" alt="">
+  </a>
+  <h1 class="site-title">
+    saowu&#39;s Blog
+  </h1>
+  <p class="site-description">
+    A programmer who wants to be happy and muddle along
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/blog" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/blog/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/blog/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/blog/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/saowu" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/6635817704" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/43703339aec7960c1020ba061888a016" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              用python写一个新冠疫情爬虫
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-10
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://saowu.top/blog/tJKlFnwie/" class="post-tag">
+                  # 爬虫
+                </a>
+              
+                <a href="https://saowu.top/blog/mVqrRKBAz/" class="post-tag">
+                  # Python
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://saowu.top/blog/post-images/5YTZFZvie.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <blockquote>
+<p>每一颗渺小的种子都能创造伟大的力量！</p>
+</blockquote>
+<p>完整代码：<a href="https://github.com/saowu/reptiles/blob/master/get_coronary_pneumonia_reptile.py">github</a></p>
+<h2 id="一-准备好api">一、准备好api</h2>
+<pre><code>#全国省市区信息api
+https://ncov.html5.qq.com/api/getPosition
+#全国疫情api
+https://ncov.html5.qq.com/api/getCommunity?province=省&amp;city=市&amp;district=区
+</code></pre>
+<h2 id="二-所需python包">二、所需python包</h2>
+<pre><code>bs4==0.0.1
+requests==2.23.0
+pandas==1.0.2
+</code></pre>
+<h2 id="三-获取全国省市区信息">三、获取全国省市区信息</h2>
+<pre><code class="language-python"># 加header伪装成浏览器
+user_agent = &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) &quot; \
+             &quot;Chrome/80.0.3987.100 Safari/537.36 &quot;
+headers = {'User-Agent': user_agent}
+
+def get_city_info():
+    &quot;&quot;&quot;
+    获取全国省市信息
+    Returns:DataFrame
+
+    &quot;&quot;&quot;
+    url_position = 'https://ncov.html5.qq.com/api/getPosition'
+    r_position = requests.get(url_position, headers=headers)
+    data_position = BeautifulSoup(r_position.text, 'html.parser')
+    json1bj = json.loads(data_position.decode('utf-8'))
+    data = []
+    for i in json1bj['position']:
+        for j in json1bj['position'][i]:
+            for k in json1bj['position'][i][j]:
+                dict1 = {'province': i, 'city': j, 'district': k}
+                data.append(dict1)
+    return pd.DataFrame(data)
+</code></pre>
+<h2 id="四-获取疫情信息">四、获取疫情信息</h2>
+<pre><code class="language-python">def get_info(province, city, district):
+    &quot;&quot;&quot;
+    获取地区疫情信息
+    Args:
+        province: 省
+        city: 市
+        district: 县（区）
+
+    Returns:json
+
+    &quot;&quot;&quot;
+    url_community = 'https://ncov.html5.qq.com/api/getCommunity?province=' + str(province) + '&amp;city=' + str(
+        city) + '&amp;district=' + str(district)
+    r_community = requests.get(url_community, headers=headers)
+    data_community = BeautifulSoup(r_community.text, 'html.parser')
+    jsonObj = json.loads(data_community.decode('utf-8'))
+    return jsonObj
+</code></pre>
+<h2 id="五-格式化疫情信息">五、格式化疫情信息</h2>
+<h3 id="通过api获取到的-json数据格式">通过api获取到的 json数据格式</h3>
+<pre><code class="language-json">{
+    &quot;code&quot;:0,
+    &quot;community&quot;:{
+        &quot;云南省&quot;:{
+            &quot;玉溪市&quot;:{
+                &quot;红塔区&quot;:[
+                    {
+                        &quot;province&quot;:&quot;云南省&quot;,
+                        &quot;city&quot;:&quot;玉溪市&quot;,
+                        &quot;district&quot;:&quot;红塔区&quot;,
+                        &quot;county&quot;:&quot;&quot;,
+                        &quot;street&quot;:&quot;北城街道&quot;,
+                        &quot;community&quot;:&quot;大石板社区秧草塘村&quot;,
+                        &quot;show_address&quot;:&quot;大石板社区秧草塘村&quot;,
+                        &quot;cnt_inc_uncertain&quot;:&quot;-1&quot;,
+                        &quot;cnt_inc_certain&quot;:&quot;-1&quot;,
+                        &quot;cnt_inc_die&quot;:&quot;-1&quot;,
+                        &quot;cnt_inc_recure&quot;:&quot;-1&quot;,
+                        &quot;cnt_sum_uncertain&quot;:&quot;-1&quot;,
+                        &quot;cnt_sum_certain&quot;:&quot;2&quot;,
+                        &quot;cnt_sum_die&quot;:&quot;-1&quot;,
+                        &quot;cnt_sum_recure&quot;:&quot;-1&quot;,
+                        &quot;full_address&quot;:&quot;云南省玉溪市红塔区北城街道大石板社区秧草塘村&quot;,
+                        &quot;release_date&quot;:&quot;&quot;,
+                        &quot;article_source&quot;:[
+                            {
+                                &quot;title&quot;:&quot;玉溪新增4例确诊病例 详细路线公布！&quot;,
+                                &quot;url&quot;:&quot;https://mp.weixin.qq.com/s/THaIpahx_5VTWP2jcMMRMw&quot;
+                            },
+                            {
+                                &quot;title&quot;:&quot;玉溪市新增确诊病例1例！红塔大道50号华瑞小区实施隔离封闭管理&quot;,
+                                &quot;url&quot;:&quot;https://mp.weixin.qq.com/s/AjB4YCWmfSiJHzBJNhzHpg&quot;
+                            }
+                        ],
+                        &quot;id&quot;:&quot;60bd8bd1be4e00780a29336dab42f18e&quot;,
+                        &quot;lng&quot;:&quot;102.51207&quot;,
+                        &quot;lat&quot;:&quot;24.46442&quot;,
+                        &quot;doc_id&quot;:&quot;90000052_60bd8bd1be4e00780a29336dab42f18e&quot;,
+                        &quot;source&quot;:[
+                            {
+                                &quot;name&quot;:&quot;玉溪发布&quot;,
+                                &quot;url&quot;:&quot;&quot;
+                            }
+                        ],
+                        &quot;communitytype&quot;:1,
+                        &quot;distance&quot;:-1
+                    }
+                ]
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="json数据格式化">json数据格式化</h3>
+<p>通过对json数据的解析，转化为dict数据集，从而再以其他格式输出处理（此处过于野蛮）</p>
+<pre><code class="language-python">def format_data(info, result):
+    &quot;&quot;&quot;
+
+    Args:格式化疫情信息
+        info: 疫情信息
+        result:结果集
+
+    Returns:None
+
+    &quot;&quot;&quot;
+    for i in info['community']:
+        for j in info['community'][i]:
+            for k in info['community'][i][j]:
+                for x in info['community'][i][j][k]:
+                    if len(x['article_source']) &gt; 0:
+                        for y in x['article_source']:
+                            dict1 = {'province': x['province'], 'city': x['city'], 'district': x['district'],
+                                     'street': x['street'], 'community': x['community'],
+                                     'full_address': x['full_address'],
+                                     'lat': x['lat'], 'lng': x['lng'], 'title': y['title'], 'url': y['url']}
+                    else:
+                        dict1 = {'province': x['province'], 'city': x['city'], 'district': x['district'],
+                                 'street': x['street'], 'community': x['community'], 'full_address': x['full_address'],
+                                 'lat': x['lat'], 'lng': x['lng'], 'title': '', 'url': ''}
+                    result.append(dict1)
+
+</code></pre>
+<h2 id="六-启动并检验成果">六、启动并检验成果</h2>
+<p><img src="https://saowu.top/blog/post-images/1586490609158.png" alt="" loading="lazy"><br>
+<img src="https://saowu.top/blog/post-images/1586490674310.png" alt="" loading="lazy"></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E5%87%86%E5%A4%87%E5%A5%BDapi">一、准备好api</a></li>
+<li><a href="#%E4%BA%8C-%E6%89%80%E9%9C%80python%E5%8C%85">二、所需python包</a></li>
+<li><a href="#%E4%B8%89-%E8%8E%B7%E5%8F%96%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8C%BA%E4%BF%A1%E6%81%AF">三、获取全国省市区信息</a></li>
+<li><a href="#%E5%9B%9B-%E8%8E%B7%E5%8F%96%E7%96%AB%E6%83%85%E4%BF%A1%E6%81%AF">四、获取疫情信息</a></li>
+<li><a href="#%E4%BA%94-%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%96%AB%E6%83%85%E4%BF%A1%E6%81%AF">五、格式化疫情信息</a>
+<ul>
+<li><a href="#%E9%80%9A%E8%BF%87api%E8%8E%B7%E5%8F%96%E5%88%B0%E7%9A%84-json%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F">通过api获取到的 json数据格式</a></li>
+<li><a href="#json%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%8C%96">json数据格式化</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AD-%E5%90%AF%E5%8A%A8%E5%B9%B6%E6%A3%80%E9%AA%8C%E6%88%90%E6%9E%9C">六、启动并检验成果</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://saowu.top/blog/4S4PY3kdh/">
+              <h3 class="post-title">
+                JVM 相关记录
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '1ffeeefba638614e6e82',
+    clientSecret: 'a43973f705103d89ba604087f510cb19bc3ac204',
+    repo: 'blog',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  <p>Copyright 2020 saowu</p>
+<p>Any and all opinions listed here are my own and not representative of my employers; future, past and present.</p>
+  <a class="rss" href="https://saowu.top/blog/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+<div id="landlord" style="left:5px;bottom:0px;">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
+    <div class="live_talk_input_body">
+        <div class="live_talk_input_name_body">
+            <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off" placeholder="你的名字" />
+        </div>
+        <div class="live_talk_input_text_body">
+            <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off" placeholder="要和我聊什么呀？"/>
+            <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
+        </div>
+    </div>
+    <input name="live_talk" id="live_talk" value="1" type="hidden" />
+    <div class="live_ico_box">
+        <div class="live_ico_item type_info" id="showInfoBtn"></div>
+        <div class="live_ico_item type_talk" id="showTalkBtn"></div>
+        <div class="live_ico_item type_music" id="musicButton"></div>
+        <div class="live_ico_item type_youdu" id="youduButton"></div>
+        <div class="live_ico_item type_quit" id="hideButton"></div>
+        <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
+        <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
+        <input name="live2dBGM" value="/blog/media/saowu.mp3" type="hidden">
+        <input id="duType" value="douqilai,l2d_caihong" type="hidden">
+    </div>
+</div>
+<div id="open_live2d">召唤伊斯特瓦尔</div>
+<script>
+    var message_Path = '/blog/media/live2d/';//资源目录，如果目录不对请更改
+    var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口路径
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/blog/media/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/blog/media/live2d/js/message.js"></script>
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
