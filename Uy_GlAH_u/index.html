@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JVM垃圾收集策略 | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1587277744164">
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1587277877312">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="JVM垃圾收集策略 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
@@ -39,7 +39,7 @@ JDK1.2以后，Java对引用的概..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://saowu.top/blog">
-  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1587277744164" alt="">
+  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1587277877312" alt="">
   </a>
   <h1 class="site-title">
     saowu&#39;s Blog
@@ -208,12 +208,10 @@ JDK1.2以后，Java对引用的概..." />
 <li>例如：
 <ul>
 <li>新生代中，每次垃圾回收都有大量对象死去，只有少量存活，那就选用复制算法。</li>
-<li>老年代中，因为对象存活率高、没有额</li>
+<li>老年代中，因为对象存活率高、没有额外空间进行分配，就可以选用“标记-清理”或者“标记-整理”算法。</li>
 </ul>
 </li>
 </ul>
-<!-- more -->
-<p>外空间进行分配，就可以选用“标记-清理”或者“标记-整理”算法。</p>
 <h3 id="附-jvm内存布局">附： JVM内存布局</h3>
 <figure data-type="image" tabindex="2"><img src="https://saowu.top/blog/post-images/1586178611304.jpg" alt="image" loading="lazy"></figure>
 
