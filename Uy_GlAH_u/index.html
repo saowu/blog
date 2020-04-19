@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JVM垃圾收集策略 | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1587278275026">
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1587278434314">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="JVM垃圾收集策略 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
@@ -39,7 +39,7 @@ JDK1.2以后，Java对引用的概..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://saowu.top/blog">
-  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1587278275026" alt="">
+  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1587278434314" alt="">
   </a>
   <h1 class="site-title">
     saowu&#39;s Blog
@@ -138,7 +138,7 @@ JDK1.2以后，Java对引用的概..." />
 <li>JDK1.2以后，Java对引用的概念进行了扩充，将引用分为<code>强引用</code>、<code>软引用</code>、<code>弱引用</code>、<code>虚引用</code>4种，这4种引用强弱逐渐减弱。
 <ul>
 <li><strong>强引用</strong>就是指在程序代码之中普遍存在的，类似<code>Object object = new Object()</code>这类的引用，只要强引用还在，垃圾收集器就永远不会回收掉被引用的对象。</li>
-<li><strong>软引用</strong>是用来描述一些还有用但并非必需的对象。对于软引用关联着的对象，在系统将要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行二次回收。如果这次回收还没有足够的内存，才会抛出内存溢出异常。在JDK1.2之后，提供的<code>SoftReferenc</code>e类来实现软引用。</li>
+<li><strong>软引用</strong>是用来描述一些还有用但并非必需的对象。对于软引用关联着的对象，在系统将要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行二次回收。如果这次回收还没有足够的内存，才会抛出内存溢出异常。在JDK1.2之后，提供的<code>SoftReference</code>类来实现软引用。</li>
 <li><strong>弱引用</strong>也是用来描述非必需对象的，但它比软引用的引用强度更弱一些，被弱引用关联的对象只能生存到下一次垃圾收集之前。当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。在JDK1.2之后，提供的<code>WeakReference</code>类来实现弱引用。</li>
 <li><strong>虚引用</strong>也被称为幽灵引用或幻影引用，它是最弱的一种引用关系。一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用的唯一目的就是能在这个对象被收集器回收时能收到一个系统通知。在JDK1.2之后，提供的<code>PhantomReference</code>类来实现虚引用。</li>
 </ul>
