@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JVM垃圾收集策略 | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1587277877312">
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1587278124374">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="JVM垃圾收集策略 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
@@ -39,7 +39,7 @@ JDK1.2以后，Java对引用的概..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://saowu.top/blog">
-  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1587277877312" alt="">
+  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1587278124374" alt="">
   </a>
   <h1 class="site-title">
     saowu&#39;s Blog
@@ -146,20 +146,17 @@ JDK1.2以后，Java对引用的概..." />
 </ul>
 <h2 id="二-可达性分析算法">二、可达性分析算法</h2>
 <ul>
-<li>
-<p>这种算法的思路在于：将一系列被称为GC Roots的变量作为初始的存活对象合集，然后从该合集出发，所有能够被该集合引用到的对象，并将其加入到该集合中，而不能被该合集所引用到的对象，并可对其宣告死亡。</p>
-</li>
-<li>
-<p>一般而言，GC Roots 是一些由堆外指向堆内的引用，包括如下几种：</p>
+<li>这种算法的思路在于：将一系列被称为GC Roots的变量作为初始的存活对象合集，然后从该合集出发，所有能够被该集合引用到的对象，并将其加入到该集合中，而不能被该合集所引用到的对象，并可对其宣告死亡。</li>
+<li>一般而言，GC Roots 是一些由堆外指向堆内的引用，包括如下几种：
 <ul>
 <li>虚拟机栈（栈帧中的局部变量表）中引用的对象</li>
 <li>方法区中类静态属性引用的对象</li>
 <li>方法区中常量引用的对象</li>
 <li>本地方法栈中JNI引用的对象</li>
 </ul>
-<figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1587273274341.png" alt="" loading="lazy"></figure>
 </li>
 </ul>
+<figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1587278074225.png" alt="" loading="lazy"></figure>
 <h2 id="三-生存还是死亡">三、生存还是死亡</h2>
 <ul>
 <li>要真正宣告一个对象的死亡，至少需要经历两次标记过程：
