@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.top/blog</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-04-17T01:05:28.167Z</updated>
+    <updated>2020-04-19T06:29:13.209Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.top/blog"/>
     <link rel="self" href="https://saowu.top/blog/atom.xml"/>
@@ -10,6 +10,179 @@
     <logo>https://saowu.top/blog/images/avatar.png</logo>
     <icon>https://saowu.top/blog/favicon.ico</icon>
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[JVM垃圾收集策略]]></title>
+        <id>https://saowu.top/blog/Uy_GlAH_u/</id>
+        <link href="https://saowu.top/blog/Uy_GlAH_u/">
+        </link>
+        <updated>2020-04-19T04:12:08.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>相比C++，java做的一大改进是将复杂的内存管理抽离出来交给jvm去处理，让不再时刻盯着内存泄漏的问题，可以更专注于业务逻辑的开发。这样一来，设计一个合适的垃圾回收算法是很重要的。</p>
+</blockquote>
+<h2 id="一-类的引用">一、类的引用</h2>
+<ul>
+<li>JDK1.2以后，Java对引用的概念进行了扩充，将引用分为<code>强引用</code>、<code>软引用</code>、<code>弱引用</code>、<code>虚引用</code>4种，这4种引用强弱逐渐减弱。
+<ul>
+<li><strong>强引用</strong>就是指在程序代码之中普遍存在的，类似<code>Object object = new Object()</code>这类的引用，只要强引用还在，垃圾收集器就永远不会回收掉被引用的对象。</li>
+<li><strong>软引用</strong>是用来描述一些还有用但并非必需的对象。对于软引用关联着的对象，在系统将要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行二次回收。如果这次回收还没有足够的内存，才会抛出内存溢出异常。在JDK1.2之后，提供的<code>SoftReferenc</code>e类来实现软引用。</li>
+<li><strong>弱引用</strong>也是用来描述非必需对象的，但它比软引用的引用强度更弱一些，被弱引用关联的对象只能生存到下一次垃圾收集之前。当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。在JDK1.2之后，提供的<code>WeakReference</code>类来实现弱引用。</li>
+<li><strong>虚引用</strong>也被称为幽灵引用或幻影引用，它是最弱的一种引用关系。一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用的唯一目的就是能在这个对象被收集器回收时能收到一个系统通知。在JDK1.2之后，提供的<code>PhantomReference</code>类来实现虚引用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-可达性分析算法">二、可达性分析算法</h2>
+<ul>
+<li>
+<p>这种算法的思路在于：将一系列被称为GC Roots的变量作为初始的存活对象合集，然后从该合集出发，所有能够被该集合引用到的对象，并将其加入到该集合中，而不能被该合集所引用到的对象，并可对其宣告死亡。</p>
+</li>
+<li>
+<p>一般而言，GC Roots 是一些由堆外指向堆内的引用，包括如下几种：</p>
+<ul>
+<li>虚拟机栈（栈帧中的局部变量表）中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中JNI引用的对象</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1587273274341.png" alt="" loading="lazy"></figure>
+</li>
+</ul>
+<h2 id="三-生存还是死亡">三、生存还是死亡</h2>
+<ul>
+<li>要真正宣告一个对象的死亡，至少需要经历两次标记过程：
+<ul>
+<li>如果对象在进行可达性分析后发现没有与GC Roots相连接的引用链，那它将会被第一次标记并且进行一次筛选，筛选的条件是此对象是否有必要执行<code>finalize()</code> 方法。当对象没有覆盖<code>finalize()</code> 方法，或者<code>finalize()</code> 方法已经被虚拟机调用过，虚拟机将这两种情况都视为“没有必要执行”。</li>
+<li>如果这个对象被判定为有必要执行<code>finalize()</code> 方法，那么这个对象将会放置在一个<code>F-Queue</code>队列中，稍后会有一个<code>Finalizer</code>线程去执行它。GC将对<code>F-Queue</code>队列中的对象进行第二次标记，在这之前，只要重新和任何一个对象建立关联就可以拯救自己，将在第二次标记时被移除“即将回收”的集合。</li>
+</ul>
+</li>
+</ul>
+<h2 id="四-垃圾收集算法">四、垃圾收集算法</h2>
+<h3 id="41-标记-清除mark-sweep算法">4.1 标记-清除（Mark-Sweep）算法</h3>
+<ul>
+<li>该算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记对象。</li>
+<li>该算法的不足：
+<ul>
+<li>效率不足：标记和清除两个过程效率都不高。</li>
+<li>空间问题：标记清除后会产生大量不连续的内存碎片。<br>
+<img src="https://saowu.top/blog/post-images/1587273667745.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h3 id="42-复制copying算法">4.2 复制（Copying）算法</h3>
+<ul>
+<li>为了解决效率问题，复制算法出现了，它将可用内存按容量划分为大小相等的两块，每次只使用其中一块。当这一块的内存用完了，就将还存活着的对象复制到另一块上面，然后再把已使用过的内存空间一次清理掉。这样使得每次都是对整半块内存进行回收，不必考虑内存碎片问题。</li>
+<li>该算法的不足：
+<ul>
+<li>将内存缩小为了原来的一半，浪费50%内存。</li>
+<li>对象存活率较高时就要进行较多的复制操作，效率会降低。<br>
+<img src="https://saowu.top/blog/post-images/1587276075342.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h3 id="43-标记-整理mark-compact算法">4.3 标记-整理（Mark-Compact）算法</h3>
+<ul>
+<li>该算法标记过程和“标记-清除”算法一样，但后续步骤不是直接对可回收对象进行清理，而是让所有对象都向一端移动，然后清理掉端边界以外的内存。</li>
+<li>该算法的不足：
+<ul>
+<li>对象存活率较高时就要进行较多的移动操作，效率会降低。<br>
+<img src="https://saowu.top/blog/post-images/1587276608278.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h3 id="44-分代收集generational-collection算法">4.4 分代收集（Generational Collection）算法</h3>
+<ul>
+<li>该算法没有什么新的思想，只是根据对象存活周期的不同划分为几块。一般是把Java堆分为新生代（Yong）和老年代（Old），这样就可以根据各个年代的特点采用最适宜的收集算法。</li>
+<li>例如：
+<ul>
+<li>新生代中，每次垃圾回收都有大量对象死去，只有少量存活，那就选用复制算法。</li>
+<li>老年代中，因为对象存活率高、没有额</li>
+</ul>
+</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>相比C++，java做的一大改进是将复杂的内存管理抽离出来交给jvm去处理，让不再时刻盯着内存泄漏的问题，可以更专注于业务逻辑的开发。这样一来，设计一个合适的垃圾回收算法是很重要的。</p>
+</blockquote>
+<h2 id="一-类的引用">一、类的引用</h2>
+<ul>
+<li>JDK1.2以后，Java对引用的概念进行了扩充，将引用分为<code>强引用</code>、<code>软引用</code>、<code>弱引用</code>、<code>虚引用</code>4种，这4种引用强弱逐渐减弱。
+<ul>
+<li><strong>强引用</strong>就是指在程序代码之中普遍存在的，类似<code>Object object = new Object()</code>这类的引用，只要强引用还在，垃圾收集器就永远不会回收掉被引用的对象。</li>
+<li><strong>软引用</strong>是用来描述一些还有用但并非必需的对象。对于软引用关联着的对象，在系统将要发生内存溢出异常之前，将会把这些对象列进回收范围之中进行二次回收。如果这次回收还没有足够的内存，才会抛出内存溢出异常。在JDK1.2之后，提供的<code>SoftReferenc</code>e类来实现软引用。</li>
+<li><strong>弱引用</strong>也是用来描述非必需对象的，但它比软引用的引用强度更弱一些，被弱引用关联的对象只能生存到下一次垃圾收集之前。当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。在JDK1.2之后，提供的<code>WeakReference</code>类来实现弱引用。</li>
+<li><strong>虚引用</strong>也被称为幽灵引用或幻影引用，它是最弱的一种引用关系。一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用的唯一目的就是能在这个对象被收集器回收时能收到一个系统通知。在JDK1.2之后，提供的<code>PhantomReference</code>类来实现虚引用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-可达性分析算法">二、可达性分析算法</h2>
+<ul>
+<li>
+<p>这种算法的思路在于：将一系列被称为GC Roots的变量作为初始的存活对象合集，然后从该合集出发，所有能够被该集合引用到的对象，并将其加入到该集合中，而不能被该合集所引用到的对象，并可对其宣告死亡。</p>
+</li>
+<li>
+<p>一般而言，GC Roots 是一些由堆外指向堆内的引用，包括如下几种：</p>
+<ul>
+<li>虚拟机栈（栈帧中的局部变量表）中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中JNI引用的对象</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1587273274341.png" alt="" loading="lazy"></figure>
+</li>
+</ul>
+<h2 id="三-生存还是死亡">三、生存还是死亡</h2>
+<ul>
+<li>要真正宣告一个对象的死亡，至少需要经历两次标记过程：
+<ul>
+<li>如果对象在进行可达性分析后发现没有与GC Roots相连接的引用链，那它将会被第一次标记并且进行一次筛选，筛选的条件是此对象是否有必要执行<code>finalize()</code> 方法。当对象没有覆盖<code>finalize()</code> 方法，或者<code>finalize()</code> 方法已经被虚拟机调用过，虚拟机将这两种情况都视为“没有必要执行”。</li>
+<li>如果这个对象被判定为有必要执行<code>finalize()</code> 方法，那么这个对象将会放置在一个<code>F-Queue</code>队列中，稍后会有一个<code>Finalizer</code>线程去执行它。GC将对<code>F-Queue</code>队列中的对象进行第二次标记，在这之前，只要重新和任何一个对象建立关联就可以拯救自己，将在第二次标记时被移除“即将回收”的集合。</li>
+</ul>
+</li>
+</ul>
+<h2 id="四-垃圾收集算法">四、垃圾收集算法</h2>
+<h3 id="41-标记-清除mark-sweep算法">4.1 标记-清除（Mark-Sweep）算法</h3>
+<ul>
+<li>该算法分为“标记”和“清除”两个阶段：首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记对象。</li>
+<li>该算法的不足：
+<ul>
+<li>效率不足：标记和清除两个过程效率都不高。</li>
+<li>空间问题：标记清除后会产生大量不连续的内存碎片。<br>
+<img src="https://saowu.top/blog/post-images/1587273667745.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h3 id="42-复制copying算法">4.2 复制（Copying）算法</h3>
+<ul>
+<li>为了解决效率问题，复制算法出现了，它将可用内存按容量划分为大小相等的两块，每次只使用其中一块。当这一块的内存用完了，就将还存活着的对象复制到另一块上面，然后再把已使用过的内存空间一次清理掉。这样使得每次都是对整半块内存进行回收，不必考虑内存碎片问题。</li>
+<li>该算法的不足：
+<ul>
+<li>将内存缩小为了原来的一半，浪费50%内存。</li>
+<li>对象存活率较高时就要进行较多的复制操作，效率会降低。<br>
+<img src="https://saowu.top/blog/post-images/1587276075342.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h3 id="43-标记-整理mark-compact算法">4.3 标记-整理（Mark-Compact）算法</h3>
+<ul>
+<li>该算法标记过程和“标记-清除”算法一样，但后续步骤不是直接对可回收对象进行清理，而是让所有对象都向一端移动，然后清理掉端边界以外的内存。</li>
+<li>该算法的不足：
+<ul>
+<li>对象存活率较高时就要进行较多的移动操作，效率会降低。<br>
+<img src="https://saowu.top/blog/post-images/1587276608278.png" alt="" loading="lazy"></li>
+</ul>
+</li>
+</ul>
+<h3 id="44-分代收集generational-collection算法">4.4 分代收集（Generational Collection）算法</h3>
+<ul>
+<li>该算法没有什么新的思想，只是根据对象存活周期的不同划分为几块。一般是把Java堆分为新生代（Yong）和老年代（Old），这样就可以根据各个年代的特点采用最适宜的收集算法。</li>
+<li>例如：
+<ul>
+<li>新生代中，每次垃圾回收都有大量对象死去，只有少量存活，那就选用复制算法。</li>
+<li>老年代中，因为对象存活率高、没有额</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[用python写一个新冠疫情爬虫]]></title>
         <id>https://saowu.top/blog/5YTZFZvie/</id>
@@ -72,12 +245,5 @@
         <link href="https://saowu.top/blog/ugWz7JSYQ/">
         </link>
         <updated>2020-04-03T12:20:46.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Java 贪吃蛇]]></title>
-        <id>https://saowu.top/blog/ExvMF31VX/</id>
-        <link href="https://saowu.top/blog/ExvMF31VX/">
-        </link>
-        <updated>2020-04-03T12:15:15.000Z</updated>
     </entry>
 </feed>
