@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title> FigureBed图床系统 | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1587286244320">
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1587353068945">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title=" FigureBed图床系统 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
@@ -42,7 +42,7 @@ Flask 个人图床
       <div class="main-content">
         <div class="site-header">
   <a href="https://saowu.top/blog">
-  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1587286244320" alt="">
+  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1587353068945" alt="">
   </a>
   <h1 class="site-title">
     saowu&#39;s Blog
@@ -159,11 +159,20 @@ Flask 个人图床
 6.支持拖动上传
 </code></pre>
 <h4 id="docker部署">Docker部署</h4>
-<pre><code>#构建flask+gunicorn+gevent(+nginx)
+<pre><code>#1.创建数据库并导入sql文件
+$mysql&gt;create database figurebed;
+$mysql&gt;source figurebed.sql;
+
+#2.修改数据库配置和域名地址
+$vim FigureBed/app/config.py
+
+#3.构建flask+gunicorn+gevent容器
+$cd FigureBed/
 $docker build -t saowu/figurebed:1.0 .
 $docker run  -p 8000:8888 -v /home/myDataVolume:/home/myDataVolume -d saowu/figurebed:1.0
 
-#构建nginx(cd /nginx)
+#4.构建nginx容器
+$cd nginx/
 $docker build -t saowu/nginx:1.0 .
 $docker run --name nginx1 -p 80:80 -d saowu/nginx:1.0
 </code></pre>
