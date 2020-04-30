@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>一个简单的Netty服务 | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1588229014757">
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1588233802325">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="一个简单的Netty服务 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
@@ -37,7 +37,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://saowu.top/blog">
-  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1588229014757" alt="">
+  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1588233802325" alt="">
   </a>
   <h1 class="site-title">
     saowu&#39;s Blog
@@ -197,8 +197,7 @@
 <li>EchoServer引导过程：
 <ul>
 <li>创建一个 ServerBootstrap 的实例以引导和绑定服务器;</li>
-<li>创建并分配一个 NioEventLoopGroup 实例以进行事件的处理，如接受新连接以及读/<br>
-写数据;</li>
+<li>创建并分配一个 NioEventLoopGroup 实例以进行事件的处理，如接受新连接以及读/写数据;</li>
 <li>指定服务器绑定的本地的 InetSocketAddress;</li>
 <li>使用一个 EchoServerHandler 的实例初始化每一个新的 Channel;</li>
 <li>调用 ServerBootstrap.bind()方法以绑定服务器。</li>
@@ -212,9 +211,9 @@
 <li>EchoClient引导过程：
 <ul>
 <li>为初始化客户端，创建了一个 Bootstrap 实例;</li>
-<li>为进行事件处理分配了一个 NioEventLoopGroup 实例，其中事件处理包括创建新的 连接以及处理入站和出站数据;</li>
+<li>为进行事件处理分配了一个 NioEventLoopGroup 实例，其中事件处理包括创建新的连接以及处理入站和出站数据;</li>
 <li>为服务器连接创建了一个 InetSocketAddress 实例;</li>
-<li>当连接被建立时，一个 EchoClientHandler 实例会被安装到(该 Channel 的）ChannelPipeline 中;</li>
+<li>当连接被建立时，一个 EchoClientHandler 实例会被安装到(该Channel的）ChannelPipeline 中;</li>
 <li>在一切都设置完成后，调用 Bootstrap.connect()方法连接到远程节点；</li>
 </ul>
 </li>
@@ -223,9 +222,9 @@
 </ul>
 <h3 id="2在pomxml添加如下代码">2.在pom.xml添加如下代码</h3>
 <pre><code class="language-xml">&lt;dependency&gt;
-        &lt;groupId&gt;io.netty&lt;/groupId&gt;
-        &lt;artifactId&gt;netty-all&lt;/artifactId&gt;
-        &lt;version&gt;4.1.42.Final&lt;/version&gt;
+    &lt;groupId&gt;io.netty&lt;/groupId&gt;
+    &lt;artifactId&gt;netty-all&lt;/artifactId&gt;
+    &lt;version&gt;4.1.42.Final&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 <h3 id="3创建服务端channelhandler实现类">3.创建服务端ChannelHandler实现类</h3>
