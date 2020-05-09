@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>hashCode()与equals() | saowu&#39;s Blog</title>
+<title>我不想学Struts2，所以我自己造了一个 | saowu&#39;s Blog</title>
 <link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1589014358254">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="hashCode()与equals() | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="我不想学Struts2，所以我自己造了一个 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 <link rel="stylesheet" href="https://saowu.top/blog/media/live2d/css/live2d.css">
@@ -25,12 +25,15 @@
 
 
     <meta name="description" content="
-面试官可能会问你：“重写过hashCode”和“equals”吗，为什么重写equals时必须重写hashCode方法？
+我不想学Struts2绝不是因为它有漏洞，因为我自己写的更多......
 
-一、什么是equals()和hashCode()?
-
-equals() : 它的作用是判断两个对象是否相等。但它一..." />
-    <meta name="keywords" content="Java" />
+👉GitHub
+技术特点
+1.使用Netty作为http服务器
+2.支持注解@Controller、@RequestMapping
+3.利用maven项目管理
+..." />
+    <meta name="keywords" content="Repositories,Java" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -111,17 +114,21 @@ equals() : 它的作用是判断两个对象是否相等。但它一..." />
           <article class="post">
             <h2 class="post-title">
               <!-- 生成海报 -->
-              <a target="_blank" href="https://saowu.top/recommend/bill.html?title=hashCode()与equals()">
-                hashCode()与equals()
+              <a target="_blank" href="https://saowu.top/recommend/bill.html?title=我不想学Struts2，所以我自己造了一个">
+                我不想学Struts2，所以我自己造了一个
               </a>
             </h2>
             <div class="post-info">
               <span>
-                2020-04-23
+                2020-05-09
               </span>
               <span>
-                3 min read
+                4 min read
               </span>
+              
+                <a href="https://saowu.top/blog/pPR9i6dAN/" class="post-tag">
+                  # Repositories
+                </a>
               
                 <a href="https://saowu.top/blog/FWHSehn5o/" class="post-tag">
                   # Java
@@ -129,83 +136,163 @@ equals() : 它的作用是判断两个对象是否相等。但它一..." />
               
             </div>
             
-              <img class="post-feature-image" src="https://saowu.top/blog/post-images/pml_ecDtV.jpg" alt="">
+              <img class="post-feature-image" src="https://saowu.top/blog/post-images/dnlLkMdxz.jpg" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
                 <blockquote>
-<p>面试官可能会问你：“重写过hashCode”和“equals”吗，为什么重写equals时必须重写hashCode方法？</p>
+<p>我不想学Struts2绝不是因为它有漏洞，因为我自己写的更多......</p>
 </blockquote>
-<h2 id="一-什么是equals和hashcode">一、什么是equals()和hashCode()?</h2>
-<ul>
-<li>equals() : 它的作用是判断两个对象是否相等。但它一般有两种使用情况：
-<ul>
-<li>情况 1：类没有覆盖 equals() 方法。则通过 equals() 比较该类的两个对象时，等价于通过“==”比较这两个对象。</li>
-<li>情况 2：类覆盖了 equals() 方法。一般，我们都覆盖 equals() 方法来比较两个对象的内容是否相等；若它们的内容相等，则返回 true (即，认为这两个对象相等)。</li>
-</ul>
-</li>
-<li>hashCode(): 它的作用是获取哈希码，也称为散列码；它实际上是返回一个 int 整数。
-<ul>
-<li>这个哈希码的作用是确定该对象在哈希表中的索引位置。hashCode() 定义在 JDK 的 Object.java 中，这就意味着 Java 中的任何类都包含有 hashCode() 函数。</li>
-<li>散列表存储的是键值对(key-value)，它的特点是：能根据“键”快速的检索出对应的“值”。这其中就利用到了散列码！（可以快速找到所需要的对象）</li>
-</ul>
-</li>
-</ul>
-<h2 id="二-为什么要有-hashcode">二、为什么要有 hashCode？</h2>
-<p>我们先以“HashSet 如何检查重复”为例子来说明为什么要有 hashCode：</p>
-<ul>
-<li>当你把对象加入 HashSet 时，HashSet 会先计算对象的 hashcode 值来判断对象加入的位置，同时也会与该位置其他已经加入的对象的 hashcode 值作比较，如果没有相符的 hashcode，HashSet 会假设对象没有重复出现。但是如果发现有相同 hashcode 值的对象，这时会调用 equals()方法来检查 hashcode 相等的对象是否真的相同。如果两者相同，HashSet 就不会让其加入操作成功。如果不同的话，就会重新散列到其他位置。这样我们就大大减少了 equals 的次数，相应就大大提高了执行速度。（摘自《Java Guide》）<br>
-<img src="https://saowu.top/blog/post-images/1587642788840.png" alt="" loading="lazy"></li>
-</ul>
-<h2 id="三-hashcode与-equals的相关规定">三、hashCode（）与 equals（）的相关规定</h2>
-<ul>
-<li>如果两个对象相等，则 hashcode 一定也是相同的</li>
-<li>两个对象相等,对两个对象分别调用 equals 方法都返回 true</li>
-<li>两个对象有相同的 hashcode 值，它们也不一定是相等的。</li>
-<li>因此，equals 方法被覆盖过，则 hashCode 方法也必须被覆盖</li>
-<li>hashCode() 的默认行为是对堆上的对象产生独特值。如果没有重写 hashCode()，则该 class 的两个对象无论如何都不会相等（即使这两个对象指向相同的数据）</li>
-<li>阿里巴巴Java开发手册<br>
-<img src="https://saowu.top/blog/post-images/1587638631660.png" alt="" loading="lazy"></li>
-</ul>
-<h2 id="四-什么时候需要重写">四、什么时候需要重写？</h2>
-<p>一般的地方不需要重写hashCode()，只有当类需要放在HashTable、HashMap、HashSet等hash结构的集合时才必须重写hashCode()。安全起见，还是养成“equals 方法被覆盖过，则 hashCode 方法也必须被覆盖”的习惯。</p>
-<h2 id="五-demo">五、Demo</h2>
-<pre><code class="language-java">import java.util.Objects;
-
-public class Person {
-
-    private String name;
-
-    private int age;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Person person = (Person) o;
-        return age == person.age &amp;&amp; Objects.equals(name, person.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, age);
-    }
-}
+<p>👉<a href="https://github.com/saowu/HttpNetty">GitHub</a></p>
+<h2 id="技术特点">技术特点</h2>
+<pre><code>1.使用Netty作为http服务器
+2.支持注解@Controller、@RequestMapping
+3.利用maven项目管理
+4.简洁的请求数据提取
+</code></pre>
+<h2 id="启动banner">启动Banner</h2>
+<pre><code> _   _ _   _         _   _      _   _
+| | | | |_| |_ _ __ | \ | | ___| |_| |_ _   _
+| |_| | __| __| '_ \|  \| |/ _ \ __| __| | | |
+|  _  | |_| |_| |_) | |\  |  __/ |_| |_| |_| |
+|_| |_|\__|\__| .__/|_| \_|\___|\__|\__|\__, |
+              |_|    Author：saowu       |___/
 
 </code></pre>
+<h2 id="注解controller-requestmapping">注解@Controller、@RequestMapping</h2>
+<pre><code>@Controller(path = &quot;/index&quot;)
+public class IndexController {
+
+    @RequestMapping(method = RequestMethod.POST, path = &quot;/test&quot;)
+    public String test(Map&lt;String, Object&gt; map) {
+        return JSONObject.toJSONString(map);
+    }
+}
+</code></pre>
+<pre><code>Http Netty : 2020-05-09 04:34:34 GET -&gt; /
+Http Netty : 2020-05-09 04:34:34 GET -&gt; /static/css
+Http Netty : 2020-05-09 04:34:34 GET -&gt; /static/js
+Http Netty : 2020-05-09 04:34:34 GET -&gt; /static/img
+Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
+</code></pre>
+<h2 id="请求数据提取">请求数据提取</h2>
+<ul>
+<li>将GET、PUOST、PUT、DELETE请求数据统一解析成Map,无论是<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>还是<code>application/json</code></li>
+</ul>
+<pre><code>     @RequestMapping(method = RequestMethod.POST, path = &quot;/test&quot;)
+     public String test(Map&lt;String, Object&gt; map) {
+        HashMap&lt;String, String&gt; fileInfo = new HashMap&lt;&gt;();
+        for (String key : map.keySet()) {
+            //获取文件对象并保存
+            String path = IOUtils.saveFileUpload(key, map.get(key));
+            fileInfo.put(key, path);
+        }
+        return JSONObject.toJSONString(fileInfo);
+     }
+ 
+     @RequestMapping(method = RequestMethod.GET, path = &quot;/test1&quot;)
+     public String test1(Map&lt;String, Object&gt; map) {
+         return JSONObject.toJSONString(map);
+     }
+ 
+     @RequestMapping(method = RequestMethod.PUT, path = &quot;/test2&quot;)
+     public String test2(Map&lt;String, Object&gt; map) {
+         return JSONObject.toJSONString(map);
+     }
+ 
+     @RequestMapping(method = RequestMethod.DELETE, path = &quot;/test3&quot;)
+     public String test3(Map&lt;String, Object&gt; map) {
+         return JSONObject.toJSONString(map);
+     }
+
+</code></pre>
+<h2 id="项目结构">项目结构</h2>
+<pre><code>.
+├── README.md
+├── pom.xml
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── org
+    │   │       └── saowu
+    │   │           ├── Application.java
+    │   │           ├── controller
+    │   │           │   └── IndexController.java
+    │   │           └── core
+    │   │               ├── annotation
+    │   │               │   ├── Controller.java
+    │   │               │   └── RequestMapping.java
+    │   │               ├── banner
+    │   │               ├── config
+    │   │               │   └── ContextConfig.java
+    │   │               ├── pojo
+    │   │               │   ├── RequestMethod.java
+    │   │               │   ├── RouteInfo.java
+    │   │               │   ├── SCSS.java
+    │   │               │   ├── SIMG.java
+    │   │               │   ├── SJS.java
+    │   │               │   └── Template.java
+    │   │               ├── server
+    │   │               │   ├── BootServer.java
+    │   │               │   ├── HttpRequestHandler.java
+    │   │               │   └── InitCenter.java
+    │   │               └── utils
+    │   │                   ├── AnnotationUtils.java
+    │   │                   ├── HttpRequestUtils.java
+    │   │                   ├── IOUtils.java
+    │   │                   ├── ReflexUtils.java
+    │   │                   └── ResponseUtils.java
+    │   └── resources
+    │       ├── static
+    │       │   ├── css
+    │       │   │   └── index.css
+    │       │   ├── img
+    │       │   │   └── picture.png
+    │       │   └── js
+    │       │       └── index.js
+    │       ├── templates
+    │       │   └── index.html
+    │       └── upload
+    └── test
+        └── java
+            └── org
+                └── saowu
+                    └── AppTest.java
+
+23 directories, 27 files
+</code></pre>
+<h2 id="browser-console">Browser Console</h2>
+<figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1589013914038.png" alt="" loading="lazy"></figure>
+<h2 id="siege压力测试">siege压力测试</h2>
+<p><code>siege -c 200 -r 100 http://127.0.0.1:9000/index/test1</code></p>
+<pre><code>{	&quot;transactions&quot;:			       19855,
+	&quot;availability&quot;:			       99.28,
+	&quot;elapsed_time&quot;:			       41.73,
+	&quot;data_transferred&quot;:		        0.04,
+	&quot;response_time&quot;:		        0.31,
+	&quot;transaction_rate&quot;:		      475.80,
+	&quot;throughput&quot;:			        0.00,
+	&quot;concurrency&quot;:			      149.54,
+	&quot;successful_transactions&quot;:	       19855,
+	&quot;failed_transactions&quot;:		         145,
+	&quot;longest_transaction&quot;:		       19.77,
+	&quot;shortest_transaction&quot;:		        0.00
+}
+</code></pre>
+<p>那当然是我太菜了，不是netty的问题</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E4%B8%80-%E4%BB%80%E4%B9%88%E6%98%AFequals%E5%92%8Chashcode">一、什么是equals()和hashCode()?</a></li>
-<li><a href="#%E4%BA%8C-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89-hashcode">二、为什么要有 hashCode？</a></li>
-<li><a href="#%E4%B8%89-hashcode%E4%B8%8E-equals%E7%9A%84%E7%9B%B8%E5%85%B3%E8%A7%84%E5%AE%9A">三、hashCode（）与 equals（）的相关规定</a></li>
-<li><a href="#%E5%9B%9B-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%9C%80%E8%A6%81%E9%87%8D%E5%86%99">四、什么时候需要重写？</a></li>
-<li><a href="#%E4%BA%94-demo">五、Demo</a></li>
+<li><a href="#%E6%8A%80%E6%9C%AF%E7%89%B9%E7%82%B9">技术特点</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8banner">启动Banner</a></li>
+<li><a href="#%E6%B3%A8%E8%A7%A3controller-requestmapping">注解@Controller、@RequestMapping</a></li>
+<li><a href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96">请求数据提取</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84">项目结构</a></li>
+<li><a href="#browser-console">Browser Console</a></li>
+<li><a href="#siege%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95">siege压力测试</a></li>
 </ul>
 </li>
 </ul>
@@ -218,9 +305,9 @@ public class Person {
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://saowu.top/blog/dpcfzBc1u/">
+            <a href="https://saowu.top/blog/vj24Wlw0f/">
               <h3 class="post-title">
-                矩阵快速幂求Fibonacci
+                一个简单的Netty服务
               </h3>
             </a>
           </div>
