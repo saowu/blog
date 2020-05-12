@@ -1,318 +1,229 @@
-<html>
-  <head>
-  <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>日记 | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1589267611222">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="日记 | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/saowu/blog@1.5/media/live2d/css/live2d.css">
+<link rel="alternate" type="application/atom+xml" title="saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
 
 
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-162711560-1');
-</script>
-
-
-  <meta name="description" content="saowu's blog" />
-  </head>
-  <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://saowu.top/blog">
-  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1589267611222" alt="">
-  </a>
-  <h1 class="site-title">
-    saowu&#39;s Blog
-  </h1>
-  <p class="site-description">
-    A programmer who wants to be happy and muddle along
-  </p>
-  <div class="menu-container">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
     
-      
-        <a href="/blog" class="menu">
-          首页
-        </a>
-      
+
+  <meta name="description" content="A programmer who wants to be happy and muddle along" />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
+    </div>
+  </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
     
-      
-        <a href="/blog/archives" class="menu">
-          归档
-        </a>
-      
+      <a href="/blog" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        首页
+      </a>
     
-      
-        <a href="/blog/tags" class="menu">
-          标签
-        </a>
-      
+      <a href="/blog/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        归档
+      </a>
     
-      
-        <a href="/blog/about" class="menu">
-          关于
-        </a>
-      
+      <a href="/blog/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        标签
+      </a>
     
-      
-        <a href="https://saowu.top/reptiles/nCoV_map.html" class="menu">
-          nCoV肺炎
+      <a href="/blog/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        关于
+      </a>
+    
+    <a href="https://saowu.top/blog/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
+</div>
+
+    <div class="max-w-4xl w-full mx-auto pt-32">
+      <h1 class="text-2xl font-bold pb-8 flex justify-center items-center">
+        <i class="ri-hashtag"></i>
+        日记
+      </h1>
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
+        
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-31-45/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          C语言程序集（31-45）
         </a>
-      
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        31.计算1-2+3-4+5-...+99-100=?
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    int sum = 0;
+    for (in...
+      </div>
+      <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-31-45/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/c-yu-yan-cheng-xu-ji-31-45.jpg" alt="C语言程序集（31-45）">
     
   </div>
-  <div class="social-container">
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
     
-      
-        <a href="https://github.com/saowu" target="_blank">
-          <i class="ri-github-line"></i>
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-16-30/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          C语言程序集（16-30）
         </a>
-      
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        16.打印*的10*10矩阵
+
+#include &lt;stdio.h&gt;
+int main() {
+    for (int i = 0; i &lt; 10; i++){
+        for (int j = 0; j &lt...
+      </div>
+      <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-16-30/" class="btn">
+        Read more
+      </a>
+    </div>
     
-      
-    
-      
-        <a href="https://weibo.com/u/6635817704" target="_blank">
-          <i class="ri-weibo-line"></i>
-        </a>
-      
-    
-      
-        <a href="https://www.zhihu.com/people/43703339aec7960c1020ba061888a016" target="_blank">
-          <i class="ri-zhihu-line"></i>
-        </a>
-      
-    
-      
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/c-yu-yan-cheng-xu-ji-16-30.jpg" alt="C语言程序集（16-30）">
     
   </div>
-</div>
 
-        <div class="current-tag-container">
-            <h2 class="title">
-                标签：# 日记
-            </h2> 
-        </div>
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-31-45/">
-        <h2 class="post-title">C语言程序集（31-45）</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2020-04-03
-        </span>
-        <span>
-          9 min read
-        </span>
-        
-          <a href="https://saowu.top/blog/bvmB0NIP7/" class="post-tag">
-            # C
-          </a>
-        
-          <a href="https://saowu.top/blog/5lhY7x_08/" class="post-tag">
-            # 日记
-          </a>
-        
-      </div>
-      
-        <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-31-45/" class="post-feature-image" style="background-image: url('https://saowu.top/blog/post-images/c-yu-yan-cheng-xu-ji-31-45.jpg')">
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/pip3-chang-yong-ming-ling/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          pip3 常用命令
         </a>
-      
-      <div class="post-abstract">
-        
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        1、安装目录
+~/Library/Caches/pip
+
+2、查找需要安装的包
+pip3 search &lt;包名&gt;
+
+3、安装python包
+pip3 install 
+pip3 install &lt;包名&gt;==1.0.0...
       </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-16-30/">
-        <h2 class="post-title">C语言程序集（16-30）</h2>
+      <a href="https://saowu.top/blog/pip3-chang-yong-ming-ling/" class="btn">
+        Read more
       </a>
-      <div class="post-info">
-        <span>
-          2020-04-03
-        </span>
-        <span>
-          8 min read
-        </span>
-        
-          <a href="https://saowu.top/blog/bvmB0NIP7/" class="post-tag">
-            # C
-          </a>
-        
-          <a href="https://saowu.top/blog/5lhY7x_08/" class="post-tag">
-            # 日记
-          </a>
-        
-      </div>
-      
-        <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-16-30/" class="post-feature-image" style="background-image: url('https://saowu.top/blog/post-images/c-yu-yan-cheng-xu-ji-16-30.jpg')">
-        </a>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://saowu.top/blog/pip3-chang-yong-ming-ling/">
-        <h2 class="post-title">pip3 常用命令</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2020-04-03
-        </span>
-        <span>
-          2 min read
-        </span>
-        
-          <a href="https://saowu.top/blog/mVqrRKBAz/" class="post-tag">
-            # Python
-          </a>
-        
-          <a href="https://saowu.top/blog/5lhY7x_08/" class="post-tag">
-            # 日记
-          </a>
-        
-      </div>
-      
-        <a href="https://saowu.top/blog/pip3-chang-yong-ming-ling/" class="post-feature-image" style="background-image: url('https://saowu.top/blog/post-images/pip3-chang-yong-ming-ling.jpg')">
-        </a>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://saowu.top/blog/homebrew-ji-ben-jiao-cheng/">
-        <h2 class="post-title">Homebrew基本教程</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2020-04-03
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://saowu.top/blog/ZyLWNMQhx/" class="post-tag">
-            # macOS
-          </a>
-        
-          <a href="https://saowu.top/blog/5lhY7x_08/" class="post-tag">
-            # 日记
-          </a>
-        
-      </div>
-      
-        <a href="https://saowu.top/blog/homebrew-ji-ben-jiao-cheng/" class="post-feature-image" style="background-image: url('https://saowu.top/blog/post-images/homebrew-ji-ben-jiao-cheng.jpeg')">
-        </a>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji/">
-        <h2 class="post-title">C语言程序集(1-15)</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2020-04-03
-        </span>
-        <span>
-          9 min read
-        </span>
-        
-          <a href="https://saowu.top/blog/bvmB0NIP7/" class="post-tag">
-            # C
-          </a>
-        
-          <a href="https://saowu.top/blog/5lhY7x_08/" class="post-tag">
-            # 日记
-          </a>
-        
-      </div>
-      
-        <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji/" class="post-feature-image" style="background-image: url('https://saowu.top/blog/post-images/c-yu-yan-cheng-xu-ji.jpg')">
-        </a>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-</div>
-
-        <div class="pagination-container">
-  
-    <a href="https://saowu.top/blog/5lhY7x_08/page/2/" class="prev-page">上一页</a>
-  
-  
-    <a href="https://saowu.top/blog/5lhY7x_08/page/4/" class="next-page">下一页</a>
-  
-</div>
-
-        
-<div class="site-footer">
-  <p>Copyright 2020 saowu</p>
-<p>Any and all opinions listed here are my own and not representative of my employers; future, past and present.</p>
-
-
-  <a class="rss" href="https://saowu.top/blog/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
-<div id="landlord" style="left:5px;bottom:0px;">
-    <div class="message" style="opacity:0"></div>
-    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
-    <div class="live_talk_input_body">
-        <div class="live_talk_input_name_body">
-            <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off" placeholder="你的名字" />
-        </div>
-        <div class="live_talk_input_text_body">
-            <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off" placeholder="要和我聊什么呀？"/>
-            <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
-        </div>
     </div>
-    <input name="live_talk" id="live_talk" value="1" type="hidden" />
-    <div class="live_ico_box">
-        <div class="live_ico_item type_info" id="showInfoBtn"></div>
-        <div class="live_ico_item type_talk" id="showTalkBtn"></div>
-        <div class="live_ico_item type_music" id="musicButton"></div>
-        <div class="live_ico_item type_youdu" id="youduButton"></div>
-        <div class="live_ico_item type_quit" id="hideButton"></div>
-        <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
-        <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
-        <input name="live2dBGM" value="https://cdn.jsdelivr.net/gh/saowu/blog@1.5/media/saowu.mp3" type="hidden">
-        <input id="duType" value="douqilai,l2d_caihong" type="hidden">
-    </div>
-</div>
-<div id="open_live2d">召唤伊斯特瓦尔</div>
-<script>
-    var message_Path = 'https://cdn.jsdelivr.net/gh/saowu/blog@1.5/media/live2d/';//资源目录，如果目录不对请更改
-    var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口路径
-</script>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/pip3-chang-yong-ming-ling.jpg" alt="pip3 常用命令">
+    
+  </div>
 
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/saowu/blog@1.5/media/live2d/js/live2d.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/saowu/blog@1.5/media/live2d/js/message.js"></script>
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/homebrew-ji-ben-jiao-cheng/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Homebrew基本教程
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        一、安装（需要 Ruby）：
+  ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;
+
+二、基本命令：
+brew ins...
       </div>
+      <a href="https://saowu.top/blog/homebrew-ji-ben-jiao-cheng/" class="btn">
+        Read more
+      </a>
     </div>
-  </body>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/homebrew-ji-ben-jiao-cheng.jpeg" alt="Homebrew基本教程">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          C语言程序集(1-15)
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        1.输入两个数按从小到大的顺序排列
+#include &lt;stdio.h&gt;
+int main() {
+    int a, b, t;
+    printf(&quot;input a,b: &quot;);
+    scanf(...
+      </div>
+      <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/c-yu-yan-cheng-xu-ji.jpg" alt="C语言程序集(1-15)">
+    
+  </div>
+  
+      </div>
+
+      
+  <div class="my-4 flex justify-between px-4 md:px-0">
+    
+      <a href="https://saowu.top/blog/5lhY7x_08/page/2/" class="btn btn-white">
+        <i class="ri-arrow-left-line mr-4"></i>
+        上一页
+      </a>
+    
+    
+      <a href="https://saowu.top/blog/5lhY7x_08/page/4/" class="btn btn-white">
+        下一页
+        <i class="ri-arrow-right-line ml-4"></i>
+      </a>
+    
+  </div>
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright 2020 saowu
+</footer>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+</body>
 </html>

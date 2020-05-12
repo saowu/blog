@@ -1,300 +1,216 @@
-<html>
-  <head>
-  <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Java | saowu&#39;s Blog</title>
-<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico?v=1589267611222">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Java | saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/saowu/blog@1.5/media/live2d/css/live2d.css">
+<link rel="alternate" type="application/atom+xml" title="saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
 
 
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-162711560-1');
-</script>
-
-
-  <meta name="description" content="saowu's blog" />
-  </head>
-  <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://saowu.top/blog">
-  <img class="avatar" src="https://saowu.top/blog/images/avatar.png?v=1589267611222" alt="">
-  </a>
-  <h1 class="site-title">
-    saowu&#39;s Blog
-  </h1>
-  <p class="site-description">
-    A programmer who wants to be happy and muddle along
-  </p>
-  <div class="menu-container">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
     
-      
-        <a href="/blog" class="menu">
-          首页
-        </a>
-      
+
+  <meta name="description" content="A programmer who wants to be happy and muddle along" />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
+    </div>
+  </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
     
-      
-        <a href="/blog/archives" class="menu">
-          归档
-        </a>
-      
+      <a href="/blog" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        首页
+      </a>
     
-      
-        <a href="/blog/tags" class="menu">
-          标签
-        </a>
-      
+      <a href="/blog/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        归档
+      </a>
     
-      
-        <a href="/blog/about" class="menu">
-          关于
-        </a>
-      
+      <a href="/blog/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        标签
+      </a>
     
-      
-        <a href="https://saowu.top/reptiles/nCoV_map.html" class="menu">
-          nCoV肺炎
+      <a href="/blog/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        关于
+      </a>
+    
+    <a href="https://saowu.top/blog/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
+</div>
+
+    <div class="max-w-4xl w-full mx-auto pt-32">
+      <h1 class="text-2xl font-bold pb-8 flex justify-center items-center">
+        <i class="ri-hashtag"></i>
+        Java
+      </h1>
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
+        
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/dnlLkMdxz/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          不想学Struts2，所以自己造了一个
         </a>
-      
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-05-09</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+我不想学Struts2绝不是因为它有漏洞，因为我自己写的漏洞更多......
+
+👉GitHub
+技术特点
+1.使用Netty作为http服务器
+2.支持注解@Controller、@RequestMapping
+3.利用maven项目管...
+      </div>
+      <a href="https://saowu.top/blog/dnlLkMdxz/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@1.0/post-images/dnlLkMdxz.jpg" alt="不想学Struts2，所以自己造了一个">
     
   </div>
-  <div class="social-container">
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
     
-      
-        <a href="https://github.com/saowu" target="_blank">
-          <i class="ri-github-line"></i>
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/vj24Wlw0f/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          一个简单的Netty服务
         </a>
-      
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-30</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+在网络编程领域，Netty是Java的卓越框架。它驾驭了Java高级API的能力，并将其隐藏在一个易于使用的API之后。Netty使你可以专注于自己真正感兴趣的——你的应用程序的独一无二的价值。---《Netty实战》
+
+一、Java I...
+      </div>
+      <a href="https://saowu.top/blog/vj24Wlw0f/" class="btn">
+        Read more
+      </a>
+    </div>
     
-      
-    
-      
-        <a href="https://weibo.com/u/6635817704" target="_blank">
-          <i class="ri-weibo-line"></i>
-        </a>
-      
-    
-      
-        <a href="https://www.zhihu.com/people/43703339aec7960c1020ba061888a016" target="_blank">
-          <i class="ri-zhihu-line"></i>
-        </a>
-      
-    
-      
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@1.0/post-images/vj24Wlw0f.jpg" alt="一个简单的Netty服务">
     
   </div>
-</div>
 
-        <div class="current-tag-container">
-            <h2 class="title">
-                标签：# Java
-            </h2> 
-        </div>
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://saowu.top/blog/dnlLkMdxz/">
-        <h2 class="post-title">不想学Struts2，所以自己造了一个</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2020-05-09
-        </span>
-        <span>
-          4 min read
-        </span>
-        
-          <a href="https://saowu.top/blog/pPR9i6dAN/" class="post-tag">
-            # Repositories
-          </a>
-        
-          <a href="https://saowu.top/blog/FWHSehn5o/" class="post-tag">
-            # Java
-          </a>
-        
-      </div>
-      
-        <a href="https://saowu.top/blog/dnlLkMdxz/" class="post-feature-image" style="background-image: url('https://cdn.jsdelivr.net/gh/saowu/blog@1.0/post-images/dnlLkMdxz.jpg')">
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/pml_ecDtV/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          hashCode()与equals()
         </a>
-      
-      <div class="post-abstract">
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-23</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
         
+面试官可能会问你：“重写过hashCode”和“equals”吗，为什么重写equals时必须重写hashCode方法？
+
+一、什么是equals()和hashCode()?
+
+equals() : 它的作用是判断两个对象是否相等。但它一...
       </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://saowu.top/blog/vj24Wlw0f/">
-        <h2 class="post-title">一个简单的Netty服务</h2>
+      <a href="https://saowu.top/blog/pml_ecDtV/" class="btn">
+        Read more
       </a>
-      <div class="post-info">
-        <span>
-          2020-04-30
-        </span>
-        <span>
-          12 min read
-        </span>
-        
-          <a href="https://saowu.top/blog/FWHSehn5o/" class="post-tag">
-            # Java
-          </a>
-        
-      </div>
-      
-        <a href="https://saowu.top/blog/vj24Wlw0f/" class="post-feature-image" style="background-image: url('https://cdn.jsdelivr.net/gh/saowu/blog@1.0/post-images/vj24Wlw0f.jpg')">
-        </a>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://saowu.top/blog/pml_ecDtV/">
-        <h2 class="post-title">hashCode()与equals()</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2020-04-23
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://saowu.top/blog/FWHSehn5o/" class="post-tag">
-            # Java
-          </a>
-        
-      </div>
-      
-        <a href="https://saowu.top/blog/pml_ecDtV/" class="post-feature-image" style="background-image: url('https://cdn.jsdelivr.net/gh/saowu/blog@1.0/post-images/pml_ecDtV.jpg')">
-        </a>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://saowu.top/blog/dpcfzBc1u/">
-        <h2 class="post-title">矩阵快速幂求Fibonacci</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2020-04-23
-        </span>
-        <span>
-          8 min read
-        </span>
-        
-          <a href="https://saowu.top/blog/FWHSehn5o/" class="post-tag">
-            # Java
-          </a>
-        
-      </div>
-      
-        <a href="https://saowu.top/blog/dpcfzBc1u/" class="post-feature-image" style="background-image: url('https://cdn.jsdelivr.net/gh/saowu/blog@1.0/post-images/dpcfzBc1u.jpg')">
-        </a>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://saowu.top/blog/Uy_GlAH_u/">
-        <h2 class="post-title">JVM垃圾收集策略</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2020-04-19
-        </span>
-        <span>
-          6 min read
-        </span>
-        
-          <a href="https://saowu.top/blog/FWHSehn5o/" class="post-tag">
-            # Java
-          </a>
-        
-      </div>
-      
-        <a href="https://saowu.top/blog/Uy_GlAH_u/" class="post-feature-image" style="background-image: url('https://cdn.jsdelivr.net/gh/saowu/blog@1.0/post-images/Uy_GlAH_u.jpg')">
-        </a>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-</div>
-
-        <div class="pagination-container">
-  
-  
-    <a href="https://saowu.top/blog/FWHSehn5o/page/2" class="next-page">下一页</a>
-  
-</div>
-
-        
-<div class="site-footer">
-  <p>Copyright 2020 saowu</p>
-<p>Any and all opinions listed here are my own and not representative of my employers; future, past and present.</p>
-
-
-  <a class="rss" href="https://saowu.top/blog/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
-<div id="landlord" style="left:5px;bottom:0px;">
-    <div class="message" style="opacity:0"></div>
-    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
-    <div class="live_talk_input_body">
-        <div class="live_talk_input_name_body">
-            <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off" placeholder="你的名字" />
-        </div>
-        <div class="live_talk_input_text_body">
-            <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off" placeholder="要和我聊什么呀？"/>
-            <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
-        </div>
     </div>
-    <input name="live_talk" id="live_talk" value="1" type="hidden" />
-    <div class="live_ico_box">
-        <div class="live_ico_item type_info" id="showInfoBtn"></div>
-        <div class="live_ico_item type_talk" id="showTalkBtn"></div>
-        <div class="live_ico_item type_music" id="musicButton"></div>
-        <div class="live_ico_item type_youdu" id="youduButton"></div>
-        <div class="live_ico_item type_quit" id="hideButton"></div>
-        <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
-        <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
-        <input name="live2dBGM" value="https://cdn.jsdelivr.net/gh/saowu/blog@1.5/media/saowu.mp3" type="hidden">
-        <input id="duType" value="douqilai,l2d_caihong" type="hidden">
-    </div>
-</div>
-<div id="open_live2d">召唤伊斯特瓦尔</div>
-<script>
-    var message_Path = 'https://cdn.jsdelivr.net/gh/saowu/blog@1.5/media/live2d/';//资源目录，如果目录不对请更改
-    var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口路径
-</script>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@1.0/post-images/pml_ecDtV.jpg" alt="hashCode()与equals()">
+    
+  </div>
 
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/saowu/blog@1.5/media/live2d/js/live2d.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/saowu/blog@1.5/media/live2d/js/message.js"></script>
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/dpcfzBc1u/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          矩阵快速幂求Fibonacci
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-23</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        一、“斐波那契数列”
+
+斐波那契数列（Fibonacci sequence），又称黄金分割数列、因数学家列昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：1、1、...
       </div>
+      <a href="https://saowu.top/blog/dpcfzBc1u/" class="btn">
+        Read more
+      </a>
     </div>
-  </body>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@1.0/post-images/dpcfzBc1u.jpg" alt="矩阵快速幂求Fibonacci">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/Uy_GlAH_u/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JVM垃圾收集策略
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-19</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+相比C++，java做的一大改进是将复杂的内存管理抽离出来交给jvm去处理，让不再时刻盯着内存泄漏的问题，可以更专注于业务逻辑的开发。这样一来，设计一个合适的垃圾回收算法是很重要的。
+
+一、再谈引用
+JDK1.2以后，Java对引用的概念...
+      </div>
+      <a href="https://saowu.top/blog/Uy_GlAH_u/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@1.0/post-images/Uy_GlAH_u.jpg" alt="JVM垃圾收集策略">
+    
+  </div>
+  
+      </div>
+
+      
+  <div class="my-4 flex justify-between px-4 md:px-0">
+    
+    
+      <a href="https://saowu.top/blog/FWHSehn5o/page/2" class="btn btn-white">
+        下一页
+        <i class="ri-arrow-right-line ml-4"></i>
+      </a>
+    
+  </div>
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright 2020 saowu
+</footer>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+</body>
 </html>
