@@ -445,10 +445,10 @@ if(!norunFlag){
 	}
 	$(document).ready(function() {
 		var AIimgSrc = [
-			home_Path + message_Path + "https://cdn.jsdelivr.net/gh/saowu/blog@1.0/media/live2d/model/histoire/histoire.1024/texture_00.png",
-			home_Path + message_Path + "https://cdn.jsdelivr.net/gh/saowu/blog@1.0/media/live2d/model/histoire/histoire.1024/texture_01.png",
-			home_Path + message_Path + "https://cdn.jsdelivr.net/gh/saowu/blog@1.0/media/live2d/model/histoire/histoire.1024/texture_02.png",
-			home_Path + message_Path + "https://cdn.jsdelivr.net/gh/saowu/blog@1.0/media/live2d/model/histoire/histoire.1024/texture_03.png"
+			"https://cdn.jsdelivr.net/gh/saowu/blog@1.0/media/live2d/model/histoire/histoire.1024/texture_00.png",
+			"https://cdn.jsdelivr.net/gh/saowu/blog@1.0/media/live2d/model/histoire/histoire.1024/texture_01.png",
+			"https://cdn.jsdelivr.net/gh/saowu/blog@1.0/media/live2d/model/histoire/histoire.1024/texture_02.png",
+			"https://cdn.jsdelivr.net/gh/saowu/blog@1.0/media/live2d/model/histoire/histoire.1024/texture_03.png"
 		]
 		var images = [];
 		var imgLength = AIimgSrc.length;
