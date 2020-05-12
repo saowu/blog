@@ -110,13 +110,13 @@ docker ...">
 <p>操作容器的快乐，一般人都能体会到，没错你就是一般人。</p>
 </blockquote>
 <h2 id="一-检索mysql容器">一、检索mysql容器</h2>
-<pre><code>docker search mysql
+<pre><code class="language-shell">docker search mysql
 </code></pre>
 <h2 id="二-拉取mysql容器镜像">二、拉取mysql容器镜像</h2>
-<pre><code>docker pull mysql:latest
+<pre><code class="language-shell">docker pull mysql:latest
 </code></pre>
 <h2 id="三-查看全部容器镜像">三、查看全部容器镜像</h2>
-<pre><code>docker images
+<pre><code class="language-shell">docker images
 </code></pre>
 <h2 id="四-运行镜像生成容器">四、运行镜像生成容器</h2>
 <ul>
@@ -124,27 +124,27 @@ docker ...">
 <li>-d &lt;镜像名：版本&gt;</li>
 <li>--name &lt;容器别名&gt;</li>
 </ul>
-<pre><code>docker run --name mysql1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
+<pre><code class="language-shell">docker run --name mysql1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
 </code></pre>
 <h2 id="五-查看全部容器">五、查看全部容器</h2>
-<pre><code>docker ps -a
+<pre><code class="language-shell">docker ps -a
 </code></pre>
 <h2 id="六-进入容器">六、进入容器</h2>
 <ul>
 <li>-i :即使没有附加也保持STDIN 打开</li>
 <li>-t :分配一个伪终端 <code>/bin/bash</code></li>
 </ul>
-<pre><code>docker exec -i -t mysql1 /bin/bash
+<pre><code class="language-shell">docker exec -i -t mysql1 /bin/bash
 </code></pre>
 <h2 id="七-登陆mysql">七、登陆mysql</h2>
-<pre><code>mysql -u root -p
+<pre><code class="language-shell">mysql -u root -p
 </code></pre>
 <h2 id="八-修改为root-可以通过任何客户端连接">八、修改为root 可以通过任何客户端连接</h2>
-<pre><code>use mysql
+<pre><code class="language-sql">use mysql
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 </code></pre>
 <h2 id="九-修改数据库中文乱码">九、修改数据库中文乱码</h2>
-<pre><code>show variables like 'character%';
+<pre><code class="language-sql">show variables like 'character%';
 set character_set_database = 'utf8';
 set character_set_server = 'utf8';
 </code></pre>

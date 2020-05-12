@@ -116,7 +116,7 @@ Flask 个人图床
 <p>👉<a href="http://esc.saowu.top:8000">demo website</a><br>
 👉<a href="https://github.com/saowu/FigureBed">GitHub</a></p>
 <h4 id="功能支持">功能支持</h4>
-<pre><code>1.支持多文件上传（set max=5）
+<pre><code class="language-text">1.支持多文件上传（set max=5）
 2.支持导出上传记录（csv文件）
 3.支持返回多种链接格式 （link, markdown, html, bbcode，removal）
 4.可以通过removal链接自行删除图片文件
@@ -124,22 +124,22 @@ Flask 个人图床
 6.支持拖动上传
 </code></pre>
 <h4 id="docker部署">Docker部署</h4>
-<pre><code>#1.创建数据库并导入sql文件
-$mysql&gt;create database figurebed;
-$mysql&gt;source figurebed.sql;
-
-#2.修改数据库配置和域名地址
-$vim FigureBed/app/config.py
-
-#3.构建flask+gunicorn+gevent容器
-$cd FigureBed/
-$docker build -t saowu/figurebed:1.0 .
-$docker run  -p 8000:8888 -v /home/myDataVolume:/home/myDataVolume -d saowu/figurebed:1.0
-
-#4.构建nginx容器
-$cd nginx/
-$docker build -t saowu/nginx:1.0 .
-$docker run --name nginx1 -p 80:80 -d saowu/nginx:1.0
+<pre><code class="language-sql">#1.创建数据库并导入sql文件
+mysql&gt;create database figurebed;
+mysql&gt;source figurebed.sql;
+</code></pre>
+<pre><code class="language-shell">#2.修改数据库配置和域名地址
+vim FigureBed/app/config.py
+</code></pre>
+<pre><code class="language-shell">#3.构建flask+gunicorn+gevent容器
+cd FigureBed/
+docker build -t saowu/figurebed:1.0 .
+docker run  -p 8000:8888 -v /home/myDataVolume:/home/myDataVolume -d saowu/figurebed:1.0
+</code></pre>
+<pre><code class="language-shell">#4.构建nginx容器
+cd nginx/
+docker build -t saowu/nginx:1.0 .
+docker run --name nginx1 -p 80:80 -d saowu/nginx:1.0
 </code></pre>
 <h4 id="ui展示">UI展示</h4>
 <p><img src="https://saowu.top/blog/post-images/1585915830120.png" alt="" loading="lazy"><br>

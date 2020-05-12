@@ -102,14 +102,14 @@
 </blockquote>
 <p>👉<a href="https://github.com/saowu/HttpNetty">GitHub</a></p>
 <h2 id="技术特点">技术特点</h2>
-<pre><code>1.使用Netty作为http服务器
+<pre><code class="language-text">1.使用Netty作为http服务器
 2.支持注解@Controller、@RequestMapping
 3.利用maven项目管理
 4.简洁的请求数据提取
 6.Java反射技术
 </code></pre>
 <h2 id="启动banner">启动Banner</h2>
-<pre><code> _   _ _   _         _   _      _   _
+<pre><code class="language-shell"> _   _ _   _         _   _      _   _
 | | | | |_| |_ _ __ | \ | | ___| |_| |_ _   _
 | |_| | __| __| '_ \|  \| |/ _ \ __| __| | | |
 |  _  | |_| |_| |_) | |\  |  __/ |_| |_| |_| |
@@ -118,7 +118,7 @@
 
 </code></pre>
 <h2 id="注解controller-requestmapping">注解@Controller、@RequestMapping</h2>
-<pre><code>@Controller(path = &quot;/index&quot;)
+<pre><code class="language-java">@Controller(path = &quot;/index&quot;)
 public class IndexController {
 
     @RequestMapping(method = RequestMethod.POST, path = &quot;/test&quot;)
@@ -127,7 +127,7 @@ public class IndexController {
     }
 }
 </code></pre>
-<pre><code>Http Netty : 2020-05-09 04:34:34 GET -&gt; /
+<pre><code class="language-shell">Http Netty : 2020-05-09 04:34:34 GET -&gt; /
 Http Netty : 2020-05-09 04:34:34 GET -&gt; /static/css
 Http Netty : 2020-05-09 04:34:34 GET -&gt; /static/js
 Http Netty : 2020-05-09 04:34:34 GET -&gt; /static/img
@@ -137,7 +137,7 @@ Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
 <ul>
 <li>将GET、PUOST、PUT、DELETE请求数据统一解析成Map,无论是<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>还是<code>application/json</code></li>
 </ul>
-<pre><code>     @RequestMapping(method = RequestMethod.POST, path = &quot;/test&quot;)
+<pre><code class="language-java">     @RequestMapping(method = RequestMethod.POST, path = &quot;/test&quot;)
      public String test(Map&lt;String, Object&gt; map) {
         HashMap&lt;String, String&gt; fileInfo = new HashMap&lt;&gt;();
         for (String key : map.keySet()) {
@@ -165,7 +165,7 @@ Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
 
 </code></pre>
 <h2 id="项目结构">项目结构</h2>
-<pre><code>.
+<pre><code class="language-shell">.
 ├── README.md
 ├── pom.xml
 └── src
@@ -223,7 +223,7 @@ Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
 <figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1589013914038.png" alt="" loading="lazy"></figure>
 <h2 id="siege压力测试">siege压力测试</h2>
 <p><code>siege -c 200 -r 100 http://127.0.0.1:9000/index/test1</code></p>
-<pre><code>{	&quot;transactions&quot;:			       19855,
+<pre><code class="language-shell">{	&quot;transactions&quot;:			       19855,
 	&quot;availability&quot;:			       99.28,
 	&quot;elapsed_time&quot;:			       41.73,
 	&quot;data_transferred&quot;:		        0.04,

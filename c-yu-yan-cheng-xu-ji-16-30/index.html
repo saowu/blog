@@ -77,7 +77,7 @@ int main() {
           <img src="https://saowu.top/blog/post-images/c-yu-yan-cheng-xu-ji-16-30.jpg" alt="C语言程序集（16-30）" class="block w-full mb-8">
         
         <div class="mb-8 flex flex-wrap">
-          <div class="text-gray-400 text-sm mr-4">2020-04-03 · 8 min read</div>
+          <div class="text-gray-400 text-sm mr-4">2020-04-03 · 7 min read</div>
           
             <a href="https://saowu.top/blog/bvmB0NIP7/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
               <i class="ri-hashtag"></i>
@@ -92,7 +92,7 @@ int main() {
         </div>
         <div class="markdown mb-8" v-pre>
           <h3 id="16打印的1010矩阵">16.打印<code>*</code>的10*10矩阵</h3>
-<pre><code>
+<pre><code class="language-c">
 #include &lt;stdio.h&gt;
 int main() {
     for (int i = 0; i &lt; 10; i++){
@@ -120,7 +120,7 @@ Process finished with exit code 0
 
 </code></pre>
 <h3 id="17打印">17.打印:</h3>
-<pre><code>        *
+<pre><code class="language-c">        *
         **
         ***
         ****
@@ -137,7 +137,7 @@ int main() {
 }
 </code></pre>
 <h3 id="18打印">18.打印：</h3>
-<pre><code>        *****
+<pre><code class="language-c">        *****
         ****
         ***
         **
@@ -156,7 +156,7 @@ int main() {
 
 </code></pre>
 <h3 id="19打印">19.打印：</h3>
-<pre><code>            *
+<pre><code class="language-c">            *
             ***
             *****
             *******
@@ -173,7 +173,7 @@ int main() {
 }
 </code></pre>
 <h3 id="20打印">20.打印：</h3>
-<pre><code>            *
+<pre><code class="language-c">            *
            ***
           *****
          *******
@@ -192,7 +192,7 @@ int main() {
 }
 </code></pre>
 <h3 id="21打印">21.打印：</h3>
-<pre><code>        *********
+<pre><code class="language-c">        *********
          *******
           *****
            ***
@@ -211,7 +211,7 @@ int main() {
 }
 </code></pre>
 <h3 id="22打印">22.打印：</h3>
-<pre><code>        *********
+<pre><code class="language-c">        *********
          *******
           *****
            ***
@@ -241,7 +241,7 @@ int main() {
 }
 </code></pre>
 <h3 id="23打印">23.打印：</h3>
-<pre><code>            *
+<pre><code class="language-c">            *
            ***
           *****
          *******
@@ -273,7 +273,7 @@ int main() {
 
 </code></pre>
 <h3 id="24打印乘法口诀表">24.打印乘法口诀表</h3>
-<pre><code>
+<pre><code class="language-c">
 #include &lt;stdio.h&gt;
 int main() {
     for (int i = 1; i &lt;= 9; i++) {
@@ -299,7 +299,7 @@ Process finished with exit code 0
 
 </code></pre>
 <h3 id="25打印">25.打印:</h3>
-<pre><code>           1   2   3   4
+<pre><code class="language-c">           1   2   3   4
            5   6   7   8
            9  10  11  12
           13  14  15  16
@@ -316,7 +316,7 @@ int main() {
 
 </code></pre>
 <h3 id="26打印">26.打印：</h3>
-<pre><code>           1   5   9  13
+<pre><code class="language-c">           1   5   9  13
            2   6  10  14
            3   7  11  15
            4   8  12  16
@@ -333,7 +333,7 @@ int main() {
 
 </code></pre>
 <h3 id="27真题打印">27.(真题)打印：</h3>
-<pre><code>          16  15  14  13
+<pre><code class="language-c">          16  15  14  13
           12  11  10   9
            8   7   6   5
            4   3   2   1
@@ -349,7 +349,7 @@ int main() {
 }
 </code></pre>
 <h3 id="28素数的判断">28.素数的判断</h3>
-<pre><code>1).
+<pre><code class="language-c">1).
     #include &lt;stdio.h&gt;
     #include &lt;math.h&gt;
     
@@ -384,17 +384,10 @@ int main() {
             printf(&quot;%d is not a prime number.\n&quot;, x);
         return 0;
     }
-    
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-input x :34
-34 is not a prime number.
-
-Process finished with exit code 0
 
 </code></pre>
 <h3 id="29打印100~200之间的素数">29.打印100~200之间的素数</h3>
-<pre><code>
+<pre><code class="language-c">
 #include &lt;stdio.h&gt;
 #include &lt;math.h&gt;
 
@@ -414,14 +407,9 @@ int main() {
 
     return 0;
 }
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-101	103	107	109	113	127	131	137	139	149	151	157	163	167	173	179	181	191	193	197	199	
-Process finished with exit code 0
-
 </code></pre>
 <h3 id="30打印ascii码与字母">30.打印ASCII码与字母</h3>
-<pre><code>
+<pre><code class="language-c">
 #include &lt;stdio.h&gt;
 
 int main() {
@@ -430,11 +418,6 @@ int main() {
     }
     return 0;
 }
-输出：
-/Users/wuyanbo/Documents/ClionProject/cmake-build-debug/ClionProject
-A=65 a=97 B=66 b=98 C=67 c=99 D=68 d=100 E=69 e=101 F=70 f=102 G=71 g=103 H=72 h=104 I=73 i=105 J=74 j=106 K=75 k=107 L=76 l=108 M=77 m=109 N=78 n=110 O=79 o=111 P=80 p=112 Q=81 q=113 R=82 r=114 S=83 s=115 T=84 t=116 U=85 u=117 V=86 v=118 W=87 w=119 X=88 x=120 Y=89 y=121 Z=90 z=122 
-Process finished with exit code 0
-
 </code></pre>
 
         </div>

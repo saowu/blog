@@ -23,28 +23,28 @@
   </script>
     
 
-  <meta name="description" content="61.二维数组的指针的运用
-#include&amp;lt;stdio.h&amp;gt;
-int main()
-{   int m[4][3]= {{5,2,3},{4,5,6},{7,8,9},{10,11,12}};
-    int i,j,*a=m..." />
+  <meta name="description" content="61.&amp;quot;ABCDEFG****&amp;quot;☞&amp;quot;ABCDEFG*****&amp;quot;
+
+#include &amp;quot;stdio.h&amp;quot;
+int main() {
+    char s[]=&amp;quot;****A*..." />
   <meta property="og:title" content="C语言程序集（61-75） - saowu&#39;s Blog">
-  <meta property="og:description" content="61.二维数组的指针的运用
-#include&amp;lt;stdio.h&amp;gt;
-int main()
-{   int m[4][3]= {{5,2,3},{4,5,6},{7,8,9},{10,11,12}};
-    int i,j,*a=m..." />
+  <meta property="og:description" content="61.&amp;quot;ABCDEFG****&amp;quot;☞&amp;quot;ABCDEFG*****&amp;quot;
+
+#include &amp;quot;stdio.h&amp;quot;
+int main() {
+    char s[]=&amp;quot;****A*..." />
   <meta property="og:type" content="articles">
   <meta property="og:url" content="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-61-75/" />
   <meta property="og:image" content="https://saowu.top/blog/post-images/c-yu-yan-cheng-xu-ji-61-75.jpg">
   <meta property="og:image:height" content="630">
   <meta property="og:image:width" content="1200">
   <meta name="twitter:title" content="C语言程序集（61-75） - saowu&#39;s Blog">
-  <meta name="twitter:description" content="61.二维数组的指针的运用
-#include&amp;lt;stdio.h&amp;gt;
-int main()
-{   int m[4][3]= {{5,2,3},{4,5,6},{7,8,9},{10,11,12}};
-    int i,j,*a=m...">
+  <meta name="twitter:description" content="61.&amp;quot;ABCDEFG****&amp;quot;☞&amp;quot;ABCDEFG*****&amp;quot;
+
+#include &amp;quot;stdio.h&amp;quot;
+int main() {
+    char s[]=&amp;quot;****A*...">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji-61-75/">
 
@@ -88,19 +88,8 @@ int main()
           
         </div>
         <div class="markdown mb-8" v-pre>
-          <h3 id="61二维数组的指针的运用">61.二维数组的指针的运用</h3>
-<pre><code>#include&lt;stdio.h&gt;
-int main()
-{   int m[4][3]= {{5,2,3},{4,5,6},{7,8,9},{10,11,12}};
-    int i,j,*a=m,**p=&amp;a,(*b)[3]=m;
-    
-    printf(&quot;%d\n&quot;,*(*(b+2)+0));
-    printf(&quot;%d&quot;,*(*p+6));
-    return 0;
-}
-</code></pre>
-<h3 id="62abcdefgabcdefg">62.&quot;<em><em><em><em>A</em>BC</em>DEF</em>G</em>****&quot;☞&quot;ABCDEFG*****&quot;</h3>
-<pre><code>
+          <h3 id="61abcdefgabcdefg">61.&quot;<em><em><em><em>A</em>BC</em>DEF</em>G</em>****&quot;☞&quot;ABCDEFG*****&quot;</h3>
+<pre><code class="language-c">
 #include &quot;stdio.h&quot;
 int main() {
     char s[]=&quot;****A*BC*DEF*G*****&quot;,*t=s;
@@ -141,9 +130,19 @@ int main() {
     return 0;
 }
 </code></pre>
+<h3 id="62二维数组的指针的运用">62.二维数组的指针的运用</h3>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+int main()
+{   
+    int m[4][3]= {{5,2,3},{4,5,6},{7,8,9},{10,11,12}};
+    int i,j,*a=m,**p=&amp;a,(*b)[3]=m;
+    printf(&quot;%d\n&quot;,*(*(b+2)+0));
+    printf(&quot;%d&quot;,*(*p+6));
+    return 0;
+}
+</code></pre>
 <h3 id="63库函数strcmp">63.库函数strcmp()</h3>
-<pre><code>
-#include&lt;string.h&gt;
+<pre><code class="language-c">#include&lt;string.h&gt;
 int strcmp ( char* src,char* dst)
 {
     int ret = 0 ;
@@ -157,8 +156,7 @@ int strcmp ( char* src,char* dst)
 }
 </code></pre>
 <h3 id="64int-p双重指针">64.int **p双重指针</h3>
-<pre><code>
-#include&lt;stdio.h&gt;
+<pre><code class="language-c">#include&lt;stdio.h&gt;
 int main()
 {
     int p[3][4]= {15,2,3,4,5,6,7,8,9};
@@ -171,7 +169,7 @@ int main()
 }
 </code></pre>
 <h3 id="65折半插入排序自己实现">65.折半插入排序（自己实现）</h3>
-<pre><code>1)升序
+<pre><code class="language-c">1)升序
 #include&lt;stdio.h&gt;
 int insertsort(int a[],int n) {
     int bottom,mid,top,temp,i,j;
@@ -276,7 +274,7 @@ int main() {
 }
 </code></pre>
 <h3 id="66求自然对数e111121n">66.求自然对数e=1+1/1!+1/2!+…+1/n!</h3>
-<pre><code>#include &lt;stdio.h&gt;
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 int main()
 {
     long n = 0, ns = 1;
@@ -295,7 +293,7 @@ int main()
 
 </code></pre>
 <h3 id="67顺序插入排序法">67.顺序插入排序法</h3>
-<pre><code>#include &quot;stdio.h&quot;
+<pre><code class="language-c">#include &quot;stdio.h&quot;
 int main() {
     int c[]= {23,1,56,234,7,0,34},i,j,t;
     for(i=1; i&lt;7; i++) {
@@ -313,7 +311,7 @@ int main() {
 }
 </code></pre>
 <h3 id="68一个球自由100m落下每次反弹一半问第10次落地经过多少m最后一次反弹多高">68.一个球自由100m落下，每次反弹一半，问第10次落地经过多少m，最后一次反弹多高</h3>
-<pre><code>
+<pre><code class="language-c">
 #include&lt;stdio.h&gt;
 int fun(float m,int n) {
     if(n==0) {
@@ -333,7 +331,7 @@ int main()
 }
 </code></pre>
 <h3 id="69计算字符串长度">69.计算字符串长度</h3>
-<pre><code>#include&lt;stdio.h&gt;
+<pre><code class="language-c">#include&lt;stdio.h&gt;
 int len(char * s) {
     char * p=s;
     while(*p++);
@@ -347,7 +345,7 @@ int main()
 }
 </code></pre>
 <h3 id="70-库函数strstr源码">70. 库函数strstr()源码</h3>
-<pre><code>#include&lt;stdio.h&gt;
+<pre><code class="language-c">#include&lt;stdio.h&gt;
 char *strstr (char *str1,char *str2) {
     char *cp = str1;
     char *s1, *s2;
@@ -372,7 +370,7 @@ int main()
 }
 </code></pre>
 <h3 id="71库函数strchr源码">71.库函数strchr()源码</h3>
-<pre><code>#include&lt;stdio.h&gt;
+<pre><code class="language-c">#include&lt;stdio.h&gt;
 char *strchr (char *string,int ch) {
     while (*string &amp;&amp; *string != (char)ch)
         string++;
@@ -388,7 +386,7 @@ int main()
 }
 </code></pre>
 <h3 id="72实型比较大小因为double和float精度不同所以直接判断有可能会判断失败">72.实型比较大小(因为double和float精度不同所以直接判断有可能会判断失败)</h3>
-<pre><code>
+<pre><code class="language-c">
 #include&lt;stdio.h&gt;
 #include&lt;math.h&gt;
 int main()
@@ -402,7 +400,7 @@ int main()
 }
 </code></pre>
 <h3 id="73读程序结果">73.读程序结果</h3>
-<pre><code>
+<pre><code class="language-c">
 #include&lt;stdio.h&gt;
 int main()
 {   //四舍五入
@@ -412,7 +410,7 @@ int main()
 }
 </code></pre>
 <h3 id="74求π的近似值不同的方法近似度不同课本p131">74.求π的近似值,不同的方法近似度不同(课本p131)</h3>
-<pre><code>
+<pre><code class="language-c">
 第①种  π/4=...
 
 #include&lt;stdio.h&gt;
@@ -498,7 +496,7 @@ int main() {
 
 </code></pre>
 <h3 id="75读程序结果">75.读程序结果</h3>
-<pre><code>#include &lt;stdio.h&gt;
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #define PR(ar) printf(&quot;%d &quot;,ar);
 main()
 {
@@ -568,8 +566,8 @@ main()
 <ul>
 <li>
 <ul>
-<li><a href="#61%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E6%8C%87%E9%92%88%E7%9A%84%E8%BF%90%E7%94%A8">61.二维数组的指针的运用</a></li>
-<li><a href="#62abcdefgabcdefg">62.&quot;<em><em><em><em>A</em>BC</em>DEF</em>G</em>****&quot;☞&quot;ABCDEFG*****&quot;</a></li>
+<li><a href="#61abcdefgabcdefg">61.&quot;<em><em><em><em>A</em>BC</em>DEF</em>G</em>****&quot;☞&quot;ABCDEFG*****&quot;</a></li>
+<li><a href="#62%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E6%8C%87%E9%92%88%E7%9A%84%E8%BF%90%E7%94%A8">62.二维数组的指针的运用</a></li>
 <li><a href="#63%E5%BA%93%E5%87%BD%E6%95%B0strcmp">63.库函数strcmp()</a></li>
 <li><a href="#64int-p%E5%8F%8C%E9%87%8D%E6%8C%87%E9%92%88">64.int **p双重指针</a></li>
 <li><a href="#65%E6%8A%98%E5%8D%8A%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E8%87%AA%E5%B7%B1%E5%AE%9E%E7%8E%B0">65.折半插入排序（自己实现）</a></li>
