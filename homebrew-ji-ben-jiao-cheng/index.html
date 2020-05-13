@@ -89,7 +89,7 @@ brew ins...">
         </div>
         <div class="markdown mb-8" v-pre>
           <h3 id="一-安装需要-ruby">一、安装（需要 Ruby）：</h3>
-<pre><code>  ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;
+<pre><code class="language-shell">  ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;
 </code></pre>
 <h3 id="二-基本命令">二、基本命令：</h3>
 <p><code>brew install *</code>   —安装软件<br>
@@ -111,7 +111,7 @@ brew ins...">
 3、可以使用 <code>brew list 软件名</code> (比如 <code>brew list oclint</code>)确定安装位置。</p>
 <h3 id="四-换源">四、换源</h3>
 <h4 id="1-替换现有上游">1 、替换现有上游</h4>
-<pre><code># brew 程序本身
+<pre><code class="language-shell"># brew 程序本身
 git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 
 # 以下针对 mac OS 系统上的 Homebrew
@@ -124,7 +124,7 @@ git -C &quot;$(brew --repo homebrew/cask-drivers)&quot; remote set-url origin ht
 brew update
 </code></pre>
 <h4 id="2-复原">2、复原</h4>
-<pre><code># brew 程序本身
+<pre><code class="language-shell"># brew 程序本身
 git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git
 
 # 以下针对 mac OS 系统上的 Homebrew

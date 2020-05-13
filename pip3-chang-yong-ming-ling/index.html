@@ -101,50 +101,50 @@ pip3 install &amp;lt;包名&amp;gt;==1.0.0...">
         </div>
         <div class="markdown mb-8" v-pre>
           <h3 id="1-安装目录">1、安装目录</h3>
-<pre><code>~/Library/Caches/pip
+<pre><code class="language-shell">~/Library/Caches/pip
 </code></pre>
 <h3 id="2-查找需要安装的包">2、查找需要安装的包</h3>
-<pre><code>pip3 search &lt;包名&gt;
+<pre><code class="language-shell">pip3 search &lt;包名&gt;
 </code></pre>
 <h3 id="3-安装python包">3、安装python包</h3>
-<pre><code>pip3 install 
+<pre><code class="language-shell">pip3 install 
 pip3 install &lt;包名&gt;==1.0.0
 pip3 install -r requirements.txt 
 pip3 install -i &lt;源地址&gt; &lt;包名&gt;
-pip install -e &lt;local project path&gt; (这个命令相当于pip install develop）
+pip3 install -e &lt;local project path&gt; (这个命令相当于pip install develop）
 </code></pre>
 <h3 id="4-源地址">4、源地址</h3>
-<pre><code>阿里源：https://mirrors.aliyun.com/pypi/simple/ 
+<pre><code class="language-text">阿里源：https://mirrors.aliyun.com/pypi/simple/ 
 科大源：https://pypi.mirrors.ustc.edu.cn/simple/ 
-清华源：https://pypi.tuna.tsinghua.edu.cn/simple 
+清华源：https://pypi.tuna.tsinghua.edu.cn/simple/
 官方源：https://pypi.python.org/
 </code></pre>
 <h3 id="5-在配置文件中指定安装源">5、在配置文件中指定安装源</h3>
-<pre><code>#直接在配置文件中添加源，如果没有配置文件可以手动添加一个 
-/etc/pip.conf 
+<pre><code class="language-shell">#直接在配置文件中添加源，如果没有配置文件可以手动添加一个 
+vim /etc/pip.conf 
 [global] 
 timeout = 6000 
 index-url = http://pypi.douban.com/simple
 </code></pre>
 <h3 id="6-列出已经安装的包">6、列出已经安装的包</h3>
-<pre><code>pip3 list 
+<pre><code class="language-shell">pip3 list 
 </code></pre>
 <h3 id="7-列出过期的包">7、列出过期的包</h3>
-<pre><code>pip3 list -o
+<pre><code class="language-shell">pip3 list -o
 </code></pre>
 <h3 id="8-升级包">8、升级包</h3>
-<pre><code>pip3 install &lt;包名&gt; -U
+<pre><code class="language-shell">pip3 install &lt;包名&gt; -U
 pip3 install -i &lt;源地址&gt; &lt;包名&gt; -U
 </code></pre>
 <h3 id="9-安装的包所在目录">9、安装的包所在目录</h3>
-<pre><code>pip3 show -f &lt;包名&gt; 
+<pre><code class="language-shell">pip3 show -f &lt;包名&gt; 
 </code></pre>
 <h3 id="10-卸载安装">10、卸载安装</h3>
-<pre><code>pip3 uninstall &lt;包名&gt; 
+<pre><code class="language-shell">pip3 uninstall &lt;包名&gt; 
 pip3 uninstall -r requirements.txt
 </code></pre>
 <h3 id="11-生成requirementstxt文件">11、生成requirements.txt文件</h3>
-<pre><code>pip freeze &gt; ./requirements.txt
+<pre><code class="language-shell">pip freeze &gt; ./requirements.txt
 </code></pre>
 <figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1585914935212.png" alt="" loading="lazy"></figure>
 
