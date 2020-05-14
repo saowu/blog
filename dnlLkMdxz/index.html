@@ -83,7 +83,7 @@
           <img src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/dnlLkMdxz.jpg" alt="不想学Struts2，所以自己造了一个" class="block w-full mb-8">
         
         <div class="mb-8 flex flex-wrap">
-          <div class="text-gray-400 text-sm mr-4">2020-05-09 · 4 min read</div>
+          <div class="text-gray-400 text-sm mr-4">2020-05-09 · 5 min read</div>
           
             <a href="https://saowu.top/blog/pPR9i6dAN/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
               <i class="ri-hashtag"></i>
@@ -138,15 +138,10 @@ Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
 <ul>
 <li>将GET、PUOST、PUT、DELETE请求数据统一解析成Map,无论是<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>还是<code>application/json</code></li>
 </ul>
+<h3 id="k-v接收">K-V接收</h3>
 <pre><code class="language-java">     @RequestMapping(method = RequestMethod.POST, path = &quot;/test&quot;)
      public String test(Map&lt;String, Object&gt; map) {
-        HashMap&lt;String, String&gt; fileInfo = new HashMap&lt;&gt;();
-        for (String key : map.keySet()) {
-            //获取文件对象并保存
-            String path = IOUtils.saveFileUpload(key, map.get(key));
-            fileInfo.put(key, path);
-        }
-        return JSONObject.toJSONString(fileInfo);
+        return JSONObject.toJSONString(map);
      }
  
      @RequestMapping(method = RequestMethod.GET, path = &quot;/test1&quot;)
@@ -165,6 +160,66 @@ Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
      }
 
 </code></pre>
+<h3 id="文件接收">文件接收</h3>
+<pre><code class="language-java">@RequestMapping(method = RequestMethod.POST, path = &quot;/upload&quot;)
+     public String uploadfile(Map&lt;String, Object&gt; map) {
+        HashMap&lt;String, String&gt; fileInfo = new HashMap&lt;&gt;();
+        for (String key : map.keySet()) {
+            //获取文件对象并保存
+            String path = IOUtils.saveFileUpload(key, map.get(key));
+            fileInfo.put(key, path);
+        }
+        return JSONObject.toJSONString(fileInfo);
+     }
+</code></pre>
+<h2 id="数据库连接池">数据库连接池</h2>
+<h3 id="hikariproperties">hikari.properties</h3>
+<pre><code class="language-text">jdbcUrl=jdbc:mysql://localhost:3306/test?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8
+driverClassName=com.mysql.jdbc.Driver
+dataSource.user=root
+dataSource.password=123456
+dataSource.connectionTimeout=30000
+dataSource.idleTimeout=600000
+dataSource.maxLifetime=1800000
+dataSource.maximumPoolSize=30
+</code></pre>
+<h3 id="entity-column">@Entity、@Column</h3>
+<pre><code class="language-java">@Entity
+public class Files {
+    @Column(name = &quot;id&quot;)
+    private String id;
+
+    @Column(name = &quot;name&quot;)
+    private String name;
+
+    @Column(name = &quot;path&quot;)
+    private String path;
+
+    @Column(name = &quot;type&quot;)
+    private String type;
+
+    public String getId() {
+        return id;
+    }
+
+  /*Getter、Setter*/
+}
+</code></pre>
+<h3 id="连接demo">连接demo</h3>
+<pre><code class="language-java">@RequestMapping(method = RequestMethod.GET, path = &quot;/dbtest&quot;)
+    public String test5(Map&lt;String, Object&gt; map) {
+        try {
+            Connection connection = ContextConfig.poolUtils.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(&quot;SELECT * FROM t_files&quot;);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List&lt;Files&gt; filesList = new ResultSetMapper&lt;Files&gt;().mapRersultSetToObject(resultSet, Files.class);
+            return JSONObject.toJSONString(filesList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return &quot;&quot;;
+    }
+</code></pre>
 <h2 id="项目结构">项目结构</h2>
 <pre><code class="language-shell">.
 ├── README.md
@@ -177,31 +232,38 @@ Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
     │   │           ├── Application.java
     │   │           ├── controller
     │   │           │   └── IndexController.java
-    │   │           └── core
-    │   │               ├── annotation
-    │   │               │   ├── Controller.java
-    │   │               │   └── RequestMapping.java
-    │   │               ├── banner
-    │   │               ├── config
-    │   │               │   └── ContextConfig.java
-    │   │               ├── pojo
-    │   │               │   ├── RequestMethod.java
-    │   │               │   ├── RouteInfo.java
-    │   │               │   ├── SCSS.java
-    │   │               │   ├── SIMG.java
-    │   │               │   ├── SJS.java
-    │   │               │   └── Template.java
-    │   │               ├── server
-    │   │               │   ├── BootServer.java
-    │   │               │   ├── HttpRequestHandler.java
-    │   │               │   └── InitCenter.java
-    │   │               └── utils
-    │   │                   ├── AnnotationUtils.java
-    │   │                   ├── HttpRequestUtils.java
-    │   │                   ├── IOUtils.java
-    │   │                   ├── ReflexUtils.java
-    │   │                   └── ResponseUtils.java
+    │   │           ├── core
+    │   │           │   ├── annotation
+    │   │           │   │   ├── Column.java
+    │   │           │   │   ├── Controller.java
+    │   │           │   │   ├── Entity.java
+    │   │           │   │   └── RequestMapping.java
+    │   │           │   ├── banner
+    │   │           │   ├── config
+    │   │           │   │   └── ContextConfig.java
+    │   │           │   ├── pojo
+    │   │           │   │   ├── RequestMethod.java
+    │   │           │   │   ├── RouteInfo.java
+    │   │           │   │   ├── SCSS.java
+    │   │           │   │   ├── SIMG.java
+    │   │           │   │   ├── SJS.java
+    │   │           │   │   └── Template.java
+    │   │           │   ├── server
+    │   │           │   │   ├── BootServer.java
+    │   │           │   │   ├── HttpRequestHandler.java
+    │   │           │   │   └── InitCenter.java
+    │   │           │   └── utils
+    │   │           │       ├── AnnotationUtils.java
+    │   │           │       ├── HttpRequestUtils.java
+    │   │           │       ├── IOUtils.java
+    │   │           │       ├── PoolUtils.java
+    │   │           │       ├── ReflexUtils.java
+    │   │           │       ├── ResponseUtils.java
+    │   │           │       └── ResultSetMapper.java
+    │   │           └── entity
+    │   │               └── Files.java
     │   └── resources
+    │       ├── hikari.properties
     │       ├── static
     │       │   ├── css
     │       │   │   └── index.css
@@ -218,12 +280,12 @@ Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
                 └── saowu
                     └── AppTest.java
 
-23 directories, 27 files
+24 directories, 33 files
 </code></pre>
 <h2 id="browser-console">Browser Console</h2>
 <figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1589013914038.png" alt="" loading="lazy"></figure>
 <h2 id="siege压力测试">siege压力测试</h2>
-<p><code>siege -c 200 -r 100 http://127.0.0.1:9000/index/test1</code></p>
+<p><code>siege -c 200 -r 100 http://127.0.0.1:9000/test1</code></p>
 <pre><code class="language-shell">{	&quot;transactions&quot;:			       19855,
 	&quot;availability&quot;:			       99.28,
 	&quot;elapsed_time&quot;:			       41.73,
@@ -292,7 +354,19 @@ Copyright 2020 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Righ
 <li><a href="#%E6%8A%80%E6%9C%AF%E7%89%B9%E7%82%B9">技术特点</a></li>
 <li><a href="#%E5%90%AF%E5%8A%A8banner">启动Banner</a></li>
 <li><a href="#%E6%B3%A8%E8%A7%A3controller-requestmapping">注解@Controller、@RequestMapping</a></li>
-<li><a href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96">请求数据提取</a></li>
+<li><a href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96">请求数据提取</a>
+<ul>
+<li><a href="#k-v%E6%8E%A5%E6%94%B6">K-V接收</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E6%8E%A5%E6%94%B6">文件接收</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0">数据库连接池</a>
+<ul>
+<li><a href="#hikariproperties">hikari.properties</a></li>
+<li><a href="#entity-column">@Entity、@Column</a></li>
+<li><a href="#%E8%BF%9E%E6%8E%A5demo">连接demo</a></li>
+</ul>
+</li>
 <li><a href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84">项目结构</a></li>
 <li><a href="#browser-console">Browser Console</a></li>
 <li><a href="#siege%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95">siege压力测试</a></li>
