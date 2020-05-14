@@ -138,31 +138,31 @@ Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
 <ul>
 <li>将GET、PUOST、PUT、DELETE请求数据统一解析成Map,无论是<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>还是<code>application/json</code></li>
 </ul>
-<h3 id="k-v接收">K-V接收</h3>
+<h3 id="表单接收">表单接收</h3>
 <pre><code class="language-java">     @RequestMapping(method = RequestMethod.POST, path = &quot;/test&quot;)
      public String test(Map&lt;String, Object&gt; map) {
         return JSONObject.toJSONString(map);
      }
- 
-     @RequestMapping(method = RequestMethod.GET, path = &quot;/test1&quot;)
-     public String test1(Map&lt;String, Object&gt; map) {
-         return JSONObject.toJSONString(map);
-     }
- 
+
      @RequestMapping(method = RequestMethod.PUT, path = &quot;/test2&quot;)
      public String test2(Map&lt;String, Object&gt; map) {
          return JSONObject.toJSONString(map);
      }
- 
+</code></pre>
+<h3 id="uri接收">URI接收</h3>
+<pre><code class="language-java">     @RequestMapping(method = RequestMethod.GET, path = &quot;/test1&quot;)
+     public String test1(Map&lt;String, Object&gt; map) {
+         return JSONObject.toJSONString(map);
+     }
      @RequestMapping(method = RequestMethod.DELETE, path = &quot;/test3&quot;)
      public String test3(Map&lt;String, Object&gt; map) {
          return JSONObject.toJSONString(map);
      }
-
+ 
 </code></pre>
 <h3 id="文件接收">文件接收</h3>
-<pre><code class="language-java">@RequestMapping(method = RequestMethod.POST, path = &quot;/upload&quot;)
-     public String uploadfile(Map&lt;String, Object&gt; map) {
+<pre><code class="language-java">    @RequestMapping(method = RequestMethod.POST, path = &quot;/upload&quot;)
+    public String uploadfile(Map&lt;String, Object&gt; map) {
         HashMap&lt;String, String&gt; fileInfo = new HashMap&lt;&gt;();
         for (String key : map.keySet()) {
             //获取文件对象并保存
@@ -183,7 +183,7 @@ dataSource.idleTimeout=600000
 dataSource.maxLifetime=1800000
 dataSource.maximumPoolSize=30
 </code></pre>
-<h3 id="entity-column">@Entity、@Column</h3>
+<h3 id="注解-entity-column">注解 @Entity、@Column</h3>
 <pre><code class="language-java">@Entity
 public class Files {
     @Column(name = &quot;id&quot;)
@@ -356,14 +356,15 @@ Copyright 2020 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Righ
 <li><a href="#%E6%B3%A8%E8%A7%A3controller-requestmapping">注解@Controller、@RequestMapping</a></li>
 <li><a href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96">请求数据提取</a>
 <ul>
-<li><a href="#k-v%E6%8E%A5%E6%94%B6">K-V接收</a></li>
+<li><a href="#%E8%A1%A8%E5%8D%95%E6%8E%A5%E6%94%B6">表单接收</a></li>
+<li><a href="#uri%E6%8E%A5%E6%94%B6">URI接收</a></li>
 <li><a href="#%E6%96%87%E4%BB%B6%E6%8E%A5%E6%94%B6">文件接收</a></li>
 </ul>
 </li>
 <li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0">数据库连接池</a>
 <ul>
 <li><a href="#hikariproperties">hikari.properties</a></li>
-<li><a href="#entity-column">@Entity、@Column</a></li>
+<li><a href="#%E6%B3%A8%E8%A7%A3-entity-column">注解 @Entity、@Column</a></li>
 <li><a href="#%E8%BF%9E%E6%8E%A5demo">连接demo</a></li>
 </ul>
 </li>
