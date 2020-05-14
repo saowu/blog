@@ -229,17 +229,24 @@ public class TestDao {
     private PoolUtils poolUtils;
 
     public List&lt;Files&gt; selectAll() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
         try {
-            Connection connection = poolUtils.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(&quot;SELECT * FROM t_files&quot;);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            connection = poolUtils.getConnection();
+            preparedStatement = connection.prepareStatement(&quot;SELECT * FROM t_files&quot;);
+            resultSet = preparedStatement.executeQuery();
             List&lt;Files&gt; filesList = new ResultSetUtils&lt;Files&gt;().mapRersultSetToObject(resultSet, Files.class);
             return filesList;
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            poolUtils.close(connection, preparedStatement, resultSet);
         }
         return null;
+
     }
+
 }
 </code></pre>
 <h2 id="七-项目结构">七、项目结构</h2>
