@@ -25,21 +25,21 @@
 
   <meta name="description" content="
 我不想用Struts2绝不是因为它有漏洞，因为我自己写的漏洞更多......
+(仅仅是一个仿制Springboot的demo，学习实践而已)
 
 👉GitHub
-技术特点
+零、技术特点
 1.使用Netty作为http服务器
-2.支持注解@Controller、@RequestMapping等
-3.利用maven项目..." />
+2.支持注解@Contr..." />
   <meta property="og:title" content="不想用Struts2，所以自己造了一个 - saowu&#39;s Blog">
   <meta property="og:description" content="
 我不想用Struts2绝不是因为它有漏洞，因为我自己写的漏洞更多......
+(仅仅是一个仿制Springboot的demo，学习实践而已)
 
 👉GitHub
-技术特点
+零、技术特点
 1.使用Netty作为http服务器
-2.支持注解@Controller、@RequestMapping等
-3.利用maven项目..." />
+2.支持注解@Contr..." />
   <meta property="og:type" content="articles">
   <meta property="og:url" content="https://saowu.top/blog/dnlLkMdxz/" />
   <meta property="og:image" content="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/dnlLkMdxz.jpg">
@@ -48,12 +48,12 @@
   <meta name="twitter:title" content="不想用Struts2，所以自己造了一个 - saowu&#39;s Blog">
   <meta name="twitter:description" content="
 我不想用Struts2绝不是因为它有漏洞，因为我自己写的漏洞更多......
+(仅仅是一个仿制Springboot的demo，学习实践而已)
 
 👉GitHub
-技术特点
+零、技术特点
 1.使用Netty作为http服务器
-2.支持注解@Controller、@RequestMapping等
-3.利用maven项目...">
+2.支持注解@Contr...">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://saowu.top/blog/dnlLkMdxz/">
 
@@ -98,18 +98,20 @@
         </div>
         <div class="markdown mb-8" v-pre>
           <blockquote>
-<p>我不想用Struts2绝不是因为它有漏洞，因为我自己写的漏洞更多......</p>
+<p>我不想用Struts2绝不是因为它有漏洞，因为我自己写的漏洞更多......<br>
+(仅仅是一个仿制Springboot的demo，学习实践而已)</p>
 </blockquote>
 <p>👉<a href="https://github.com/saowu/HttpNetty">GitHub</a></p>
-<h2 id="技术特点">技术特点</h2>
+<h2 id="零-技术特点">零、技术特点</h2>
 <pre><code class="language-text">1.使用Netty作为http服务器
 2.支持注解@Controller、@RequestMapping等
 3.利用maven项目管理
 4.简洁的请求数据提取
-6.Java反射技术
-7.HikariCP连接池
+6.HikariCP连接池
+7.依赖注入（反射实现）
+8.ORM封装（构思中）
 </code></pre>
-<h2 id="启动banner">启动Banner</h2>
+<h2 id="一-启动banner">一、启动Banner</h2>
 <pre><code class="language-shell"> _   _ _   _         _   _      _   _
 | | | | |_| |_ _ __ | \ | | ___| |_| |_ _   _
 | |_| | __| __| '_ \|  \| |/ _ \ __| __| | | |
@@ -118,7 +120,13 @@
               |_|    Author：saowu       |___/
 
 </code></pre>
-<h2 id="注解controller-requestmapping">注解@Controller、@RequestMapping</h2>
+<h2 id="二-注解机制">二、注解机制</h2>
+<ul>
+<li>类级注解@Controller、@Component、@Service、@Repository、@Entity</li>
+<li>方法级注解@RequestMapping</li>
+<li>字段级注解@Autowired、@Column</li>
+</ul>
+<h2 id="三-路由控制器">三、路由控制器</h2>
 <pre><code class="language-java">@Controller(path = &quot;/index&quot;)
 public class IndexController {
 
@@ -134,7 +142,7 @@ Http Netty : 2020-05-09 04:34:34 GET -&gt; /static/js
 Http Netty : 2020-05-09 04:34:34 GET -&gt; /static/img
 Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
 </code></pre>
-<h2 id="请求数据提取">请求数据提取</h2>
+<h2 id="四-请求数据提取">四、请求数据提取</h2>
 <ul>
 <li>将GET、PUOST、PUT、DELETE请求数据统一解析成Map,无论是<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>还是<code>application/json</code></li>
 </ul>
@@ -172,7 +180,20 @@ Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
         return JSONObject.toJSONString(fileInfo);
      }
 </code></pre>
-<h2 id="数据库连接池">数据库连接池</h2>
+<h2 id="五-依赖注入">五、依赖注入</h2>
+<pre><code class="language-java">@Component
+public class TestService {
+    @Autowired
+    private TestDao testDao;
+
+    public List&lt;Files&gt; selectAll() {
+        List&lt;Files&gt; filesList = testDao.selectAll();
+        return filesList;
+    }
+
+}
+</code></pre>
+<h2 id="六-数据库连接池">六、数据库连接池</h2>
 <h3 id="hikariproperties">hikari.properties</h3>
 <pre><code class="language-text">jdbcUrl=jdbc:mysql://localhost:3306/test?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8
 driverClassName=com.mysql.jdbc.Driver
@@ -212,7 +233,7 @@ public class Files {
             Connection connection = ContextConfig.poolUtils.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(&quot;SELECT * FROM t_files&quot;);
             ResultSet resultSet = preparedStatement.executeQuery();
-            List&lt;Files&gt; filesList = new ResultSetMapper&lt;Files&gt;().mapRersultSetToObject(resultSet, Files.class);
+            List&lt;Files&gt; filesList = new ResultSetUtils&lt;Files&gt;().mapRersultSetToObject(resultSet, Files.class);
             return JSONObject.toJSONString(filesList);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -220,7 +241,7 @@ public class Files {
         return &quot;&quot;;
     }
 </code></pre>
-<h2 id="项目结构">项目结构</h2>
+<h2 id="七-项目结构">七、项目结构</h2>
 <pre><code class="language-shell">.
 ├── README.md
 ├── pom.xml
@@ -231,16 +252,20 @@ public class Files {
     │   │       └── saowu
     │   │           ├── Application.java
     │   │           ├── controller
-    │   │           │   └── IndexController.java
+    │   │           │   └── TestController.java
     │   │           ├── core
     │   │           │   ├── annotation
+    │   │           │   │   ├── Autowired.java
     │   │           │   │   ├── Column.java
+    │   │           │   │   ├── Component.java
     │   │           │   │   ├── Controller.java
     │   │           │   │   ├── Entity.java
-    │   │           │   │   └── RequestMapping.java
+    │   │           │   │   ├── Repository.java
+    │   │           │   │   ├── RequestMapping.java
+    │   │           │   │   └── Service.java
     │   │           │   ├── banner
     │   │           │   ├── config
-    │   │           │   │   └── ContextConfig.java
+    │   │           │   │   └── ApplicationContext.java
     │   │           │   ├── pojo
     │   │           │   │   ├── RequestMethod.java
     │   │           │   │   ├── RouteInfo.java
@@ -259,9 +284,13 @@ public class Files {
     │   │           │       ├── PoolUtils.java
     │   │           │       ├── ReflexUtils.java
     │   │           │       ├── ResponseUtils.java
-    │   │           │       └── ResultSetMapper.java
-    │   │           └── entity
-    │   │               └── Files.java
+    │   │           │       └── ResultSetUtils.java
+    │   │           ├── dao
+    │   │           │   └── TestDao.java
+    │   │           ├── entity
+    │   │           │   └── Files.java
+    │   │           └── service
+    │   │               └── TestService.java
     │   └── resources
     │       ├── hikari.properties
     │       ├── static
@@ -280,11 +309,11 @@ public class Files {
                 └── saowu
                     └── AppTest.java
 
-24 directories, 33 files
+26 directories, 39 files
 </code></pre>
-<h2 id="browser-console">Browser Console</h2>
+<h2 id="八-browser-console">八、Browser Console</h2>
 <figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1589013914038.png" alt="" loading="lazy"></figure>
-<h2 id="siege压力测试">siege压力测试</h2>
+<h2 id="九-siege压力测试">九、siege压力测试</h2>
 <p><code>siege -c 200 -r 100 http://127.0.0.1:9000/test1</code></p>
 <pre><code class="language-shell">{	&quot;transactions&quot;:			       19855,
 	&quot;availability&quot;:			       99.28,
@@ -351,26 +380,28 @@ Copyright 2020 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Righ
         <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E6%8A%80%E6%9C%AF%E7%89%B9%E7%82%B9">技术特点</a></li>
-<li><a href="#%E5%90%AF%E5%8A%A8banner">启动Banner</a></li>
-<li><a href="#%E6%B3%A8%E8%A7%A3controller-requestmapping">注解@Controller、@RequestMapping</a></li>
-<li><a href="#%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96">请求数据提取</a>
+<li><a href="#%E9%9B%B6-%E6%8A%80%E6%9C%AF%E7%89%B9%E7%82%B9">零、技术特点</a></li>
+<li><a href="#%E4%B8%80-%E5%90%AF%E5%8A%A8banner">一、启动Banner</a></li>
+<li><a href="#%E4%BA%8C-%E6%B3%A8%E8%A7%A3%E6%9C%BA%E5%88%B6">二、注解机制</a></li>
+<li><a href="#%E4%B8%89-%E8%B7%AF%E7%94%B1%E6%8E%A7%E5%88%B6%E5%99%A8">三、路由控制器</a></li>
+<li><a href="#%E5%9B%9B-%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96">四、请求数据提取</a>
 <ul>
 <li><a href="#%E8%A1%A8%E5%8D%95%E6%8E%A5%E6%94%B6">表单接收</a></li>
 <li><a href="#uri%E6%8E%A5%E6%94%B6">URI接收</a></li>
 <li><a href="#%E6%96%87%E4%BB%B6%E6%8E%A5%E6%94%B6">文件接收</a></li>
 </ul>
 </li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0">数据库连接池</a>
+<li><a href="#%E4%BA%94-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5">五、依赖注入</a></li>
+<li><a href="#%E5%85%AD-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0">六、数据库连接池</a>
 <ul>
 <li><a href="#hikariproperties">hikari.properties</a></li>
 <li><a href="#%E6%B3%A8%E8%A7%A3-entity-column">注解 @Entity、@Column</a></li>
 <li><a href="#%E8%BF%9E%E6%8E%A5demo">连接demo</a></li>
 </ul>
 </li>
-<li><a href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84">项目结构</a></li>
-<li><a href="#browser-console">Browser Console</a></li>
-<li><a href="#siege%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95">siege压力测试</a></li>
+<li><a href="#%E4%B8%83-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84">七、项目结构</a></li>
+<li><a href="#%E5%85%AB-browser-console">八、Browser Console</a></li>
+<li><a href="#%E4%B9%9D-siege%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95">九、siege压力测试</a></li>
 </ul>
 </li>
 </ul>
