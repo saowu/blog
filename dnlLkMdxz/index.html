@@ -129,7 +129,6 @@
 <h2 id="三-路由控制器">三、路由控制器</h2>
 <pre><code class="language-java">@Controller(path = &quot;/index&quot;)
 public class IndexController {
-
     @RequestMapping(method = RequestMethod.POST, path = &quot;/test&quot;)
     public String test(Map&lt;String, Object&gt; map) {
         return JSONObject.toJSONString(map);
@@ -181,17 +180,17 @@ Http Netty : 2020-05-09 04:35:30 POST -&gt; /index/test
      }
 </code></pre>
 <h2 id="五-依赖注入">五、依赖注入</h2>
-<pre><code class="language-java">@Component
-public class TestService {
-    @Autowired
-    private TestDao testDao;
+<pre><code class="language-java">    @Component
+    public class TestService {
+        @Autowired
+        private TestDao testDao;
 
-    public List&lt;Files&gt; selectAll() {
-        List&lt;Files&gt; filesList = testDao.selectAll();
-        return filesList;
+        public List&lt;Files&gt; selectAll() {
+            List&lt;Files&gt; filesList = testDao.selectAll();
+            return filesList;
+        }
+
     }
-
-}
 </code></pre>
 <h2 id="六-数据库连接池">六、数据库连接池</h2>
 <h3 id="hikariproperties">hikari.properties</h3>
@@ -219,27 +218,29 @@ public class Files {
     @Column(name = &quot;type&quot;)
     private String type;
 
-    public String getId() {
-        return id;
-    }
-
   /*Getter、Setter*/
 }
 </code></pre>
-<h3 id="连接demo">连接demo</h3>
-<pre><code class="language-java">@RequestMapping(method = RequestMethod.GET, path = &quot;/dbtest&quot;)
-    public String test5(Map&lt;String, Object&gt; map) {
+<h3 id="demo">Demo</h3>
+<pre><code class="language-java">@Repository
+public class TestDao {
+
+    @Autowired
+    private PoolUtils poolUtils;
+
+    public List&lt;Files&gt; selectAll() {
         try {
-            Connection connection = ContextConfig.poolUtils.getConnection();
+            Connection connection = poolUtils.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(&quot;SELECT * FROM t_files&quot;);
             ResultSet resultSet = preparedStatement.executeQuery();
             List&lt;Files&gt; filesList = new ResultSetUtils&lt;Files&gt;().mapRersultSetToObject(resultSet, Files.class);
-            return JSONObject.toJSONString(filesList);
+            return filesList;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return &quot;&quot;;
+        return null;
     }
+}
 </code></pre>
 <h2 id="七-项目结构">七、项目结构</h2>
 <pre><code class="language-shell">.
@@ -396,7 +397,7 @@ Copyright 2020 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Righ
 <ul>
 <li><a href="#hikariproperties">hikari.properties</a></li>
 <li><a href="#%E6%B3%A8%E8%A7%A3-entity-column">注解 @Entity、@Column</a></li>
-<li><a href="#%E8%BF%9E%E6%8E%A5demo">连接demo</a></li>
+<li><a href="#demo">Demo</a></li>
 </ul>
 </li>
 <li><a href="#%E4%B8%83-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84">七、项目结构</a></li>
