@@ -109,7 +109,7 @@
 4.简洁的请求数据提取
 6.HikariCP连接池
 7.依赖注入（反射实现）
-8.ORM封装（构思中）
+8.ORM封装（需大力重构）
 </code></pre>
 <h2 id="一-启动banner">一、启动Banner</h2>
 <pre><code class="language-shell"> _   _ _   _         _   _      _   _
@@ -122,7 +122,7 @@
 </code></pre>
 <h2 id="二-注解机制">二、注解机制</h2>
 <ul>
-<li>类级注解@Controller、@Component、@Service、@Repository、@Entity</li>
+<li>类级注解@Controller、@Component、@Service、@Repository、@Table</li>
 <li>方法级注解@RequestMapping</li>
 <li>字段级注解@Autowired、@Column</li>
 </ul>
@@ -203,8 +203,8 @@ dataSource.idleTimeout=600000
 dataSource.maxLifetime=1800000
 dataSource.maximumPoolSize=30
 </code></pre>
-<h3 id="注解-entity-column">注解 @Entity、@Column</h3>
-<pre><code class="language-java">@Entity
+<h3 id="注解-table-column">注解 @Table、@Column</h3>
+<pre><code class="language-java">@Table
 public class Files {
     @Column(name = &quot;id&quot;)
     private String id;
@@ -221,35 +221,36 @@ public class Files {
   /*Getter、Setter*/
 }
 </code></pre>
-<h3 id="demo">Demo</h3>
+<h2 id="七-orm-api">七、ORM API</h2>
 <pre><code class="language-java">@Repository
 public class TestDao {
 
     @Autowired
     private PoolUtils poolUtils;
 
-    public List&lt;Files&gt; selectAll() {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        try {
-            connection = poolUtils.getConnection();
-            preparedStatement = connection.prepareStatement(&quot;SELECT * FROM t_files&quot;);
-            resultSet = preparedStatement.executeQuery();
-            List&lt;Files&gt; filesList = new ResultSetUtils&lt;Files&gt;().mapRersultSetToObject(resultSet, Files.class);
-            return filesList;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            poolUtils.close(connection, preparedStatement, resultSet);
-        }
-        return null;
+    public List&lt;Files&gt; selectFiles(Map&lt;String, Object&gt; map) {
+        List&lt;Files&gt; filesList = ORMUtils.executeQuery(poolUtils, Files.class, map);
+        return filesList;
+    }
 
+    public boolean updateFiles(Files files) {
+        int i = ORMUtils.executeUpdate(poolUtils, Files.class, files);
+        return i &gt; 0;
+    }
+
+    public boolean insertFiles(Files files) {
+        int i = ORMUtils.executeInsert(poolUtils, Files.class, files);
+        return i &gt; 0;
+    }
+
+    public boolean deleteFiles(Map&lt;String, Object&gt; map) {
+        int i = ORMUtils.executeDelete(poolUtils, Files.class, map);
+        return i &gt; 0;
     }
 
 }
 </code></pre>
-<h2 id="七-项目结构">七、项目结构</h2>
+<h2 id="八-项目结构">八、项目结构</h2>
 <pre><code class="language-shell">.
 ├── README.md
 ├── pom.xml
@@ -319,9 +320,9 @@ public class TestDao {
 
 26 directories, 39 files
 </code></pre>
-<h2 id="八-browser-console">八、Browser Console</h2>
+<h2 id="九-browser-console">九、Browser Console</h2>
 <figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1589013914038.png" alt="" loading="lazy"></figure>
-<h2 id="九-siege压力测试">九、siege压力测试</h2>
+<h2 id="十-siege压力测试">十、siege压力测试</h2>
 <p><code>siege -c 200 -r 100 http://127.0.0.1:9000/test1</code></p>
 <pre><code class="language-shell">{	&quot;transactions&quot;:			       19855,
 	&quot;availability&quot;:			       99.28,
@@ -403,13 +404,13 @@ Copyright 2020 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Righ
 <li><a href="#%E5%85%AD-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0">六、数据库连接池</a>
 <ul>
 <li><a href="#hikariproperties">hikari.properties</a></li>
-<li><a href="#%E6%B3%A8%E8%A7%A3-entity-column">注解 @Entity、@Column</a></li>
-<li><a href="#demo">Demo</a></li>
+<li><a href="#%E6%B3%A8%E8%A7%A3-table-column">注解 @Table、@Column</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%83-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84">七、项目结构</a></li>
-<li><a href="#%E5%85%AB-browser-console">八、Browser Console</a></li>
-<li><a href="#%E4%B9%9D-siege%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95">九、siege压力测试</a></li>
+<li><a href="#%E4%B8%83-orm-api">七、ORM API</a></li>
+<li><a href="#%E5%85%AB-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84">八、项目结构</a></li>
+<li><a href="#%E4%B9%9D-browser-console">九、Browser Console</a></li>
+<li><a href="#%E5%8D%81-siege%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95">十、siege压力测试</a></li>
 </ul>
 </li>
 </ul>
