@@ -215,6 +215,11 @@ public class Car {
     }
 }
 </code></pre>
+<h3 id="使用接口注入">使用接口注入</h3>
+<ul>
+<li>接口注入需要实现接口，带有侵入性，<strong>不推荐</strong>。</li>
+<li>最常见的，就是我们定义的servlet需要继承HTTPServlet，在我们的doPost方法中，HttpServletRequest参数就是使用接口注入的形式。</li>
+</ul>
 <h3 id="使用注解注入">使用注解注入</h3>
 <ul>
 <li>SpringMVC支持自动扫描并注册为spring bean，需要配置<code>&lt;context:component-scan base-package=&quot;&quot;&gt;</code>，<code>base-package</code>属性指定要自动检测扫描的包。该配置会自动扫描指定的包及其子包下面被构造型注解标注的类，并将这些类注册为spring bean，这样就不用在配置文件一个一个地配置成bean标签。构造型注解包括：<code>@Controller</code>，<code>@Component</code>，<code>@Service</code>，<code>@Repositoryt</code>标注的自定义注解。</li>
@@ -232,11 +237,6 @@ public class Car {
 
     }
 </code></pre>
-<h3 id="使用接口注入">使用接口注入</h3>
-<ul>
-<li>接口注入需要实现接口，带有侵入性，不推荐。</li>
-<li>最常见的，就是我们定义的servlet需要继承HTTPServlet，在我们的doPost方法中，HttpServletRequest参数就是使用接口注入的形式。</li>
-</ul>
 
         </div>
         <!-- Share to Twitter, Weibo, Telegram -->
@@ -295,8 +295,8 @@ Copyright 2020 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Righ
 <ul>
 <li><a href="#%E4%BD%BF%E7%94%A8%E5%B1%9E%E6%80%A7%E7%9A%84setxxx%E6%96%B9%E6%B3%95%E6%B3%A8%E5%85%A5">使用属性的setXXX方法注入</a></li>
 <li><a href="#%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%B3%A8%E5%85%A5">使用构造函数注入</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%B3%A8%E5%85%A5">使用注解注入</a></li>
 <li><a href="#%E4%BD%BF%E7%94%A8%E6%8E%A5%E5%8F%A3%E6%B3%A8%E5%85%A5">使用接口注入</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%B3%A8%E5%85%A5">使用注解注入</a></li>
 </ul>
 </li>
 </ul>
