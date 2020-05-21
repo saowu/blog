@@ -112,11 +112,16 @@ public class B {
     //注入对象b
    public static void main(String[] args) {
        try {
-           Class&lt;?&gt; aClass = Class.forName(&quot;A&quot;);
-           Class&lt;?&gt; bClass = Class.forName(&quot;B&quot;);
+           Class&lt;?&gt; aClass = Class.forName(&quot;A全路径名&quot;);
+           Class&lt;?&gt; bClass = Class.forName(&quot;B全路径名&quot;);
+           //反射生成对象
            Object A_object = aClass.getDeclaredConstructor().newInstance();
            Object B_object = bClass.getDeclaredConstructor().newInstance();
-           Field field = aClass.getField(&quot;b&quot;);
+           //字段声明是private的，不能用getField方法，应该使用getDeclaredField方法来获取
+           Field field = aClass.getDeclaredField(&quot;b&quot;);
+           //字段声明为private，必须进行此操作
+           field.setAccessible(true);
+           //给字段注入对象
            field.set(A_object, B_object);
        } catch (ClassNotFoundException | NoSuchFieldException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
            e.printStackTrace();
