@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.top/blog</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-06-12T04:31:57.779Z</updated>
+    <updated>2020-06-17T08:29:14.426Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.top/blog"/>
     <link rel="self" href="https://saowu.top/blog/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://saowu.top/blog/images/avatar.png</logo>
     <icon>https://saowu.top/blog/favicon.ico</icon>
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[初识Dataway接口配置工具]]></title>
+        <id>https://saowu.top/blog/dzBUfOA4S/</id>
+        <link href="https://saowu.top/blog/dzBUfOA4S/">
+        </link>
+        <updated>2020-06-17T07:18:44.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[小明最喜欢的食堂窗口]]></title>
         <id>https://saowu.top/blog/9_PTQQVPG/</id>
@@ -72,12 +79,5 @@
         <link href="https://saowu.top/blog/5YTZFZvie/">
         </link>
         <updated>2020-04-10T03:03:58.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JVM 相关记录]]></title>
-        <id>https://saowu.top/blog/4S4PY3kdh/</id>
-        <link href="https://saowu.top/blog/4S4PY3kdh/">
-        </link>
-        <updated>2020-04-06T12:05:59.000Z</updated>
     </entry>
 </feed>
