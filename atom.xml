@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.top/blog</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2020-06-18T11:55:09.452Z</updated>
+    <updated>2020-06-18T11:57:03.803Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.top/blog"/>
     <link rel="self" href="https://saowu.top/blog/atom.xml"/>
-    <subtitle>A programmer who wants to be happy and muddle along</subtitle>
+    <subtitle>A programmer who wants to be happy and muddle along.</subtitle>
     <logo>https://saowu.top/blog/images/avatar.png</logo>
     <icon>https://saowu.top/blog/favicon.ico</icon>
     <rights>All rights reserved 2020, saowu&apos;s Blog</rights>
