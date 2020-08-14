@@ -92,7 +92,7 @@ docker ...">
           <img src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/xjJ08KIvI.jpg" alt="Docker安装MySQL" class="block w-full mb-8">
         
         <div class="mb-8 flex flex-wrap">
-          <div class="text-gray-400 text-sm mr-4">2020-04-04 · 1 min read</div>
+          <div class="text-gray-400 text-sm mr-4">2020-04-04 · 2 min read</div>
           
             <a href="https://saowu.top/blog/p6tPptTlO/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
               <i class="ri-hashtag"></i>
@@ -139,9 +139,16 @@ docker ...">
 <h2 id="七-登陆mysql">七、登陆mysql</h2>
 <pre><code class="language-shell">mysql -u root -p
 </code></pre>
-<h2 id="八-修改为root-可以通过任何客户端连接">八、修改为root 可以通过任何客户端连接</h2>
+<h2 id="八-修改-root-可以通过任何客户端连接">八、修改 root 可以通过任何客户端连接</h2>
 <pre><code class="language-sql">use mysql
+#查看当前加密方式
+SELECT User,Host,plugin FROM user WHERE User='root';
+#修改加密方式
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+#修改为任何连接方式
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+#刷新权限
+FLUSH PRIVILEGES;
 </code></pre>
 <h2 id="九-修改数据库中文乱码">九、修改数据库中文乱码</h2>
 <pre><code class="language-sql">show variables like 'character%';
@@ -207,7 +214,7 @@ Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea
 <li><a href="#%E4%BA%94-%E6%9F%A5%E7%9C%8B%E5%85%A8%E9%83%A8%E5%AE%B9%E5%99%A8">五、查看全部容器</a></li>
 <li><a href="#%E5%85%AD-%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8">六、进入容器</a></li>
 <li><a href="#%E4%B8%83-%E7%99%BB%E9%99%86mysql">七、登陆mysql</a></li>
-<li><a href="#%E5%85%AB-%E4%BF%AE%E6%94%B9%E4%B8%BAroot-%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E4%BB%BB%E4%BD%95%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5">八、修改为root 可以通过任何客户端连接</a></li>
+<li><a href="#%E5%85%AB-%E4%BF%AE%E6%94%B9-root-%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E4%BB%BB%E4%BD%95%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5">八、修改 root 可以通过任何客户端连接</a></li>
 <li><a href="#%E4%B9%9D-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81">九、修改数据库中文乱码</a></li>
 <li><a href="#%E5%8D%81-%E8%BF%9C%E7%A8%8B%E9%93%BE%E6%8E%A5success">十、远程链接Success!</a></li>
 </ul>
