@@ -144,7 +144,7 @@ docker ...">
 #查看当前加密方式
 SELECT User,Host,plugin FROM user WHERE User='root';
 #修改加密方式
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
 #修改为任何连接方式
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 #刷新权限
