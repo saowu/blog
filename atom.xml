@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.top/blog</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2021-05-02T01:23:34.725Z</updated>
+    <updated>2021-05-02T03:30:26.274Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.top/blog"/>
     <link rel="self" href="https://saowu.top/blog/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://saowu.top/blog/images/avatar.png</logo>
     <icon>https://saowu.top/blog/favicon.ico</icon>
     <rights>All rights reserved 2021, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[MySQL数据库开发的三十六条军规]]></title>
+        <id>https://saowu.top/blog/CgA7W8fNC/</id>
+        <link href="https://saowu.top/blog/CgA7W8fNC/">
+        </link>
+        <updated>2021-05-02T01:24:10.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[推荐一个项目，这里有电子书资源...]]></title>
         <id>https://saowu.top/blog/ijQPUonML/</id>
@@ -72,12 +79,5 @@
         <link href="https://saowu.top/blog/dnlLkMdxz/">
         </link>
         <updated>2020-05-09T08:28:08.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[一个简单的Netty服务]]></title>
-        <id>https://saowu.top/blog/vj24Wlw0f/</id>
-        <link href="https://saowu.top/blog/vj24Wlw0f/">
-        </link>
-        <updated>2020-04-30T05:45:27.000Z</updated>
     </entry>
 </feed>
