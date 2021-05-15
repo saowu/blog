@@ -135,7 +135,7 @@ docker ...">
 <h2 id="五-查看全部容器">五、查看全部容器</h2>
 <pre><code class="language-shell">docker ps -a
 </code></pre>
-<h2 id="六-进入容器">六、进入容器</h2>
+<h2 id="六-进入容器以下操作非必须">六、进入容器(以下操作，非必须)</h2>
 <ul>
 <li>-i :即使没有附加也保持STDIN 打开</li>
 <li>-t :分配一个伪终端 <code>/bin/bash</code></li>
@@ -150,9 +150,9 @@ docker ...">
 #查看当前加密方式
 SELECT User,Host,plugin FROM user WHERE User='root';
 #修改加密方式
-ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
-#修改为任何连接方式
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+#修改'root'为任何连接方式登录
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
 #刷新权限
 FLUSH PRIVILEGES;
 </code></pre>
@@ -218,7 +218,7 @@ Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea
 <li><a href="#%E4%B8%89-%E6%9F%A5%E7%9C%8B%E5%85%A8%E9%83%A8%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F">三、查看全部容器镜像</a></li>
 <li><a href="#%E5%9B%9B-%E8%BF%90%E8%A1%8C%E9%95%9C%E5%83%8F%E7%94%9F%E6%88%90%E5%AE%B9%E5%99%A8">四、运行镜像生成容器</a></li>
 <li><a href="#%E4%BA%94-%E6%9F%A5%E7%9C%8B%E5%85%A8%E9%83%A8%E5%AE%B9%E5%99%A8">五、查看全部容器</a></li>
-<li><a href="#%E5%85%AD-%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8">六、进入容器</a></li>
+<li><a href="#%E5%85%AD-%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E4%BB%A5%E4%B8%8B%E6%93%8D%E4%BD%9C%E9%9D%9E%E5%BF%85%E9%A1%BB">六、进入容器(以下操作，非必须)</a></li>
 <li><a href="#%E4%B8%83-%E7%99%BB%E9%99%86mysql">七、登陆mysql</a></li>
 <li><a href="#%E5%85%AB-%E4%BF%AE%E6%94%B9-root-%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E4%BB%BB%E4%BD%95%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5">八、修改 root 可以通过任何客户端连接</a></li>
 <li><a href="#%E4%B9%9D-%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81">九、修改数据库中文乱码</a></li>
