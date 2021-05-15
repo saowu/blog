@@ -125,11 +125,12 @@ docker ...">
 </code></pre>
 <h2 id="四-运行镜像生成容器">四、运行镜像生成容器</h2>
 <ul>
-<li>-p &lt;宿主机port：容器port&gt;</li>
+<li>-p &lt;宿主机<code>port</code>：容器<code>port</code>&gt;</li>
 <li>-d &lt;镜像名：版本&gt;</li>
+<li>-v &lt;宿主机目录：容器<code>/var/lib/mysql</code>&gt;</li>
 <li>--name &lt;容器别名&gt;</li>
 </ul>
-<pre><code class="language-shell">docker run --name mysql1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
+<pre><code class="language-shell">docker run --name mysql1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /data/mysql:/var/lib/mysql -d mysql:latest
 </code></pre>
 <h2 id="五-查看全部容器">五、查看全部容器</h2>
 <pre><code class="language-shell">docker ps -a
