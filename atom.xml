@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.top/blog</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2021-06-21T05:46:06.458Z</updated>
+    <updated>2021-06-28T08:30:57.671Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.top/blog"/>
     <link rel="self" href="https://saowu.top/blog/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://saowu.top/blog/images/avatar.png</logo>
     <icon>https://saowu.top/blog/favicon.ico</icon>
     <rights>All rights reserved 2021, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[提问的智慧]]></title>
+        <id>https://saowu.top/blog/edXPLlWU5/</id>
+        <link href="https://saowu.top/blog/edXPLlWU5/">
+        </link>
+        <updated>2021-06-28T08:24:13.000Z</updated>
+        <summary type="html"><![CDATA[<p>我们已经深刻领教到少了上述声明所带来的痛苦。因为少了这点声明，我们不停地被一些白痴纠缠。这些白痴认为既然我们发布了这本指南，那么我们就有责任解决世上所有的技术问题。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>我们已经深刻领教到少了上述声明所带来的痛苦。因为少了这点声明，我们不停地被一些白痴纠缠。这些白痴认为既然我们发布了这本指南，那么我们就有责任解决世上所有的技术问题。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MySQL数据库开发的三十六条军规]]></title>
         <id>https://saowu.top/blog/CgA7W8fNC/</id>
@@ -72,12 +83,5 @@
         <link href="https://saowu.top/blog/W3YqiHf_e/">
         </link>
         <updated>2020-05-20T05:53:36.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[不想用Struts2，所以自己造了一个]]></title>
-        <id>https://saowu.top/blog/dnlLkMdxz/</id>
-        <link href="https://saowu.top/blog/dnlLkMdxz/">
-        </link>
-        <updated>2020-05-09T08:28:08.000Z</updated>
     </entry>
 </feed>
