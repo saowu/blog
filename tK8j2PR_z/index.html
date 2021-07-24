@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Docker安装Nacos、Sentinel、Pulsar、RabbitMQ - saowu&#39;s Blog</title>
+<title>Docker安装Nacos、Sentinel、Pulsar、RabbitMQ、Kafka - saowu&#39;s Blog</title>
 <link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
 <link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
 <link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Docker安装Nacos、Sentinel、Pulsar、RabbitMQ - saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Docker安装Nacos、Sentinel、Pulsar、RabbitMQ、Kafka - saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
 
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
@@ -28,7 +28,7 @@
 一、Docker安装Nacos
 #官方镜像，镜像大小1G+，内存占用较多
 docker run --env MODE=standalone --name nacos -d..." />
-  <meta property="og:title" content="Docker安装Nacos、Sentinel、Pulsar、RabbitMQ - saowu&#39;s Blog">
+  <meta property="og:title" content="Docker安装Nacos、Sentinel、Pulsar、RabbitMQ、Kafka - saowu&#39;s Blog">
   <meta property="og:description" content="这里仅提供学习测试使用的单机简单安装，生产等其他用途概不负责...
 
 一、Docker安装Nacos
@@ -39,7 +39,7 @@ docker run --env MODE=standalone --name nacos -d..." />
   <meta property="og:image" content="https://saowu.top/blog/post-images/tK8j2PR_z.jpg">
   <meta property="og:image:height" content="630">
   <meta property="og:image:width" content="1200">
-  <meta name="twitter:title" content="Docker安装Nacos、Sentinel、Pulsar、RabbitMQ - saowu&#39;s Blog">
+  <meta name="twitter:title" content="Docker安装Nacos、Sentinel、Pulsar、RabbitMQ、Kafka - saowu&#39;s Blog">
   <meta name="twitter:description" content="这里仅提供学习测试使用的单机简单安装，生产等其他用途概不负责...
 
 一、Docker安装Nacos
@@ -68,13 +68,13 @@ docker run --env MODE=standalone --name nacos -d...">
     <div class="max-w-4xl w-full mx-auto">
       <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
         <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
-          Docker安装Nacos、Sentinel、Pulsar、RabbitMQ
+          Docker安装Nacos、Sentinel、Pulsar、RabbitMQ、Kafka
         </h1>
         
-          <img src="https://saowu.top/blog/post-images/tK8j2PR_z.jpg" alt="Docker安装Nacos、Sentinel、Pulsar、RabbitMQ" class="block w-full mb-8">
+          <img src="https://saowu.top/blog/post-images/tK8j2PR_z.jpg" alt="Docker安装Nacos、Sentinel、Pulsar、RabbitMQ、Kafka" class="block w-full mb-8">
         
         <div class="mb-8 flex flex-wrap">
-          <div class="text-gray-400 text-sm mr-4">2021-07-03 · 1 min read</div>
+          <div class="text-gray-400 text-sm mr-4">2021-07-03 · 2 min read</div>
           
             <a href="https://saowu.top/blog/p6tPptTlO/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
               <i class="ri-hashtag"></i>
@@ -105,10 +105,21 @@ docker run --env MODE=standalone --name nacos -d -p 8848:8848 jerry6290/nacos-se
 <pre><code class="language-shell">docker run --name sentinel-dashboard -p 8858:8858 -d bladex/sentinel-dashboard:latest 
 </code></pre>
 <h3 id="三-docker安装pulsar">三、Docker安装Pulsar</h3>
-<pre><code class="language-shell">docker run -it -p 80:80 -p 8080:8080 -p 6650:6650 apachepulsar/pulsar-standalone
+<pre><code class="language-shell">docker run -it -p 80:80 -p 8080:8080 -p 6650:6650 -d apachepulsar/pulsar-standalone
 </code></pre>
 <h3 id="四-docker安装rabbitmq">四、Docker安装RabbitMQ</h3>
 <pre><code class="language-shell">docker run -d --hostname myRabbit --name rabbit -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672 -p 25672:25672 -p 61613:61613 -p 1883:1883 rabbitmq:management
+</code></pre>
+<h3 id="五-docker安装kafka">五、Docker安装Kafka</h3>
+<ul>
+<li>先安装zookeeper</li>
+</ul>
+<pre><code class="language-shell">docker run -d -p 2182:2181 --name zookeeper zookeeper
+</code></pre>
+<ul>
+<li>安装kafka</li>
+</ul>
+<pre><code class="language-shell">docker run  -d --name kafka --link zookeeper:zookeeper -p 9092:9092  -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://&lt;宿主机ip&gt;:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka
 </code></pre>
 
         </div>
@@ -166,6 +177,7 @@ Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea
 <li><a href="#%E4%BA%8C-docker%E5%AE%89%E8%A3%85sentinel">二、Docker安装Sentinel</a></li>
 <li><a href="#%E4%B8%89-docker%E5%AE%89%E8%A3%85pulsar">三、Docker安装Pulsar</a></li>
 <li><a href="#%E5%9B%9B-docker%E5%AE%89%E8%A3%85rabbitmq">四、Docker安装RabbitMQ</a></li>
+<li><a href="#%E4%BA%94-docker%E5%AE%89%E8%A3%85kafka">五、Docker安装Kafka</a></li>
 </ul>
 </li>
 </ul>
