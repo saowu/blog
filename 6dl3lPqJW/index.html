@@ -65,7 +65,7 @@
     <div class="max-w-4xl w-full mx-auto pt-32">
       <h1 class="text-2xl font-bold pb-8 flex justify-center items-center">
         <i class="ri-hashtag"></i>
-        Java
+        Maven
       </h1>
       <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
         
@@ -73,106 +73,27 @@
     
     <div class="flex-1 order-2 md:order-1">
       <h2 class="text-2xl font-semibold mb-4">
-        <a href="https://saowu.top/blog/4S4PY3kdh/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
-          JVM 相关记录
+        <a href="https://saowu.top/blog/xPRuKS852/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Maven deploy 两次sources.jar，导致发布到release失败问题
         </a>
       </h2>
-      <div class="mb-4 text-xs text-gray-500">2020-04-06</div>
+      <div class="mb-4 text-xs text-gray-500">2022-03-23</div>
       <div class="mb-4 text-gray-500 dark:text-gray-300">
-        一、Java反编译
+        <p>最近在使用mvn clean install deploy 发布jar包到Nexus release仓库时，发现报错，但是在Nexus仓库中去找jar包，却是已经发布成功了。很是困惑。</p>
 
-概述： javap是 Java class文件分解器，可以反编译，也可以查看java编译器生成的字节码，从而对代码内部的执行逻辑进行分析。
-语法：
-
-把java文件编译为class文件
-例如：javac Test.ja...
       </div>
-      <a href="https://saowu.top/blog/4S4PY3kdh/" class="btn">
+      <a href="https://saowu.top/blog/xPRuKS852/" class="btn">
         Read more
       </a>
     </div>
     
-      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/4S4PY3kdh.jpg" alt="JVM 相关记录">
-    
-  </div>
-
-  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
-    
-    <div class="flex-1 order-2 md:order-1">
-      <h2 class="text-2xl font-semibold mb-4">
-        <a href="https://saowu.top/blog/V2m1nsMuh/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
-          《大话设计模式》学习笔记
-        </a>
-      </h2>
-      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
-      <div class="mb-4 text-gray-500 dark:text-gray-300">
-        DesignPatterns
-
-Java实现的设计模式案例
-
-👉GitHub
-本项目是学习《大话设计模式》一书的学习笔记，欢迎指正(部分来自其他，如侵必删)。
-一、设计原则
-    1.单一职责原则（SPR）：就一个类而言，应该仅有一个引...
-      </div>
-      <a href="https://saowu.top/blog/V2m1nsMuh/" class="btn">
-        Read more
-      </a>
-    </div>
-    
-      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/V2m1nsMuh.jpg" alt="《大话设计模式》学习笔记">
-    
-  </div>
-
-  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
-    
-    <div class="flex-1 order-2 md:order-1">
-      <h2 class="text-2xl font-semibold mb-4">
-        <a href="https://saowu.top/blog/ExvMF31VX/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
-          Java 贪吃蛇
-        </a>
-      </h2>
-      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
-      <div class="mb-4 text-gray-500 dark:text-gray-300">
-        SnakeGame
-
-java编写的贪吃蛇（火影风）
-
-👉Github
-版本配置
-
-jdk8+
-mysql 5.7
-
-UI展示
-
-
-
-
-...
-      </div>
-      <a href="https://saowu.top/blog/ExvMF31VX/" class="btn">
-        Read more
-      </a>
-    </div>
-    
-      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/ExvMF31VX.jpg" alt="Java 贪吃蛇">
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/xPRuKS852.jpg" alt="Maven deploy 两次sources.jar，导致发布到release失败问题">
     
   </div>
   
       </div>
 
       
-  <div class="my-4 flex justify-between px-4 md:px-0">
-    
-      <a href="https://saowu.top/blog/FWHSehn5o/page/2/" class="btn btn-white">
-        <i class="ri-arrow-left-line mr-4"></i>
-        上一页
-      </a>
-    
-    
-  </div>
-
       <footer class="py-12 text-center px-4 md:px-0" v-pre>
   Copyright © 2020 - 2022 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
 Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
