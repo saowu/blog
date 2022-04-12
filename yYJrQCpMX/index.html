@@ -129,6 +129,11 @@
 <pre><code class="language-shell"> [ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy) on project demo-project: Deployment failed: repository element was not specified in the POM inside distributionManagement element or in -DaltDeploymentRepository=id::layout::url parameter -&gt; [Help 1]
 </code></pre>
 <p>原因：maven-deploy-plugin.version = 2.7不支持该参数。使用2.8+即可。</p>
+<h4 id="其他-am-参数使用">其他：<code>-am</code> 参数使用</h4>
+<ul>
+<li>参数：<code>mvn deploy -am</code></li>
+<li>比如：当你选择一个模块发布，由于加了-am，maven它会把依赖的包也发布上去。如果不加-am参数，当依赖的包版本在本地和远程仓库都找不到，就会打包失败。</li>
+</ul>
 
         </div>
         <!-- Share to Twitter, Weibo, Telegram -->
@@ -176,7 +181,22 @@ Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea
         </div>
       </div>
       <div class="post-toc-container">
-        
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%85%B6%E4%BB%96-am-%E5%8F%82%E6%95%B0%E4%BD%BF%E7%94%A8">其他：<code>-am</code> 参数使用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
       </div>
     </div>
 
