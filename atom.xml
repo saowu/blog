@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://saowu.top/blog</id>
     <title>saowu&apos;s Blog</title>
-    <updated>2022-04-12T08:33:34.653Z</updated>
+    <updated>2022-04-22T08:45:14.799Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://saowu.top/blog"/>
     <link rel="self" href="https://saowu.top/blog/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://saowu.top/blog/images/avatar.png</logo>
     <icon>https://saowu.top/blog/favicon.ico</icon>
     <rights>All rights reserved 2022, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[一个由“ YYYY-MM-dd ”引发的惨案]]></title>
+        <id>https://saowu.top/blog/lFcyrv_4K/</id>
+        <link href="https://saowu.top/blog/lFcyrv_4K/">
+        </link>
+        <updated>2022-04-22T08:37:05.000Z</updated>
+        <summary type="html"><![CDATA[<p>今天上海降温到零下了，一点起床的欲望都没，想着直接睡到吃午饭吧。结果看到群里小伙伴吐槽一早被叫起来修Bug，定睛一看，要修的BUG居然又是之前说过很多次的YYYY-MM-dd问题，这个之前文章就写过几次了《听说又有兄弟因为用YYYY-MM-dd被锤了...》，怎么还有人中招呢？</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>今天上海降温到零下了，一点起床的欲望都没，想着直接睡到吃午饭吧。结果看到群里小伙伴吐槽一早被叫起来修Bug，定睛一看，要修的BUG居然又是之前说过很多次的YYYY-MM-dd问题，这个之前文章就写过几次了《听说又有兄弟因为用YYYY-MM-dd被锤了...》，怎么还有人中招呢？</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于maven-deploy-plugin与-DaltDeploymentRepository参数]]></title>
         <id>https://saowu.top/blog/yYJrQCpMX/</id>
@@ -88,12 +99,5 @@
         <link href="https://saowu.top/blog/ijQPUonML/">
         </link>
         <updated>2021-02-23T11:24:26.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Jenkins自动化部署Springboot项目]]></title>
-        <id>https://saowu.top/blog/1wum6KFtI/</id>
-        <link href="https://saowu.top/blog/1wum6KFtI/">
-        </link>
-        <updated>2020-07-03T08:38:18.000Z</updated>
     </entry>
 </feed>
