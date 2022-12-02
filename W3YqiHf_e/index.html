@@ -1,0 +1,491 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>IoC and DI - saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="IoC and DI - saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
+    
+
+  <meta name="description" content="
+将代码解耦进行到底...
+
+一、什么是IoC与DI
+
+控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计思想，可以用来减低计算机代码之间的耦合度。其中最常见的实现方式叫做依赖注入（Depende..." />
+  <meta property="og:title" content="IoC and DI - saowu&#39;s Blog">
+  <meta property="og:description" content="
+将代码解耦进行到底...
+
+一、什么是IoC与DI
+
+控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计思想，可以用来减低计算机代码之间的耦合度。其中最常见的实现方式叫做依赖注入（Depende..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://saowu.top/blog/W3YqiHf_e/" />
+  <meta property="og:image" content="https://saowu.top/blog/post-images/W3YqiHf_e.jpg">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="IoC and DI - saowu&#39;s Blog">
+  <meta name="twitter:description" content="
+将代码解耦进行到底...
+
+一、什么是IoC与DI
+
+控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计思想，可以用来减低计算机代码之间的耦合度。其中最常见的实现方式叫做依赖注入（Depende...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://saowu.top/blog/W3YqiHf_e/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://saowu.top/blog/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://saowu.top/blog" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      saowu&#39;s Blog
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          IoC and DI
+        </h1>
+        
+          <img src="https://saowu.top/blog/post-images/W3YqiHf_e.jpg" alt="IoC and DI" class="block w-full mb-8">
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2020-05-20 · 7 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <blockquote>
+<p>将代码解耦进行到底...</p>
+</blockquote>
+<h2 id="一-什么是ioc与di">一、什么是IoC与DI</h2>
+<ul>
+<li>控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种<code>设计思想</code>，可以用来减低计算机代码之间的耦合度。其中最常见的<code>实现方式</code>叫做依赖注入（Dependency Injection，简称DI），还有一种方式叫“依赖查找”（Dependency Lookup）。通过控制反转，对象在被创建的时候，由一个调控系统内所有对象的外界实体将其所依赖的对象的引用传递给它。也可以说，依赖被注入到对象中。</li>
+</ul>
+<h2 id="二-工厂模式与ioc模式">二、工厂模式与IoC模式</h2>
+<ul>
+<li>可以把IoC模式看作工厂模式的升华，把IoC容器看作是一个大工厂，只不过这个大工厂里要生成的对象都是在XML文件中给出定义的。利用Java 的“反射”编程，根据XML中给出的类定义生成相应的对象。从实现来看，以前在工厂模式里写死了的对象，IoC模式改为配置XML文件，这就把工厂和要生成的对象两者隔离，极大提高了灵活性和可维护性。</li>
+</ul>
+<h2 id="三-di与传统的不同">三、 DI与传统的不同</h2>
+<ul>
+<li>Class A中用到了Class B的对象b，一般情况下，需要在A的代码中显式的new一个B的对象。</li>
+<li>采用依赖注入技术之后，Class A的代码只需要定义一个私有的B对象引用，不需要直接new来获得这个对象，而是通过相关的容器控制程序（IoC容器）来将B对象在外部new出来并注入到A类里的引用中。而具体获取的方法、对象被获取时的状态由配置文件（如XML）来指定。</li>
+</ul>
+<h2 id="四-反射实现对象注入">四、反射实现对象注入</h2>
+<ul>
+<li>IoC中最基本的Java技术就是“反射”编程。通俗的说，就是使用反射技术，根据XML中给出的类定义生成b对象，并注入到A类引用里。</li>
+</ul>
+<pre><code class="language-java">public class A {
+    private B b;
+}
+
+public class B {
+}
+</code></pre>
+<pre><code class="language-java">public class Test {
+    //注入对象b
+   public static void main(String[] args) {
+       try {
+           Class&lt;?&gt; aClass = Class.forName(&quot;A全路径名&quot;);
+           Class&lt;?&gt; bClass = Class.forName(&quot;B全路径名&quot;);
+           //反射生成对象
+           Object A_object = aClass.getDeclaredConstructor().newInstance();
+           Object B_object = bClass.getDeclaredConstructor().newInstance();
+           //字段声明是private的，不能用getField方法，应该使用getDeclaredField方法来获取
+           Field field = aClass.getDeclaredField(&quot;b&quot;);
+           //字段声明为private，必须进行此操作
+           field.setAccessible(true);
+           //给字段注入对象
+           field.set(A_object, B_object);
+       } catch (ClassNotFoundException | NoSuchFieldException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+           e.printStackTrace();
+       }
+   }
+}
+</code></pre>
+<h2 id="附-spring依赖注入的4种方式">附、Spring依赖注入的4种方式</h2>
+<h3 id="使用属性的setxxx方法注入">使用属性的setXXX方法注入</h3>
+<ul>
+<li>属性注入即通过setXxx()方法注入Bean的属性值或依赖对象，由于属性注入方式具有可选择性和灵活性高的优点，因此属性注入是实际应用中最常采用的注入方式。</li>
+</ul>
+<pre><code class="language-xml">&lt;!-- 属性注入 --&gt;
+&lt;bean id=&quot;car&quot; class=&quot;com.spring.model.Car&quot;&gt;  
+    &lt;property name=&quot;maxSpeed&quot; value=&quot;200&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;brand&quot; value=&quot;红旗CA72&quot;&gt;&lt;/property&gt;  
+    &lt;property name=&quot;price&quot; value=&quot;200000.00&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre>
+<ul>
+<li>属性注入要求Bean提供一个默认的构造函数，并为需要注入的属性提供对应的Setter方法。Spring先调用Bean的默认构造函数实例化Bean对象，然后通过反射的方式调用Setter方法注入属性值。</li>
+</ul>
+<pre><code class="language-java">package com.spring.model;
+
+public class Car {
+    private int maxSpeed;
+    private String brand;
+    private double price;
+    
+    public int getMaxSpeed() {
+        return maxSpeed;
+    }
+    //一定要写被注入对象的set方法
+    public void setMaxSpeed(int maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+    public String getBrand() {
+        return brand;
+    }
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+}
+</code></pre>
+<h3 id="使用构造函数注入">使用构造函数注入</h3>
+<ul>
+<li>构造函数注入是除属性注入之外的另一种常用的注入方式，它保证一些必要的属性在Bean实例化时就得到设置（construct是bean生命周期的第一步，实例化bean），并且确保了Bean实例在实例化后就可以使用。</li>
+<li>使用方式
+<ul>
+<li>在类中，不用为属性设置setter方法（但是可以有），但是需要生成该类带参的构造方法。</li>
+<li>在配置文件中配置该类的bean，并配置构造器，在配置构造器中用到了<code>&lt;constructor-arg&gt;</code>节点，该节点有四个属性：
+<ul>
+<li><code>index</code>是索引，指定注入的属性位置，从0开始；</li>
+<li><code>type</code>是指该属性所对应的类型；</li>
+<li><code>ref</code> 是指引用的依赖对象；</li>
+<li><code>value</code> 当注入的不是依赖对象，而是基本数据类型时，就用value；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-xml">&lt;!-- 构造函数注入(按类型匹配) --&gt;
+&lt;bean id=&quot;car1&quot; class=&quot;com.spring.model.Car&quot;&gt;  
+    &lt;constructor-arg type=&quot;int&quot; value=&quot;300&quot;&gt;&lt;/constructor-arg&gt;
+    &lt;constructor-arg type=&quot;java.lang.String&quot; value=&quot;宝马&quot;&gt;&lt;/constructor-arg&gt;
+    &lt;constructor-arg type=&quot;double&quot; value=&quot;300000.00&quot;&gt;&lt;/constructor-arg&gt;
+&lt;/bean&gt;
+</code></pre>
+<ul>
+<li>使用构造函数注入的前提是Bean必须提供带参的构造函数。</li>
+</ul>
+<pre><code class="language-java">package com.spring.model;
+ 
+public class Car {
+    
+    private int maxSpeed;
+    private String brand;
+    private double price;
+    
+    //带参构造方法
+    public Car(int maxSpeed,String brand, double price){
+        this.maxSpeed=maxSpeed;
+        this.brand=brand;
+        this.price=price;
+    }
+}
+</code></pre>
+<h3 id="使用接口注入">使用接口注入</h3>
+<ul>
+<li>接口注入需要实现接口，带有侵入性，<strong>不推荐</strong>。</li>
+<li>最常见的，就是我们定义的servlet需要继承HTTPServlet，在我们的doPost方法中，HttpServletRequest参数就是使用接口注入的形式。</li>
+</ul>
+<h3 id="使用注解注入">使用注解注入</h3>
+<ul>
+<li>SpringMVC支持自动扫描并注册为spring bean，需要配置<code>&lt;context:component-scan base-package=&quot;&quot;&gt;</code>，<code>base-package</code>属性指定要自动检测扫描的包。该配置会自动扫描指定的包及其子包下面被构造型注解标注的类，并将这些类注册为spring bean，这样就不用在配置文件一个一个地配置成bean标签。构造型注解包括：<code>@Controller</code>，<code>@Component</code>，<code>@Service</code>，<code>@Repositoryt</code>标注的自定义注解。</li>
+<li>Spring 2.5 之后提供了注解方式的自动装配，常用的自动装配注解有以下几种：<code>@Autowired</code>，<code>@Qualifier</code>，<code>@Named</code>，<code>@Resource</code>，<code>@Inject</code>。但是要使用这些注解，需要在配置文件中配置<code>&lt;context:annotation-config /&gt;</code>。只有加上这一配置，才可以使用注解进行spring bean的自动装配，默认情况下基于注解的装配是被禁用的。</li>
+</ul>
+<pre><code class="language-java">    @Component
+    public class TestService {
+        @Autowired
+        private TestDao testDao;
+
+        public List&lt;Files&gt; selectAll() {
+            List&lt;Files&gt; filesList = testDao.selectAll();
+            return filesList;
+        }
+
+    }
+</code></pre>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright © 2020 - 2022 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
+Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E4%BB%80%E4%B9%88%E6%98%AFioc%E4%B8%8Edi">一、什么是IoC与DI</a></li>
+<li><a href="#%E4%BA%8C-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E4%B8%8Eioc%E6%A8%A1%E5%BC%8F">二、工厂模式与IoC模式</a></li>
+<li><a href="#%E4%B8%89-di%E4%B8%8E%E4%BC%A0%E7%BB%9F%E7%9A%84%E4%B8%8D%E5%90%8C">三、 DI与传统的不同</a></li>
+<li><a href="#%E5%9B%9B-%E5%8F%8D%E5%B0%84%E5%AE%9E%E7%8E%B0%E5%AF%B9%E8%B1%A1%E6%B3%A8%E5%85%A5">四、反射实现对象注入</a></li>
+<li><a href="#%E9%99%84-spring%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F">附、Spring依赖注入的4种方式</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%B1%9E%E6%80%A7%E7%9A%84setxxx%E6%96%B9%E6%B3%95%E6%B3%A8%E5%85%A5">使用属性的setXXX方法注入</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%B3%A8%E5%85%A5">使用构造函数注入</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%8E%A5%E5%8F%A3%E6%B3%A8%E5%85%A5">使用接口注入</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%B3%A8%E5%85%A5">使用注解注入</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://saowu.top/blog/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script type="application/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="application/javascript">
+
+  var gitalk = new Gitalk({
+    clientID: '1ffeeefba638614e6e82',
+    clientSecret: '062da207075e7e51b4443da0d408b6d787cc3ed9',
+    repo: 'blog',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+    
+  
+</body>
+
+</html>

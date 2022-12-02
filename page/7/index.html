@@ -1,0 +1,177 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
+    
+
+  <meta name="description" content="A programmer who wants to be happy and muddle along." />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
+    </div>
+  </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
+    
+      <a href="/blog" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Home
+      </a>
+    
+      <a href="/blog/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Archives
+      </a>
+    
+      <a href="/blog/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Tags
+      </a>
+    
+      <a href="/blog/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        About
+      </a>
+    
+      <a href="/reptiles/nCoV_map.html" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        nCoV
+      </a>
+    
+    <a href="https://saowu.top/blog/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
+</div>
+
+    <div class="max-w-4xl w-full mx-auto pt-32">
+      
+
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
+        
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/homebrew-ji-ben-jiao-cheng/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Homebrew基本教程
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        一、安装（需要 Ruby）：
+  ruby -e &quot;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)&quot;
+
+二、基本命令：
+brew ins...
+      </div>
+      <a href="https://saowu.top/blog/homebrew-ji-ben-jiao-cheng/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/homebrew-ji-ben-jiao-cheng.jpeg" alt="Homebrew基本教程">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          C语言程序集(1-15)
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        1.输入两个数按从小到大的顺序排列
+#include &lt;stdio.h&gt;
+int main() {
+    int a, b, t;
+    printf(&quot;input a,b: &quot;);
+    scanf(...
+      </div>
+      <a href="https://saowu.top/blog/c-yu-yan-cheng-xu-ji/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/c-yu-yan-cheng-xu-ji.jpg" alt="C语言程序集(1-15)">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/FHgE0FP4i/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          beego框架开发的博客系统
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-03-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        HeartBlog
+👉GitHubbuilding
+采用技术
+
+前台页面：模板语法
+后台页面：layui
+数据库：mysql
+主框架：beego
+
+介绍
+HearBlog设计简洁，界面美观(早期审美),部署简单，自动建表，
+mysql数据...
+      </div>
+      <a href="https://saowu.top/blog/FHgE0FP4i/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/FHgE0FP4i.jpg" alt="beego框架开发的博客系统">
+    
+  </div>
+  
+      </div>
+
+      
+  <div class="my-4 flex justify-between px-4 md:px-0">
+    
+      <a href="https://saowu.top/blog/page/6/" class="btn btn-white">
+        <i class="ri-arrow-left-line mr-4"></i>
+        上一页
+      </a>
+    
+    
+  </div>
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright © 2020 - 2022 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
+Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
+</footer>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://saowu.top/blog</id>
+    <title>saowu&apos;s Blog</title>
+    <updated>2022-12-02T08:52:19.221Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://saowu.top/blog"/>
+    <link rel="self" href="https://saowu.top/blog/atom.xml"/>
+    <subtitle>A programmer who wants to be happy and muddle along.</subtitle>
+    <logo>https://saowu.top/blog/images/avatar.png</logo>
+    <icon>https://saowu.top/blog/favicon.ico</icon>
+    <rights>All rights reserved 2022, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[为你的Nginx配置SSL证书]]></title>
+        <id>https://saowu.top/blog/Qsa6K64hd/</id>
+        <link href="https://saowu.top/blog/Qsa6K64hd/">
+        </link>
+        <updated>2022-11-23T06:59:51.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[多篇文档了解TiDB技术内幕]]></title>
+        <id>https://saowu.top/blog/dY1aLO4g3/</id>
+        <link href="https://saowu.top/blog/dY1aLO4g3/">
+        </link>
+        <updated>2022-08-09T08:39:02.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Apache Pulsar高可用设计]]></title>
+        <id>https://saowu.top/blog/2ULcoRq3R/</id>
+        <link href="https://saowu.top/blog/2ULcoRq3R/">
+        </link>
+        <updated>2022-06-30T09:08:56.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一个由“ YYYY-MM-dd ”引发的惨案]]></title>
+        <id>https://saowu.top/blog/lFcyrv_4K/</id>
+        <link href="https://saowu.top/blog/lFcyrv_4K/">
+        </link>
+        <updated>2022-04-22T08:37:05.000Z</updated>
+        <summary type="html"><![CDATA[<p>今天上海降温到零下了，一点起床的欲望都没，想着直接睡到吃午饭吧。结果看到群里小伙伴吐槽一早被叫起来修Bug，定睛一看，要修的BUG居然又是之前说过很多次的YYYY-MM-dd问题，这个之前文章就写过几次了《听说又有兄弟因为用YYYY-MM-dd被锤了...》，怎么还有人中招呢？</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>今天上海降温到零下了，一点起床的欲望都没，想着直接睡到吃午饭吧。结果看到群里小伙伴吐槽一早被叫起来修Bug，定睛一看，要修的BUG居然又是之前说过很多次的YYYY-MM-dd问题，这个之前文章就写过几次了《听说又有兄弟因为用YYYY-MM-dd被锤了...》，怎么还有人中招呢？</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于maven-deploy-plugin与-DaltDeploymentRepository参数]]></title>
+        <id>https://saowu.top/blog/yYJrQCpMX/</id>
+        <link href="https://saowu.top/blog/yYJrQCpMX/">
+        </link>
+        <updated>2022-04-12T08:07:42.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Maven deploy 两次sources.jar，导致发布到release失败问题]]></title>
+        <id>https://saowu.top/blog/xPRuKS852/</id>
+        <link href="https://saowu.top/blog/xPRuKS852/">
+        </link>
+        <updated>2022-03-23T08:37:50.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近在使用mvn clean install deploy 发布jar包到Nexus release仓库时，发现报错，但是在Nexus仓库中去找jar包，却是已经发布成功了。很是困惑。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近在使用mvn clean install deploy 发布jar包到Nexus release仓库时，发现报错，但是在Nexus仓库中去找jar包，却是已经发布成功了。很是困惑。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[查询GITLAB分支创建人]]></title>
+        <id>https://saowu.top/blog/Kk4pGwxLT/</id>
+        <link href="https://saowu.top/blog/Kk4pGwxLT/">
+        </link>
+        <updated>2021-12-24T09:30:35.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Desktop Docker安装Gitlab、Gitlab Runner]]></title>
+        <id>https://saowu.top/blog/4FtXVqYj0/</id>
+        <link href="https://saowu.top/blog/4FtXVqYj0/">
+        </link>
+        <updated>2021-10-30T01:34:00.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一文秒懂 Java java.util.concurrent.Future]]></title>
+        <id>https://saowu.top/blog/DZYvWycBX/</id>
+        <link href="https://saowu.top/blog/DZYvWycBX/">
+        </link>
+        <updated>2021-07-22T09:24:19.000Z</updated>
+        <summary type="html"><![CDATA[<p>读了几篇 Java 一文秒懂 XXX 系列的文章后，对 Java 并发编程的设计思想真的是竖然起敬。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>读了几篇 Java 一文秒懂 XXX 系列的文章后，对 Java 并发编程的设计思想真的是竖然起敬。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker安装Nacos、Sentinel、Pulsar、RabbitMQ、Kafka]]></title>
+        <id>https://saowu.top/blog/tK8j2PR_z/</id>
+        <link href="https://saowu.top/blog/tK8j2PR_z/">
+        </link>
+        <updated>2021-07-03T12:22:59.000Z</updated>
+        <summary type="html"><![CDATA[<p>这里仅提供学习测试使用的单机简单安装，生产等其他用途概不负责...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这里仅提供学习测试使用的单机简单安装，生产等其他用途概不负责...</p>
+]]></content>
+    </entry>
+</feed>
