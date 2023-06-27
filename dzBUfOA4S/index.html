@@ -1,0 +1,531 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>初识Dataway接口配置工具 - saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="初识Dataway接口配置工具 - saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
+    
+
+  <meta name="description" content="
+DataQL 的竞品应是 GraphQL，而非 ORM 框架
+
+👉demo website
+一、介绍
+
+Dataway 是基于 DataQL 服务聚合能力，为应用提供的一个接口配置工具。使得使用者无需开发任何代码就配置一个满足需求的接口..." />
+  <meta property="og:title" content="初识Dataway接口配置工具 - saowu&#39;s Blog">
+  <meta property="og:description" content="
+DataQL 的竞品应是 GraphQL，而非 ORM 框架
+
+👉demo website
+一、介绍
+
+Dataway 是基于 DataQL 服务聚合能力，为应用提供的一个接口配置工具。使得使用者无需开发任何代码就配置一个满足需求的接口..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://saowu.top/blog/dzBUfOA4S/" />
+  <meta property="og:image" content="https://saowu.top/blog/post-images/dzBUfOA4S.jpg">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="初识Dataway接口配置工具 - saowu&#39;s Blog">
+  <meta name="twitter:description" content="
+DataQL 的竞品应是 GraphQL，而非 ORM 框架
+
+👉demo website
+一、介绍
+
+Dataway 是基于 DataQL 服务聚合能力，为应用提供的一个接口配置工具。使得使用者无需开发任何代码就配置一个满足需求的接口...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://saowu.top/blog/dzBUfOA4S/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://saowu.top/blog/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://saowu.top/blog" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      saowu&#39;s Blog
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          初识Dataway接口配置工具
+        </h1>
+        
+          <img src="https://saowu.top/blog/post-images/dzBUfOA4S.jpg" alt="初识Dataway接口配置工具" class="block w-full mb-8">
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2020-06-17 · 8 min read</div>
+          
+            <a href="https://saowu.top/blog/FWHSehn5o/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Java
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <blockquote>
+<p>DataQL 的竞品应是 GraphQL，而非 ORM 框架</p>
+</blockquote>
+<p>👉<a href="http://esc.saowu.top:10000/interface-ui/#/">demo website</a></p>
+<h2 id="一-介绍">一、介绍</h2>
+<ul>
+<li>Dataway 是基于 DataQL 服务聚合能力，为应用提供的一个接口配置工具。使得使用者无需开发任何代码就配置一个满足需求的接口。 整个接口配置、测试、冒烟、发布。一站式都通过 Dataway 提供的 UI 界面完成。UI 会以 Jar 包方式提供并集成到应用中并和应用共享同一个 http 端口，应用无需单独为 Dataway 开辟新的管理端口。</li>
+</ul>
+<h2 id="二-主打场景">二、主打场景</h2>
+<ul>
+<li><em>主打场景并不是说 Dataway 适用范围仅限于此，而是经过多次项目实践。我们认为下面这些场景会有非常好的预期效果。</em></li>
+</ul>
+<h3 id="取数据">取数据</h3>
+<ul>
+<li>在一些 报表、看板 纯展示类的项目中。我们做到了所有接口真正的 零 开发全配置。所有取数逻辑全部通过 DataQL + SQL 的方式满足。 在此期间遇到最大的挑战是复杂查询中需要 拼SQL，随着 DataQL 查询组件的完善，这一问题被攻克。</li>
+<li>对比往期项目对于后端技术人员的需求从 3～5 人的苦逼通宵加班，直接缩减为 1 人配置化搞定 。即便是第二天要上线新的逻辑，通过 DataQL + SQL。依然可以分分钟满足需求变更。</li>
+</ul>
+<h3 id="存数据">存数据</h3>
+<ul>
+<li>在内部某个类 ERP 项目中，20多个表单页面。每个表单页面或多或少都有直接将单据数据录入到数据库的场景，每个单据的录入逻辑都有很大的不同。 我们通过 DataQL + SQL 的方式在早期用了1000 行左右的核心代码。其它数据存取逻辑全部配置化完成。</li>
+<li>如今随着 DataQL 工具链的完善，其中绝大部分场景可以完全配置化无需开发了。</li>
+</ul>
+<h3 id="数据聚合">数据聚合</h3>
+<ul>
+<li>和 GraphQL 相同，这是设计 DataQL 的初衷。将数据库和服务等多个结果进行汇聚然后返回给前端，这是 DataQL 的使命。 Dataway 是这一过程变得更加简单和高效。</li>
+</ul>
+<h2 id="三-技术架构">三、技术架构</h2>
+<ul>
+<li>Dataway 的架构中需要两张数据库表用来存放配置和发布的 DataQL 查询。</li>
+<li>除此之外 Dataway 的架构极其简单，它只是相当于给 DataQL 披了一张皮。通过这张皮以界面的方式交互式执行 DataQL 语句，并将其管理起来。<br>
+<img src="https://www.hasor.net/web/_images/CC2_B633_6D5C_MK4L.png" alt="avatar" loading="lazy"></li>
+</ul>
+<h2 id="四-springboot快速集成">四、Springboot快速集成</h2>
+<h3 id="1-引入依赖">1、引入依赖</h3>
+<p>在<code>pom.xml</code>中加入以下</p>
+<pre><code class="language-xml">        &lt;dependency&gt;
+            &lt;groupId&gt;net.hasor&lt;/groupId&gt;
+            &lt;artifactId&gt;hasor-spring&lt;/artifactId&gt;
+            &lt;version&gt;4.1.7&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;net.hasor&lt;/groupId&gt;
+            &lt;artifactId&gt;hasor-dataway&lt;/artifactId&gt;
+            &lt;version&gt;4.1.7&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<h3 id="2-配置dataway">2、配置Dataway</h3>
+<p>在<code>application.properties</code>中加入以下</p>
+<pre><code class="language-text"># 是否启用 Dataway 功能（必选：默认false）
+HASOR_DATAQL_DATAWAY=true
+# 是否开启 Dataway 后台管理界面（必选：默认false）
+HASOR_DATAQL_DATAWAY_ADMIN=true
+# dataway  API工作路径（可选，默认：/api/）
+HASOR_DATAQL_DATAWAY_API_URL=/api/
+# dataway-ui 的工作路径（可选，默认：/interface-ui/）
+HASOR_DATAQL_DATAWAY_UI_URL=/interface-ui/
+# SQL执行器方言设置（可选，建议设置）
+HASOR_DATAQL_FX_PAGE_DIALECT=mysql
+</code></pre>
+<h3 id="3-配置数据源">3、配置数据源</h3>
+<p>在<code>pom.xml</code>中加入以下</p>
+<pre><code class="language-xml">        &lt;!--    注意你数据库的版本    --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;8.0.11&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;druid&lt;/artifactId&gt;
+            &lt;version&gt;1.1.21&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>在<code>application.properties</code>中加入以下</p>
+<pre><code class="language-text"># db
+spring.datasource.url=jdbc:mysql://localhost:3306/dbname
+spring.datasource.username=root
+spring.datasource.password=123456
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+# druid
+spring.datasource.druid.initial-size=3
+spring.datasource.druid.min-idle=3
+spring.datasource.druid.max-active=10
+spring.datasource.druid.max-wait=60000
+spring.datasource.druid.stat-view-servlet.login-username=admin
+spring.datasource.druid.stat-view-servlet.login-password=123456
+spring.datasource.druid.filter.stat.log-slow-sql=true
+spring.datasource.druid.filter.stat.slow-sql-millis=1
+</code></pre>
+<h3 id="4-把数据源设置到hasor容器中">4、把数据源设置到Hasor容器中</h3>
+<ul>
+<li>Spring Boot 和 Hasor 本是两个独立的容器框架，我们做整合之后为了使用 Dataway 的能力需要把 Spring 中的数据源设置到 Hasor 中。</li>
+<li>首先新建一个 Hasor 的 模块，并且将其交给 Spring 管理。然后把数据源通过 Spring 注入进来。</li>
+</ul>
+<pre><code class="language-java">package com.example.datawaydemo.hasor;
+
+import net.hasor.core.ApiBinder;
+import net.hasor.core.DimModule;
+import net.hasor.db.JdbcModule;
+import net.hasor.db.Level;
+import net.hasor.core.Module;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.sql.DataSource;
+
+@DimModule
+@Component
+public class ExampleModule implements Module {
+    @Autowired
+    private DataSource dataSource = null;
+
+    @Override
+    public void loadModule(ApiBinder apiBinder) throws Throwable {
+        apiBinder.installModule(new JdbcModule(Level.Full, this.dataSource));
+    }
+}
+</code></pre>
+<h3 id="5-在springboot中启用hasor">5、在Springboot中启用Hasor</h3>
+<pre><code class="language-java">@EnableHasor()
+@EnableHasorWeb()
+@SpringBootApplication(scanBasePackages = {&quot;com.example.datawaydemo.hasor&quot;})
+public class DatawayDemoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DatawayDemoApplication.class, args);
+    }
+}
+</code></pre>
+<h3 id="6-创建必须的依赖表">6、创建必须的依赖表</h3>
+<p>执行以下sql语句创建<code>interface_info</code>和<code>interface_release</code>表。</p>
+<pre><code class="language-sql">CREATE TABLE `interface_info` (
+    `api_id`          int(11)      NOT NULL AUTO_INCREMENT   COMMENT 'ID',
+    `api_method`      varchar(12)  NOT NULL                  COMMENT 'HttpMethod：GET、PUT、POST',
+    `api_path`        varchar(512) NOT NULL                  COMMENT '拦截路径',
+    `api_status`      int(2)       NOT NULL                  COMMENT '状态：0草稿，1发布，2有变更，3禁用',
+    `api_comment`     varchar(255)     NULL                  COMMENT '注释',
+    `api_type`        varchar(24)  NOT NULL                  COMMENT '脚本类型：SQL、DataQL',
+    `api_script`      mediumtext   NOT NULL                  COMMENT '查询脚本：xxxxxxx',
+    `api_schema`      mediumtext       NULL                  COMMENT '接口的请求/响应数据结构',
+    `api_sample`      mediumtext       NULL                  COMMENT '请求/响应/请求头样本数据',
+    `api_option`      mediumtext       NULL                  COMMENT '扩展配置信息',
+    `api_create_time` datetime     DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `api_gmt_time`    datetime     DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+    PRIMARY KEY (`api_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COMMENT='Dataway 中的API';
+
+create unique index idx_interface_info on interface_info (api_method, api_path);
+
+CREATE TABLE `interface_release` (
+    `pub_id`          int(11)      NOT NULL AUTO_INCREMENT   COMMENT 'Publish ID',
+    `pub_api_id`      int(11)      NOT NULL                  COMMENT '所属API ID',
+    `pub_method`      varchar(12)  NOT NULL                  COMMENT 'HttpMethod：GET、PUT、POST',
+    `pub_path`        varchar(512) NOT NULL                  COMMENT '拦截路径',
+    `pub_status`      int(2)       NOT NULL                  COMMENT '状态：0有效，1无效（可能被下线）',
+    `pub_type`        varchar(24)  NOT NULL                  COMMENT '脚本类型：SQL、DataQL',
+    `pub_script`      mediumtext   NOT NULL                  COMMENT '查询脚本：xxxxxxx',
+    `pub_script_ori`  mediumtext   NOT NULL                  COMMENT '原始查询脚本，仅当类型为SQL时不同',
+    `pub_schema`      mediumtext       NULL                  COMMENT '接口的请求/响应数据结构',
+    `pub_sample`      mediumtext       NULL                  COMMENT '请求/响应/请求头样本数据',
+    `pub_option`      mediumtext       NULL                  COMMENT '扩展配置信息',
+    `pub_release_time`datetime     DEFAULT CURRENT_TIMESTAMP COMMENT '发布时间（下线不更新）',
+    PRIMARY KEY (`pub_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COMMENT='Dataway API 发布记录';
+
+create index idx_interface_release on interface_release (pub_api_id);
+</code></pre>
+<h3 id="7-运行项目">7、运行项目</h3>
+<p><img src="https://saowu.top/blog/post-images/1592381333988.png" alt="" loading="lazy"><br>
+<img src="https://saowu.top/blog/post-images/1592381339970.png" alt="" loading="lazy"></p>
+<h2 id="更多参考">更多参考</h2>
+<p><a href="https://www.hasor.net/"> Hasor官网</a><br>
+<a href="https://mp.weixin.qq.com/s/i6pm8vv8uyQfehknHuyqHw">原文章参考</a></p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright © 2020 - 2023 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
+Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E4%BB%8B%E7%BB%8D">一、介绍</a></li>
+<li><a href="#%E4%BA%8C-%E4%B8%BB%E6%89%93%E5%9C%BA%E6%99%AF">二、主打场景</a>
+<ul>
+<li><a href="#%E5%8F%96%E6%95%B0%E6%8D%AE">取数据</a></li>
+<li><a href="#%E5%AD%98%E6%95%B0%E6%8D%AE">存数据</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88">数据聚合</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84">三、技术架构</a></li>
+<li><a href="#%E5%9B%9B-springboot%E5%BF%AB%E9%80%9F%E9%9B%86%E6%88%90">四、Springboot快速集成</a>
+<ul>
+<li><a href="#1-%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96">1、引入依赖</a></li>
+<li><a href="#2-%E9%85%8D%E7%BD%AEdataway">2、配置Dataway</a></li>
+<li><a href="#3-%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E6%BA%90">3、配置数据源</a></li>
+<li><a href="#4-%E6%8A%8A%E6%95%B0%E6%8D%AE%E6%BA%90%E8%AE%BE%E7%BD%AE%E5%88%B0hasor%E5%AE%B9%E5%99%A8%E4%B8%AD">4、把数据源设置到Hasor容器中</a></li>
+<li><a href="#5-%E5%9C%A8springboot%E4%B8%AD%E5%90%AF%E7%94%A8hasor">5、在Springboot中启用Hasor</a></li>
+<li><a href="#6-%E5%88%9B%E5%BB%BA%E5%BF%85%E9%A1%BB%E7%9A%84%E4%BE%9D%E8%B5%96%E8%A1%A8">6、创建必须的依赖表</a></li>
+<li><a href="#7-%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE">7、运行项目</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9B%B4%E5%A4%9A%E5%8F%82%E8%80%83">更多参考</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://saowu.top/blog/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script type="application/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="application/javascript">
+
+  var gitalk = new Gitalk({
+    clientID: '1ffeeefba638614e6e82',
+    clientSecret: '062da207075e7e51b4443da0d408b6d787cc3ed9',
+    repo: 'blog',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+    
+  
+</body>
+
+</html>

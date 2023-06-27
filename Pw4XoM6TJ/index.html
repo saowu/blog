@@ -1,0 +1,397 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>记一次修改项目中 node_modules 源码的骚操作 - saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="记一次修改项目中 node_modules 源码的骚操作 - saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
+    
+
+  <meta name="description" content="
+在一次使用element-plus@2.1.8过程中，无意间发现一个bug，但是在element-plus@2.2.18中修复了。但是老项目中升级element-plus太过麻烦，考虑是不是可以重写其中的bug方法，于是...
+
+一 、问..." />
+  <meta property="og:title" content="记一次修改项目中 node_modules 源码的骚操作 - saowu&#39;s Blog">
+  <meta property="og:description" content="
+在一次使用element-plus@2.1.8过程中，无意间发现一个bug，但是在element-plus@2.2.18中修复了。但是老项目中升级element-plus太过麻烦，考虑是不是可以重写其中的bug方法，于是...
+
+一 、问..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://saowu.top/blog/Pw4XoM6TJ/" />
+  <meta property="og:image" content="https://saowu.top/blog/post-images/Pw4XoM6TJ.jpg">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="记一次修改项目中 node_modules 源码的骚操作 - saowu&#39;s Blog">
+  <meta name="twitter:description" content="
+在一次使用element-plus@2.1.8过程中，无意间发现一个bug，但是在element-plus@2.2.18中修复了。但是老项目中升级element-plus太过麻烦，考虑是不是可以重写其中的bug方法，于是...
+
+一 、问...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://saowu.top/blog/Pw4XoM6TJ/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://saowu.top/blog/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://saowu.top/blog" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      saowu&#39;s Blog
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          记一次修改项目中 node_modules 源码的骚操作
+        </h1>
+        
+          <img src="https://saowu.top/blog/post-images/Pw4XoM6TJ.jpg" alt="记一次修改项目中 node_modules 源码的骚操作" class="block w-full mb-8">
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2022-12-12 · 3 min read</div>
+          
+            <a href="https://saowu.top/blog/0ymhFk-hT/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Vue
+            </a>
+          
+            <a href="https://saowu.top/blog/7dtAGM-qU/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              前端
+            </a>
+          
+            <a href="https://saowu.top/blog/uZhO58y8l/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              其他
+            </a>
+          
+            <a href="https://saowu.top/blog/5lhY7x_08/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              日记
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <blockquote>
+<p>在一次使用element-plus@2.1.8过程中，无意间发现一个bug，但是在element-plus@2.2.18中修复了。但是老项目中升级element-plus太过麻烦，考虑是不是可以重写其中的bug方法，于是...</p>
+</blockquote>
+<h2 id="一-问题发现">一 、问题发现</h2>
+<p>使用<code>element-plus@2.1.8</code>下，复制官方一段示范代码发现<code>Step</code>之间的线没有变色，效果如下：<br>
+<img src="https://saowu.top/blog/post-images/1670831246256.jpeg" alt="" loading="lazy"><br>
+正常效果如下：<br>
+<img src="https://saowu.top/blog/post-images/1670831313712.png" alt="" loading="lazy"></p>
+<h2 id="二-问题根源">二、问题根源</h2>
+<p>在Github中发现有对应<a href="https://github.com/element-plus/element-plus/issues/9859">issues</a>如下：<br>
+<img src="https://saowu.top/blog/post-images/1670831437377.png" alt="" loading="lazy"></p>
+<p>该issues已经被Closed，对应的<a href="https://github.com/element-plus/element-plus/pull/9865">PR</a>如下：<br>
+<img src="https://saowu.top/blog/post-images/1670831496718.png" alt="" loading="lazy"></p>
+<p>此次PR中只修改了一行代码，而我要升级到<code>element-plus@2.2.18</code>，对于这个项目升级<code>element-plus</code>组件会导致与其他组件版本不兼容，项目无法正常运行。解决这些问题将会耗费大量时间，所以我开始另谋出路......</p>
+<h2 id="三-问题解决">三、问题解决</h2>
+<p>最开始我考虑既然<code>element</code>的样式可以使用<code>样式穿透</code>的方法去重写，那么源码中的方法是不是也可重写覆盖呢！带着这个想法开始全网搜索。果然，被我找到了～～～，不过不是重写方法，而是修改<code>node_modules</code>源码方法。</p>
+<h3 id="1-安装patch-package">1、安装patch-package</h3>
+<p><code>patch-package</code> 官方只支持 <code>npm</code> 和 <code>yarn</code>。</p>
+<pre><code class="language-shell">yarn add patch-package -D
+</code></pre>
+<h3 id="2-创建补丁">2、创建补丁</h3>
+<p>先修改依赖文件，然后运行<code>patch-package</code>来创建<code>patch</code>文件了。</p>
+<pre><code class="language-shell">yarn patch-package element-plus
+</code></pre>
+<p>此时，系统会自动创建一个文件夹，如下图所示<br>
+<img src="https://saowu.top/blog/post-images/1670832342641.jpg" alt="" loading="lazy"></p>
+<h3 id="3-修改packagejson文件">3、修改package.json文件</h3>
+<pre><code class="language-yaml">&quot;scripts&quot;: {
+    // 新增
+    &quot;postinstall&quot;: &quot;patch-package&quot;
+}
+</code></pre>
+<h3 id="4-测试补丁是否生效">4、测试补丁是否生效</h3>
+<ul>
+<li>删除 <code>node_modules</code> 文件夹</li>
+<li>重新安装依赖：<code>yarn install</code></li>
+<li>查看自己修改的源码是否还在。如果之前修改的源码还在，则表明补丁文件已经生效。</li>
+</ul>
+<h3 id="5-使用范围">5、使用范围</h3>
+<p>如果提示如下，则表示不支持该包管理器。<code>patch-package</code> 官方只支持 <code>npm</code> 和 <code>yarn</code></p>
+<blockquote>
+<p><strong>ERROR</strong> No package-lock.json, npm-shrinkwrap.json, or yarn.lock file. You must use either npm@&gt;=5, yarn, or npm-shrinkwrap to manage this project's dependencies。</p>
+</blockquote>
+<h3 id="6-注意">6、注意</h3>
+<p><code>patch</code>是锁定版本号的，如果升级了版本，<code>patch</code>内容将会失效。可以在<code>package.json</code>锁定版本号</p>
+<h2 id="四-参考">四、参考</h2>
+<p>😊参考文章 <a href="https://blog.csdn.net/weixin_41698051/article/details/126587377">patch-package给依赖打补丁实例详解</a></p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright © 2020 - 2023 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
+Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E9%97%AE%E9%A2%98%E5%8F%91%E7%8E%B0">一 、问题发现</a></li>
+<li><a href="#%E4%BA%8C-%E9%97%AE%E9%A2%98%E6%A0%B9%E6%BA%90">二、问题根源</a></li>
+<li><a href="#%E4%B8%89-%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3">三、问题解决</a>
+<ul>
+<li><a href="#1-%E5%AE%89%E8%A3%85patch-package">1、安装patch-package</a></li>
+<li><a href="#2-%E5%88%9B%E5%BB%BA%E8%A1%A5%E4%B8%81">2、创建补丁</a></li>
+<li><a href="#3-%E4%BF%AE%E6%94%B9packagejson%E6%96%87%E4%BB%B6">3、修改package.json文件</a></li>
+<li><a href="#4-%E6%B5%8B%E8%AF%95%E8%A1%A5%E4%B8%81%E6%98%AF%E5%90%A6%E7%94%9F%E6%95%88">4、测试补丁是否生效</a></li>
+<li><a href="#5-%E4%BD%BF%E7%94%A8%E8%8C%83%E5%9B%B4">5、使用范围</a></li>
+<li><a href="#6-%E6%B3%A8%E6%84%8F">6、注意</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-%E5%8F%82%E8%80%83">四、参考</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://saowu.top/blog/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script type="application/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="application/javascript">
+
+  var gitalk = new Gitalk({
+    clientID: '1ffeeefba638614e6e82',
+    clientSecret: '062da207075e7e51b4443da0d408b6d787cc3ed9',
+    repo: 'blog',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+    
+  
+</body>
+
+</html>

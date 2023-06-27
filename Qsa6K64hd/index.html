@@ -1,0 +1,435 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>为你的Nginx配置SSL证书 - saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="为你的Nginx配置SSL证书 - saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
+    
+
+  <meta name="description" content="
+Nginx是一款轻量级的Web服务器、反向代理服务器，由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用。
+
+0、安装启动Nginx
+#启动
+docker run -d -p 80:80 -p 443:443 --name..." />
+  <meta property="og:title" content="为你的Nginx配置SSL证书 - saowu&#39;s Blog">
+  <meta property="og:description" content="
+Nginx是一款轻量级的Web服务器、反向代理服务器，由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用。
+
+0、安装启动Nginx
+#启动
+docker run -d -p 80:80 -p 443:443 --name..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://saowu.top/blog/Qsa6K64hd/" />
+  <meta property="og:image" content="https://saowu.top/blog/post-images/Qsa6K64hd.jpeg">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="为你的Nginx配置SSL证书 - saowu&#39;s Blog">
+  <meta name="twitter:description" content="
+Nginx是一款轻量级的Web服务器、反向代理服务器，由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用。
+
+0、安装启动Nginx
+#启动
+docker run -d -p 80:80 -p 443:443 --name...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://saowu.top/blog/Qsa6K64hd/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://saowu.top/blog/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://saowu.top/blog" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      saowu&#39;s Blog
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          为你的Nginx配置SSL证书
+        </h1>
+        
+          <img src="https://saowu.top/blog/post-images/Qsa6K64hd.jpeg" alt="为你的Nginx配置SSL证书" class="block w-full mb-8">
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2022-11-23 · 3 min read</div>
+          
+            <a href="https://saowu.top/blog/uZhO58y8l/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              其他
+            </a>
+          
+            <a href="https://saowu.top/blog/p6tPptTlO/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Docker
+            </a>
+          
+            <a href="https://saowu.top/blog/5lhY7x_08/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              日记
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <blockquote>
+<p>Nginx是一款轻量级的Web服务器、反向代理服务器，由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用。</p>
+</blockquote>
+<h3 id="0-安装启动nginx">0、安装启动Nginx</h3>
+<pre><code>#启动
+docker run -d -p 80:80 -p 443:443 --name nginx-ssl -v /data/cert:/etc/nginx/cert nginx:1.23.1-alpine
+# 进入容器
+docker exec -it nginx-ssl sh
+#/etc/nginx 安装目录
+#/usr/share/nginx/html 站点目录
+</code></pre>
+<h3 id="1-获得证书文件servercrt和私钥文件serverkey">1、 获得证书文件<code>server.crt</code>和私钥文件<code>server.key</code>。</h3>
+<blockquote>
+<p>CRT 应该是 certificate 的三个字母，其实还是证书的意思。常见于 UNIX 系统，有可能是 PEM 编码，也有可能是 DER 编码，大多数应该是 PEM 编码。</p>
+</blockquote>
+<h3 id="2-在nginx的安装目录下创建cert目录并且将serverkey和servercrt拷贝到nginx的cert目录下">2、 在Nginx的安装目录下创建cert目录，并且将<code>server.key</code>和<code>server.crt</code>拷贝到nginx的<code>cert</code>目录下。</h3>
+<blockquote>
+<p>或者启动容器时挂载在到<code>cert</code>目录下</p>
+</blockquote>
+<pre><code class="language-bash"># nginx容器目录
+/etc/nginx # ls -l
+total 36
+drwxr-xr-x    6 root     root           192 Nov 23 03:12 cert
+drwxr-xr-x    1 root     root          4096 Nov 23 02:38 conf.d
+-rw-r--r--    1 root     root          1077 Jul 19 15:22 fastcgi.conf
+-rw-r--r--    1 root     root          1007 Jul 19 15:22 fastcgi_params
+-rw-r--r--    1 root     root          5349 Jul 19 15:22 mime.types
+lrwxrwxrwx    1 root     root            22 Oct  6 22:38 modules -&gt; /usr/lib/nginx/modules
+-rw-r--r--    1 root     root           648 Jul 19 15:22 nginx.conf
+-rw-r--r--    1 root     root           636 Jul 19 15:22 scgi_params
+-rw-r--r--    1 root     root           664 Jul 19 15:22 uwsgi_params
+
+</code></pre>
+<h3 id="3-配置nginx中confd目录下创建ssl-nameconf文件">3、 配置Nginx中<code>conf.d</code>目录下创建<code>{ssl-name}.conf</code>文件。</h3>
+<p>修改成如下参数：</p>
+<pre><code class="language-bash">#{ssl-name}.conf如下
+
+server {
+
+    listen                  443 ssl;
+    listen                  [::]:443 ssl;               #ipv6
+
+    server_name             www.domain.com;             #用户服务器的域名
+
+    ssl_certificate         cert/server.crt;
+    ssl_certificate_key     cert/server.key;
+    ssl_session_timeout     5m;
+    ssl_protocols           TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers             ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; 
+    ssl_prefer_server_ciphers   on;                     #为了支持TLSv1 TLSv1.1老协议
+
+    location / {
+        root        /usr/share/nginx/html;             #站点目录
+        index       index.html index.htm;
+        #proxy_pass  http://127.0.0.1:8080;              #反向代理到本服务器的8080端口
+    }
+}
+
+</code></pre>
+<h3 id="4-修改完成后保存配置文件验证配置是否正确">4、 修改完成后保存配置文件，验证配置是否正确。</h3>
+<pre><code class="language-bash">nginx -t
+</code></pre>
+<p>配置正确，回显信息如下所示：</p>
+<pre><code class="language-bash">nginx.conf syntax is ok
+nginx.conf test is successful
+</code></pre>
+<pre><code class="language-bash"># 查看当前配置
+nginx -T
+</code></pre>
+<h3 id="5-重新载入nginx配置">5、重新载入Nginx配置</h3>
+<pre><code class="language-bash">nginx -s reload
+</code></pre>
+<h3 id="6-可选配置80-强制转-443修改defaultconf">6、可选：配置80 强制转 443，修改<code>default.conf</code></h3>
+<p>修改成如下参数：</p>
+<pre><code class="language-bash">#default.conf如下
+
+server {
+    listen       80;
+    listen       [::]:80;           #ipv6
+    server_name  www.domain.com;
+    
+    rewrite ^(.*)$ https://${server_name}$1 permanent; 
+}
+
+</code></pre>
+<p>推荐：<a href="https://www.digitalocean.com/community/tools/nginx?global.app.lang=zhCN">一个配置高性能、安全、稳定的NGINX服务器的最简单方法。</a></p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright © 2020 - 2023 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
+Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#0-%E5%AE%89%E8%A3%85%E5%90%AF%E5%8A%A8nginx">0、安装启动Nginx</a></li>
+<li><a href="#1-%E8%8E%B7%E5%BE%97%E8%AF%81%E4%B9%A6%E6%96%87%E4%BB%B6servercrt%E5%92%8C%E7%A7%81%E9%92%A5%E6%96%87%E4%BB%B6serverkey">1、 获得证书文件<code>server.crt</code>和私钥文件<code>server.key</code>。</a></li>
+<li><a href="#2-%E5%9C%A8nginx%E7%9A%84%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BAcert%E7%9B%AE%E5%BD%95%E5%B9%B6%E4%B8%94%E5%B0%86serverkey%E5%92%8Cservercrt%E6%8B%B7%E8%B4%9D%E5%88%B0nginx%E7%9A%84cert%E7%9B%AE%E5%BD%95%E4%B8%8B">2、 在Nginx的安装目录下创建cert目录，并且将<code>server.key</code>和<code>server.crt</code>拷贝到nginx的<code>cert</code>目录下。</a></li>
+<li><a href="#3-%E9%85%8D%E7%BD%AEnginx%E4%B8%ADconfd%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BAssl-nameconf%E6%96%87%E4%BB%B6">3、 配置Nginx中<code>conf.d</code>目录下创建<code>{ssl-name}.conf</code>文件。</a></li>
+<li><a href="#4-%E4%BF%AE%E6%94%B9%E5%AE%8C%E6%88%90%E5%90%8E%E4%BF%9D%E5%AD%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%AA%8C%E8%AF%81%E9%85%8D%E7%BD%AE%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE">4、 修改完成后保存配置文件，验证配置是否正确。</a></li>
+<li><a href="#5-%E9%87%8D%E6%96%B0%E8%BD%BD%E5%85%A5nginx%E9%85%8D%E7%BD%AE">5、重新载入Nginx配置</a></li>
+<li><a href="#6-%E5%8F%AF%E9%80%89%E9%85%8D%E7%BD%AE80-%E5%BC%BA%E5%88%B6%E8%BD%AC-443%E4%BF%AE%E6%94%B9defaultconf">6、可选：配置80 强制转 443，修改<code>default.conf</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://saowu.top/blog/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script type="application/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="application/javascript">
+
+  var gitalk = new Gitalk({
+    clientID: '1ffeeefba638614e6e82',
+    clientSecret: '062da207075e7e51b4443da0d408b6d787cc3ed9',
+    repo: 'blog',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+    
+  
+</body>
+
+</html>
