@@ -1,0 +1,383 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Pod容器重启导致内存突增排查 - saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Pod容器重启导致内存突增排查 - saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
+    
+
+  <meta name="description" content="异常告警
+
+2023年1月8日，告出HostOomKillDetected警报，192.168.204.66机器配置为8C16G
+
+    
+服务发生异常重启
+    
+Grafana显示异常曲线
+
+内存趋势（Used：7.998GiB--..." />
+  <meta property="og:title" content="Pod容器重启导致内存突增排查 - saowu&#39;s Blog">
+  <meta property="og:description" content="异常告警
+
+2023年1月8日，告出HostOomKillDetected警报，192.168.204.66机器配置为8C16G
+
+    
+服务发生异常重启
+    
+Grafana显示异常曲线
+
+内存趋势（Used：7.998GiB--..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://saowu.top/blog/iShLWSMS7/" />
+  <meta property="og:image" content="https://saowu.top/blog/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="Pod容器重启导致内存突增排查 - saowu&#39;s Blog">
+  <meta name="twitter:description" content="异常告警
+
+2023年1月8日，告出HostOomKillDetected警报，192.168.204.66机器配置为8C16G
+
+    
+服务发生异常重启
+    
+Grafana显示异常曲线
+
+内存趋势（Used：7.998GiB--...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://saowu.top/blog/iShLWSMS7/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://saowu.top/blog/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://saowu.top/blog" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      saowu&#39;s Blog
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          Pod容器重启导致内存突增排查
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-01-08 · 2 min read</div>
+          
+            <a href="https://saowu.top/blog/NMIC6abAH/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Kubernetes
+            </a>
+          
+            <a href="https://saowu.top/blog/5lhY7x_08/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              日记
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h1 id="异常告警">异常告警</h1>
+<blockquote>
+<p>2023年1月8日，告出<code>HostOomKillDetected</code>警报，<code>192.168.204.66</code>机器配置为<code>8C16G</code></p>
+</blockquote>
+<p>    <img src="https://saowu.top/blog/post-images/1704697369895.PNG" alt="" loading="lazy"></p>
+<h1 id="服务发生异常重启">服务发生异常重启</h1>
+<p>    <img src="https://saowu.top/blog/post-images/1704697391995.jpeg" alt="" loading="lazy"></p>
+<h1 id="grafana显示异常曲线">Grafana显示异常曲线</h1>
+<blockquote>
+<p>内存趋势（Used：<code>7.998</code>GiB---<code>9.927</code>GiB---<code>1.934</code>GiB）</p>
+</blockquote>
+<p>    <img src="https://saowu.top/blog/post-images/1704697433216.PNG" alt="" loading="lazy"><br>
+   <img src="https://saowu.top/blog/post-images/1704697480077.PNG" alt="" loading="lazy"></p>
+<h1 id="服务资源分配情况">服务资源分配情况</h1>
+<p>   <img src="https://saowu.top/blog/post-images/1704697518203.PNG" alt="" loading="lazy"></p>
+<h1 id="容器日志">容器日志</h1>
+<ul>
+<li><code>10:19:30.617</code>旧日志中断，没有异常日志<br>
+<img src="https://saowu.top/blog/post-images/1704697675587.png" alt="" loading="lazy"></li>
+<li><code>10:19:33.749</code>新容器开始启动<br>
+<img src="https://saowu.top/blog/post-images/1704697571818.PNG" alt="" loading="lazy"></li>
+<li><code>10:19:47.409</code>新容器启动完成<br>
+<img src="https://saowu.top/blog/post-images/1704698665134.png" alt="" loading="lazy"></li>
+</ul>
+<h1 id="问题分析与猜测">问题分析与猜测</h1>
+<p>该服务内存Limit设置为<code>8</code>GiB，异常前内存使用率在<code>7.998</code>GiB，且继续增长，超过资源 limit 的容器都将被 kubelet 杀死并重启。所以该服务在<code>10:19:30</code>触发Limit限制，进而重启。重启有两个动作，回收旧容器，启动新容：</p>
+<ul>
+<li><code>10:19:30</code> 旧容器开始回收，内存使用=<code>8</code>GiB</li>
+<li><code>10:19:33</code> 新容器开始启动</li>
+<li><code>10:19:47</code> 新容器启动完成</li>
+<li><code>10:24:15</code> 旧容器回收完毕，内存使用=<code>1.934</code>GiB（新容器初始内存使用值）</li>
+</ul>
+<p>由于，<code>10:19:33---10:24:15</code>期间（见Grafana图2），新容器正在启动，旧容器正在回收，两个容器同时存在(<code>8</code>GiB+<code>1.934</code>GiB)，导致Pod内存突增到<code>9.927</code>GiB，导致节点内存紧张触发HostOomKillDetected报警。</p>
+<h1 id="问题验证">问题验证</h1>
+<p>启动任一Java服务进行测试，运行稳定后，进入容器执行<code>kill 1</code>，观察Pod内存曲线，出现高峰并恢复，高峰前后内存值之和，约等于峰值，可验证通过。</p>
+<p>   <img src="https://saowu.top/blog/post-images/1704698088208.png" alt="" loading="lazy"></p>
+<p>✅ 验证通过</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright © 2020 - 2025 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
+Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#%E5%BC%82%E5%B8%B8%E5%91%8A%E8%AD%A6">异常告警</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%94%9F%E5%BC%82%E5%B8%B8%E9%87%8D%E5%90%AF">服务发生异常重启</a></li>
+<li><a href="#grafana%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8%E6%9B%B2%E7%BA%BF">Grafana显示异常曲线</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E6%83%85%E5%86%B5">服务资源分配情况</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8%E6%97%A5%E5%BF%97">容器日志</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90%E4%B8%8E%E7%8C%9C%E6%B5%8B">问题分析与猜测</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E9%AA%8C%E8%AF%81">问题验证</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://saowu.top/blog/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script type="application/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="application/javascript">
+
+  var gitalk = new Gitalk({
+    clientID: '1ffeeefba638614e6e82',
+    clientSecret: '062da207075e7e51b4443da0d408b6d787cc3ed9',
+    repo: 'blog',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+    
+  
+</body>
+
+</html>

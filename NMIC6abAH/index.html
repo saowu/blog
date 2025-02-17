@@ -1,0 +1,255 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
+    
+
+  <meta name="description" content="A programmer who wants to be happy and muddle along." />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
+    </div>
+  </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
+    
+      <a href="/blog" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Home
+      </a>
+    
+      <a href="/blog/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Archives
+      </a>
+    
+      <a href="/blog/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Tags
+      </a>
+    
+      <a href="/blog/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        About
+      </a>
+    
+    <a href="https://saowu.top/blog/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
+</div>
+
+    <div class="max-w-4xl w-full mx-auto pt-32">
+      <h1 class="text-2xl font-bold pb-8 flex justify-center items-center">
+        <i class="ri-hashtag"></i>
+        Kubernetes
+      </h1>
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
+        
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/zgjulM2qh/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Istio Gateway资源配置tls无效
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2024-01-15</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        问题现象
+部署以下配置，发现以下问题
+
+https协议：wh-member1-kiali.domain.com和wh-member1-grafana.domain.com只有一个可以正常访问
+http协议：wh-member1-kiali....
+      </div>
+      <a href="https://saowu.top/blog/zgjulM2qh/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/iShLWSMS7/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Pod容器重启导致内存突增排查
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2024-01-08</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        异常告警
+
+2023年1月8日，告出HostOomKillDetected警报，192.168.204.66机器配置为8C16G
+
+    
+服务发生异常重启
+    
+Grafana显示异常曲线
+
+内存趋势（Used：7.998GiB--...
+      </div>
+      <a href="https://saowu.top/blog/iShLWSMS7/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/3SW5xXxX7/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Kubernetes使用kube-vip提升高可用性
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-09-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+现集群架构是单master（192.168.110.3），为了提升高可用性决定增加2个master(192.168.110.4、192.168.110.5)，但是当192.168.110.3宕机，需要逐个变更worker节点的/etc/k...
+      </div>
+      <a href="https://saowu.top/blog/3SW5xXxX7/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/lus37YulY/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Kubernetes自定义生成kubeconfig
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-09-01</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+使用 Kubernetes 的基于角色的访问控制 (RBAC) 系统，创建一个只能访问特定命名空间的服务帐户。
+
+kubeconfig组成
+kubeconfig中主要由如下部分组成：
+
+clusters: 集群
+users: 用户
+con...
+      </div>
+      <a href="https://saowu.top/blog/lus37YulY/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/CyaOKIvN7/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          kubernetes怎么使用外部负载均衡器？
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-07-04</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+对于裸机集群，Kubernetes 不提供网络负载均衡器的实现（LoadBalancer 类型的服务）。Kubernetes 附带的网络负载均衡器的实现都是调用各种云提供商（GCP、AWS、Azure...）的粘合代码。如果您没有在受支持...
+      </div>
+      <a href="https://saowu.top/blog/CyaOKIvN7/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/CyaOKIvN7.jpg" alt="kubernetes怎么使用外部负载均衡器？">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/Jl7Lzwrgj/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          关于Jvm对容器环境内资源感知的支持
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-26</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+早期时候，容器内运行Java应用程序时，Jvm无法感知容器环境存在，所以对容器资源的限制比如内存或者cpu等都无法生效。原因是容器的资源管理使用了操作系统cgroup机制，但是Jvm无法感知cgroup。所以可能需要在Jvm以及Pod、D...
+      </div>
+      <a href="https://saowu.top/blog/Jl7Lzwrgj/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/Jl7Lzwrgj.jpg" alt="关于Jvm对容器环境内资源感知的支持">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/fOea4CC7E/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Minio架构及特点
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-04-17</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+MinIO is a high-performance, S3 compatible object store. It is built for large scale AI/ML, data lake and database work...
+      </div>
+      <a href="https://saowu.top/blog/fOea4CC7E/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/fOea4CC7E.svg" alt="Minio架构及特点">
+    
+  </div>
+  
+      </div>
+
+      
+  <div class="my-4 flex justify-between px-4 md:px-0">
+    
+    
+      <a href="https://saowu.top/blog/NMIC6abAH/page/2" class="btn btn-white">
+        下一页
+        <i class="ri-arrow-right-line ml-4"></i>
+      </a>
+    
+  </div>
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright © 2020 - 2025 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
+Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
+</footer>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+</body>
+</html>

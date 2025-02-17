@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://saowu.top/blog</id>
+    <title>saowu&apos;s Blog</title>
+    <updated>2025-02-17T01:35:56.088Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://saowu.top/blog"/>
+    <link rel="self" href="https://saowu.top/blog/atom.xml"/>
+    <subtitle>A programmer who wants to be happy and muddle along.</subtitle>
+    <logo>https://saowu.top/blog/images/avatar.png</logo>
+    <icon>https://saowu.top/blog/favicon.ico</icon>
+    <rights>All rights reserved 2025, saowu&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[【推荐】世界上最受欢迎的Kubernetes IDE]]></title>
+        <id>https://saowu.top/blog/jXRUg5h-7/</id>
+        <link href="https://saowu.top/blog/jXRUg5h-7/">
+        </link>
+        <updated>2024-03-19T06:12:50.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Istio Gateway资源配置tls无效]]></title>
+        <id>https://saowu.top/blog/zgjulM2qh/</id>
+        <link href="https://saowu.top/blog/zgjulM2qh/">
+        </link>
+        <updated>2024-01-15T09:44:56.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Pod容器重启导致内存突增排查]]></title>
+        <id>https://saowu.top/blog/iShLWSMS7/</id>
+        <link href="https://saowu.top/blog/iShLWSMS7/">
+        </link>
+        <updated>2024-01-08T07:01:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[捕鱼达人团体游戏]]></title>
+        <id>https://saowu.top/blog/FkV3a_z2S/</id>
+        <link href="https://saowu.top/blog/FkV3a_z2S/">
+        </link>
+        <updated>2024-01-03T08:11:53.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Kubernetes使用kube-vip提升高可用性]]></title>
+        <id>https://saowu.top/blog/3SW5xXxX7/</id>
+        <link href="https://saowu.top/blog/3SW5xXxX7/">
+        </link>
+        <updated>2023-09-07T05:42:35.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Kubernetes自定义生成kubeconfig]]></title>
+        <id>https://saowu.top/blog/lus37YulY/</id>
+        <link href="https://saowu.top/blog/lus37YulY/">
+        </link>
+        <updated>2023-09-01T01:53:19.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[kubernetes怎么使用外部负载均衡器？]]></title>
+        <id>https://saowu.top/blog/CyaOKIvN7/</id>
+        <link href="https://saowu.top/blog/CyaOKIvN7/">
+        </link>
+        <updated>2023-07-04T05:40:49.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于Jvm对容器环境内资源感知的支持]]></title>
+        <id>https://saowu.top/blog/Jl7Lzwrgj/</id>
+        <link href="https://saowu.top/blog/Jl7Lzwrgj/">
+        </link>
+        <updated>2023-06-26T08:25:03.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java SPI机制]]></title>
+        <id>https://saowu.top/blog/iwxTlhmAM/</id>
+        <link href="https://saowu.top/blog/iwxTlhmAM/">
+        </link>
+        <updated>2023-05-24T06:50:46.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[模拟JVM Crash并生成hs_err_pid.log]]></title>
+        <id>https://saowu.top/blog/1ouuw3FMw/</id>
+        <link href="https://saowu.top/blog/1ouuw3FMw/">
+        </link>
+        <updated>2023-05-05T09:30:33.000Z</updated>
+    </entry>
+</feed>

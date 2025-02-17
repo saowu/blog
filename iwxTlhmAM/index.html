@@ -1,0 +1,436 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Java SPI机制 - saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Java SPI机制 - saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
+    
+
+  <meta name="description" content="
+A service is a well-known set of interfaces and (usually abstract) classes. A service provider(SPI) is a specific imple..." />
+  <meta property="og:title" content="Java SPI机制 - saowu&#39;s Blog">
+  <meta property="og:description" content="
+A service is a well-known set of interfaces and (usually abstract) classes. A service provider(SPI) is a specific imple..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://saowu.top/blog/iwxTlhmAM/" />
+  <meta property="og:image" content="https://saowu.top/blog/post-images/iwxTlhmAM.jpg">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="Java SPI机制 - saowu&#39;s Blog">
+  <meta name="twitter:description" content="
+A service is a well-known set of interfaces and (usually abstract) classes. A service provider(SPI) is a specific imple...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://saowu.top/blog/iwxTlhmAM/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://saowu.top/blog/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://saowu.top/blog" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      saowu&#39;s Blog
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          Java SPI机制
+        </h1>
+        
+          <img src="https://saowu.top/blog/post-images/iwxTlhmAM.jpg" alt="Java SPI机制" class="block w-full mb-8">
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-05-24 · 7 min read</div>
+          
+            <a href="https://saowu.top/blog/FWHSehn5o/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Java
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <blockquote>
+<p>A service is a well-known set of interfaces and (usually abstract) classes. A service provider(SPI) is a specific implementation of a service. The classes in a provider typically implement the interfaces and subclass the classes defined in the service itself. Service providers can be installed in an implementation of the Java platform in the form of extensions, that is, jar files placed into any of the usual extension directories. Providers can also be made available by adding them to the application's class path or by some other platform-specific means.</p>
+</blockquote>
+<h1 id="spi-机制介绍">SPI 机制介绍</h1>
+<p>SPI 全称 Service Provider Interface，是 Java 提供的一套用来被第三方实现或者扩展的接口，它可以用来启用框架扩展和替换组件。 SPI 的作用就是为这些被扩展的 API 寻找服务实现。这一机制为很多框架扩展提供了可能，比如在 Dubbo、JDBC 中都使用到了 SPI 机制。本文介绍了 Java SPI 机制以及在<code>模块化</code>和<code>非模块化</code>项目中的实现方式(此处的模块化指 Java9 引入的模块化)。</p>
+<h2 id="spi-和-api-的区别">SPI 和 API 的区别</h2>
+<ul>
+<li>API （Application Programming Interface）在大多数情况下，都是实现方制定接口并完成对接口的实现，调用方仅仅依赖接口调用，且无权选择不同实现。 从使用人员上来说，API 直接被应用开发人员使用。</li>
+<li>SPI （Service Provider Interface）是调用方来制定接口规范，提供给外部来实现，调用方在调用时则选择自己需要的外部实现，可用于启用框架扩展和可替换组件。 从使用人员上来说，SPI 被框架扩展人员使用。</li>
+</ul>
+<h1 id="spi-的约定">SPI 的约定</h1>
+<p>服务提供方需要通过一些约定告诉系统自己所提供的服务的位置，Java9 之后一共有<code>两种</code>约定方式：</p>
+<ul>
+<li>非模块化：通过在 <code>META-INF/services/</code> 目录下配置相关文件实现；</li>
+<li>模块化：通过在模块化文件 <code>module-info.java</code> 中添加导出语句指定服务位置实现；</li>
+</ul>
+<pre><code class="language-java">package java.util;
+
+public final class ServiceLoader&lt;S&gt; implements Iterable&lt;S&gt;{
+    private final class LazyClassPathLookupIterator&lt;T&gt; implements Iterator&lt;Provider&lt;T&gt;&gt;{
+        static final String PREFIX = &quot;META-INF/services/&quot;;
+
+        Set&lt;String&gt; providerNames = new HashSet&lt;&gt;();  // to avoid duplicates
+        Enumeration&lt;URL&gt; configs;
+        Iterator&lt;String&gt; pending;
+
+        //.........
+    }
+}
+</code></pre>
+<pre><code class="language-java">package java.lang;
+
+public final class Module implements AnnotatedElement {
+
+private Class&lt;?&gt; loadModuleInfoClass() {
+        Class&lt;?&gt; clazz = null;
+        try (InputStream in = getResourceAsStream(&quot;module-info.class&quot;)) {
+            if (in != null)
+                clazz = loadModuleInfoClass(in);
+        } catch (Exception ignore) { }
+        return clazz;
+    }
+
+    /**
+     * Loads module-info.class as a package-private interface in a class loader
+     * that is a child of this module's class loader.
+     */
+    private Class&lt;?&gt; loadModuleInfoClass(InputStream in) throws IOException {
+        final String MODULE_INFO = &quot;module-info&quot;;
+        // . . .
+    }
+
+}
+</code></pre>
+<h1 id="spi-原理">SPI 原理</h1>
+<ul>
+<li>类全称限定名的获取，即知道哪些类是服务提供者；</li>
+<li>类加载，把获取到的类加载到内存中，涉及上下文类加载器；</li>
+</ul>
+<h2 id="类加载">类加载</h2>
+<p>获取到 SPI 服务实现类的文件之后，就可以使用类加载器将对应的类加载到内存中， 问题在于，SPI 的接口是 Java 核心库的一部分，是由引导类加载器来加载的；SPI 实现的 Java 类一般是由系统类加载器来加载的。引导类加载器是无法找到 SPI 的实现类的，因为它只加载 Java 的核心库。它也不能代理给系统类加载器，因为它是系统类加载器的祖先类加载器。也就是说，类加载器的双亲委派模型无法解决这个问题。所以 java 采用了线程上下文类加载器。破坏了“双亲委派模型”，可以在执行线程中抛弃双亲委派加载链模式，使程序可以逆向使用类加载器，从而实现 SPI 服务的加载。线程上下文类加载器的实现如下：</p>
+<ul>
+<li>在 ThreaLocal 中通过 <code>setContextClassLoader​(ClassLoader cl)</code>存储当前线程中的类加载器，默认为 AppClassLoader。</li>
+<li>Java 核心库中的程序在需要加载 SPI 实现类的时候，会首先通过 ThreaLocal 中的 <code>getContextClassLoader​(ClassLoader cl)</code>方法获取上下文类加载器，然后通过该类加载器加载 SPI 的实现类。</li>
+</ul>
+<pre><code class="language-java">// ServiceLoader 是JDK用于加载 SPI 服务实现类的工具，可以处理 0 个、1 个或者多个服务提供商的情况。
+package java.util;
+
+public final class ServiceLoader&lt;S&gt; implements Iterable&lt;S&gt;{
+    @CallerSensitive
+    public static &lt;S&gt; ServiceLoader&lt;S&gt; load(Class&lt;S&gt; service) {
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        return new ServiceLoader&lt;&gt;(Reflection.getCallerClass(), service, cl);
+    }
+}
+</code></pre>
+<h3 id="spring-spi是和jdk-spi的原理相同">Spring SPI是和JDK SPI的原理相同</h3>
+<p>Spring中使用的类是SpringFactoriesLoader，文件路径不同 spring配置放在 <code>META-INF/spring.factories</code>中：</p>
+<pre><code class="language-java">package org.springframework.core.io.support;
+
+public final class SpringFactoriesLoader {
+    public static final String FACTORIES_RESOURCE_LOCATION = &quot;META-INF/spring.factories&quot;;
+    private static final Log logger = LogFactory.getLog(SpringFactoriesLoader.class);
+    private static final Map&lt;ClassLoader, MultiValueMap&lt;String, String&gt;&gt; cache = new ConcurrentReferenceHashMap();
+
+}
+</code></pre>
+<h1 id="dubbo-spi-设计理念">Dubbo SPI 设计理念</h1>
+<p>Dubbo 中的扩展能力是从 JDK 标准的 SPI 扩展点发现机制加强而来，它改进了 JDK 标准的 SPI 以下问题：</p>
+<ul>
+<li>JDK 标准的 SPI 会一次性实例化扩展点所有实现，如果有扩展实现初始化很耗时，但如果没用上也加载，会很浪费资源。</li>
+<li>如果扩展点加载失败，连扩展点的名称都拿不到了。比如：JDK 标准的 ScriptEngine，通过 getName() 获取脚本类型的名称，但如果 RubyScriptEngine 因为所依赖的 jruby.jar 不存在，导致 RubyScriptEngine 类加载失败，这个失败原因被吃掉了，和 ruby 对应不起来，当用户执行 ruby 脚本时，会报不支持 ruby，而不是真正失败的原因。</li>
+</ul>
+<p>用户能够基于 Dubbo 提供的扩展能力，很方便基于自身需求扩展其他协议、过滤器、路由等。下面介绍下 Dubbo 扩展能力的特性。</p>
+<ul>
+<li>按需加载。Dubbo 的扩展能力不会一次性实例化所有实现，而是用扩展类实例化，减少资源浪费。</li>
+<li>增加扩展类的 IOC 能力。Dubbo 的扩展能力并不仅仅只是发现扩展服务实现类，而是在此基础上更进一步，如果该扩展类的属性依赖其他对象，则 Dubbo 会自动的完成该依赖对象的注入功能。</li>
+<li>增加扩展类的 AOP 能力。Dubbo 扩展能力会自动的发现扩展类的包装类，完成包装类的构造，增强扩展类的功能。</li>
+<li>具备动态选择扩展实现的能力。Dubbo 扩展会基于参数，在运行时动态选择对应的扩展类，提高了 Dubbo 的扩展能力。</li>
+<li>可以对扩展实现进行排序。能够基于用户需求，指定扩展实现的执行顺序。</li>
+<li>提供扩展点的 Adaptive 能力。该能力可以使的一些扩展类在 consumer 端生效，一些扩展类在 provider 端生效。</li>
+</ul>
+<p><a href="https://cn.dubbo.apache.org/zh-cn/overview/mannual/java-sdk/reference-manual/spi/overview/">Dubbo SPI 概述</a></p>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li>原文链接：<a href="https://blog.csdn.net/m0_68064743/article/details/123956861">https://blog.csdn.net/m0_68064743/article/details/123956861</a></li>
+</ul>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright © 2020 - 2025 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
+Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#spi-%E6%9C%BA%E5%88%B6%E4%BB%8B%E7%BB%8D">SPI 机制介绍</a>
+<ul>
+<li><a href="#spi-%E5%92%8C-api-%E7%9A%84%E5%8C%BA%E5%88%AB">SPI 和 API 的区别</a></li>
+</ul>
+</li>
+<li><a href="#spi-%E7%9A%84%E7%BA%A6%E5%AE%9A">SPI 的约定</a></li>
+<li><a href="#spi-%E5%8E%9F%E7%90%86">SPI 原理</a>
+<ul>
+<li><a href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD">类加载</a>
+<ul>
+<li><a href="#spring-spi%E6%98%AF%E5%92%8Cjdk-spi%E7%9A%84%E5%8E%9F%E7%90%86%E7%9B%B8%E5%90%8C">Spring SPI是和JDK SPI的原理相同</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#dubbo-spi-%E8%AE%BE%E8%AE%A1%E7%90%86%E5%BF%B5">Dubbo SPI 设计理念</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">参考链接</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://saowu.top/blog/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script type="application/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="application/javascript">
+
+  var gitalk = new Gitalk({
+    clientID: '1ffeeefba638614e6e82',
+    clientSecret: '062da207075e7e51b4443da0d408b6d787cc3ed9',
+    repo: 'blog',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+    
+  
+</body>
+
+</html>

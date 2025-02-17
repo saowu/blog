@@ -1,0 +1,977 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>MySQL数据库开发的三十六条军规 - saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="MySQL数据库开发的三十六条军规 - saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
+    
+
+  <meta name="description" content="
+转自 石展@赶集
+
+一、核心军规
+1、尽量不在数据库做运算
+别让脚趾头想事情，那是脑瓜子的职责。
+
+让数据库多做她擅长的事
+
+✅尽量不在数据库做运算
+✅复杂运算跑到程序端CPU
+✅尽可能简单应用MySQL
+
+
+举例: md5() / Or..." />
+  <meta property="og:title" content="MySQL数据库开发的三十六条军规 - saowu&#39;s Blog">
+  <meta property="og:description" content="
+转自 石展@赶集
+
+一、核心军规
+1、尽量不在数据库做运算
+别让脚趾头想事情，那是脑瓜子的职责。
+
+让数据库多做她擅长的事
+
+✅尽量不在数据库做运算
+✅复杂运算跑到程序端CPU
+✅尽可能简单应用MySQL
+
+
+举例: md5() / Or..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://saowu.top/blog/CgA7W8fNC/" />
+  <meta property="og:image" content="https://saowu.top/blog/post-images/CgA7W8fNC.jpg">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="MySQL数据库开发的三十六条军规 - saowu&#39;s Blog">
+  <meta name="twitter:description" content="
+转自 石展@赶集
+
+一、核心军规
+1、尽量不在数据库做运算
+别让脚趾头想事情，那是脑瓜子的职责。
+
+让数据库多做她擅长的事
+
+✅尽量不在数据库做运算
+✅复杂运算跑到程序端CPU
+✅尽可能简单应用MySQL
+
+
+举例: md5() / Or...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://saowu.top/blog/CgA7W8fNC/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://saowu.top/blog/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://saowu.top/blog" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      saowu&#39;s Blog
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          MySQL数据库开发的三十六条军规
+        </h1>
+        
+          <img src="https://saowu.top/blog/post-images/CgA7W8fNC.jpg" alt="MySQL数据库开发的三十六条军规" class="block w-full mb-8">
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2021-05-02 · 12 min read</div>
+          
+            <a href="https://saowu.top/blog/wSwQDVzmh/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              MySQL
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <blockquote>
+<p>转自 石展@赶集</p>
+</blockquote>
+<h2 id="一-核心军规">一、核心军规</h2>
+<h3 id="1-尽量不在数据库做运算">1、尽量不在数据库做运算</h3>
+<p><u><em>别让脚趾头想事情，那是脑瓜子的职责。</em></u></p>
+<ul>
+<li>让数据库多做她擅长的事
+<ul>
+<li>✅尽量不在数据库做运算</li>
+<li>✅复杂运算跑到程序端CPU</li>
+<li>✅尽可能简单应用MySQL</li>
+</ul>
+</li>
+<li>举例: <s><code>md5() / Order by Rand()</code></s></li>
+</ul>
+<h3 id="2-控制单表数据量">2、控制单表数据量</h3>
+<ul>
+<li>一年内的单表数据量预估
+<ul>
+<li>纯<code>INT</code>不超1000W</li>
+<li>含<code>CHAR</code>不超500W</li>
+</ul>
+</li>
+<li>合理分表不超载
+<ul>
+<li>USERID</li>
+<li>DATE</li>
+<li>AREA</li>
+</ul>
+</li>
+<li>建议单库不超过300～400个表</li>
+</ul>
+<h3 id="3-保持表身段苗条">3、保持表身段苗条</h3>
+<ul>
+<li>表字段数少而精
+<ul>
+<li>✅IO高效</li>
+<li>✅全表遍历</li>
+<li>✅表修复快</li>
+<li>✅提高并发</li>
+<li>✅<code>alter table</code>快</li>
+</ul>
+</li>
+<li>单表1G体积500W行评估
+<ul>
+<li>顺序读1G文件需N秒</li>
+<li>单行不超过200Byte</li>
+<li>单表不超50个纯<code>INT</code>字段</li>
+<li>单表不超20个<code>CHAR</code>字段</li>
+</ul>
+</li>
+<li>单表字段数上限控制在20~50个</li>
+</ul>
+<h3 id="4-平衡范式与冗余">4、平衡范式与冗余</h3>
+<ul>
+<li>✅效率优先、提升性能</li>
+<li>没有绝对的对与错</li>
+<li>适当时牺牲范式、加入冗余</li>
+<li>但会增加代码复杂度</li>
+</ul>
+<h3 id="5-拒绝3b">5、拒绝3B</h3>
+<ul>
+<li>数据库并发像城市交通
+<ul>
+<li>非线性增长</li>
+</ul>
+</li>
+<li>☠️拒绝3B
+<ul>
+<li>☝️大SQL（Big SQL）</li>
+<li>☝️大事务（Big Transaction）</li>
+<li>☝️大批量（Big Batch）</li>
+</ul>
+</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://saowu.top/blog/post-images/1619928460347.png" alt="" loading="lazy"></figure>
+<h2 id="二-字段类军规">二、字段类军规</h2>
+<h3 id="1-用好数值字段类型">1、用好数值字段类型</h3>
+<ul>
+<li>👉自增整型类型做主键，务必使用类型 <code>BIGINT</code>，而非 <code>INT</code>，后期表结构调整代价巨大；</li>
+<li>👉当达到自增整型类型的上限值时，再次自增插入，MySQL 数据库会报重复错误；</li>
+<li>👉不要再使用浮点类型 <code>Float</code>、<code>Double</code>，MySQL 后续版本将不再支持上述两种类型；</li>
+<li>👉账户余额字段，设计是用整型类型，而不是 <code>DECIMAL</code> 类型，这样性能更好，存储更紧凑。</li>
+</ul>
+<h3 id="2-将字符转化为数字">2、将字符转化为数字</h3>
+<ul>
+<li>数字型VS字符串型索引
+<ul>
+<li>更高效</li>
+<li>查询更快</li>
+<li>占用空间更小</li>
+</ul>
+</li>
+<li>IPv4存储也可以采用整型存储
+<ul>
+<li>后续查询使用<code>INET_ATON()</code>、<code>INET_NTOA()</code>函数转换使用</li>
+<li>可以减少聚簇索引存储空间，如针对此字段有二级索引也会同步减少存储空间</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-优先使用enum或set">3、优先使用ENUM或SET</h3>
+<ul>
+<li><code>ENUM</code>占用1字节，转为数值运算</li>
+<li><code>SET</code>视节点定，最多占用8字节</li>
+<li>比较时需要加<code>'</code>单引号(即使是数值)</li>
+<li>举例
+<ul>
+<li><code>'sex' enum('F','M') COMMENT '性别'</code></li>
+<li><code>'c1' enum('0','1','2','3') COMMENT '职介审核'</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="4-避免使用null字段">4、避免使用NULL字段</h3>
+<ul>
+<li>避免使用<code>NULL</code>字段
+<ul>
+<li>很难进行查询优化</li>
+<li><code>NULL</code>列加索引，需要额外空间</li>
+<li>含<code>NULL</code>复合索引无效</li>
+</ul>
+</li>
+<li>举例
+<ul>
+<li><s><code>'a' char(32) DEFAULT NULL</code></s></li>
+<li><s><code>'b' int(10) NOT NULL </code></s></li>
+<li><code>'c' int(10) NOT NULL DEFAULT 0</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="5-少用并拆分textblob">5、少用并拆分TEXT/BLOB</h3>
+<ul>
+<li><code>TEXT</code>类型处理性能远低于<code>VARCHAR</code>
+<ul>
+<li>强制生成硬盘临时表</li>
+<li>浪费更多空间</li>
+<li><code>VARCHAR(65535)</code>==&gt;64K (注意UTF-8)</li>
+</ul>
+</li>
+<li>尽量不用<code>TEXT</code>/<code>BLOB</code>数据类型</li>
+<li>若必须使用则拆分到单独的表</li>
+<li>举例:</li>
+</ul>
+<pre><code class="language-sql">CREATE TABLE t1 (
+    id INT NOT NULL AUTO_INCREMENT,
+    data TEXT NOT NULL,
+    PRIMARY KEY(id)‏
+) ENGINE=InnoDB;
+</code></pre>
+<h3 id="6-不在数据库里存图片">6、不在数据库里存图片</h3>
+<ul>
+<li>对数据库的读/写的速度永远都赶不上文件系统处理的速度</li>
+<li>数据库备份变的巨大，越来越耗时间，最后对文件的访问需要穿越你的应用层和数据库层</li>
+<li>一般来说数据库都是存储一个URL，然后再通过URL来调用图片</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://saowu.top/blog/post-images/1619928415576.png" alt="" loading="lazy"></figure>
+<h2 id="三-索引类军规">三、索引类军规</h2>
+<h3 id="1-谨慎合理添加索引">1、谨慎合理添加索引</h3>
+<ul>
+<li>什么时候建索引？
+<ul>
+<li>改善查询</li>
+<li>减慢更新</li>
+<li>索引不是越多越好</li>
+</ul>
+</li>
+<li>能不加的索引尽量不加
+<ul>
+<li>综合评估数据密度和数据分布</li>
+<li>最好不超过字段数20%</li>
+</ul>
+</li>
+<li>结合核心SQL优先考虑覆盖索引</li>
+<li>举例
+<ul>
+<li>不要给“性别”列创建索引</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-字符字段必须建前缀索引">2、字符字段必须建前缀索引</h3>
+<ul>
+<li>区分度
+<ul>
+<li>单字母区分度： <code>26</code></li>
+<li>4字母区分度：  <code>26*26*26*26=456,976</code></li>
+<li>5字母区分度：  <code>26*26*26*26*26=11,881,376</code></li>
+<li>6字母区分度：  <code>26*26*26*26*26*26=308,915,776</code></li>
+</ul>
+</li>
+<li>举例</li>
+</ul>
+<pre><code class="language-sql">CREATE TABLE test (
+    blob_col  varchar(100) DEFAULT NULL COMMENT '小区拼音', 
+    INDEX(blob_col(10))
+)ENGINE=InnoDB;
+</code></pre>
+<h3 id="3-不在索引列做运算">3、不在索引列做运算</h3>
+<ul>
+<li>不在索引列进行数学运算或凼数运算
+<ul>
+<li>无法使用索引</li>
+<li>导致全表扫描</li>
+</ul>
+</li>
+<li>举例：
+<ul>
+<li><s><code> DELETE FROM t1 where TIMESTAMPDIFF(DAY, modify_time,CURRENT_TIMESTAMP()) &gt; 31</code></s></li>
+<li><code>DELETE FROM t1 WHERE modify_time &lt; '31天前的时间'</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="4-自增列或全局id做innodb主键">4、自增列或全局ID做INNODB主键</h3>
+<ul>
+<li>对主键建立聚簇索引</li>
+<li>二级索引存储主键值</li>
+<li>主键不应更新修改</li>
+<li>按自增顺序插入值</li>
+<li>忌用字符串做主键</li>
+<li>聚簇索引分裂</li>
+<li>推荐用独立亍业务的<code>AUTO_INCREMENT</code>列或全局ID生成器做代理主键</li>
+<li>若不指定主键，InnoDB会用唯一且非空值索引代替</li>
+</ul>
+<h3 id="5-尽量不用外键">5、尽量不用外键</h3>
+<ul>
+<li>线上OLTP系统（线下系统另论）
+<ul>
+<li>外键可节省开发量</li>
+<li>有额外开销</li>
+<li>逐行操作</li>
+<li>可‘到达’其它表，意味着锁</li>
+<li>高并发时容易死锁</li>
+</ul>
+</li>
+<li>由程序保证约束</li>
+</ul>
+<figure data-type="image" tabindex="3"><img src="https://saowu.top/blog/post-images/1619928482618.png" alt="" loading="lazy"></figure>
+<h2 id="四-sql类军规">四、SQL类军规</h2>
+<h3 id="1-sql语句尽可能简单">1、SQL语句尽可能简单</h3>
+<p><u><em>可能一条大SQL就把整个数据库堵死</em></u></p>
+<ul>
+<li>拒绝大SQL，拆解成多条简单SQL
+<ul>
+<li>简单SQL缓存命中率更高</li>
+<li>减少锁表时间，特别是MyISAM</li>
+<li>用上多CPU</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-保持事务db连接短小">2、保持事务(DB连接)短小</h3>
+<ul>
+<li>事务/连接使用原则：即开即用，用完即关</li>
+<li>与事务无关操作放到事务外面, 减少锁资源的占用</li>
+<li>不破坏一致性前提下，使用多个短事务代替长事务</li>
+<li>举例
+<ul>
+<li>发贴时的图片上传等待</li>
+<li>大量的sleep连接</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-尽可能避免使用sptrigfunc">3、尽可能避免使用SP/TRIG/FUNC</h3>
+<ul>
+<li>线上OLTP系统（线下库另论）
+<ul>
+<li>尽可能少用存储过程</li>
+<li>尽可能少用触发器</li>
+<li>减用使用MySQL凼数对结果进行处理</li>
+</ul>
+</li>
+<li>由客户端程序负责</li>
+</ul>
+<h3 id="4-尽量不用select">4、尽量不用SELECT *</h3>
+<ul>
+<li>用<code>SELECT *</code> 时
+<ul>
+<li>更多消耗CPU、内存、IO、网络带宽</li>
+</ul>
+</li>
+<li>尽量不用<code>SELECT * </code>，叧取需要数据列
+<ul>
+<li>更安全的设计：减少表变化带来的影响</li>
+<li>为使用<code>covering index</code>提供可能性</li>
+<li><code>Select</code>/<code>JOIN</code>减少硬盘临时表生成，特别是有<code>TEXT</code>/<code>BLOB</code>时</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-改写or语句">5、改写OR语句</h3>
+<ul>
+<li>同一字段，将<code>or</code>改写为<code>in()</code>
+<ul>
+<li><code>OR</code>效率：<code>O(n)</code></li>
+<li><code>IN</code> 效率：<code>O(Log n)</code></li>
+<li>当<code>n</code>很大时，<code>OR</code>会慢很多</li>
+<li>注意控制<code>IN</code>的个数，建议<code>n</code>小于200</li>
+<li>举例
+<ul>
+<li><code>Select * from  opp WHERE phone='12347856' or phone=‘42242233' </code></li>
+<li><code>Select * from  opp WHERE phone in ('12347856' ,'42242233')</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>不同字段，将<code>or</code>改为<code>union</code>
+<ul>
+<li>减少对不同字段进行<code>or</code>查询</li>
+<li><code>Merge index</code>往往很弱智</li>
+<li>如果有足够信心：<code>set global  optimizer_switch='index_merge=off'; </code></li>
+<li>举例
+<ul>
+<li><s><code>Select * from  opp WHERE phone='010-88886666' or cellPhone='13800138000';</code></s></li>
+<li><code>Select * from  opp WHERE phone='010-88886666'  union Select * from  opp WHERE   cellPhone='13800138000';</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-避免负向查询和-前缀模糊查询">6、避免负向查询和% 前缀模糊查询</h3>
+<ul>
+<li>避免负向查询
+<ul>
+<li><code>NOT</code>、<code>!=</code>、<code>&lt;&gt;</code>、<code>!&lt;</code>、<code>!&gt;</code>、<code>NOT EXISTS</code>、<code>NOT IN</code>、<code>NOT LIKE</code>等</li>
+</ul>
+</li>
+<li>避免% 前缀模糊查询
+<ul>
+<li>B+ Tree，使用不了索引,导致全表扫描</li>
+<li>举例</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-shell">MySQL&gt; select * from post WHERE title like '北京%' ;
+298 rows in set (0.01sec)  
+MySQL&gt; select * from post WHERE title like '%北京%' ;
+572 rows in set (3.27sec)
+</code></pre>
+<h3 id="7-减少count">7、减少COUNT(*)</h3>
+<ul>
+<li>COUNT(*)的几个例子
+<ul>
+<li>COUNT(*)<code>=</code>COUNT(1)</li>
+<li>COUNT(0)<code>=</code>COUNT(1)</li>
+<li>COUNT(1)<code>=</code>COUNT(100)</li>
+<li>COUNT(*)<code>!=</code>COUNT(col)</li>
+</ul>
+</li>
+<li>COUNT(*)的资源开销大，尽量<s>不用</s>少用</li>
+<li>计数统计
+<ul>
+<li>实时统计：用memcache，双向更新，凌晨跑基准</li>
+<li>非实时统计：尽量用单独统计表，定期重算</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-limit的高效分页">8、LIMIT的高效分页</h3>
+<ul>
+<li>LIMIT原理
+<ul>
+<li><code>Select * from table limit 10000,10;</code></li>
+<li>偏移量越大则越慢</li>
+</ul>
+</li>
+<li>推荐分页
+<ul>
+<li><code>Select * from table WHERE id&gt;=23423 limit 11; #10+1 (每页10条)</code></li>
+<li><code>select * from table WHERE id&gt;=23434 limit 11;</code></li>
+</ul>
+</li>
+<li>分页方式二
+<ul>
+<li><code>Select * from table WHERE id &gt;= ( select  id from table limit 10000,1 ) limit 10;</code></li>
+</ul>
+</li>
+<li>分页方式三
+<ul>
+<li><code>SELECT * FROM table INNER JOIN (SELECT id FROM table LIMIT 10000,10) USING (id) ;</code></li>
+</ul>
+</li>
+<li>分页方式四
+<ul>
+<li>程序取ID：<code>select  id from table  limit 10000,10;</code></li>
+<li><code>Select * from table WHERE id in  (123,456...) ;</code></li>
+</ul>
+</li>
+<li>可能需按场景分析并重组索引</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-shell">MySQL&gt;  select sql_no_cache * from post limit 10,10;
+10 row in set (0.01 sec)
+MySQL&gt;  select sql_no_cache * from post limit 20000,10; 
+10 row in set (0.13sec)
+MySQL&gt;  select sql_no_cache * from post limit 80000,10;
+10 rows in set (0.58sec)
+MySQL&gt;  select sql_no_cache id from post limit 80000,10;
+10 rows in set (0.02sec)
+MySQL&gt;  select sql_no_cache * from post WHERE id&gt;=323423 limit 10;
+10 rows in set (0.01sec)
+MySQL&gt; select * from post WHERE id &gt;= ( select sql_no_cacheid from post limit 80000,1 ) limit 10 ; 
+10 rows in set (0.02 sec)
+</code></pre>
+<h3 id="9-用union-all-而非union">9、用UNION ALL 而非UNION</h3>
+<ul>
+<li>若无需对结果进行去重，则用<code>UNION ALL</code>,<code>UNION</code>有去重开销。</li>
+</ul>
+<h3 id="10-分解联接保证高并发">10、分解联接保证高并发</h3>
+<ul>
+<li>高并发DB不建议进行两个表以上的<code>JOIN</code></li>
+<li>适当分解联接保证高并发
+<ul>
+<li>可缓存大量早期数据</li>
+<li>使用了多个MyISAM表</li>
+<li>对大表的小ID <code>IN()</code></li>
+<li>联接引用同一个表多次</li>
+</ul>
+</li>
+<li>举例
+<ul>
+<li><s><code>MySQL&gt; Select * from tag   JOIN tag_poston tag_post.tag_id=tag.idJOIN post on tag_post.post_id=post.id  WHERE tag.tag=‘二手玩具’;</code></s></li>
+<li><code>MySQL&gt; Select *  from tag WHERE tag=‘二手玩具’;</code></li>
+<li><code>MySQL&gt; Select * from tag_post WHERE tag_id=1321;</code></li>
+<li><code>MySQL&gt; Select * from post WHERE post.id in (123,456,314,141);</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="11-group-by-去除排序">11、GROUP BY 去除排序</h3>
+<ul>
+<li>GROUP BY实现
+<ul>
+<li>分组</li>
+<li>自动排序</li>
+</ul>
+</li>
+<li>无需排序：Order by NULL</li>
+<li>特定排序：Group by DESC/ASC</li>
+<li>举例</li>
+</ul>
+<pre><code class="language-shell">MySQL&gt; select phone, count(*) from post group by phone limit 1;
+1 row in set (2.19 sec)
+MySQL&gt; select phone, count(*) from post group by phone order by null limit 1;
+1 row in set (2.02 sec)
+</code></pre>
+<h3 id="12-同数据类型的列值比较">12、同数据类型的列值比较</h3>
+<ul>
+<li>原则：数字对数字，字符对字符</li>
+<li>数值列与字符类型比较
+<ul>
+<li>同时转换为双精度,进行比对</li>
+</ul>
+</li>
+<li>字符列与数值类型比较
+<ul>
+<li>字符列整列转数值</li>
+<li>不会使用索引查询</li>
+</ul>
+</li>
+<li>举例</li>
+</ul>
+<pre><code class="language-shell">#字段：`remark` varchar(50) NOT NULL COMMENT '备注,默认为空',
+MySQL&gt;SELECT `id`, `gift_code` FROM gift WHERE `deal_id` = 640 AND remark=115127;
+1 row in set (0.14sec)
+MySQL&gt;SELECT `id`, `gift_code` FROM pool_giftWHERE `deal_id` = 640 AND remark='115127';
+1 row in set (0.005 sec)
+</code></pre>
+<h3 id="13-load-data导数据">13、Load data导数据</h3>
+<ul>
+<li>批量数据快导入：
+<ul>
+<li>成批装载比单行装载更快，不需要每次刷新缓存</li>
+<li>无索引时装载比索引装载更快</li>
+<li><code>Insert values, values, values</code> 减少索引刷新</li>
+<li><code>Load data</code>比<code>insert</code>快约20倍</li>
+</ul>
+</li>
+<li>尽量不用INSERT ... SELECT
+<ul>
+<li>延迟</li>
+<li>同步出错</li>
+</ul>
+</li>
+</ul>
+<h3 id="14-打散大批量更新">14、打散大批量更新</h3>
+<ul>
+<li>大批量更新凌晨操作，避开高峰</li>
+<li>凌晨不限制</li>
+<li>白天上限默认为100条/秒（特殊再议）</li>
+<li>举例</li>
+</ul>
+<pre><code class="language-sql">update post set tag=1 WHERE  id in (1,2,3);
+sleep 0.01;
+update post set tag=1 WHERE  id in (4,5,6);
+sleep 0.01;
+</code></pre>
+<h3 id="15-know-every-sql">15、Know Every SQL！</h3>
+<figure data-type="image" tabindex="4"><img src="https://saowu.top/blog/post-images/1619928538398.png" alt="" loading="lazy"></figure>
+<h2 id="五-约定类军规">五、约定类军规</h2>
+<h3 id="1-隔离线上线下">1、隔离线上线下</h3>
+<ul>
+<li>构建数据库的生态环境
+<ul>
+<li>开发人员无线上库操作权限</li>
+</ul>
+</li>
+<li>👊原则：线上连线上，线下连线下
+<ul>
+<li>线上环境用<code>prod</code>库</li>
+<li>预发环境用<code>pre</code>库</li>
+<li>测试环境用`test``库</li>
+<li>开发环境用<code>dev</code>库</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-禁止未经dba确认的子查询上线">2、禁止未经DBA确认的子查询上线</h3>
+<ul>
+<li>MySQL子查询
+<ul>
+<li>大部分情况优化较差</li>
+<li>特别<code>WHERE</code>中使用<code>IN</code> id的子查询</li>
+<li>一般可用<code>JOIN</code>改写</li>
+</ul>
+</li>
+<li>示例
+<ul>
+<li><s><code>select * from table1 where id in (select id from table2);</code></s></li>
+<li><s><code>insert into table1 (select * from table2);</code></s></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-永远不在程序端显式加锁">3、永远不在程序端显式加锁</h3>
+<ul>
+<li>永远不在程序端对数据库显式加锁
+<ul>
+<li>外部锁对数据库不可控</li>
+<li>高并发时是灾难</li>
+<li>极难调试和排查</li>
+</ul>
+</li>
+<li>并发扣款等一致性问题
+<ul>
+<li>采用事务</li>
+<li>相对值修改</li>
+<li>Commit前二次较验冲突</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-统一字符集为utf8">4、统一字符集为UTF8</h3>
+<ul>
+<li>统一字符集：<code>UTF8</code></li>
+<li>校对规则：<code>utf8_general_ci</code></li>
+</ul>
+<h3 id="5-统一命名规范">5、统一命名规范</h3>
+<ul>
+<li>库表等名称统一用小写
+<ul>
+<li>Linux VS Windows</li>
+<li>MySQL库表名大小写敏感</li>
+<li>字段名的大小写不敏感</li>
+</ul>
+</li>
+<li>索引命名默认为<code>idx_字段名</code></li>
+<li>库名用缩写，尽量在2~7个字母
+<ul>
+<li>DataSharing  ==&gt; ds</li>
+</ul>
+</li>
+<li>注意避免用保留字命名</li>
+</ul>
+<figure data-type="image" tabindex="5"><img src="https://saowu.top/blog/post-images/1619928596262.png" alt="" loading="lazy"></figure>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright © 2020 - 2025 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
+Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E6%A0%B8%E5%BF%83%E5%86%9B%E8%A7%84">一、核心军规</a>
+<ul>
+<li><a href="#1-%E5%B0%BD%E9%87%8F%E4%B8%8D%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E5%81%9A%E8%BF%90%E7%AE%97">1、尽量不在数据库做运算</a></li>
+<li><a href="#2-%E6%8E%A7%E5%88%B6%E5%8D%95%E8%A1%A8%E6%95%B0%E6%8D%AE%E9%87%8F">2、控制单表数据量</a></li>
+<li><a href="#3-%E4%BF%9D%E6%8C%81%E8%A1%A8%E8%BA%AB%E6%AE%B5%E8%8B%97%E6%9D%A1">3、保持表身段苗条</a></li>
+<li><a href="#4-%E5%B9%B3%E8%A1%A1%E8%8C%83%E5%BC%8F%E4%B8%8E%E5%86%97%E4%BD%99">4、平衡范式与冗余</a></li>
+<li><a href="#5-%E6%8B%92%E7%BB%9D3b">5、拒绝3B</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%86%9B%E8%A7%84">二、字段类军规</a>
+<ul>
+<li><a href="#1-%E7%94%A8%E5%A5%BD%E6%95%B0%E5%80%BC%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B">1、用好数值字段类型</a></li>
+<li><a href="#2-%E5%B0%86%E5%AD%97%E7%AC%A6%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%95%B0%E5%AD%97">2、将字符转化为数字</a></li>
+<li><a href="#3-%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8enum%E6%88%96set">3、优先使用ENUM或SET</a></li>
+<li><a href="#4-%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8null%E5%AD%97%E6%AE%B5">4、避免使用NULL字段</a></li>
+<li><a href="#5-%E5%B0%91%E7%94%A8%E5%B9%B6%E6%8B%86%E5%88%86textblob">5、少用并拆分TEXT/BLOB</a></li>
+<li><a href="#6-%E4%B8%8D%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%87%8C%E5%AD%98%E5%9B%BE%E7%89%87">6、不在数据库里存图片</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%86%9B%E8%A7%84">三、索引类军规</a>
+<ul>
+<li><a href="#1-%E8%B0%A8%E6%85%8E%E5%90%88%E7%90%86%E6%B7%BB%E5%8A%A0%E7%B4%A2%E5%BC%95">1、谨慎合理添加索引</a></li>
+<li><a href="#2-%E5%AD%97%E7%AC%A6%E5%AD%97%E6%AE%B5%E5%BF%85%E9%A1%BB%E5%BB%BA%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95">2、字符字段必须建前缀索引</a></li>
+<li><a href="#3-%E4%B8%8D%E5%9C%A8%E7%B4%A2%E5%BC%95%E5%88%97%E5%81%9A%E8%BF%90%E7%AE%97">3、不在索引列做运算</a></li>
+<li><a href="#4-%E8%87%AA%E5%A2%9E%E5%88%97%E6%88%96%E5%85%A8%E5%B1%80id%E5%81%9Ainnodb%E4%B8%BB%E9%94%AE">4、自增列或全局ID做INNODB主键</a></li>
+<li><a href="#5-%E5%B0%BD%E9%87%8F%E4%B8%8D%E7%94%A8%E5%A4%96%E9%94%AE">5、尽量不用外键</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-sql%E7%B1%BB%E5%86%9B%E8%A7%84">四、SQL类军规</a>
+<ul>
+<li><a href="#1-sql%E8%AF%AD%E5%8F%A5%E5%B0%BD%E5%8F%AF%E8%83%BD%E7%AE%80%E5%8D%95">1、SQL语句尽可能简单</a></li>
+<li><a href="#2-%E4%BF%9D%E6%8C%81%E4%BA%8B%E5%8A%A1db%E8%BF%9E%E6%8E%A5%E7%9F%AD%E5%B0%8F">2、保持事务(DB连接)短小</a></li>
+<li><a href="#3-%E5%B0%BD%E5%8F%AF%E8%83%BD%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8sptrigfunc">3、尽可能避免使用SP/TRIG/FUNC</a></li>
+<li><a href="#4-%E5%B0%BD%E9%87%8F%E4%B8%8D%E7%94%A8select">4、尽量不用SELECT *</a></li>
+<li><a href="#5-%E6%94%B9%E5%86%99or%E8%AF%AD%E5%8F%A5">5、改写OR语句</a></li>
+<li><a href="#6-%E9%81%BF%E5%85%8D%E8%B4%9F%E5%90%91%E6%9F%A5%E8%AF%A2%E5%92%8C-%E5%89%8D%E7%BC%80%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2">6、避免负向查询和% 前缀模糊查询</a></li>
+<li><a href="#7-%E5%87%8F%E5%B0%91count">7、减少COUNT(*)</a></li>
+<li><a href="#8-limit%E7%9A%84%E9%AB%98%E6%95%88%E5%88%86%E9%A1%B5">8、LIMIT的高效分页</a></li>
+<li><a href="#9-%E7%94%A8union-all-%E8%80%8C%E9%9D%9Eunion">9、用UNION ALL 而非UNION</a></li>
+<li><a href="#10-%E5%88%86%E8%A7%A3%E8%81%94%E6%8E%A5%E4%BF%9D%E8%AF%81%E9%AB%98%E5%B9%B6%E5%8F%91">10、分解联接保证高并发</a></li>
+<li><a href="#11-group-by-%E5%8E%BB%E9%99%A4%E6%8E%92%E5%BA%8F">11、GROUP BY 去除排序</a></li>
+<li><a href="#12-%E5%90%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%97%E5%80%BC%E6%AF%94%E8%BE%83">12、同数据类型的列值比较</a></li>
+<li><a href="#13-load-data%E5%AF%BC%E6%95%B0%E6%8D%AE">13、Load data导数据</a></li>
+<li><a href="#14-%E6%89%93%E6%95%A3%E5%A4%A7%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0">14、打散大批量更新</a></li>
+<li><a href="#15-know-every-sql">15、Know Every SQL！</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-%E7%BA%A6%E5%AE%9A%E7%B1%BB%E5%86%9B%E8%A7%84">五、约定类军规</a>
+<ul>
+<li><a href="#1-%E9%9A%94%E7%A6%BB%E7%BA%BF%E4%B8%8A%E7%BA%BF%E4%B8%8B">1、隔离线上线下</a></li>
+<li><a href="#2-%E7%A6%81%E6%AD%A2%E6%9C%AA%E7%BB%8Fdba%E7%A1%AE%E8%AE%A4%E7%9A%84%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%B8%8A%E7%BA%BF">2、禁止未经DBA确认的子查询上线</a></li>
+<li><a href="#3-%E6%B0%B8%E8%BF%9C%E4%B8%8D%E5%9C%A8%E7%A8%8B%E5%BA%8F%E7%AB%AF%E6%98%BE%E5%BC%8F%E5%8A%A0%E9%94%81">3、永远不在程序端显式加锁</a></li>
+<li><a href="#4-%E7%BB%9F%E4%B8%80%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%BAutf8">4、统一字符集为UTF8</a></li>
+<li><a href="#5-%E7%BB%9F%E4%B8%80%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83">5、统一命名规范</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://saowu.top/blog/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script type="application/javascript" src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="application/javascript">
+
+  var gitalk = new Gitalk({
+    clientID: '1ffeeefba638614e6e82',
+    clientSecret: '062da207075e7e51b4443da0d408b6d787cc3ed9',
+    repo: 'blog',
+    owner: 'saowu',
+    admin: ['saowu'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+    
+  
+</body>
+
+</html>

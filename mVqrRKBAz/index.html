@@ -1,0 +1,273 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>saowu&#39;s Blog</title>
+<link rel="shortcut icon" href="https://saowu.top/blog/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://saowu.top/blog/media/css/tailwind.css">
+<link rel="stylesheet" href="https://saowu.top/blog/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="saowu&#39;s Blog - Atom Feed" href="https://saowu.top/blog/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162711560-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-162711560-1');
+  </script>
+    
+
+  <meta name="description" content="A programmer who wants to be happy and muddle along." />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
+    </div>
+  </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
+    
+      <a href="/blog" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Home
+      </a>
+    
+      <a href="/blog/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Archives
+      </a>
+    
+      <a href="/blog/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Tags
+      </a>
+    
+      <a href="/blog/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        About
+      </a>
+    
+    <a href="https://saowu.top/blog/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
+</div>
+
+    <div class="max-w-4xl w-full mx-auto pt-32">
+      <h1 class="text-2xl font-bold pb-8 flex justify-center items-center">
+        <i class="ri-hashtag"></i>
+        Python
+      </h1>
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
+        
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/ijQPUonML/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          推荐一个项目，这里有电子书资源...
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2021-02-23</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        项目链接：Github
+电子书籍思维导图
+
+...
+      </div>
+      <a href="https://saowu.top/blog/ijQPUonML/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/ijQPUonML.jpg" alt="推荐一个项目，这里有电子书资源...">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/8kvNnC0n3/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          通过Docker安装Jenkins
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-07-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。
+
+一、拉取Jenkins LTS 镜像
+docker pull jenkins/j...
+      </div>
+      <a href="https://saowu.top/blog/8kvNnC0n3/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/8kvNnC0n3.png" alt="通过Docker安装Jenkins">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/jch0-sGBK/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          枚举算法
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-06-28</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+吾生也有涯，而知也无涯。——庄子
+
+介绍
+枚举法，也称为穷尽法，指的是从问题所有可能的解的集合中一一枚举各元素。用题目中给定的检验条件判定哪些是有用的，哪些是无用的。能使命题成立，即为其解。
+
+优点是算法简单，在局部地方使用枚举法，效果十...
+      </div>
+      <a href="https://saowu.top/blog/jch0-sGBK/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://saowu.top/blog/post-images/jch0-sGBK.jpg" alt="枚举算法">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/5YTZFZvie/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          用python写一个新冠疫情爬虫
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-10</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+每一颗渺小的种子都能创造伟大的力量！
+
+完整代码：github
+一、准备好api
+#全国省市区信息api
+https://ncov.html5.qq.com/api/getPosition
+#全国疫情api
+https://ncov.ht...
+      </div>
+      <a href="https://saowu.top/blog/5YTZFZvie/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/5YTZFZvie.jpg" alt="用python写一个新冠疫情爬虫">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/ugWz7JSYQ/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          简单问卷调查系统
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        VotingSystem
+
+Bootstrap+Django+sqlite3 编写的简单问卷调查系统
+
+👉GitHub
+版本配置
+Package    Version
+---------- -------
+asgiref    3.2.3...
+      </div>
+      <a href="https://saowu.top/blog/ugWz7JSYQ/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/ugWz7JSYQ.jpg" alt="简单问卷调查系统">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/IVwOk1Phb/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+           FigureBed图床系统
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+Flask 个人图床
+
+👉demo website
+👉GitHub
+功能支持
+1.支持多文件上传（set max=5）
+2.支持导出上传记录（csv文件）
+3.支持返回多种链接格式 （link, markdown, html, bbc...
+      </div>
+      <a href="https://saowu.top/blog/IVwOk1Phb/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/IVwOk1Phb.jpg" alt=" FigureBed图床系统">
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://saowu.top/blog/pip3-chang-yong-ming-ling/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          pip3 常用命令
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2020-04-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        1、安装目录
+~/Library/Caches/pip
+
+2、查找需要安装的包
+pip3 search &lt;包名&gt;
+
+3、安装python包
+pip3 install 
+pip3 install &lt;包名&gt;==1.0.0...
+      </div>
+      <a href="https://saowu.top/blog/pip3-chang-yong-ming-ling/" class="btn">
+        Read more
+      </a>
+    </div>
+    
+      <img class="flex-shrink-0 self-start md:ml-4 mb-4 md:mb-0 rounded-sm object-cover featured-img order-1 md:order-2 w-full h-40 md:w-56 md:h-32" loading="lazy" src="https://cdn.jsdelivr.net/gh/saowu/blog@2.0/post-images/pip3-chang-yong-ming-ling.jpg" alt="pip3 常用命令">
+    
+  </div>
+  
+      </div>
+
+      
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Copyright © 2020 - 2025 <a target="_blank"  href="https://saowu.top/">saowu</a>. All Right Reserved<br>
+Powered by <a target="_blank"  href="https://github.com/getgridea/gridea">Gridea</a>
+</footer>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://saowu.top/blog/media/scripts/main.js"></script>
+</body>
+</html>
